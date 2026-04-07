@@ -1,11 +1,11 @@
 {
 	"schemaVersion": 1,
-	"id": "examplemod",
+	"id": "btd",
 	"version": "${version}",
-	"name": "Example Mod",
-	"description": "This mod aims to help new BTA modders.",
+	"name": "Better Than Deer",
+	"description": "A mod for Better Than Adventure that changes various features in the game to follow a more structured, connected vision for the world and gameplay experience.",
 	"authors": [
-		"Turnip Labs"
+		"LukeisStuff"
 	],
 	"contact": {
 		"homepage": "",
@@ -16,20 +16,32 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"turniplabs.examplemod.ExampleMod"
+			"betterthandeer.btd.BetterThanDeerMod"
 		],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"betterthandeer.btd.BetterThanDeerMod"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"betterthandeer.btd.BetterThanDeerMod"
+		],
+		"beforeClientStart": [
+			"betterthandeer.btd.BTDClient"
+		],
+		"afterClientStart": [
+			"betterthandeer.btd.BTDClient"
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+			"betterthandeer.btd.BTDRecipes"
+		],
+		"initModels": [
+			"betterthandeer.btd.BTDModels"
+		],
+		"afterItemInit": [
+			"betterthandeer.btd.BetterThanDeerMod"
 		]
 	},
 	"mixins": [
-		"examplemod.mixins.json"
+      "btd.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=${fabricloader}",
