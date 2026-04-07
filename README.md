@@ -1,4 +1,6 @@
-# Better Than Deer A mod for Better Than Adventure that changes various features in the game to follow a more structured, connected vision for the world and gameplay experience..   
+# Better Than Deer 
+
+A mod for Better Than Adventure that changes various features in the game to follow a more structured, connected vision for the world and gameplay experience..   
 
 As a developer for BTA myself, for some time now I have been discontent with the direction the original lead developers have for the mod. Development cycles for BTA tend to be long, stretched-out periods of just... *nothing*. When changes *are* made, they are sparratic, and do not follow a consice, clear vision for a cohesive gameplay experience or theme.  
 
