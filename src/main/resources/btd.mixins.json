@@ -6,7 +6,13 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "BiomeProviderNetherMixin"
+    "AddMobSpawningMixin",
+    "BiomeProviderNetherMixin",
+    "ChangeNetherDecoratorMixin",
+    "UpdateNetherBiomesMixin",
+    "WorldFeatureFireMixin"
   ],
-  "client": []
+  "client": [
+    "TextureManagerMixin"
+  ]
 }

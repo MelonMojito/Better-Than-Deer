@@ -1,0 +1,10 @@
+{
+  "model_paths": [
+    "/assets/btd/models/entity/bat/bat.geo.json"
+  ],
+  "renderers": {
+    "btd:bat": {
+      "main":"geometry.bat"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "mob.bat": {
+    "subtitle": "subtitles.mob.bat",
+    "sounds": [
+      "mob/bat/idle.ogg"
+    ]
+  },
+  "mob.batflap": {
+    "subtitle": "subtitles.mob.batflap",
+    "sounds": [
+      "mob/bat/flap.ogg"
+    ]
+  },
+  "mob.bathurt": {
+    "subtitle": "subtitles.mob.bathurt",
+    "sounds": [
+      "mob/bat/hurt1.ogg",
+      "mob/bat/hurt2.ogg",
+      "mob/bat/hurt3.ogg"
+    ]
+  },
+  "mob.batdeath": {
+    "subtitle": "subtitles.mob.batdeath",
+    "sounds": [
+      "mob/bat/death.ogg"
+    ]
+  }
+}
