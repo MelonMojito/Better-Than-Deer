@@ -9,8 +9,11 @@ import net.minecraft.client.render.block.color.BlockColorDispatcher;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.block.model.BlockModelFluid;
 import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
+import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
+import net.minecraft.core.block.Blocks;
+import net.minecraft.core.item.block.ItemBlock;
 import turniplabs.halplibe.util.ModelEntrypoint;
 
 import static net.minecraft.client.render.block.model.BlockModelDispatcher.loadDataModel;
@@ -29,7 +32,9 @@ public class BTDModels implements ModelEntrypoint {
 	@Override
 	public void initItemModels(ItemModelDispatcher dispatcher) {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.BUCKET_ACID, "btd"));
-		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_BAT, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_BAT, "btd").setFullBright());
+
+		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>)BTDBlocks.BOULDER.asItem())).setFullBright());
 	}
 
 	@Override

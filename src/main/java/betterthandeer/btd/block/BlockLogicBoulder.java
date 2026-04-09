@@ -15,6 +15,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Random;
+
 public class BlockLogicBoulder extends BlockLogicFlower {
 	public BlockLogicBoulder(@NonNull Block<?> block) {
 		super(block);
@@ -26,11 +28,21 @@ public class BlockLogicBoulder extends BlockLogicFlower {
 		if (entity instanceof Player) {
 			world.createExplosion(null, tilePos.x(), tilePos.y(), tilePos.z(), 1.5F, true, false);
 			entity.hurt(null, 2, DamageType.BLAST);
+			entity.hurt(null, 2, DamageType.FIRE);
 			entity.maxFireTicks = 100;
 			entity.remainingFireTicks = 100;
 			entity.fling(1.0f, 1.0f, 1.0f, 0.0f);
 		}
 	}
+
+//	@Override
+//	public void animationTick(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Random rand) {
+//		double xPos = (double) tilePos.x() + rand.nextDouble();
+//		double yPos = tilePos.y() + 0.1F;
+//		double zPos = (double) tilePos.z() + rand.nextDouble();
+//		world.spawnParticle("smoke", xPos, yPos, zPos, 0.0F, 0.25F, 0.0F, 0, false);
+//		world.spawnParticle("flame", xPos, yPos, zPos, 0.0F, 0.2F, 0.0F, 0, false);
+//	}
 
 	@Override
 	public boolean canStay(@NonNull World world, @NonNull TilePosc tilePos) {

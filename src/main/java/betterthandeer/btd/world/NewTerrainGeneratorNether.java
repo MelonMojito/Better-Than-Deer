@@ -57,9 +57,9 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 		int quarterHeight = this.maxY / 4;
 		if (y < quarterHeight) {
 			return 0;
-		} else if (y >= this.maxY - this.rand.nextInt(6)) {
+		} else if (y >= this.maxY - this.rand.nextInt(10)) {
 			return Blocks.BEDROCK.id();
-		} else if (y <= quarterHeight + this.rand.nextInt(6)) {
+		} else if (y <= quarterHeight + this.rand.nextInt(10)) {
 			return Blocks.BEDROCK.id();
 		} else if (density > (double) 0.0F) {
 			return type.getFillerBlockId();

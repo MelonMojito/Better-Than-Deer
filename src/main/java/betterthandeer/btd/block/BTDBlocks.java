@@ -21,6 +21,8 @@ public class BTDBlocks implements BlockInitEntrypoint {
 
 	public static Block<?> SULFUR;
 
+	public static Block<?> BOULDER;
+
 	private static boolean hasInit = false;
 
 	public static void init() {

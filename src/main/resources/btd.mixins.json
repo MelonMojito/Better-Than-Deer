@@ -7,7 +7,10 @@
   },
   "mixins": [
     "AddMobSpawningMixin",
+    "BetterBonepileMixin",
+    "BetterSoulcatcherMixin",
     "BiomeProviderNetherMixin",
+    "BetterAshMixin",
     "ChangeNetherDecoratorMixin",
     "EntityInAcidMixin",
     "MobInAcidMixin",

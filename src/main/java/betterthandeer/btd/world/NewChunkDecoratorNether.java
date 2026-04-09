@@ -1,7 +1,6 @@
 package betterthandeer.btd.world;
 
 import betterthandeer.btd.block.BTDBlocks;
-import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
 import net.minecraft.core.block.BlockLogicOreRubyglass;
 import net.minecraft.core.block.Blocks;
@@ -35,6 +34,12 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 	@Override
 	public void registerDecorations() {
+//		this.register("minecraft:decoration/nether/default/speleothems", (new ChunkDecorationBuilder(new WorldFeatureSpeleothems(12, true, 12, true)))
+//			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
+//			.withPositionSelector(PositionSelectors.UpperHeightRangeUniform)
+//			.withPlacementMethod(new PlacementMethod
+//				.TriesPerChunk(4)));
+
 
 		// Rubyglass Features
 		this.register("btd:decoration/nether/default/rubyglass_crystal_ceiling", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystal(true)))
@@ -158,36 +163,47 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 		// Sulfur biome features
 
-		this.register("btd:decoration/nether/default/boulder_magma", (new ChunkDecorationBuilder(new WorldFeatureBoulder(Blocks.MAGMA, Blocks.COBBLE_BASALT)))
+		this.register("btd:decoration/nether/default/boulder_magma", new ChunkDecorationBuilder(new WorldFeatureBoulder(Blocks.MAGMA, Blocks.COBBLE_BASALT))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(2)));
 
-		this.register("btd:decoration/nether/default/boulder_sulfur", (new ChunkDecorationBuilder(new WorldFeatureBoulder(BTDBlocks.SULFUR, Blocks.BRIMSAND)))
+		this.register("btd:decoration/nether/default/boulder_sulfur", new ChunkDecorationBuilder(new WorldFeatureBoulder(BTDBlocks.SULFUR, Blocks.BRIMSAND))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(2)));
 
-		this.register("minecraft:decoration/nether/default/sulfur_pool_terrace", (new ChunkDecorationBuilder(new WorldFeatureTerrace(BTDBlocks.FLUID_ACID_STILL, Blocks.BRIMSAND)))
+		this.register("minecraft:decoration/nether/default/sulfur_pool_terrace", new ChunkDecorationBuilder(new WorldFeatureTerrace(BTDBlocks.FLUID_ACID_STILL, Blocks.BRIMSAND))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.MinY)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(1)));
 
-
-		this.register("btd:decoration/nether/default/sulfur_pool_floor_vent", (new ChunkDecorationBuilder(new WorldFeatureFloorVent()))
+		this.register("btd:decoration/nether/default/sulfur_pool_floor_vent", new ChunkDecorationBuilder(new WorldFeatureFloorVent())
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(12)));
 
-		this.register("btd:decoration/nether/default/sulfur_pool_spire", (new ChunkDecorationBuilder(new WorldFeatureThermalSpire()))
+		this.register("btd:decoration/nether/default/sulfur_pool_spire", new ChunkDecorationBuilder(new WorldFeatureThermalSpire())
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(8)));
+
+		this.register("btd:decoration/nether/default/volcano_roof_spire", new ChunkDecorationBuilder(new WorldFeatureRoofSpire(Blocks.BASALT))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(2)));
+
+		this.register("btd:decoration/nether/default/sulfur_roof_spire", new ChunkDecorationBuilder(new WorldFeatureRoofSpire(BTDBlocks.SULFUR))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(2)));
 
 
 		// Nethercoal Features
@@ -256,11 +272,17 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(1)));
 
-		this.register("btd:decoration/nether/default/patch_boulder", (new ChunkDecorationBuilder(new WorldFeatureNetherPatch(BTDBlocks.BOULDER.id())))
+		this.register("btd:decoration/nether/default/patch_boulder", new ChunkDecorationBuilder(new WorldFeatureNetherPatch(BTDBlocks.BOULDER.id()))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_CRAG, Biomes.NETHER_CRYSTAL_PLAINS, Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_SHELF, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(1)));
+
+		this.register("btd:decoration/nether/default/patch_boulder_oldworld", new ChunkDecorationBuilder(new WorldFeatureNetherPatchBelow(BTDBlocks.BOULDER.id()))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_OLD_WORLD})
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(16)));
 
 		this.register("btd:decoration/nether/default/patch_soul_catcher", (new ChunkDecorationBuilder(new WorldFeatureNetherPatch(Blocks.SOULCATCHER.id())))
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)

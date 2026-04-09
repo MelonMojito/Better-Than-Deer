@@ -7,7 +7,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.FogManager;
 import net.minecraft.client.render.camera.CameraUtil;
 import net.minecraft.core.world.World;
-import net.minecraft.core.world.biome.Biome;
 import net.minecraft.core.world.biome.Biomes;
 import net.minecraft.core.world.pos.TilePos;
 import org.jetbrains.annotations.NotNull;
