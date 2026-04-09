@@ -9,6 +9,9 @@
     "AddMobSpawningMixin",
     "BiomeProviderNetherMixin",
     "ChangeNetherDecoratorMixin",
+    "EntityInAcidMixin",
+    "MobInAcidMixin",
+    "PlayerInAcidMixin",
     "UpdateNetherBiomesMixin",
     "WorldFeatureFireMixin"
   ],

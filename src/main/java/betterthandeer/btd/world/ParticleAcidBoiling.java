@@ -1,6 +1,6 @@
 package betterthandeer.btd.world;
 
-import betterthandeer.btd.BTDBlocks;
+import betterthandeer.btd.block.BTDBlocks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.particle.Particle;

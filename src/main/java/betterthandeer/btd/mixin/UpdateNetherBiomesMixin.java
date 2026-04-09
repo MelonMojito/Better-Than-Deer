@@ -1,6 +1,5 @@
 package betterthandeer.btd.mixin;
 
-import betterthandeer.btd.BTDBlocks;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.world.biome.Biomes;
 import net.minecraft.core.world.biome.SurfaceProperties;

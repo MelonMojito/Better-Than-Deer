@@ -1,5 +1,6 @@
 package betterthandeer.btd;
 
+import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.entity.bat.MobBat;
 import betterthandeer.btd.entity.bat.MobRendererBat;
 import net.minecraft.client.render.EntityRendererDispatcher;

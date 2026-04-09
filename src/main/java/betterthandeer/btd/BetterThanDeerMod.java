@@ -1,5 +1,6 @@
 package betterthandeer.btd;
 
+import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.entity.BTDEntities;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.block.Blocks;

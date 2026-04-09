@@ -1,7 +1,6 @@
-package betterthandeer.btd;
+package betterthandeer.btd.block;
 
 import net.minecraft.core.block.BlockLogicFluid;
-import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.Fluid;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.material.Materials;
@@ -47,10 +46,10 @@ public class FluidAcid implements Fluid {
 	}
 
 	public boolean checkForHarden(@NotNull BlockLogicFluid logicFluid, @NotNull World world, @NotNull TilePosc tilePos, @NotNull Material encountered) {
-		if (encountered == Materials.LAVA) {
+		if (encountered == Materials.LAVA || encountered == Materials.WATER) {
 			int data = world.getBlockData(tilePos) & 15;
 			if (data == 0) {
-				world.setBlockTypeNotify(tilePos, Blocks.AIR);
+				world.setBlockTypeNotify(tilePos, BTDBlocks.SULFUR);
 			}
 
 			world.playSoundEffect(null, SoundCategory.WORLD_SOUNDS, (float) tilePos.x() + 0.5F, (float) tilePos.y() + 0.5F, (float) tilePos.z() + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);

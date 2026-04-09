@@ -1,4 +1,4 @@
-package betterthandeer.btd;
+package betterthandeer.btd.block;
 
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogicFlower;
@@ -26,6 +26,8 @@ public class BlockLogicBoulder extends BlockLogicFlower {
 		if (entity instanceof Player) {
 			world.createExplosion(null, tilePos.x(), tilePos.y(), tilePos.z(), 1.5F, true, false);
 			entity.hurt(null, 2, DamageType.BLAST);
+			entity.maxFireTicks = 100;
+			entity.remainingFireTicks = 100;
 			entity.fling(1.0f, 1.0f, 1.0f, 0.0f);
 		}
 	}

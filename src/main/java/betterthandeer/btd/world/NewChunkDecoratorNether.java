@@ -1,6 +1,6 @@
 package betterthandeer.btd.world;
 
-import betterthandeer.btd.BTDBlocks;
+import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
 import net.minecraft.core.block.BlockLogicOreRubyglass;
 import net.minecraft.core.block.Blocks;

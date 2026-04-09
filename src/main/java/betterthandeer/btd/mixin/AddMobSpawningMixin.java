@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = BiomeNether.class, remap = false)
+@Mixin(BiomeNether.class)
 public abstract class AddMobSpawningMixin extends Biome {
 
 	protected AddMobSpawningMixin(@NotNull String key) {

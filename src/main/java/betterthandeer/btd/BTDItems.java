@@ -1,5 +1,6 @@
 package betterthandeer.btd;
 
+import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemBucket;
 import net.minecraft.core.item.Items;
