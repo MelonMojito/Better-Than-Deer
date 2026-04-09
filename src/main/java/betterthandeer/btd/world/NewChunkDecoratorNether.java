@@ -1,6 +1,7 @@
 package betterthandeer.btd.world;
 
 import betterthandeer.btd.block.BTDBlocks;
+import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
 import net.minecraft.core.block.BlockLogicOreRubyglass;
 import net.minecraft.core.block.Blocks;
@@ -81,25 +82,26 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 
 		// Water Features
-		this.register("btd:decoration/nether/default/nether_water_spring", (new ChunkDecorationBuilder(new WorldFeatureNetherSpring(Blocks.FLUID_WATER_FLOWING.id())))
+		this.register("btd:decoration/nether/default/nether_water_spring", (new ChunkDecorationBuilder(new WorldFeatureNewNetherSpring(Blocks.FLUID_WATER_FLOWING.id())))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
 			.withPositionSelector(PositionSelectors.HeightRangeBiasedTop)
 			.withPlacementMethod(new PlacementMethod.TriesPerChunk(30)));
 
 		// Lava Features
-		this.register("btd:decoration/nether/default/nether_lava_spring", (new ChunkDecorationBuilder(new WorldFeatureNetherSpring(Blocks.FLUID_LAVA_FLOWING.id())))
+		this.register("btd:decoration/nether/default/nether_lava_spring", (new ChunkDecorationBuilder(new WorldFeatureNewNetherSpring(Blocks.FLUID_LAVA_FLOWING.id())))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_CRAG, Biomes.NETHER_SHELF})
 			.withPositionSelector(PositionSelectors.HeightRangeBiasedTop)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(30)));
 
-		this.register("btd:decoration/nether/default/nether_lava_spring_2", (new ChunkDecorationBuilder(new WorldFeatureNetherSpring(Blocks.FLUID_LAVA_FLOWING.id())))
-			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
+		this.register("btd:decoration/nether/default/nether_lava_spring_2", (new ChunkDecorationBuilder(new WorldFeatureNewNetherSpring(Blocks.FLUID_LAVA_FLOWING.id())))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeBiasedTop)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(20)));
 
 		this.register("btd:decoration/nether/default/lava_lake", (new ChunkDecorationBuilder(new WorldFeatureLake(Blocks.FLUID_LAVA_STILL.id())))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_CRAG, Biomes.NETHER_CRYSTAL_PLAINS, Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_SHELF, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.UpperHeightRangeUniform)
 			.withPlacementMethod(new PlacementMethod
 				.ChanceToPlace(4)));
@@ -126,7 +128,21 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 				.ChanceToPlace(4)));
 
 		this.register("btd:decoration/nether/default/pillar_cobble_basalt", (new ChunkDecorationBuilder(new WorldFeaturePillar(Blocks.COBBLE_BASALT.id(), true)))
-			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
+			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})
+			.withPositionSelector((world, chunk, random, minY, maxY, rangeY) -> {
+				int x = chunk.pos.x() * 16 + random.nextInt(16);
+				int z = chunk.pos.z() * 16 + random.nextInt(16);
+				int y = 200;
+				this.pillarNoise.getValue(Math.floor((float) x / 32.0F), Math.floor((float) z / 32.0F), this.worleyResult);
+				int xPillar = (int) (this.worleyResult.center.x * (double) 32.0F);
+				int zPillar = (int) (this.worleyResult.center.y * (double) 32.0F);
+				return new TilePos(xPillar, y, zPillar);
+			})
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(4)));
+
+		this.register("btd:decoration/nether/default/pillar_slate", (new ChunkDecorationBuilder(new WorldFeaturePillar(Blocks.SLATE.id(), true)))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_OLD_WORLD})
 			.withPositionSelector((world, chunk, random, minY, maxY, rangeY) -> {
 				int x = chunk.pos.x() * 16 + random.nextInt(16);
 				int z = chunk.pos.z() * 16 + random.nextInt(16);
@@ -142,13 +158,13 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 		// Sulfur biome features
 
-		this.register("btd:decoration/nether/default/boulder", (new ChunkDecorationBuilder(new WorldFeatureBoulder(Blocks.MAGMA)))
+		this.register("btd:decoration/nether/default/boulder_magma", (new ChunkDecorationBuilder(new WorldFeatureBoulder(Blocks.MAGMA, Blocks.COBBLE_BASALT)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(2)));
 
-		this.register("btd:decoration/nether/default/boulder", (new ChunkDecorationBuilder(new WorldFeatureBoulder(BTDBlocks.SULFUR)))
+		this.register("btd:decoration/nether/default/boulder_sulfur", (new ChunkDecorationBuilder(new WorldFeatureBoulder(BTDBlocks.SULFUR, Blocks.BRIMSAND)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
@@ -191,6 +207,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 		// Glowstone Features
 
 		this.register("btd:decoration/nether/default/glowstone_1", (new ChunkDecorationBuilder(new WorldFeatureGlowstone()))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_CRAG, Biomes.NETHER_CRYSTAL_PLAINS, Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_SHELF, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod((feature, world, chunk, random) -> {
 				int max = random.nextInt(random.nextInt(10) + 1);
@@ -201,6 +218,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 			}));
 		this.register("btd:decoration/nether/default/glowstone_2", (new ChunkDecorationBuilder(new WorldFeatureGlowstone()))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_CRAG, Biomes.NETHER_CRYSTAL_PLAINS, Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_SHELF, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(10)));
@@ -228,10 +246,10 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 		// Bone Piles and Soulcatchers
 
-//		this.register("btd:decoration/nether/default/old_world_patch_bone_pile", (new ChunkDecorationBuilder(new WorldFeatureNetherPatch(Blocks.BONE_PILE.id())))
-//			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
-//			.withPlacementMethod(new PlacementMethod
-//				.TriesPerChunk(4)));
+		this.register("btd:decoration/nether/default/old_world_patch_bone_pile", (new ChunkDecorationBuilder(new WorldFeatureNetherPatch(Blocks.BONE_PILE.id())))
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(4)));
 
 		this.register("btd:decoration/nether/default/patch_bone_pile", (new ChunkDecorationBuilder(new WorldFeatureNetherPatch(Blocks.BONE_PILE.id())))
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
@@ -239,6 +257,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 				.TriesPerChunk(1)));
 
 		this.register("btd:decoration/nether/default/patch_boulder", (new ChunkDecorationBuilder(new WorldFeatureNetherPatch(BTDBlocks.BOULDER.id())))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_CRAG, Biomes.NETHER_CRYSTAL_PLAINS, Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_SHELF, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(1)));

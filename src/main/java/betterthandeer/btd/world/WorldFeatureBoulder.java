@@ -13,9 +13,11 @@ import java.util.Random;
 public class WorldFeatureBoulder extends WorldFeature {
 	final double[][] RADIUS_MAPS = new double[][]{{(double)1.5F, (double)1.5F, (double)1.0F}, {(double)1.0F, (double)1.5F, (double)1.0F}};
 	private final Block<?> boulderBlock;
+	private final Block<?> extraBlock;
 
-	public WorldFeatureBoulder(Block<?> boulderBlock) {
+	public WorldFeatureBoulder(Block<?> boulderBlock, Block<?> extraBlock) {
 		this.boulderBlock = boulderBlock;
+		this.extraBlock = extraBlock;
 	}
 
 	public boolean place(World world, Random random, int x, int y, int z) {
@@ -40,7 +42,7 @@ public class WorldFeatureBoulder extends WorldFeature {
 				for(circlePos.z = pos.z() - 2; circlePos.z < pos.z() + 2; ++circlePos.z) {
 					for(circlePos.y = pos.y() - 4; circlePos.y < pos.y + 4; ++circlePos.y) {
 						if (!world.isAirBlock(circlePos) && random.nextInt(8) == 0) {
-							world.setBlockType(circlePos, Blocks.COBBLE_BASALT);
+							world.setBlockType(circlePos, extraBlock);
 						}
 					}
 				}

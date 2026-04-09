@@ -16,20 +16,23 @@ public abstract class BiomeProviderNetherMixin {
 		if (temperature >= 0.9) {
 			cir.setReturnValue(Biomes.NETHER_VOLCANIC_ISLANDS);
 		}
-		else if (temperature >= 0.75) {
-			cir.setReturnValue(Biomes.NETHER_CRAG);
-		}
-		else if (temperature >= 0.55) {
-			cir.setReturnValue(Biomes.NETHER_SHELF);
-		}
-		else if (temperature >= 0.35) {
-			cir.setReturnValue(Biomes.NETHER_SULFUR_POOLS);
-		}
-		else if (temperature >= 0.25) {
-			cir.setReturnValue(Biomes.NETHER_SHELF);
-		}
+//		else if (temperature >= 0.75) {
+//			cir.setReturnValue(Biomes.NETHER_CRAG);
+//		}
+//		else if (temperature >= 0.6) {
+//			cir.setReturnValue(Biomes.NETHER_SHELF);
+//		}
+//		else if (temperature >= 0.45) {
+//			cir.setReturnValue(Biomes.NETHER_SULFUR_POOLS);
+//		}
+//		else if (temperature >= 0.3) {
+//			cir.setReturnValue(Biomes.NETHER_SHELF);
+//		}
+//		else if (temperature >= 0.15) {
+//			cir.setReturnValue(humidity < 0.2 ? Biomes.NETHER_CRYSTAL_PLAINS : Biomes.NETHER_CRYSTAL_FOREST);
+//		}
 		else {
-			cir.setReturnValue(humidity < 0.2 ? Biomes.NETHER_CRYSTAL_PLAINS : Biomes.NETHER_CRYSTAL_FOREST);
+			cir.setReturnValue(Biomes.NETHER_OLD_WORLD);
 		}
 
 		cir.cancel();

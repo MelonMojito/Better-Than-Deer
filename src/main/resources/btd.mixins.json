@@ -16,6 +16,9 @@
     "WorldFeatureFireMixin"
   ],
   "client": [
+    "AcidFogMixin",
+    "NetherParticlesMixin",
+    "OldWorldColorMixin",
     "TextureManagerMixin"
   ]
 }

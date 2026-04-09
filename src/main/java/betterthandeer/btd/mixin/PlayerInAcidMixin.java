@@ -2,11 +2,15 @@ package betterthandeer.btd.mixin;
 
 import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.achievement.stat.Stat;
+import net.minecraft.core.block.material.Materials;
+import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.Mob;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
+import net.minecraft.core.net.command.TextFormatting;
 import net.minecraft.core.player.inventory.container.ContainerInventory;
+import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -17,6 +21,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
 public abstract class PlayerInAcidMixin extends Mob {
@@ -29,8 +34,20 @@ public abstract class PlayerInAcidMixin extends Mob {
 	@Shadow
 	public abstract void addStat(@Nullable Stat stat, int i);
 
+	@Shadow
+	@Final
+	public static TextFormatting deathMsgColor;
+
 	protected PlayerInAcidMixin(@NotNull World world) {
 		super(world);
+	}
+
+	@Inject(method = "getDeathMessage", at = @At("HEAD"), cancellable = true)
+	private void onGetDeathMessage(Entity entityKilledBy, CallbackInfoReturnable<String> cir) {
+		if (this.world.getBlockMaterial(MathHelper.floor(this.x), MathHelper.floor(this.y), MathHelper.floor(this.z)) == BTDBlocks.ACID) {
+			String var6 = this.getDisplayName();
+			cir.setReturnValue(var6 + deathMsgColor + " was chemically corroded.");
+		}
 	}
 
 	@Unique

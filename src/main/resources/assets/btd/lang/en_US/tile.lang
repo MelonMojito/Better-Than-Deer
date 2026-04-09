@@ -1,4 +1,11 @@
 tile.btd.boulder.name=Magma Boulder
 tile.btd.boulder.desc=Glowing hot rock that explodes on contact.
 
+tile.btd.sulfur.name=Sulfur
+tile.btd.sulfur.desc=Clump of burning yellow stone. Smells like rotten eggs.
+
+tile.btd.fluid.acid.flowing.name=Flowing Acid
+tile.btd.fluid.acid.flowing.desc=Acid that flows when placed.
+tile.btd.fluid.acid.still.name=Still Acid
+tile.btd.fluid.acid.still.desc=Acid that does not flow when placed.
 
