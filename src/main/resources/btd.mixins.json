@@ -7,11 +7,12 @@
   },
   "mixins": [
     "AddMobSpawningMixin",
+    "BetterAshMixin",
     "BetterBonepileMixin",
     "BetterSoulcatcherMixin",
     "BiomeProviderNetherMixin",
-    "BetterAshMixin",
     "ChangeNetherDecoratorMixin",
+    "DeerSoundsMixin",
     "EntityInAcidMixin",
     "MobInAcidMixin",
     "PlayerInAcidMixin",

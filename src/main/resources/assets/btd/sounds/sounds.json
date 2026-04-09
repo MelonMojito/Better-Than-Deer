@@ -24,5 +24,24 @@
     "sounds": [
       "mob/bat/death.ogg"
     ]
+  },
+  "mob.deer": {
+    "subtitle": "subtitles.mob.deer",
+    "sounds": [
+      "mob/deer/deer.ogg"
+    ]
+  },
+  "mob.deerhurt": {
+    "subtitle": "subtitles.mob.deerhurt",
+    "sounds": [
+      "mob/deer/deerhurt1.ogg",
+      "mob/deer/deerhurt2.ogg"
+    ]
+  },
+  "mob.deerdeath": {
+    "subtitle": "subtitles.mob.deerdeath",
+    "sounds": [
+      "mob/deer/deerdeath.ogg"
+    ]
   }
 }

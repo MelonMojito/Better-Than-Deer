@@ -25,7 +25,7 @@ public class MobRendererBat extends MobRenderer<MobBat> {
 			GLRenderer.setLightmapCoord2i(15, 15);
 			GLRenderer.enableState(State.BLEND);
 			GLRenderer.setBlendFunc(BlendFactor.SRC_ALPHA, BlendFactor.ONE_MINUS_SRC_ALPHA);
-			GLRenderer.setColor4f(1.0F, 1.0F, 1.0F, (1.0F - entity.getBrightness(partialTick)) * 0.5F);
+			GLRenderer.setColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		}
 
 		StaticEntityModel model = this.getModel("main");
