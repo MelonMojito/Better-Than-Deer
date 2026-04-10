@@ -1,10 +1,18 @@
 {
   "model_paths": [
-    "/assets/btd/models/entity/bat/bat.geo.json"
+    "/assets/btd/models/entity/bat/bat.geo.json",
+    "/assets/btd/models/entity/pigzombie/pigzombie.geo.json"
   ],
   "renderers": {
     "btd:bat": {
       "main":"geometry.bat"
+    },
+    "minecraft:zombie_pigman": {
+      "main":"geometry.zombie.pig",
+      "armor.boots":{"model":"geometry.humanoid.armor.boots", "inflation": 1},
+      "armor.leggings":{"model":"geometry.humanoid.armor.leggings", "inflation": 0.5},
+      "armor.chestplate":{"model":"geometry.humanoid.armor.chestplate", "inflation": 1},
+      "armor.helmet":{"model":"geometry.humanoid.armor.helmet", "inflation": 1}
     }
   }
 }

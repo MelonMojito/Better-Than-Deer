@@ -10,18 +10,20 @@ import net.minecraft.core.world.generate.chunk.ChunkGeneratorResult;
 import net.minecraft.core.world.generate.chunk.perlin.nether.SurfaceGeneratorNether;
 import net.minecraft.core.world.noise.FractalNoise3D;
 import net.minecraft.core.world.noise.ImprovedPerlinNoise;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Random;
 
 public class NewSurfaceGeneratorNether extends SurfaceGeneratorNether {
-	private final @NotNull World world;
-	private final @NotNull FractalNoise3D<ImprovedPerlinNoise> beachNoise;
-	private final @NotNull FractalNoise3D<ImprovedPerlinNoise> soilNoise;
-	private final @NotNull FractalNoise3D<ImprovedPerlinNoise> mainNoise;
+	private final @NonNull World world;
+
+	private final @NonNull FractalNoise3D<ImprovedPerlinNoise> beachNoise;
+	private final @NonNull FractalNoise3D<ImprovedPerlinNoise> soilNoise;
+	private final @NonNull FractalNoise3D<ImprovedPerlinNoise> mainNoise;
+
 	private final boolean generateStoneVariants = true;
 
-	public NewSurfaceGeneratorNether(@NotNull World world) {
+	public NewSurfaceGeneratorNether(@NonNull World world) {
 		super(world);
 		this.world = world;
 		this.beachNoise = new FractalNoise3D<>(ImprovedPerlinNoise.genOctaves(world.getRandomSeed(), 4, 40));
@@ -30,122 +32,178 @@ public class NewSurfaceGeneratorNether extends SurfaceGeneratorNether {
 	}
 
 	@Override
-	public void generateSurface(@NotNull Chunk chunk, @NotNull ChunkGeneratorResult result) {
+	public void generateSurface(@NonNull Chunk chunk, @NonNull ChunkGeneratorResult result) {
 		int oceanY = this.world.getWorldType().getOceanY();
-		int minY = this.world.getWorldType().getMinY(this.world);
-		int maxY = this.world.getWorldType().getMaxY(this.world);
+		int minY = this.world.getWorldType().getMinY(world);
+		int maxY = this.world.getWorldType().getMaxY(world);
 		int chunkX = chunk.pos.x;
 		int chunkZ = chunk.pos.z;
+
 		int oceanBlock = this.world.getWorldType().getOceanBlockIds()[0];
 		int worldFillBlock = this.world.getWorldType().getFillerBlockId();
-		Random rand = new Random((long) chunkX * 341873128712L + (long) chunkZ * 132897987541L);
-		double beachScale = 0.03125F;
-		double[] sandBeachNoise = this.beachNoise.getRegion(null, chunkX * 16.0, chunkZ * 16.0, 0.0F, 16, 16, 1, beachScale, beachScale, 1.0F);
-		double[] gravelBeachNoise = this.beachNoise.getRegion(null, chunkX * 16.0, 109.0134, chunkZ * 16.0, 16, 1, 16, beachScale, 1.0F, beachScale);
-		double[] soilThicknessNoise = this.soilNoise.getRegion(null, chunkX * 16.0, chunkZ * 16.0, 0.0F, 16, 16, 1, beachScale * (double) 2.0F, beachScale * (double) 2.0F, beachScale * (double) 2.0F);
-		double[] stoneLayerNoiseBasalt;
-		double[] stoneLayerNoiseNetherrack;
-		double[] stoneLayerNoiseGloomstone;
-		stoneLayerNoiseBasalt = this.soilNoise.getRegion(null, chunkX * 16.0, chunkZ * 16.0, 0.0F, 16, 16, 1, beachScale * (double) 4.0F, beachScale * (double) 4.0F, beachScale * (double) 4.0F);
-		stoneLayerNoiseNetherrack = this.mainNoise.getRegion(null, chunkX * 16.0, chunkZ * 16.0, 0.0F, 16, 16, 1, beachScale * (double) 4.0F, beachScale * (double) 4.0F, beachScale * (double) 4.0F);
-		stoneLayerNoiseGloomstone = this.beachNoise.getRegion(null, chunkX * 16.0, chunkZ * 16.0, 0.0F, 16, 16, 1, beachScale * (double) 4.0F, beachScale * (double) 4.0F, beachScale * (double) 4.0F);
 
-		for (int z = 0; z < 16; ++z) {
-			for (int x = 0; x < 16; ++x) {
-				boolean generateSoulSandBeach = sandBeachNoise[z + x * 16] + rand.nextDouble() * 0.2 > (double) 0.0F;
-				boolean generateGravelBeach = gravelBeachNoise[z + x * 16] + rand.nextDouble() * 0.2 > (double) 0.0F;
-				int soilThickness = (int) (soilThicknessNoise[z + x * 16] / (double) 3.0F + (double) 3.0F + rand.nextInt() * (double) 0.25F);
-				boolean generateBasaltLayer;
-				boolean generateNetherrackLayer;
-				boolean generateGloomstoneLayer;
-				int basaltThicknessLevel;
-				int netherrackThicknessLevel;
-				int gloomstoneThicknessLevel;
-				generateBasaltLayer = stoneLayerNoiseBasalt[z + x * 16] + rand.nextDouble() * 0.2 > (double) 0.0F;
-				generateNetherrackLayer = stoneLayerNoiseNetherrack[z + x * 16] + rand.nextDouble() * 0.2 > (double) 2.0F;
-				generateGloomstoneLayer = stoneLayerNoiseGloomstone[z + x * 16] + rand.nextDouble() * 0.2 > (double) 3.0F;
-				basaltThicknessLevel = (int) (stoneLayerNoiseBasalt[z + x] + rand.nextInt() * (double) 0.5F);
-				netherrackThicknessLevel = (int) (stoneLayerNoiseNetherrack[z + x] + rand.nextInt() * (double) 0.5F);
-				gloomstoneThicknessLevel = (int) (stoneLayerNoiseGloomstone[z + x] + rand.nextInt() * (double) 0.5F);
+		Random rand = new Random((long) chunkX * 0x4F9939F508L + (long) chunkZ * 0x1EF1565BD5L);
+
+		double beachScale = 0.03125D;
+		double[] sandBeachNoise = this.beachNoise.getRegion(null, chunkX * 16, chunkZ * 16, 0.0D, 16, 16, 1, beachScale, beachScale, 1.0D);
+		double[] gravelBeachNoise = this.beachNoise.getRegion(null, chunkX * 16, 109.0134D, chunkZ * 16, 16, 1, 16, beachScale, 1.0D, beachScale);
+		double[] soilThicknessNoise = this.soilNoise.getRegion(null, chunkX * 16, chunkZ * 16, 0.0D, 16, 16, 1, beachScale * 2D, beachScale * 2D, beachScale * 2D);
+
+		double[] stoneLayerNoiseBasalt = null;
+		double[] stoneLayerNoiseNetherrack = null;
+		double[] stoneLayerNoiseGloomstone = null;
+		if (this.generateStoneVariants) {
+			stoneLayerNoiseBasalt = this.soilNoise.getRegion(null, chunkX * Chunk.CHUNK_SIZE_X, chunkZ * Chunk.CHUNK_SIZE_Z, 0.0D, Chunk.CHUNK_SIZE_X, Chunk.CHUNK_SIZE_Z, 1, beachScale * 4D, beachScale * 4D, beachScale * 4D);
+			stoneLayerNoiseNetherrack = this.mainNoise.getRegion(null, chunkX * Chunk.CHUNK_SIZE_X, chunkZ * Chunk.CHUNK_SIZE_Z, 0.0D, Chunk.CHUNK_SIZE_X, Chunk.CHUNK_SIZE_Z, 1, beachScale * 4D, beachScale * 4D, beachScale * 4D);
+			stoneLayerNoiseGloomstone = this.beachNoise.getRegion(null, chunkX * Chunk.CHUNK_SIZE_X, chunkZ * Chunk.CHUNK_SIZE_Z, 0.0D, Chunk.CHUNK_SIZE_X, Chunk.CHUNK_SIZE_Z, 1, beachScale * 4D, beachScale * 4D, beachScale * 4D);
+		}
+		for (int z = 0; z < 16; z++) {
+			for (int x = 0; x < 16; x++) {
+				boolean generateSoulSandBeach = sandBeachNoise[z + x * 16] + rand.nextDouble() * 0.2D > 0.0D;
+				boolean generateGravelBeach = gravelBeachNoise[z + x * 16] + rand.nextDouble() * 0.2D > 0.0D;
+				int soilThickness = (int) (soilThicknessNoise[z + x * 16] / 3D + 3D + rand.nextDouble() * 0.25D);
+
+				boolean generateBasaltLayer = false;
+				boolean generateNetherrackLayer = false;
+				boolean generateGloomstoneLayer = false;
+
+				int basaltThicknessLevel = 0;
+				int netherrackThicknessLevel = 0;
+				int gloomstoneThicknessLevel = 0;
+
+				if (this.generateStoneVariants) {
+					generateBasaltLayer = stoneLayerNoiseBasalt[z + (x * Chunk.CHUNK_SIZE_Z)] + rand.nextDouble() * 0.2D > 0D;
+					generateNetherrackLayer = stoneLayerNoiseNetherrack[z + (x * Chunk.CHUNK_SIZE_Z)] + rand.nextDouble() * 0.2D > 0D;
+					generateGloomstoneLayer = stoneLayerNoiseGloomstone[z + (x * Chunk.CHUNK_SIZE_Z)] + rand.nextDouble() * 0.2D > 0D;
+					basaltThicknessLevel = (int) (stoneLayerNoiseBasalt[z + x] + rand.nextDouble() * 0.5D);
+					netherrackThicknessLevel = (int) (stoneLayerNoiseNetherrack[z + x] + rand.nextDouble() * 0.5D);
+					gloomstoneThicknessLevel = (int) (stoneLayerNoiseGloomstone[z + x] + rand.nextDouble() * 0.5D);
+				}
+
 				int currentLayerDepth = -1;
 				short topBlock = -1;
 				short fillerBlock = -1;
+
 				Biome lastBiome = null;
 
-				for (int y = maxY; y >= minY; --y) {
+				for (int y = maxY; y >= minY; y--) {
 					Biome biome = chunk.getBlockBiome(x, y, z);
-					if (biome == null) {
-						biome = this.world.getBiomeProvider().getBiome(chunkX * 16 + x, y >> 3, chunkZ * 16 + z);
-					}
+					if (biome == null)
+						biome = this.world.getBiomeProvider().getBiome(chunkX * Chunk.CHUNK_SIZE_X + x, y >> 3, chunkZ * Chunk.CHUNK_SIZE_Z + z);
 
 					int block = result.getBlock(x, y, z);
+
 					if ((biome != lastBiome || topBlock == -1 || fillerBlock == -1) && block == 0) {
 						topBlock = (short) biome.getSurfaceProperties().getTopBlock().id();
 						fillerBlock = (short) biome.getSurfaceProperties().getFillerBlock().id();
 					}
-
 					lastBiome = biome;
+
+					// reset the currently generating surface thickness to -1 if encountered air
 					if (block == 0) {
 						currentLayerDepth = -1;
-					} else if (block == worldFillBlock) {
-						if (currentLayerDepth == -1) {
-							if (soilThickness <= 0) {
-								topBlock = 0;
-								fillerBlock = (short) Blocks.NETHERRACK.id();
-							} else {
-								boolean biomeGeneratesSulfur = biome.hasTag(BiomeTags.HAS_SULFUR_POOLS);
-								if (y >= minY + oceanY - 4 && y <= minY + oceanY + 1) {
-									topBlock = (short) biome.getSurfaceProperties().getTopBlock().id();
-									fillerBlock = (short) biome.getSurfaceProperties().getFillerBlock().id();
-									if (generateGravelBeach) {
-										topBlock = (short) Blocks.BRIMSAND.id();
-										fillerBlock = (short) Blocks.BRIMSAND.id();
-									}
+						continue;
+					}
 
-									if (generateSoulSandBeach) {
-										topBlock = (short) Blocks.SOULSAND.id();
-										fillerBlock = (short) Blocks.SOULSAND.id();
-									}
-								} else if (y <= oceanY && biomeGeneratesSulfur) {
+					// will skip a generation loop if it encounters something other than Netherrack (or basalt for the sulfur pools)
+					if (block != worldFillBlock) {
+						continue;
+					}
+
+					// if thickness == -1, find what block to place on layer level
+					if (currentLayerDepth == -1) {
+						// if soil thickness is below 0, generate a stone basin where there is no top block layer
+						if (soilThickness <= 0) {
+							topBlock = 0;
+							if (biome == Biomes.NETHER_VOLCANIC_ISLANDS || biome == Biomes.NETHER_SULFUR_POOLS) {
+								fillerBlock = (short) Blocks.BRIMSAND.id();
+							} else if (biome == Biomes.NETHER_OLD_WORLD || biome == Biomes.NETHER_OLD_WORLD_DESERT) {
+								fillerBlock = (short) Blocks.COBBLE_GLOOMSTONE.id();
+							} else {
+								fillerBlock = (short) Blocks.NETHERRACK.id();
+							}
+						} else {
+							boolean biomeGeneratesSulfur = biome.hasTag(BiomeTags.HAS_SULFUR_POOLS);
+
+							if (y >= minY + oceanY - 4 && y <= minY + oceanY + 1) {
+								// Generate coastlines
+								topBlock = (short) biome.getSurfaceProperties().getTopBlock().id();
+								fillerBlock = (short) biome.getSurfaceProperties().getFillerBlock().id();
+								if (generateGravelBeach) {
 									topBlock = (short) Blocks.BRIMSAND.id();
 									fillerBlock = (short) Blocks.BRIMSAND.id();
 								}
+								if (generateSoulSandBeach) {
+									topBlock = (short) Blocks.SOULSAND.id();
+									fillerBlock = (short) Blocks.SOULSAND.id();
+								}
+							} else if (y <= oceanY && biomeGeneratesSulfur) {
+								topBlock = (short) Blocks.BRIMSAND.id();
+								fillerBlock = (short) Blocks.BRIMSAND.id();
 							}
+						}
 
-							if (y < minY + oceanY && topBlock == 0) {
-								topBlock = (short) oceanBlock;
-							}
+						// failsafe so that if a basin is generated under the ocean, the ocean is not replaced with air
+						if (y < minY + oceanY && topBlock == 0) {
+							topBlock = (short) oceanBlock;
+						}
+						// if a new surface layer has been chosen to be generated, set the current layer depth to the generated soil thickness level and begin generating downwards
+						currentLayerDepth = soilThickness + 2;
 
-							currentLayerDepth = soilThickness + 2;
-							if (y >= minY + oceanY - 1) {
-								result.setBlock(x, y, z, topBlock);
-							} else {
-								result.setBlock(x, y, z, fillerBlock);
-							}
+						// set block at index to designated surface block above ocean level
+						if (y >= minY + oceanY - 1) {
+							result.setBlock(x, y, z, topBlock);
 						} else {
-							if (currentLayerDepth <= 0) {
-								if (biome != Biomes.NETHER_OLD_WORLD) {
-									if (y >= minY + basaltThicknessLevel - rand.nextInt(3) && y <= maxY - basaltThicknessLevel + rand.nextInt(3) && generateBasaltLayer) {
+							// if the block is below ocean level, set it to the chosen filler block
+							result.setBlock(x, y, z, fillerBlock);
+						}
+						continue;
+					}
+
+					if (this.generateStoneVariants) {
+						if (currentLayerDepth <= 0) {
+							if (biome == Biomes.NETHER_VOLCANIC_ISLANDS) {
+								if (y >= (minY + basaltThicknessLevel - rand.nextInt(3)) && y <= (maxY - basaltThicknessLevel + rand.nextInt(3))) {
+									if (generateBasaltLayer) {
 										result.setBlock(x, y, z, Blocks.COBBLE_BASALT.id());
-									} else if (y >= minY + netherrackThicknessLevel - rand.nextInt(3) && y <= maxY - netherrackThicknessLevel + rand.nextInt(3) && generateNetherrackLayer) {
-										result.setBlock(x, y, z, Blocks.NETHERRACK.id());
-									} else if (y >= minY + gloomstoneThicknessLevel - rand.nextInt(3) && y <= maxY - gloomstoneThicknessLevel + rand.nextInt(3) && generateGloomstoneLayer) {
-										result.setBlock(x, y, z, Blocks.COBBLE_GLOOMSTONE.id());
+										continue;
 									}
 								}
-							} else {
-								--currentLayerDepth;
-								result.setBlock(x, y, z, fillerBlock);
-
-								if (currentLayerDepth == 0 && biome.hasTag(BiomeTags.HAS_SULFUR_POOLS) && fillerBlock == Blocks.BRIMSAND.id()) {
-									currentLayerDepth = rand.nextInt(4) + 2;
+							}
+							if (biome == Biomes.NETHER_CRAG || biome == Biomes.NETHER_SHELF) {
+								if (y >= (minY + netherrackThicknessLevel - rand.nextInt(3)) && y <= (maxY - netherrackThicknessLevel + rand.nextInt(3))) {
+									if (generateNetherrackLayer) {
+										result.setBlock(x, y, z, Blocks.NETHERRACK.id());
+										continue;
+									}
 								}
 							}
+							if (biome == Biomes.NETHER_OLD_WORLD) {
+								if (y >= (minY + gloomstoneThicknessLevel - rand.nextInt(3)) && y <= (maxY - gloomstoneThicknessLevel + rand.nextInt(3))) {
+									if (generateGloomstoneLayer) {
+										result.setBlock(x, y, z, Blocks.COBBLE_GLOOMSTONE.id());
+										continue;
+									}
+								}
+							}
+							continue;
+						}
+					}
+
+					// fill blocks with filler block until current layer level = -1 or air is encountered
+					if (currentLayerDepth > 0) {
+						currentLayerDepth--;
+						result.setBlock(x, y, z, fillerBlock);
+					}
+
+					if (currentLayerDepth == 0) {
+						if (biome.hasTag(BiomeTags.HAS_SULFUR_POOLS) && fillerBlock == Blocks.BRIMSAND.id()) {
+							currentLayerDepth = rand.nextInt(4) + 2;
+							fillerBlock = (short) Blocks.BRIMSAND.id();
 						}
 					}
 				}
 			}
 		}
-
 	}
 }

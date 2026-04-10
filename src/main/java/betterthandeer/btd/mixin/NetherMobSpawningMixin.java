@@ -11,9 +11,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BiomeNether.class)
-public abstract class AddMobSpawningMixin extends Biome {
+public abstract class NetherMobSpawningMixin extends Biome {
 
-	protected AddMobSpawningMixin(@NotNull String key) {
+	protected NetherMobSpawningMixin(@NotNull String key) {
 		super(key);
 	}
 

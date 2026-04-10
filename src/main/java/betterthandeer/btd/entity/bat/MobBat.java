@@ -42,11 +42,7 @@ public class MobBat extends MobFlying implements Enemy {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		if (this.world.getSeasonManager().getCurrentSeason() == Seasons.OVERWORLD_SPRING) {
-			return 2;
-		} else {
-			return this.world.getSeasonManager().getCurrentSeason() == Seasons.OVERWORLD_WINTER ? 8 : 4;
-		}
+		return 2;
 	}
 
 	@Override

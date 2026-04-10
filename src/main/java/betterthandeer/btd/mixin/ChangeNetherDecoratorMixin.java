@@ -25,8 +25,8 @@ public abstract class ChangeNetherDecoratorMixin {
 		return new NewTerrainGeneratorNether(world);
 	}
 
-//	@Redirect(method = "<init>", at = @At(value = "NEW", target = "net/minecraft/core/world/generate/chunk/perlin/nether/SurfaceGeneratorNether"))
-//	private static SurfaceGeneratorNether replaceSurfaceGeneratorNether(World world) {
-//		return new NewSurfaceGeneratorNether(world);
-//	}
+	@Redirect(method = "<init>", at = @At(value = "NEW", target = "net/minecraft/core/world/generate/chunk/perlin/nether/SurfaceGeneratorNether"))
+	private static SurfaceGeneratorNether replaceSurfaceGeneratorNether(World world) {
+		return new NewSurfaceGeneratorNether(world);
+	}
 }

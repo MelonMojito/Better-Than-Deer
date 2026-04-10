@@ -19,7 +19,7 @@ public class WorldFeatureRoofSpire extends WorldFeature {
 	public boolean place(World world, Random random, int x, int y, int z) {
 		TilePos pos = new TilePos(x, y, z);
 
-		while (world.isAirBlock(pos) && pos.y < 255) {
+		while (world.isAirBlock(pos) && pos.y < 250) {
 			pos.up();
 		}
 

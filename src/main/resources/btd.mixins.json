@@ -6,17 +6,20 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "AddMobSpawningMixin",
     "BetterAshMixin",
     "BetterBonepileMixin",
     "BetterSoulcatcherMixin",
     "BiomeProviderNetherMixin",
     "ChangeNetherDecoratorMixin",
+    "CrystalMobSpawningMixin",
     "DeerSoundsMixin",
     "EntityInAcidMixin",
     "MobInAcidMixin",
+    "NetherMobSpawningMixin",
     "PlayerInAcidMixin",
+    "SulfurMobSpawningMixin",
     "UpdateNetherBiomesMixin",
+    "VolcanoMobSpawningMixin",
     "WorldFeatureFireMixin"
   ],
   "client": [

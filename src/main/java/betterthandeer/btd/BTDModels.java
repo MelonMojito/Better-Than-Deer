@@ -12,7 +12,6 @@ import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
-import net.minecraft.core.block.Blocks;
 import net.minecraft.core.item.block.ItemBlock;
 import turniplabs.halplibe.util.ModelEntrypoint;
 
@@ -27,6 +26,8 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new BlockModelFluid<>(BTDBlocks.FLUID_ACID_STILL, "btd:block/acid_still", "btd:block/acid_flowing").onRenderLayer(1));
 
 		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.SULFUR, loadDataModel("btd:block/sulfur")));
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.EMBER, loadDataModel("btd:block/ember")));
 	}
 
 	@Override
@@ -34,7 +35,7 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.BUCKET_ACID, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_BAT, "btd").setFullBright());
 
-		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>)BTDBlocks.BOULDER.asItem())).setFullBright());
+		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
 	}
 
 	@Override

@@ -21,6 +21,8 @@ public class BTDBlocks implements BlockInitEntrypoint {
 
 	public static Block<?> SULFUR;
 
+	public static Block<?> EMBER;
+
 	private static boolean hasInit = false;
 
 	public static void init() {
@@ -61,6 +63,13 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setOverrideColor(MaterialColor.paintedYellow)
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH)
 			.build("sulfur", 3005, block -> new BlockLogic(block, Materials.STONE));
+
+		EMBER = new BlockBuilder(MOD_ID)
+			.setOverrideColor(MaterialColor.paintedBlack)
+			.setLuminance(5)
+			.setUseInternalLight()
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH)
+			.build("ember", 3006, block -> new BlockLogicEmber(block, Materials.STONE));
 
 	}
 

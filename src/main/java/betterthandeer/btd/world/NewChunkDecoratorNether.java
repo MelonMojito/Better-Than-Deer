@@ -56,7 +56,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 			}));
 
-		this.register("btd:decoration/nether/default/rubyglass_crystal_floor", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystal(false, 25, 50)))
+		this.register("btd:decoration/nether/default/rubyglass_crystal_floor", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystal(false, 20, 25)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST})
 			.withPositionSelector(PositionSelectors.UpperHeightRangeUniform)
 			.withPlacementMethod((feature, world, chunk, random) -> {
@@ -70,7 +70,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 			}));
 
-		this.register("btd:decoration/nether/default/rubyglass_crystal_floor_2", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystal(false, 20, 30)))
+		this.register("btd:decoration/nether/default/rubyglass_crystal_floor_2", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystal(false, 15, 20)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
 			.withPositionSelector(PositionSelectors.UpperHeightRangeUniform)
 			.withPlacementMethod(new PlacementMethod.TriesPerChunk(4)));
@@ -193,6 +193,12 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(8)));
 
+		this.register("btd:decoration/nether/default/nether_roof_spire", new ChunkDecorationBuilder(new WorldFeatureRoofSpire(Blocks.COBBLE_NETHERRACK))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_CRAG, Biomes.NETHER_SHELF})
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(2)));
+
 		this.register("btd:decoration/nether/default/volcano_roof_spire", new ChunkDecorationBuilder(new WorldFeatureRoofSpire(Blocks.BASALT))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
@@ -201,6 +207,12 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 		this.register("btd:decoration/nether/default/sulfur_roof_spire", new ChunkDecorationBuilder(new WorldFeatureRoofSpire(BTDBlocks.SULFUR))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(2)));
+
+		this.register("btd:decoration/nether/default/oldworld_roof_spire", new ChunkDecorationBuilder(new WorldFeatureRoofSpire(Blocks.SLATE))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_OLD_WORLD})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(2)));
@@ -278,11 +290,11 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(1)));
 
-		this.register("btd:decoration/nether/default/patch_boulder_oldworld", new ChunkDecorationBuilder(new WorldFeatureNetherPatchBelow(BTDBlocks.BOULDER.id()))
-			.withBiomeMask(new Biome[]{Biomes.NETHER_OLD_WORLD})
-			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
-			.withPlacementMethod(new PlacementMethod
-				.TriesPerChunk(16)));
+//		this.register("btd:decoration/nether/default/patch_boulder_oldworld", new ChunkDecorationBuilder(new WorldFeatureNetherPatchBelow(BTDBlocks.EMBER.id()))
+//			.withBiomeMask(new Biome[]{Biomes.NETHER_OLD_WORLD})
+//			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+//			.withPlacementMethod(new PlacementMethod
+//				.TriesPerChunk(16)));
 
 		this.register("btd:decoration/nether/default/patch_soul_catcher", (new ChunkDecorationBuilder(new WorldFeatureNetherPatch(Blocks.SOULCATCHER.id())))
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
