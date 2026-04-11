@@ -3,9 +3,9 @@ package betterthandeer.btd;
 import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.entity.BTDEntities;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.core.block.BlockLogicOreNetherCoal;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.tag.BlockTags;
-import net.minecraft.core.sound.BlockSound;
 import net.minecraft.core.sound.BlockSounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +24,8 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		Blocks.COBBLE_BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
 		Blocks.BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
 
+		Blocks.RUBYGLASS_SPROUT.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
+
 		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
 
 		Blocks.BONE_PILE.withTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.PLACE_OVERWRITES, BlockTags.SHEARS_DO_SILK_TOUCH, BlockTags.PLANTABLE_IN_JAR, BlockTags.MINEABLE_BY_PICKAXE);
@@ -33,6 +35,13 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 
 		Blocks.GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
 		Blocks.COBBLE_GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
+
+		BlockLogicOreNetherCoal.variantMap.put(Blocks.BASALT.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
+		BlockLogicOreNetherCoal.variantMap.put(Blocks.BRIMSAND.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
+
+		BlockLogicOreNetherCoal.variantMap.put(Blocks.NETHERRACK.id(), Blocks.ORE_NETHERCOAL_NETHERRACK.id());
+
+		BlockLogicOreNetherCoal.variantMap.put(Blocks.SLATE.id(), Blocks.ORE_NETHERCOAL_GLOOMSTONE.id());
 	}
 
 	@Override

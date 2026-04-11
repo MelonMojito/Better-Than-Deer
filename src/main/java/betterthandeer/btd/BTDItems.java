@@ -11,6 +11,8 @@ public class BTDItems {
 
 	public static Item EYE_GARGOYLE;
 
+	public static Item LEATHER_GHAST;
+
 	private static boolean hasInit = false;
 
 	public static void init() {
@@ -24,5 +26,7 @@ public class BTDItems {
 		BUCKET_ACID = new ItemBucket("bucket.acid", "btd:item/bucket_acid", 20000, BTDBlocks.FLUID_ACID_FLOWING).setContainerItem(Items.BUCKET);
 
 		EYE_GARGOYLE = new Item("eye.gargoyle", "btd:item/eye_gargoyle", 20001);
+
+		LEATHER_GHAST = new Item("leather.ghast", "btd:item/leather_ghast", 20002);
 	}
 }

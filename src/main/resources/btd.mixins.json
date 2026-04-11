@@ -8,19 +8,22 @@
   "mixins": [
     "BetterAshMixin",
     "BetterBonepileMixin",
+    "BetterRubyglassSproutMixin",
     "BetterSoulcatcherMixin",
     "BiomeProviderNetherMixin",
     "ChangeNetherDecoratorMixin",
     "CrystalMobSpawningMixin",
     "DeerSoundsMixin",
     "EntityInAcidMixin",
+    "GhastDropsMixin",
     "MobInAcidMixin",
     "NetherMobSpawningMixin",
     "PlayerInAcidMixin",
     "SulfurMobSpawningMixin",
     "UpdateNetherBiomesMixin",
     "VolcanoMobSpawningMixin",
-    "WorldFeatureFireMixin"
+    "WorldFeatureFireMixin",
+    "WorldFeatureRubyglassSproutPatchMixin"
   ],
   "client": [
     "AcidFogMixin",

@@ -6,6 +6,8 @@ import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.block.tag.BlockTags;
+import net.minecraft.core.data.tag.Tag;
+import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.util.BlockInitEntrypoint;
@@ -22,6 +24,8 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static Block<?> SULFUR;
 
 	public static Block<?> EMBER;
+
+	public static Block<?> RUBYGLASS_SPROUT;
 
 	private static boolean hasInit = false;
 
@@ -72,6 +76,14 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setUseInternalLight()
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH)
 			.build("ember", 3006, block -> new BlockLogicEmber(block, Materials.STONE));
+
+		RUBYGLASS_SPROUT = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.GLASS)
+			.setVisualUpdateOnMetadata()
+			.setLuminance(6)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
+			.setOverrideColor(MaterialColor.rubyglass)
+			.build("rubyglass.sprout", 3007, BlockLogicRubyglassSprout::new);
 
 	}
 

@@ -8,6 +8,7 @@ import net.minecraft.client.render.TileEntityRenderDispatcher;
 import net.minecraft.client.render.block.color.BlockColorDispatcher;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.block.model.BlockModelFluid;
+import net.minecraft.client.render.block.model.generic.BlockModelCrystalBud;
 import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
@@ -28,14 +29,18 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.SULFUR, loadDataModel("btd:block/sulfur")));
 
 		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.EMBER, loadDataModel("btd:block/ember")));
+
+		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_SPROUT, loadDataModel("btd:block/sprout")).render3D(false));
 	}
 
 	@Override
 	public void initItemModels(ItemModelDispatcher dispatcher) {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.BUCKET_ACID, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_GARGOYLE, "btd").setFullBright());
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.LEATHER_GHAST, "btd").setFullBright());
 
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
+		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.RUBYGLASS_SPROUT.asItem())).setFullBright());
 	}
 
 	@Override

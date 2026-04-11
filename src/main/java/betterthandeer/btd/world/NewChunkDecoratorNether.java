@@ -34,12 +34,6 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 	@Override
 	public void registerDecorations() {
-//		this.register("minecraft:decoration/nether/default/speleothems", (new ChunkDecorationBuilder(new WorldFeatureSpeleothems(12, true, 12, true)))
-//			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
-//			.withPositionSelector(PositionSelectors.UpperHeightRangeUniform)
-//			.withPlacementMethod(new PlacementMethod
-//				.TriesPerChunk(4)));
-
 
 		// Rubyglass Features
 		this.register("btd:decoration/nether/default/rubyglass_crystal_ceiling", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystal(true)))
