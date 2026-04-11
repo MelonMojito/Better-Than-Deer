@@ -1,6 +1,6 @@
 package betterthandeer.btd.entity;
 
-import betterthandeer.btd.entity.bat.MobBat;
+import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import net.minecraft.core.entity.EntityDispatcher;
 import net.minecraft.core.util.collection.NamespaceID;
 
@@ -18,6 +18,6 @@ public class BTDEntities {
 	}
 
 	public static void initializeEntities() {
-		EntityDispatcher.getInstance().addMapping(MobBat.class, NamespaceID.fromPool(MOD_ID, "bat"), MobBat::new, "guidebook.section.mob.bat.name");
+		EntityDispatcher.getInstance().addMapping(MobGargoyle.class, NamespaceID.fromPool(MOD_ID, "gargoyle"), MobGargoyle::new, "guidebook.section.mob.gargoyle.name");
 	}
 }

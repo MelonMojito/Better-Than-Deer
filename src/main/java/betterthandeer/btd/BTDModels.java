@@ -1,8 +1,8 @@
 package betterthandeer.btd;
 
 import betterthandeer.btd.block.BTDBlocks;
-import betterthandeer.btd.entity.bat.MobBat;
-import betterthandeer.btd.entity.bat.MobRendererBat;
+import betterthandeer.btd.entity.gargoyle.MobGargoyle;
+import betterthandeer.btd.entity.gargoyle.MobRendererGargoyle;
 import net.minecraft.client.render.EntityRendererDispatcher;
 import net.minecraft.client.render.TileEntityRenderDispatcher;
 import net.minecraft.client.render.block.color.BlockColorDispatcher;
@@ -33,14 +33,14 @@ public class BTDModels implements ModelEntrypoint {
 	@Override
 	public void initItemModels(ItemModelDispatcher dispatcher) {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.BUCKET_ACID, "btd"));
-		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_BAT, "btd").setFullBright());
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_GARGOYLE, "btd").setFullBright());
 
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
 	}
 
 	@Override
 	public void initEntityModels(EntityRendererDispatcher entityRendererDispatcher) {
-		entityRendererDispatcher.assignRenderer(MobBat.class, new MobRendererBat(0.5F));
+		entityRendererDispatcher.assignRenderer(MobGargoyle.class, new MobRendererGargoyle(0.5F));
 	}
 
 	@Override

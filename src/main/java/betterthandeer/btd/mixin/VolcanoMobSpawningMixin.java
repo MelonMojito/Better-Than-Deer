@@ -1,6 +1,6 @@
 package betterthandeer.btd.mixin;
 
-import betterthandeer.btd.entity.bat.MobBat;
+import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import net.minecraft.core.entity.SpawnListEntry;
 import net.minecraft.core.world.biome.Biome;
 import net.minecraft.core.world.biome.nether.BiomeVolcanoIslands;
@@ -19,6 +19,6 @@ public abstract class VolcanoMobSpawningMixin extends Biome {
 
 	@Inject(method = "<init>(Ljava/lang/String;)V", at = @At("TAIL"))
 	private void onBiomeNetherInit(String key, CallbackInfo ci) {
-		this.spawnableMonsterList.add(new SpawnListEntry(MobBat.class, 10));
+		this.spawnableMonsterList.add(new SpawnListEntry(MobGargoyle.class, 10));
 	}
 }

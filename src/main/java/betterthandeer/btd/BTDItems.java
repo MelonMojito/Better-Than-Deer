@@ -9,7 +9,7 @@ public class BTDItems {
 
 	public static Item BUCKET_ACID;
 
-	public static Item EYE_BAT;
+	public static Item EYE_GARGOYLE;
 
 	private static boolean hasInit = false;
 
@@ -23,6 +23,6 @@ public class BTDItems {
 	public static void initializeItems() {
 		BUCKET_ACID = new ItemBucket("bucket.acid", "btd:item/bucket_acid", 20000, BTDBlocks.FLUID_ACID_FLOWING).setContainerItem(Items.BUCKET);
 
-		EYE_BAT = new Item("eye.bat", "btd:item/eye_bat", 20001);
+		EYE_GARGOYLE = new Item("eye.gargoyle", "btd:item/eye_gargoyle", 20001);
 	}
 }

@@ -1,10 +1,10 @@
-guidebook.section.mob.bat.name=Bat
-guidebook.section.mob.bat.desc=Bats are quick, huge and can fly around you. They appear at night and in darkness commonly.
+guidebook.section.mob.gargoyle.name=Gargoyle
+guidebook.section.mob.gargoyle.desc=Gargoyles are quick and nasty creatures that get in your face. They appear in the nether hanging on the ceiling.
 
-subtitles.mob.batflap=Bat flaps
-subtitles.mob.batdeath=Bat death
-subtitles.mob.bat=Bat squeaks
-subtitles.mob.bathurt=Bat hurt
+subtitles.mob.gargoyleflap=Gargoyle flaps
+subtitles.mob.gargoyledeath=Gargoyle death
+subtitles.mob.gargoyle=Gargoyle squeaks
+subtitles.mob.gargoylehurt=Gargoyle hurt
 
 
 subtitles.mob.deerdeath=Deer death

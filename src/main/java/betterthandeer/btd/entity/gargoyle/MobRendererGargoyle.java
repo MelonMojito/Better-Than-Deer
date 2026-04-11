@@ -1,4 +1,4 @@
-package betterthandeer.btd.entity.bat;
+package betterthandeer.btd.entity.gargoyle;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -6,22 +6,24 @@ import net.minecraft.client.render.entity.MobRenderer;
 import net.minecraft.client.render.renderer.BlendFactor;
 import net.minecraft.client.render.renderer.GLRenderer;
 import net.minecraft.client.render.renderer.State;
+import net.minecraft.client.render.tessellator.TessellatorGeneral;
 import net.minecraft.core.util.helper.MathHelper;
+import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.useless.dragonfly.models.entity.BoneTransform;
 import org.useless.dragonfly.models.entity.StaticEntityModel;
 
 @Environment(EnvType.CLIENT)
-public class MobRendererBat extends MobRenderer<MobBat> {
-	public MobRendererBat(float shadowSize) {
+public class MobRendererGargoyle extends MobRenderer<MobGargoyle> {
+	public MobRendererGargoyle(float shadowSize) {
 		super(shadowSize);
 	}
 
 	@Override
-	protected @Nullable StaticEntityModel getAndSetupModelForLayer(@NonNull MobBat entity, float brightness, float partialTick, int layer) {
-		if (layer == 1) {
-			this.bindTexture("/assets/btd/textures/entity/bat/eyes/" + entity.getTextureReference() + ".png");
+	protected @Nullable StaticEntityModel getAndSetupModelForLayer(@NonNull MobGargoyle entity, float brightness, float partialTick, int layer) {
+		if (layer == 1 && !entity.isHanging) {
+			this.bindTexture("/assets/btd/textures/entity/gargoyle/eyes/" + entity.getTextureReference() + ".png");
 			GLRenderer.setLightmapCoord2i(15, 15);
 			GLRenderer.enableState(State.BLEND);
 			GLRenderer.setBlendFunc(BlendFactor.SRC_ALPHA, BlendFactor.ONE_MINUS_SRC_ALPHA);
@@ -95,9 +97,18 @@ public class MobRendererBat extends MobRenderer<MobBat> {
 		return model;
 	}
 
+	@Override
+	public void renderPreview(@NotNull TessellatorGeneral tessellator, @NotNull MobGargoyle gargoyle, double x, double y, double z, float yaw, float partialTick) {
+		GLRenderer.pushFrame();
+		GLRenderer.modelM4f().translate(0.0F, 0.5F, 0.0F);
+		gargoyle.isHanging = false;
+		super.renderPreview(tessellator, gargoyle, x, y, z, yaw, partialTick);
+		GLRenderer.popFrame();
+	}
+
 
 	@Override
-	protected int maxRenderLayer(@NonNull MobBat entity) {
+	protected int maxRenderLayer(@NonNull MobGargoyle entity) {
 		return 1;
 	}
 }

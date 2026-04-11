@@ -1,6 +1,6 @@
 package betterthandeer.btd;
 
-import betterthandeer.btd.entity.bat.MobBat;
+import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import betterthandeer.btd.world.ParticleAcidBoiling;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.guidebook.mobs.MobInfoRegistry;
@@ -29,7 +29,7 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 
 	@Override
 	public void afterClientStart() {
-		MobInfoRegistry.register(MobBat.class, "guidebook.section.mob.bat.name", "guidebook.section.mob.bat.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
-			new MobInfoRegistry.MobDrop(new ItemStack(BTDItems.EYE_BAT), 1.0F, 0, 2)});
+		MobInfoRegistry.register(MobGargoyle.class, "guidebook.section.mob.gargoyle.name", "guidebook.section.mob.gargoyle.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
+			new MobInfoRegistry.MobDrop(new ItemStack(BTDItems.EYE_GARGOYLE), 1.0F, 0, 2)});
 	}
 }

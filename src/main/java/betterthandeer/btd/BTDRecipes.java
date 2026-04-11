@@ -16,14 +16,14 @@ public class BTDRecipes implements RecipeEntrypoint {
 
 		RecipeBuilder.Shaped(MOD_ID, "MMM", "MEM", "MRM")
 			.addInput('M', Blocks.COBBLE_STONE_MOSSY)
-			.addInput('E', BTDItems.EYE_BAT)
+			.addInput('E', BTDItems.EYE_GARGOYLE)
 			.addInput('R', Items.DUST_REDSTONE)
 			.create("motion_sensor", new ItemStack(Blocks.MOTION_SENSOR_IDLE, 1));
 
 		RecipeBuilder.Shaped(MOD_ID, "NSN", "NEN", "NRN")
 			.addInput('N', Blocks.COBBLE_NETHERRACK)
 			.addInput('S', Blocks.SOULSAND)
-			.addInput('E', BTDItems.EYE_BAT)
+			.addInput('E', BTDItems.EYE_GARGOYLE)
 			.addInput('R', Items.DUST_REDSTONE)
 			.create("matcher", new ItemStack(Blocks.MATCHER, 1));
 

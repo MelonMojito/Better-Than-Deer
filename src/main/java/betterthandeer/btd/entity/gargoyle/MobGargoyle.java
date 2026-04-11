@@ -1,4 +1,4 @@
-package betterthandeer.btd.entity.bat;
+package betterthandeer.btd.entity.gargoyle;
 
 import betterthandeer.btd.BTDItems;
 import net.minecraft.core.WeightedRandomLootObject;
@@ -19,7 +19,7 @@ import org.jspecify.annotations.Nullable;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
 
-public class MobBat extends MobFlying implements Enemy {
+public class MobGargoyle extends MobFlying implements Enemy {
 	public int courseChangeCooldown = 0;
 	public double waypointX;
 	public double waypointY;
@@ -30,14 +30,15 @@ public class MobBat extends MobFlying implements Enemy {
 	@Nullable
 	private Entity target;
 
-	public MobBat(@Nullable World world) {
+	public MobGargoyle(@Nullable World world) {
 		super(world);
-		this.setTextureIdentifier(MOD_ID, "bat");
+		this.setTextureIdentifier(MOD_ID, "gargoyle");
 		this.setSize(1.0F, 1.0F);
 		this.scoreValue = 200;
 		this.moveSpeed = 0.25F;
 		this.flapTimer = this.random.nextInt(4);
-		this.mobDrops.add(new WeightedRandomLootObject(BTDItems.EYE_BAT.getDefaultStack(), 0, 2));
+		this.fireImmune = true;
+		this.mobDrops.add(new WeightedRandomLootObject(BTDItems.EYE_GARGOYLE.getDefaultStack(), 0, 2));
 	}
 
 	@Override
@@ -50,10 +51,12 @@ public class MobBat extends MobFlying implements Enemy {
 		return 16;
 	}
 
-	@Override
-	public void spawnInit() {
-		super.spawnInit();
-		this.isHanging = true;
+	public boolean canBreatheUnderwater() {
+		return true;
+	}
+
+	public boolean hurtByNetherWater() {
+		return false;
 	}
 
 	@Override
@@ -61,7 +64,7 @@ public class MobBat extends MobFlying implements Enemy {
 		if (!isHanging) {
 			this.flapTimer++;
 			if (this.flapTimer >= 4 && this.isAlive()) {
-				world.playSoundAtEntity(null, this, "btd:mob.batflap", 0.25F, (random.nextFloat() / 2) + 1.5F);
+				world.playSoundAtEntity(null, this, "btd:mob.gargoyleflap", 0.25F, (random.nextFloat() / 2) + 1.5F);
 				this.flapTimer = 0;
 			}
 		} else {
@@ -71,13 +74,38 @@ public class MobBat extends MobFlying implements Enemy {
 		super.tick();
 		if (!isHanging && random.nextInt(12) == 0) {
 			this.yd += 0.018;
+			this.xd += 0.018;
+			this.zd += 0.018;
 		}
+
+		if (!this.world.isClientSide && !this.world.getDifficulty().canHostileMobsSpawn()) {
+			this.remove();
+		}
+
+
 		this.onGround = false;
+	}
+
+
+	@Override
+	public boolean hurt(Entity attacker, int i, DamageType type) {
+		if (type == DamageType.FIRE) {
+			return false;
+		}
+
+		if (super.hurt(attacker, i, type)) {
+			if (this.passenger != attacker && this.vehicle != attacker && attacker != this) {
+				this.target = attacker;
+			}
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	protected void updateAI() {
-		Player player = world.getClosestPlayerToEntity(this, 16.0);
+		Player player = world.getClosestPlayerToEntity(this, 32.0);
 
 		if (isHanging) {
 			if (player != null && player.getGamemode().hasHostileMobs()) {
@@ -120,9 +148,9 @@ public class MobBat extends MobFlying implements Enemy {
 		if (dist < 1.5 || dist > 25.0) {
 			double upwardBias = random.nextFloat() * 2.2;
 
-			waypointX = x + (random.nextFloat() * 4 - 2);
+			waypointX = x + (random.nextFloat() * 4);
 			waypointY = y + upwardBias;
-			waypointZ = z + (random.nextFloat() * 4 - 2);
+			waypointZ = z + (random.nextFloat() * 4);
 		}
 
 		if (courseChangeCooldown-- <= 0) {
@@ -181,7 +209,7 @@ public class MobBat extends MobFlying implements Enemy {
 
 		lookAt(target, 40.0F, 40.0F);
 
-		if (this.attackTime <= 0 && dist < 2.5F) {
+		if (this.attackTime <= 0 && dist < 2.0F) {
 			this.attackTime = 25;
 			target.hurt(this, 2, DamageType.COMBAT);
 
@@ -222,17 +250,17 @@ public class MobBat extends MobFlying implements Enemy {
 
 	@Override
 	public String getLivingSound() {
-		return "btd:mob.bat";
+		return "btd:mob.gargoyle";
 	}
 
 	@Override
 	protected String getHurtSound() {
-		return "btd:mob.bathurt";
+		return "btd:mob.gargoylehurt";
 	}
 
 	@Override
 	protected String getDeathSound() {
-		return "btd:mob.batdeath";
+		return "btd:mob.gargoyledeath";
 	}
 
 }
