@@ -11,8 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BiomeProviderNether.class)
 public abstract class BiomeProviderNetherMixin {
 
-
-
 //	@Inject(method = "lookupBiome", at = @At("HEAD"), cancellable = true)
 //	public void lookupBiome(double temperature, double humidity, double altitude, double variety, CallbackInfoReturnable<Biome> cir) {
 //		if (temperature >= 0.95) {
@@ -21,13 +19,13 @@ public abstract class BiomeProviderNetherMixin {
 //		else if (temperature >= 0.75) {
 //			cir.setReturnValue(Biomes.NETHER_CRAG);
 //		}
-//		else if (temperature >= 0.6) {
+//		else if (temperature >= 0.70) {
 //			cir.setReturnValue(Biomes.NETHER_SHELF);
 //		}
-//		else if (temperature >= 0.5) {
+//		else if (temperature >= 0.45) {
 //			cir.setReturnValue(Biomes.NETHER_SULFUR_POOLS);
 //		}
-//		else if (temperature >= 0.3) {
+//		else if (temperature >= 0.40) {
 //			cir.setReturnValue(Biomes.NETHER_SHELF);
 //		}
 //		else if (temperature >= 0.15) {

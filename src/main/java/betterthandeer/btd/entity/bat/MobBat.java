@@ -13,7 +13,6 @@ import net.minecraft.core.util.helper.DamageType;
 import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.pos.TilePos;
-import net.minecraft.core.world.season.Seasons;
 import org.joml.Vector3dc;
 import org.joml.primitives.AABBd;
 import org.jspecify.annotations.Nullable;
@@ -26,6 +25,7 @@ public class MobBat extends MobFlying implements Enemy {
 	public double waypointY;
 	public double waypointZ;
 	private int flapTimer;
+	public boolean isHanging = true;
 
 	@Nullable
 	private Entity target;
@@ -51,38 +51,62 @@ public class MobBat extends MobFlying implements Enemy {
 	}
 
 	@Override
-	public void tick() {
-		super.tick();
+	public void spawnInit() {
+		super.spawnInit();
+		this.isHanging = true;
+	}
 
-		if (!this.world.isClientSide && !this.world.getDifficulty().canHostileMobsSpawn()) {
-			this.remove();
+	@Override
+	public void tick() {
+		if (!isHanging) {
+			this.flapTimer++;
+			if (this.flapTimer >= 4 && this.isAlive()) {
+				world.playSoundAtEntity(null, this, "btd:mob.batflap", 0.25F, (random.nextFloat() / 2) + 1.5F);
+				this.flapTimer = 0;
+			}
+		} else {
+			this.xd = this.yd = this.zd = 0;
 		}
 
-		this.flapTimer++;
-		if (this.flapTimer >= 4 && this.isAlive()) {
-			world.playSoundAtEntity(null, this, "btd:mob.batflap", 0.25F, (random.nextFloat() / 2) + 1.5F);
-			this.flapTimer = 0;
+		super.tick();
+		if (!isHanging && random.nextInt(12) == 0) {
+			this.yd += 0.018;
 		}
 		this.onGround = false;
 	}
 
 	@Override
 	protected void updateAI() {
-		if (!world.getDifficulty().canHostileMobsSpawn()) {
-			this.remove();
+		Player player = world.getClosestPlayerToEntity(this, 16.0);
+
+		if (isHanging) {
+			if (player != null && player.getGamemode().hasHostileMobs()) {
+				isHanging = false;
+				target = player;
+			}
+
+			TilePos posAbove = new TilePos(MathHelper.floor(x), MathHelper.floor(y + 1.1), MathHelper.floor(z));
+			if (world.isAirBlock(posAbove)) {
+				isHanging = false;
+			}
+
 			return;
 		}
 
-		if (target == null || !target.isAlive() || !(target instanceof Player)) {
-			Player player = world.getClosestPlayerToEntity(this, 24.0);
-			if (player != null && player.getGamemode().hasHostileMobs()) {
-				target = player;
-			}
+		if ((target == null || !target.isAlive() || !(target instanceof Player)) && player != null && player.getGamemode().hasHostileMobs()) {
+			target = player;
 		}
+
 
 		if (target != null) {
 			attackMovement();
 		} else {
+			if (random.nextInt(5) == 0) {
+				TilePos posAbove = new TilePos(MathHelper.floor(x), MathHelper.floor(y + 1.1), MathHelper.floor(z));
+				if (!world.isAirBlock(posAbove)) {
+					isHanging = true;
+				}
+			}
 			idleFlight();
 		}
 	}
@@ -93,22 +117,26 @@ public class MobBat extends MobFlying implements Enemy {
 		double dz = waypointZ - z;
 		double dist = MathHelper.sqrt(dx * dx + dy * dy + dz * dz);
 
-		if (dist < 1.0 || dist > 20.0) {
-			waypointX = x + (random.nextFloat() * 2 - 1);
-			waypointY = y + (random.nextFloat() * 2 - 1);
-			waypointZ = z + (random.nextFloat() * 2 - 1);
+		if (dist < 1.5 || dist > 25.0) {
+			double upwardBias = random.nextFloat() * 2.2;
+
+			waypointX = x + (random.nextFloat() * 4 - 2);
+			waypointY = y + upwardBias;
+			waypointZ = z + (random.nextFloat() * 4 - 2);
 		}
 
 		if (courseChangeCooldown-- <= 0) {
-			courseChangeCooldown = random.nextInt(5) + 2;
+			courseChangeCooldown = random.nextInt(6) + 3;
 
 			if (this.isCourseTraversable(waypointX, waypointY, waypointZ, dist)) {
-				xd += dx / dist * 0.08;
-				yd += dy / dist * 0.08;
-				zd += dz / dist * 0.08;
+				double speed = 0.085;
+
+				xd += dx / dist * speed;
+				yd += dy / dist * speed;
+				zd += dz / dist * speed;
 			} else {
 				waypointX = x;
-				waypointY = y;
+				waypointY = y + 2.0 + random.nextFloat() * 3.0;
 				waypointZ = z;
 			}
 		}

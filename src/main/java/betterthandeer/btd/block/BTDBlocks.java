@@ -60,11 +60,13 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.build("fluid.acid.still", 3002, block -> new BlockLogicFluidStill(block, ACID, new FluidAcid(), FLUID_ACID_FLOWING));
 
 		SULFUR = new BlockBuilder(MOD_ID)
+			.setHardness(1.0f)
 			.setOverrideColor(MaterialColor.paintedYellow)
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH)
 			.build("sulfur", 3005, block -> new BlockLogic(block, Materials.STONE));
 
 		EMBER = new BlockBuilder(MOD_ID)
+			.setHardness(1.0f)
 			.setOverrideColor(MaterialColor.paintedBlack)
 			.setLuminance(5)
 			.setUseInternalLight()

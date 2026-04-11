@@ -31,6 +31,22 @@ public class MobRendererBat extends MobRenderer<MobBat> {
 		StaticEntityModel model = this.getModel("main");
 		model.resetBones();
 
+		BoneTransform head = model.getTransform("head");
+
+		BoneTransform body = model.getTransform("body");
+
+		BoneTransform wingLeft = model.getTransform("wingLeft");
+		BoneTransform wingRight = model.getTransform("wingRight");
+
+		BoneTransform wingOuterLeft = model.getTransform("wingOuterLeft");
+		BoneTransform wingOuterRight = model.getTransform("wingOuterRight");
+
+		BoneTransform legLeft = model.getTransform("legLeft");
+		BoneTransform legRight = model.getTransform("legRight");
+
+		BoneTransform armLeft = model.getTransform("armLeft");
+		BoneTransform armRight = model.getTransform("armRight");
+
 		float limbSwing = this.getLimbSwing(entity, partialTick);
 		float limbYaw = this.getLimbYaw(entity, partialTick);
 		float limbPitch = this.getLimbPitch(entity, partialTick);
@@ -41,22 +57,40 @@ public class MobRendererBat extends MobRenderer<MobBat> {
 		float time = this.getLimbPitch(entity, partialTick);
 		float flap = MathHelper.sin(time * 1.5F);
 
-		BoneTransform head = model.getTransform("head");
-		head.rotX = headPitch;
-		head.rotY = headYaw;
+		if (entity.isHanging) {
 
-		BoneTransform body = model.getTransform("body");
-		body.rotX = 45.0F + flap / 8;
+			body.rotX = 3.14;
 
-		BoneTransform wing0 = model.getTransform("wing0");
-		BoneTransform wing1 = model.getTransform("wing1");
-		wing0.rotY = flap;
-		wing1.rotY = -flap;
+			head.rotX = -3.14;
 
-		BoneTransform wing0_1 = model.getTransform("wing0_1");
-		BoneTransform wing1_1 = model.getTransform("wing1_1");
-		wing0_1.rotY = flap / 2;
-		wing1_1.rotY = -flap / 2;
+			wingLeft.rotY = 1F;
+			wingRight.rotY = -1F;
+
+			wingOuterLeft.rotY = 1.5F;
+			wingOuterRight.rotY = -1.5F;
+
+			armLeft.rotX = -0.5;
+			armRight.rotX = -0.5;
+
+			armLeft.rotZ = 0.3;
+			armRight.rotZ = -0.3;
+		} else {
+			head.rotX = headPitch;
+			head.rotY = headYaw;
+			body.rotX = 45.0F + flap / 8;
+
+			wingLeft.rotY = flap;
+			wingRight.rotY = -flap;
+
+			wingOuterLeft.rotY = flap / 2;
+			wingOuterRight.rotY = -flap / 2;
+
+			legLeft.rotX = -1;
+			legRight.rotX = -1;
+
+			armLeft.rotX = -1;
+			armRight.rotX = -1;
+		}
 
 		return model;
 	}

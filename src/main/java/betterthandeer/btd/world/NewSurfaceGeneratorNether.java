@@ -63,23 +63,6 @@ public class NewSurfaceGeneratorNether extends SurfaceGeneratorNether {
 				boolean generateGravelBeach = gravelBeachNoise[z + x * 16] + rand.nextDouble() * 0.2D > 0.0D;
 				int soilThickness = (int) (soilThicknessNoise[z + x * 16] / 3D + 3D + rand.nextDouble() * 0.25D);
 
-				boolean generateBasaltLayer = false;
-				boolean generateNetherrackLayer = false;
-				boolean generateGloomstoneLayer = false;
-
-				int basaltThicknessLevel = 0;
-				int netherrackThicknessLevel = 0;
-				int gloomstoneThicknessLevel = 0;
-
-				if (this.generateStoneVariants) {
-					generateBasaltLayer = stoneLayerNoiseBasalt[z + (x * Chunk.CHUNK_SIZE_Z)] + rand.nextDouble() * 0.2D > 0D;
-					generateNetherrackLayer = stoneLayerNoiseNetherrack[z + (x * Chunk.CHUNK_SIZE_Z)] + rand.nextDouble() * 0.2D > 0D;
-					generateGloomstoneLayer = stoneLayerNoiseGloomstone[z + (x * Chunk.CHUNK_SIZE_Z)] + rand.nextDouble() * 0.2D > 0D;
-					basaltThicknessLevel = (int) (stoneLayerNoiseBasalt[z + x] + rand.nextDouble() * 0.5D);
-					netherrackThicknessLevel = (int) (stoneLayerNoiseNetherrack[z + x] + rand.nextDouble() * 0.5D);
-					gloomstoneThicknessLevel = (int) (stoneLayerNoiseGloomstone[z + x] + rand.nextDouble() * 0.5D);
-				}
-
 				int currentLayerDepth = -1;
 				short topBlock = -1;
 				short fillerBlock = -1;
@@ -160,35 +143,24 @@ public class NewSurfaceGeneratorNether extends SurfaceGeneratorNether {
 						continue;
 					}
 
-					if (this.generateStoneVariants) {
-						if (currentLayerDepth <= 0) {
-							if (biome == Biomes.NETHER_VOLCANIC_ISLANDS) {
-								if (y >= (minY + basaltThicknessLevel - rand.nextInt(3)) && y <= (maxY - basaltThicknessLevel + rand.nextInt(3))) {
-									if (generateBasaltLayer) {
-										result.setBlock(x, y, z, Blocks.COBBLE_BASALT.id());
-										continue;
-									}
-								}
+					if (this.generateStoneVariants && currentLayerDepth <= 0) {
+						int stoneBlockId = worldFillBlock;
+
+
+						if (biome == Biomes.NETHER_VOLCANIC_ISLANDS || biome == Biomes.NETHER_SULFUR_POOLS) {
+							stoneBlockId = Blocks.BRIMSAND.id();
+						} else if (biome == Biomes.NETHER_CRAG || biome == Biomes.NETHER_SHELF) {
+							if (rand.nextInt(2) == 0) {
+								stoneBlockId = Blocks.NETHERRACK.id();
+							} else {
+								stoneBlockId = Blocks.COBBLE_NETHERRACK.id();
 							}
-							if (biome == Biomes.NETHER_CRAG || biome == Biomes.NETHER_SHELF) {
-								if (y >= (minY + netherrackThicknessLevel - rand.nextInt(3)) && y <= (maxY - netherrackThicknessLevel + rand.nextInt(3))) {
-									if (generateNetherrackLayer) {
-										result.setBlock(x, y, z, Blocks.NETHERRACK.id());
-										continue;
-									}
-								}
-							}
-							if (biome == Biomes.NETHER_OLD_WORLD) {
-								if (y >= (minY + gloomstoneThicknessLevel - rand.nextInt(3)) && y <= (maxY - gloomstoneThicknessLevel + rand.nextInt(3))) {
-									if (generateGloomstoneLayer) {
-										result.setBlock(x, y, z, Blocks.COBBLE_GLOOMSTONE.id());
-										continue;
-									}
-								}
-							}
-							continue;
+						} else if (biome == Biomes.NETHER_OLD_WORLD) {
+							stoneBlockId = Blocks.COBBLE_GLOOMSTONE.id();
 						}
+						result.setBlock(x, y, z, stoneBlockId);
 					}
+
 
 					// fill blocks with filler block until current layer level = -1 or air is encountered
 					if (currentLayerDepth > 0) {
@@ -196,11 +168,8 @@ public class NewSurfaceGeneratorNether extends SurfaceGeneratorNether {
 						result.setBlock(x, y, z, fillerBlock);
 					}
 
-					if (currentLayerDepth == 0) {
-						if (biome.hasTag(BiomeTags.HAS_SULFUR_POOLS) && fillerBlock == Blocks.BRIMSAND.id()) {
-							currentLayerDepth = rand.nextInt(4) + 2;
-							fillerBlock = (short) Blocks.BRIMSAND.id();
-						}
+					if (currentLayerDepth == 0 && biome.hasTag(BiomeTags.HAS_SULFUR_POOLS) && fillerBlock == Blocks.BRIMSAND.id()) {
+						currentLayerDepth = rand.nextInt(4) + 2;
 					}
 				}
 			}
