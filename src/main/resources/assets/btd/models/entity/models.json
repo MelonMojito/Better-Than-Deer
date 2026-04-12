@@ -1,0 +1,10 @@
+{
+  "model_paths": [
+    "/assets/btd/models/entity/gargoyle/gargoyle.geo.json"
+  ],
+  "renderers": {
+    "btd:gargoyle": {
+      "main":"geometry.gargoyle"
+    }
+  }
+}

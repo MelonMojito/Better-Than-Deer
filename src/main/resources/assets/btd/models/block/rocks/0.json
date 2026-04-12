@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/overlay",
+  "textures": {
+    "overlay": "btd:block/rocks/0"
+  }
+}

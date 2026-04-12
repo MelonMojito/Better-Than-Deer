@@ -1,0 +1,56 @@
+{
+  "acid.bubble": {
+    "subtitle": "subtitles.acid.bubble",
+    "sounds": [
+      "block/bubble1.ogg",
+      "block/bubble2.ogg",
+      "block/bubble3.ogg",
+      "block/bubble4.ogg"
+    ]
+  },
+  "mob.gargoyle": {
+    "subtitle": "subtitles.mob.gargoyle",
+    "sounds": [
+      "mob/gargoyle/idle.ogg"
+    ]
+  },
+  "mob.gargoyleflap": {
+    "subtitle": "subtitles.mob.gargoyleflap",
+    "sounds": [
+      "mob/gargoyle/flap.ogg"
+    ]
+  },
+  "mob.gargoylehurt": {
+    "subtitle": "subtitles.mob.gargoylehurt",
+    "sounds": [
+      "mob/gargoyle/hurt1.ogg",
+      "mob/gargoyle/hurt2.ogg",
+      "mob/gargoyle/hurt3.ogg"
+    ]
+  },
+  "mob.gargoyledeath": {
+    "subtitle": "subtitles.mob.gargoyledeath",
+    "sounds": [
+      "mob/gargoyle/death.ogg"
+    ]
+  },
+  "mob.deer": {
+    "subtitle": "subtitles.mob.deer",
+    "sounds": [
+      "mob/deer/deer.ogg"
+    ]
+  },
+  "mob.deerhurt": {
+    "subtitle": "subtitles.mob.deerhurt",
+    "sounds": [
+      "mob/deer/deerhurt1.ogg",
+      "mob/deer/deerhurt2.ogg"
+    ]
+  },
+  "mob.deerdeath": {
+    "subtitle": "subtitles.mob.deerdeath",
+    "sounds": [
+      "mob/deer/deerdeath.ogg"
+    ]
+  }
+}

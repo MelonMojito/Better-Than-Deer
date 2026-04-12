@@ -1,0 +1,61 @@
+tile.btd.boulder.name=Magma Boulder
+tile.btd.boulder.desc=Glowing hot rock that burns on contact.
+
+tile.btd.sulfur.name=Sulfur
+tile.btd.sulfur.desc=Clump of burning yellow stone. Smells like rotten eggs.
+
+tile.btd.fluid.acid.flowing.name=Flowing Acid
+tile.btd.fluid.acid.flowing.desc=Acid that flows when placed.
+tile.btd.fluid.acid.still.name=Still Acid
+tile.btd.fluid.acid.still.desc=Acid that does not flow when placed.
+
+tile.btd.overlay.rocks.name=Rocks
+tile.btd.overlay.rocks.desc=A cluster of rocks.
+
+tile.btd.ember.name=Ember
+tile.btd.ember.desc=Volatile stone that explodes on contact. Remnant of a forgotten world.
+
+
+
+tile.btd.rubyglass.sprout.name=Rubyglass Sprout
+tile.btd.rubyglass.sprout.desc=A small bud of rubyglass, branching out in many directions.
+
+tile.btd.block.rubyglass.name=Block of Rubyglass
+tile.btd.block.rubyglass.desc=A solid glass-like crystal gleaming with energy
+
+tile.btd.cobble.netherrack.crystalline.name=Crystalline Cobbled Netherrack
+tile.btd.cobble.netherrack.crystalline.desc=Cobbled Netherrack, covered in a web of rubyglass.
+
+tile.btd.ice.rubyglass.name=Crystallized Rubyglass
+tile.btd.ice.rubyglass.desc=Slippery sheets of rubyglass thinned by water.
+
+tile.btd.rubyglass.growth.top.name=Top Rubyglass Growth
+tile.btd.rubyglass.growth.top.desc=You really shouldn't have this.
+
+tile.btd.rubyglass.growth.bottom.name=Bottom Rubyglass Growth
+tile.btd.rubyglass.growth.bottom.desc=Please tell me how you got this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

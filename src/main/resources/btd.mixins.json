@@ -6,7 +6,30 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "BiomeProviderNetherMixin"
+    "AcidArmorMeltMixin",
+    "BetterAshMixin",
+    "BetterBonepileMixin",
+    "BetterRubyglassSproutMixin",
+    "BetterSoulcatcherMixin",
+    "BiomeProviderNetherMixin",
+    "CrystalMobSpawningMixin",
+    "DeerSoundsMixin",
+    "EntityInAcidMixin",
+    "GhastDropsMixin",
+    "MobInAcidMixin",
+    "NetherMobSpawningMixin",
+    "SulfurMobSpawningMixin",
+    "SwapNetherChunkGeneratorMixin",
+    "UpdateNetherBiomesMixin",
+    "VolcanoMobSpawningMixin",
+    "WorldFeatureFireMixin",
+    "WorldFeatureRubyglassSproutPatchMixin",
+    "ZombiePigSwordMixin"
   ],
-  "client": []
+  "client": [
+    "AcidFogMixin",
+    "NetherParticlesMixin",
+    "OldWorldColorMixin",
+    "TextureManagerMixin"
+  ]
 }
