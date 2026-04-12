@@ -17,6 +17,7 @@ import net.minecraft.client.render.entity.EntityRendererSprite;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
+import net.minecraft.core.block.Blocks;
 import net.minecraft.core.item.block.ItemBlock;
 import turniplabs.halplibe.util.ModelEntrypoint;
 
@@ -35,8 +36,15 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.EMBER, loadDataModel("btd:block/ember")));
 
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_SPROUT, loadDataModel("btd:block/sprout")).render3D(false));
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.BLOCK_RUBYGLASS, loadDataModel("btd:block/block_rubyglass")));
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.COBBLE_NETHERRACK_CRYSTALLINE, loadDataModel("btd:block/crystalline")));
 
 		dispatcher.addDispatch(new BlockModelGenericRocks<>(BTDBlocks.OVERLAY_ROCKS));
+
+		dispatcher.addDispatch((new BlockModelGeneric<>(BTDBlocks.ICE_RUBYGLASS, loadDataModel("btd:block/ice_rubyglass"))).forceCullSelf(true));
+
+		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_BOTTOM, loadDataModel("btd:block/growth_bottom")).render3D(false));
+		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_TOP, loadDataModel("btd:block/growth_top")).render3D(false));
 	}
 
 	@Override
@@ -45,6 +53,7 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_GARGOYLE, "btd").setFullBright());
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.LEATHER_GHAST, "btd").setFullBright());
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.AMMO_ROCK, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.RUBYGLASS_GROWTH, "btd").setFullBright());
 
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.RUBYGLASS_SPROUT.asItem())).setFullBright());

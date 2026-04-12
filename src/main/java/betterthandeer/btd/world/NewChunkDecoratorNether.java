@@ -1,11 +1,13 @@
 package betterthandeer.btd.world;
 
 import betterthandeer.btd.block.BTDBlocks;
+import net.minecraft.core.block.BlockLogicFallingBlock;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
 import net.minecraft.core.block.BlockLogicOreRubyglass;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.biome.Biome;
+import net.minecraft.core.world.biome.BiomeTags;
 import net.minecraft.core.world.biome.Biomes;
 import net.minecraft.core.world.generate.chunk.ChunkDecorationBuilder;
 import net.minecraft.core.world.generate.chunk.PlacementMethod;
@@ -16,6 +18,7 @@ import net.minecraft.core.world.noise.FractalNoise2D;
 import net.minecraft.core.world.noise.ImprovedPerlinNoise;
 import net.minecraft.core.world.noise.WorleyNoise;
 import net.minecraft.core.world.pos.TilePos;
+import net.minecraft.core.world.type.tag.WorldTypeTags;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Random;
@@ -36,7 +39,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 	public void registerDecorations() {
 
 		// Rubyglass Features
-		this.register("btd:decoration/nether/default/rubyglass_crystal_ceiling", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystal(true)))
+		this.register("btd:decoration/nether/default/rubyglass_crystal_ceiling", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystalline(true, 20, 15)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST})
 			.withPositionSelector(PositionSelectors.UpperHeightRangeUniform)
 			.withPlacementMethod((feature, world, chunk, random) -> {
@@ -50,9 +53,9 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 			}));
 
-		this.register("btd:decoration/nether/default/rubyglass_crystal_floor", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystal(false, 20, 25)))
+		this.register("btd:decoration/nether/default/rubyglass_crystal_floor", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystalline(false, 20, 30)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST})
-			.withPositionSelector(PositionSelectors.UpperHeightRangeUniform)
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod((feature, world, chunk, random) -> {
 				int x = chunk.pos.x * 16;
 				int z = chunk.pos.z * 16;
@@ -64,9 +67,9 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 			}));
 
-		this.register("btd:decoration/nether/default/rubyglass_crystal_floor_2", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystal(false, 15, 20)))
+		this.register("btd:decoration/nether/default/rubyglass_crystal_floor_2", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystalline(false, 15, 25)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
-			.withPositionSelector(PositionSelectors.UpperHeightRangeUniform)
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod.TriesPerChunk(4)));
 
 		this.register("btd:decoration/nether/default/rubyglass_node", (new ChunkDecorationBuilder(new WorldFeatureOre(BlockLogicOreRubyglass.variantMap, 5)))
@@ -75,6 +78,11 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod.TriesPerChunk(10)));
 
 		this.register("btd:decoration/nether/default/rubyglass_sprout_patch", (new ChunkDecorationBuilder(new WorldFeatureRubyglassSproutPatch()))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+			.withPlacementMethod(new PlacementMethod.TriesPerChunk(20)));
+
+		this.register("btd:decoration/nether/default/rubyglass_growth_patch", (new ChunkDecorationBuilder(new WorldFeatureRubyglassGrowthPatch()))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod.TriesPerChunk(20)));
@@ -112,6 +120,21 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 
 		// Pillar Features
+		this.register("btd:decoration/nether/default/pillar_netherrack", (new ChunkDecorationBuilder(new WorldFeaturePillar(Blocks.RUBYGLASS_COLUMN.id(), false)))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_PLAINS, Biomes.NETHER_CRYSTAL_FOREST})
+			.withPositionSelector((world, chunk, random, minY, maxY, rangeY) -> {
+				int x = chunk.pos.x() * 16 + random.nextInt(16);
+				int z = chunk.pos.z() * 16 + random.nextInt(16);
+				int y = 200;
+				this.pillarNoise.getValue(Math.floor((float) x / 32.0F), Math.floor((float) z / 32.0F), this.worleyResult);
+				int xPillar = (int) (this.worleyResult.center.x * (double) 32.0F);
+				int zPillar = (int) (this.worleyResult.center.y * (double) 32.0F);
+				return new TilePos(xPillar, y, zPillar);
+			})
+			.withPlacementMethod(new PlacementMethod
+				.ChanceToPlace(8)));
+
+
 		this.register("btd:decoration/nether/default/pillar_netherrack", (new ChunkDecorationBuilder(new WorldFeaturePillar(Blocks.COBBLE_NETHERRACK.id(), false)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_PLAINS, Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRAG, Biomes.NETHER_SHELF})
 			.withPositionSelector((world, chunk, random, minY, maxY, rangeY) -> {
@@ -173,7 +196,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.MinY)
 			.withPlacementMethod(new PlacementMethod
-				.TriesPerChunk(1)));
+				.TriesPerChunk(2)));
 
 		this.register("btd:decoration/nether/default/sulfur_pool_floor_vent", new ChunkDecorationBuilder(new WorldFeatureFloorVent())
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})

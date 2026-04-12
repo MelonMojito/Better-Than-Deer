@@ -15,6 +15,8 @@ public class BTDItems {
 
 	public static Item AMMO_ROCK;
 
+	public static Item RUBYGLASS_GROWTH;
+
 	private static boolean hasInit = false;
 
 	public static void init() {
@@ -32,5 +34,7 @@ public class BTDItems {
 		LEATHER_GHAST = new Item("leather.ghast", "btd:item/leather_ghast", 20002);
 
 		AMMO_ROCK = new ItemRock("ammo.rock", "btd:item/ammo_rock", 20003);
+
+		RUBYGLASS_GROWTH = new ItemRubyglassGrowth("rubyglass.growth", "btd:item/rubyglass_growth", 20004, BTDBlocks.RUBYGLASS_GROWTH_BOTTOM, BTDBlocks.RUBYGLASS_GROWTH_TOP);
 	}
 }

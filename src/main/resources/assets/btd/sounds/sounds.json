@@ -1,4 +1,13 @@
 {
+  "acid.bubble": {
+    "subtitle": "subtitles.acid.bubble",
+    "sounds": [
+      "block/bubble1.ogg",
+      "block/bubble2.ogg",
+      "block/bubble3.ogg",
+      "block/bubble4.ogg"
+    ]
+  },
   "mob.gargoyle": {
     "subtitle": "subtitles.mob.gargoyle",
     "sounds": [

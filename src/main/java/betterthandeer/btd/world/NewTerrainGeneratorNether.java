@@ -1,5 +1,6 @@
 package betterthandeer.btd.world;
 
+import betterthandeer.btd.block.BTDBlocks;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.core.block.Blocks;
@@ -33,10 +34,10 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 		this.fluidLookup.put(Biomes.NETHER_CRAG, Blocks.FLUID_LAVA_STILL.id());
 		this.fluidLookup.put(Biomes.NETHER_SHELF, Blocks.COBBLE_NETHERRACK.id());
 
-		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_FOREST, Blocks.FLUID_WATER_STILL.id());
-		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_PLAINS, Blocks.FLUID_WATER_STILL.id());
+		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_FOREST, BTDBlocks.ICE_RUBYGLASS.id());
+		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_PLAINS, BTDBlocks.ICE_RUBYGLASS.id());
 
-		this.fluidLookup.put(Biomes.NETHER_OLD_WORLD, Blocks.AIR.id());
+		this.fluidLookup.put(Biomes.NETHER_OLD_WORLD, Blocks.FLUID_WATER_STILL.id());
 
 		this.minY = world.getWorldType().getMinY(world);
 		this.maxY = world.getWorldType().getMaxY(world);

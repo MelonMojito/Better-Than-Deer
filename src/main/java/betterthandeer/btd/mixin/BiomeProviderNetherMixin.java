@@ -47,14 +47,17 @@ public abstract class BiomeProviderNetherMixin {
 		else if (temperature >= 0.70) {
 			cir.setReturnValue(Biomes.NETHER_SHELF);
 		}
-		else if (temperature >= 0.45) {
+		else if (temperature >= 0.55) {
 			cir.setReturnValue(Biomes.NETHER_SULFUR_POOLS);
 		}
-		else if (temperature >= 0.40) {
+		else if (temperature >= 0.50) {
 			cir.setReturnValue(Biomes.NETHER_SHELF);
 		}
-		else if (temperature >= 0.15) {
+		else if (temperature >= 0.25) {
 			cir.setReturnValue(humidity < 0.2 ? Biomes.NETHER_CRYSTAL_PLAINS : Biomes.NETHER_CRYSTAL_FOREST);
+		}
+		else if (temperature >= 0.20) {
+			cir.setReturnValue(Biomes.NETHER_SHELF);
 		}
 		else {
 			cir.setReturnValue(Biomes.NETHER_OLD_WORLD);

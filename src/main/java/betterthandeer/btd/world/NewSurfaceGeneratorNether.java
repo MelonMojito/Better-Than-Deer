@@ -1,5 +1,6 @@
 package betterthandeer.btd.world;
 
+import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.biome.Biome;
@@ -152,6 +153,12 @@ public class NewSurfaceGeneratorNether extends SurfaceGeneratorNether {
 						} else if (biome == Biomes.NETHER_CRAG || biome == Biomes.NETHER_SHELF) {
 							if (rand.nextInt(2) == 0) {
 								stoneBlockId = Blocks.NETHERRACK.id();
+							} else {
+								stoneBlockId = Blocks.COBBLE_NETHERRACK.id();
+							}
+						} else if (biome == Biomes.NETHER_CRYSTAL_PLAINS || biome == Biomes.NETHER_CRYSTAL_FOREST) {
+							if (rand.nextInt(8) == 0) {
+								stoneBlockId = BTDBlocks.COBBLE_NETHERRACK_CRYSTALLINE.id();
 							} else {
 								stoneBlockId = Blocks.COBBLE_NETHERRACK.id();
 							}

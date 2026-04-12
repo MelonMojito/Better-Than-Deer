@@ -120,6 +120,9 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		Blocks.BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
 
 		Blocks.RUBYGLASS_SPROUT.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
+		Blocks.BLOCK_RUBYGLASS.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
+		Blocks.COBBLE_NETHERRACK_CRYSTALLINE.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
+		Blocks.FLOWSTONE.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
 
 		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
 
