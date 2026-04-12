@@ -9,7 +9,7 @@ import net.minecraft.client.render.texture.stitcher.TextureRegistry;
 import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.pos.TilePos;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 @Environment(EnvType.CLIENT)
 public class ParticleAcidBoiling extends Particle {
@@ -17,7 +17,7 @@ public class ParticleAcidBoiling extends Particle {
 	private boolean isReversed;
 	private final boolean needsWater;
 	private final TilePos qpos = new TilePos();
-	private final @NotNull IconCoordinate popping = TextureRegistry.getTexture("btd:particle/acid_boiling_pop");
+	private final @NonNull IconCoordinate popping = TextureRegistry.getTexture("btd:particle/acid_boiling_pop");
 
 	public ParticleAcidBoiling(World world, double x, double y, double z, double xa, double ya, double za, boolean needsWater) {
 		super(world, x, y, z, xa, ya, za);

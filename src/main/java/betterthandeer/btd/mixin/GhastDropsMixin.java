@@ -1,6 +1,6 @@
 package betterthandeer.btd.mixin;
 
-import betterthandeer.btd.BTDItems;
+import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.MobFlying;
 import net.minecraft.core.entity.monster.MobGhast;

@@ -10,7 +10,7 @@ import net.minecraft.core.world.World;
 import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.pos.TilePosc;
 import net.minecraft.core.world.type.tag.WorldTypeTags;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Random;
 
@@ -23,7 +23,7 @@ public class FluidAcid implements Fluid {
 	}
 
 	@Override
-	public void animationTick(@NotNull BlockLogicFluid logicFluid, @NotNull World world, @NotNull TilePosc tilePos, @NotNull Random rand) {
+	public void animationTick(@NonNull BlockLogicFluid logicFluid, @NonNull World world, @NonNull TilePosc tilePos, @NonNull Random rand) {
 		int data = world.getBlockData(tilePos) & 15;
 		TilePos queryPos = new TilePos();
 
@@ -45,7 +45,7 @@ public class FluidAcid implements Fluid {
 
 	}
 
-	public boolean checkForHarden(@NotNull BlockLogicFluid logicFluid, @NotNull World world, @NotNull TilePosc tilePos, @NotNull Material encountered) {
+	public boolean checkForHarden(@NonNull BlockLogicFluid logicFluid, @NonNull World world, @NonNull TilePosc tilePos, @NonNull Material encountered) {
 		if (encountered == Materials.LAVA || encountered == Materials.WATER) {
 			int data = world.getBlockData(tilePos) & 15;
 			if (data == 0) {
@@ -67,22 +67,22 @@ public class FluidAcid implements Fluid {
 		return false;
 	}
 
-	public void updateTickStill(@NotNull BlockLogicFluid logicFluid, @NotNull World world, @NotNull TilePosc tilePos, @NotNull Random rand) {
+	public void updateTickStill(@NonNull BlockLogicFluid logicFluid, @NonNull World world, @NonNull TilePosc tilePos, @NonNull Random rand) {
 	}
 
-	public byte getFlowDecayMod(@NotNull BlockLogicFluid logicFluid, @NotNull World world, @NotNull TilePosc tilePos) {
+	public byte getFlowDecayMod(@NonNull BlockLogicFluid logicFluid, @NonNull World world, @NonNull TilePosc tilePos) {
 		return 1;
 	}
 
-	public boolean canBecomeSource(@NotNull BlockLogicFluid logicFluid, @NotNull World world, @NotNull TilePosc tilePos, @NotNull Random rand) {
+	public boolean canBecomeSource(@NonNull BlockLogicFluid logicFluid, @NonNull World world, @NonNull TilePosc tilePos, @NonNull Random rand) {
 		return false;
 	}
 
-	public void onFlowIntoBlock(@NotNull BlockLogicFluid logicFluid, @NotNull World world, @NotNull TilePos tilePos, int meta) {
+	public void onFlowIntoBlock(@NonNull BlockLogicFluid logicFluid, @NonNull World world, @NonNull TilePos tilePos, int meta) {
 		world.getBlockType(tilePos).dropWithCause(world, EnumDropCause.WORLD, tilePos, world.getBlockData(tilePos), null, null);
 	}
 
-	public boolean canSpreadTo(@NotNull BlockLogicFluid logicFluid, @NotNull World world, @NotNull TilePos tilePos, @NotNull Material material) {
+	public boolean canSpreadTo(@NonNull BlockLogicFluid logicFluid, @NonNull World world, @NonNull TilePos tilePos, @NonNull Material material) {
 		return material != Materials.LAVA && material != Materials.WATER;
 	}
 }

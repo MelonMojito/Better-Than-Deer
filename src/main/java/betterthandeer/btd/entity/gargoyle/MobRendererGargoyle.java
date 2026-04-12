@@ -8,7 +8,6 @@ import net.minecraft.client.render.renderer.GLRenderer;
 import net.minecraft.client.render.renderer.State;
 import net.minecraft.client.render.tessellator.TessellatorGeneral;
 import net.minecraft.core.util.helper.MathHelper;
-import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.useless.dragonfly.models.entity.BoneTransform;
@@ -98,7 +97,7 @@ public class MobRendererGargoyle extends MobRenderer<MobGargoyle> {
 	}
 
 	@Override
-	public void renderPreview(@NotNull TessellatorGeneral tessellator, @NotNull MobGargoyle gargoyle, double x, double y, double z, float yaw, float partialTick) {
+	public void renderPreview(@NonNull TessellatorGeneral tessellator, @NonNull MobGargoyle gargoyle, double x, double y, double z, float yaw, float partialTick) {
 		GLRenderer.pushFrame();
 		GLRenderer.modelM4f().translate(0.0F, 0.5F, 0.0F);
 		gargoyle.isHanging = false;

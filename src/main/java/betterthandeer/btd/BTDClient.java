@@ -1,6 +1,7 @@
 package betterthandeer.btd;
 
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
+import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.world.ParticleAcidBoiling;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.guidebook.mobs.MobInfoRegistry;

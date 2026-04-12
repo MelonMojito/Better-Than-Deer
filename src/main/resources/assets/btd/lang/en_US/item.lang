@@ -7,6 +7,8 @@ item.bucket.acid.desc=A bucket of boiling acid. Stings!
 item.leather.ghast.name=Ghast Leather
 item.leather.ghast.desc=A deflated ghast. Can be used to make balloons.
 
+item.ammo.rock.name=Rock
+item.ammo.rock.desc=A chunk of rubble found buried in the nether.
 
 
 

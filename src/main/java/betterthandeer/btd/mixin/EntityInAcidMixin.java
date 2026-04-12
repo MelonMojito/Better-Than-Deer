@@ -4,8 +4,8 @@ import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.util.helper.DamageType;
 import net.minecraft.core.world.World;
-import org.jetbrains.annotations.NotNull;
 import org.joml.primitives.AABBd;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,12 +21,12 @@ public abstract class EntityInAcidMixin {
 	public abstract boolean hurt(Entity attacker, int baseDamage, DamageType type);
 
 	@Shadow
-	@NotNull
+	@NonNull
 	public World world;
 
 	@Shadow
 	@Final
-	@NotNull
+	@NonNull
 	public AABBd bb;
 
 	@Inject(method = "baseTick", at = @At("TAIL"))

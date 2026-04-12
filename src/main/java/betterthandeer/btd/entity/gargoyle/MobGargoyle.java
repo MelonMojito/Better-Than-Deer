@@ -1,6 +1,6 @@
 package betterthandeer.btd.entity.gargoyle;
 
-import betterthandeer.btd.BTDItems;
+import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.tag.BlockTags;
@@ -51,10 +51,12 @@ public class MobGargoyle extends MobFlying implements Enemy {
 		return 16;
 	}
 
+	@Override
 	public boolean canBreatheUnderwater() {
 		return true;
 	}
 
+	@Override
 	public boolean hurtByNetherWater() {
 		return false;
 	}
@@ -119,6 +121,12 @@ public class MobGargoyle extends MobFlying implements Enemy {
 			}
 
 			return;
+		}
+
+		if (target != null) {
+			if (!target.isAlive() || this.distanceTo(target) > 16.0) {
+				target = null;
+			}
 		}
 
 		if ((target == null || !target.isAlive() || !(target instanceof Player)) && player != null && player.getGamemode().hasHostileMobs()) {

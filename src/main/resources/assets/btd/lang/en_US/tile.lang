@@ -1,5 +1,5 @@
 tile.btd.boulder.name=Magma Boulder
-tile.btd.boulder.desc=Glowing hot rock that explodes on contact.
+tile.btd.boulder.desc=Glowing hot rock that burns on contact.
 
 tile.btd.sulfur.name=Sulfur
 tile.btd.sulfur.desc=Clump of burning yellow stone. Smells like rotten eggs.
@@ -8,4 +8,34 @@ tile.btd.fluid.acid.flowing.name=Flowing Acid
 tile.btd.fluid.acid.flowing.desc=Acid that flows when placed.
 tile.btd.fluid.acid.still.name=Still Acid
 tile.btd.fluid.acid.still.desc=Acid that does not flow when placed.
+
+tile.btd.overlay.rocks.name=Rocks
+tile.btd.overlay.rocks.desc=A cluster of rocks.
+
+tile.btd.ember.name=Ember
+tile.btd.ember.desc=Volatile stone that explodes on contact. Remnant of a forgotten world.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

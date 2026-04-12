@@ -16,16 +16,16 @@ import net.minecraft.core.world.noise.FractalNoise2D;
 import net.minecraft.core.world.noise.ImprovedPerlinNoise;
 import net.minecraft.core.world.noise.WorleyNoise;
 import net.minecraft.core.world.pos.TilePos;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Random;
 
 public class NewChunkDecoratorNether extends ChunkDecoratorNether {
-	private final @NotNull FractalNoise2D<ImprovedPerlinNoise> crystalDensityNoise;
-	private final @NotNull WorleyNoise pillarNoise;
-	private final WorleyNoise.@NotNull Result worleyResult;
+	private final @NonNull FractalNoise2D<ImprovedPerlinNoise> crystalDensityNoise;
+	private final @NonNull WorleyNoise pillarNoise;
+	private final WorleyNoise.@NonNull Result worleyResult;
 
-	public NewChunkDecoratorNether(@NotNull World world) {
+	public NewChunkDecoratorNether(@NonNull World world) {
 		super(world);
 		this.pillarNoise = new WorleyNoise(new Random(world.getRandomSeed()));
 		this.crystalDensityNoise = new FractalNoise2D<>(ImprovedPerlinNoise.genOctaves(world.getRandomSeed(), 8, 74));

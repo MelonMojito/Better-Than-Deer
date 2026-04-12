@@ -9,7 +9,7 @@ import net.minecraft.client.render.camera.CameraUtil;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.biome.Biomes;
 import net.minecraft.core.world.pos.TilePos;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,7 +31,7 @@ public abstract class AcidFogMixin {
 
 	@Shadow
 	@Final
-	@NotNull
+	@NonNull
 	public Minecraft mc;
 
 	@Inject(method = "updateFogColor", at = @At("TAIL"))

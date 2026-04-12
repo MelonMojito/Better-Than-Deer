@@ -1,12 +1,12 @@
 package betterthandeer.btd.block;
 
+import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.block.*;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.block.tag.BlockTags;
-import net.minecraft.core.data.tag.Tag;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.helper.BlockBuilder;
@@ -26,6 +26,8 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static Block<?> EMBER;
 
 	public static Block<?> RUBYGLASS_SPROUT;
+
+	public static Block<?> OVERLAY_ROCKS;
 
 	private static boolean hasInit = false;
 
@@ -84,6 +86,15 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
 			.setOverrideColor(MaterialColor.rubyglass)
 			.build("rubyglass.sprout", 3007, BlockLogicRubyglassSprout::new);
+
+		OVERLAY_ROCKS = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(0.0F)
+			.setVisualUpdateOnMetadata()
+			.setStatParent(() -> BTDItems.AMMO_ROCK)
+			.setTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.NOT_IN_CREATIVE_MENU, BlockTags.OVERRIDE_FRICTION)
+			.build("overlay.rocks", 3010, b -> new BlockLogicOverlayRocks(b, Materials.DECORATION));
+
 
 	}
 

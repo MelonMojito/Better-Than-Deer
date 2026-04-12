@@ -1,4 +1,4 @@
-package betterthandeer.btd;
+package betterthandeer.btd.item;
 
 import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.item.Item;
@@ -12,6 +12,8 @@ public class BTDItems {
 	public static Item EYE_GARGOYLE;
 
 	public static Item LEATHER_GHAST;
+
+	public static Item AMMO_ROCK;
 
 	private static boolean hasInit = false;
 
@@ -28,5 +30,7 @@ public class BTDItems {
 		EYE_GARGOYLE = new Item("eye.gargoyle", "btd:item/eye_gargoyle", 20001);
 
 		LEATHER_GHAST = new Item("leather.ghast", "btd:item/leather_ghast", 20002);
+
+		AMMO_ROCK = new ItemRock("ammo.rock", "btd:item/ammo_rock", 20003);
 	}
 }

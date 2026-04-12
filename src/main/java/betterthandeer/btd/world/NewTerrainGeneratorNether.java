@@ -11,8 +11,8 @@ import net.minecraft.core.world.generate.chunk.perlin.DensityGenerator;
 import net.minecraft.core.world.generate.chunk.perlin.nether.DensityGeneratorNether;
 import net.minecraft.core.world.generate.chunk.perlin.nether.TerrainGeneratorNether;
 import net.minecraft.core.world.type.WorldType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 	private final DensityGenerator densityGenerator;
@@ -23,7 +23,7 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 	private final int minY;
 	private final int maxY;
 
-	public NewTerrainGeneratorNether(@NotNull World world) {
+	public NewTerrainGeneratorNether(@NonNull World world) {
 		super(world);
 		this.densityGenerator = new DensityGeneratorNether(world);
 		this.fluidLookup.put(Biomes.NETHER_VOLCANIC_ISLANDS, Blocks.FLUID_LAVA_STILL.id());
@@ -36,14 +36,14 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_FOREST, Blocks.FLUID_WATER_STILL.id());
 		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_PLAINS, Blocks.FLUID_WATER_STILL.id());
 
-		this.fluidLookup.put(Biomes.NETHER_OLD_WORLD, Blocks.OBSIDIAN.id());
+		this.fluidLookup.put(Biomes.NETHER_OLD_WORLD, Blocks.AIR.id());
 
 		this.minY = world.getWorldType().getMinY(world);
 		this.maxY = world.getWorldType().getMaxY(world);
 	}
 
 	@Override
-	protected int getBlockAt(@NotNull Chunk chunk, int x, int y, int z, double density) {
+	protected int getBlockAt(@NonNull Chunk chunk, int x, int y, int z, double density) {
 		label31:
 		{
 			if (Integer.MIN_VALUE == x && Integer.MIN_VALUE == z) {
@@ -69,7 +69,7 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 	}
 
 	@Override
-	public @NotNull DensityGenerator getDensityGenerator() {
+	public @NonNull DensityGenerator getDensityGenerator() {
 		return this.densityGenerator;
 	}
 }

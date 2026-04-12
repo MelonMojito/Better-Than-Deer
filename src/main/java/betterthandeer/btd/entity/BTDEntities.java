@@ -19,5 +19,7 @@ public class BTDEntities {
 
 	public static void initializeEntities() {
 		EntityDispatcher.getInstance().addMapping(MobGargoyle.class, NamespaceID.fromPool(MOD_ID, "gargoyle"), MobGargoyle::new, "guidebook.section.mob.gargoyle.name");
+
+		EntityDispatcher.getInstance().addMapping(ProjectileRock.class, NamespaceID.fromPool(MOD_ID, "rock"), ProjectileRock::new);
 	}
 }

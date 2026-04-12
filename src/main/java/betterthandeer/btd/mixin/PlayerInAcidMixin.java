@@ -2,7 +2,6 @@ package betterthandeer.btd.mixin;
 
 import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.achievement.stat.Stat;
-import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.Mob;
 import net.minecraft.core.entity.player.Player;
@@ -12,8 +11,8 @@ import net.minecraft.core.net.command.TextFormatting;
 import net.minecraft.core.player.inventory.container.ContainerInventory;
 import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -28,7 +27,7 @@ public abstract class PlayerInAcidMixin extends Mob {
 
 	@Shadow
 	@Final
-	@NotNull
+	@NonNull
 	public ContainerInventory inventory;
 
 	@Shadow
@@ -38,7 +37,7 @@ public abstract class PlayerInAcidMixin extends Mob {
 	@Final
 	public static TextFormatting deathMsgColor;
 
-	protected PlayerInAcidMixin(@NotNull World world) {
+	protected PlayerInAcidMixin(@NonNull World world) {
 		super(world);
 	}
 

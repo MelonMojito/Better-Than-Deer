@@ -1,6 +1,7 @@
 package betterthandeer.btd.world;
 
 import net.minecraft.core.block.Block;
+import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.generate.feature.WorldFeature;
@@ -19,7 +20,7 @@ public class WorldFeatureRoofSpire extends WorldFeature {
 	public boolean place(World world, Random random, int x, int y, int z) {
 		TilePos pos = new TilePos(x, y, z);
 
-		while (world.isAirBlock(pos) && pos.y < 235) {
+		while (world.isAirBlock(pos) && pos.y < 245) {
 			pos.up();
 		}
 
@@ -37,7 +38,12 @@ public class WorldFeatureRoofSpire extends WorldFeature {
 
 					for (int y1 = 0; y1 < height; ++y1) {
 						centerPos.add(x1, -y1, z1, queryPos);
-						world.setBlockType(queryPos, boulderBlock);
+
+						Block<?> currentBlock = world.getBlockType(queryPos);
+
+						if (currentBlock != Blocks.BEDROCK) {
+							world.setBlockType(queryPos, boulderBlock);
+						}
 					}
 				}
 			}

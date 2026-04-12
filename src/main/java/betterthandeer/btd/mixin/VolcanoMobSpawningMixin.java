@@ -4,7 +4,7 @@ import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import net.minecraft.core.entity.SpawnListEntry;
 import net.minecraft.core.world.biome.Biome;
 import net.minecraft.core.world.biome.nether.BiomeVolcanoIslands;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(BiomeVolcanoIslands.class)
 public abstract class VolcanoMobSpawningMixin extends Biome {
 
-	protected VolcanoMobSpawningMixin(@NotNull String key) {
+	protected VolcanoMobSpawningMixin(@NonNull String key) {
 		super(key);
 	}
 
