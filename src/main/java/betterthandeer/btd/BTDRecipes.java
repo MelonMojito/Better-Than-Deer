@@ -48,6 +48,72 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.create("matcher", new ItemStack(Blocks.MATCHER, 1));
 
 
+		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_basalt_to_olivine");
+		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_granite_to_quartz");
+		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_limestone_to_marble");
+		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_netherrack_to_magma");
+		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_stone_to_slate");
+
+
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(0, Blocks.COBBLE_STONE)
+			.setInput(1, Blocks.COBBLE_STONE)
+			.create("cobble_stone_to_slate", new ItemStack(Blocks.SLATE, 1));
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(Blocks.COBBLE_STONE)
+			.create("cobble_stone_to_stone", new ItemStack(Blocks.STONE, 1));
+
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(0, Blocks.COBBLE_BASALT)
+			.setInput(1, Blocks.COBBLE_BASALT)
+			.create("cobble_basalt_to_olivine", new ItemStack(Items.OLIVINE, 1));
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(Blocks.COBBLE_BASALT)
+			.create("cobble_basalt_to_basalt", new ItemStack(Blocks.BASALT, 1));
+
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(0, Blocks.COBBLE_GRANITE)
+			.setInput(1, Blocks.COBBLE_GRANITE)
+			.create("cobble_granite_to_quartz", new ItemStack(Items.QUARTZ, 1));
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(Blocks.COBBLE_GRANITE)
+			.create("cobble_granite_to_granite", new ItemStack(Blocks.GRANITE, 1));
+
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(0, Blocks.COBBLE_LIMESTONE)
+			.setInput(1, Blocks.COBBLE_LIMESTONE)
+			.create("cobble_limestone_to_marble", new ItemStack(Blocks.MARBLE, 1));
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(Blocks.COBBLE_LIMESTONE)
+			.create("cobble_limestone_to_limestone", new ItemStack(Blocks.LIMESTONE, 1));
+
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(0, Blocks.COBBLE_NETHERRACK)
+			.setInput(1, Blocks.COBBLE_NETHERRACK)
+			.create("cobble_netherrack_to_magma", new ItemStack(Blocks.MAGMA, 1));
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(Blocks.COBBLE_NETHERRACK)
+			.create("cobble_netherrack_to_netherrack", new ItemStack(Blocks.NETHERRACK, 1));
+
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(Blocks.COBBLE_GLOOMSTONE)
+			.create("cobble_gloomstone_to_gloomstone", new ItemStack(Blocks.GLOOMSTONE, 1));
+
+
+
+
+
 		RecipeBuilder.ModifyTrommel("minecraft", "brimsand").deleteRecipe();
 
 		RecipeBuilder.Trommel(MOD_ID)

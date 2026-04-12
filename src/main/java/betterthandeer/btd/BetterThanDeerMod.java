@@ -36,20 +36,8 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Better Than Deer initialized.");
-		Blocks.COBBLE_BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
-		Blocks.BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
-
-		Blocks.RUBYGLASS_SPROUT.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
-
-		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
-
-		Blocks.BONE_PILE.withTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.SHEARS_DO_SILK_TOUCH, BlockTags.MINEABLE_BY_PICKAXE);
-		Blocks.SOULCATCHER.withTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.SHEARS_DO_SILK_TOUCH, BlockTags.PLANTABLE_IN_JAR, BlockTags.MINEABLE_BY_SHOVEL);
-
-		Blocks.NETHERRACK.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.INFINITE_BURN, BlockTags.CAVES_CUT_THROUGH, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK);
-
-		Blocks.GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
-		Blocks.COBBLE_GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
+		fixBlockTags();
+		setZombiepigArmorBags();
 
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.BASALT.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.BRIMSAND.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
@@ -57,34 +45,6 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.NETHERRACK.id(), Blocks.ORE_NETHERCOAL_NETHERRACK.id());
 
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.SLATE.id(), Blocks.ORE_NETHERCOAL_GLOOMSTONE.id());
-
-		ZOMBIEPIG_ARMOR_BAGS.put(HumanArmorShape.HEAD, (new ArmorBag<>(HumanArmorShape.HEAD))
-			.addEntry(null, 400, 1.0F)
-			.addEntry(Items.ARMOR_HELMET_LEATHER, 30, 1.0F)
-			.addEntry(Items.ARMOR_HELMET_GOLD, 10, 1.0F)
-			.addEntry(Items.ARMOR_HELMET_DIAMOND, 5, 1.0F)
-			.addEntry(Items.ARMOR_HELMET_STEEL, 1, 1.0F));
-
-		ZOMBIEPIG_ARMOR_BAGS.put(HumanArmorShape.CHEST, (new ArmorBag<>(HumanArmorShape.CHEST))
-			.addEntry(null, 400, 1.0F)
-			.addEntry(Items.ARMOR_CHESTPLATE_LEATHER, 30, 1.0F)
-			.addEntry(Items.ARMOR_CHESTPLATE_GOLD, 10, 1.0F)
-			.addEntry(Items.ARMOR_CHESTPLATE_DIAMOND, 5, 1.0F)
-			.addEntry(Items.ARMOR_CHESTPLATE_STEEL, 1, 1.0F));
-
-		ZOMBIEPIG_ARMOR_BAGS.put(HumanArmorShape.LEGS, (new ArmorBag<>(HumanArmorShape.LEGS))
-			.addEntry(null, 400, 1.0F)
-			.addEntry(Items.ARMOR_LEGGINGS_LEATHER, 30, 1.0F)
-			.addEntry(Items.ARMOR_LEGGINGS_GOLD, 10, 1.0F)
-			.addEntry(Items.ARMOR_LEGGINGS_DIAMOND, 5, 1.0F)
-			.addEntry(Items.ARMOR_LEGGINGS_STEEL, 1, 1.0F));
-
-		ZOMBIEPIG_ARMOR_BAGS.put(HumanArmorShape.BOOTS, (new ArmorBag<>(HumanArmorShape.BOOTS))
-			.addEntry(null, 400, 1.0F)
-			.addEntry(Items.ARMOR_BOOTS_LEATHER, 30, 1.0F)
-			.addEntry(Items.ARMOR_BOOTS_GOLD, 10, 1.0F)
-			.addEntry(Items.ARMOR_BOOTS_DIAMOND, 5, 1.0F)
-			.addEntry(Items.ARMOR_BOOTS_STEEL, 1, 1.0F));
 	}
 
 	@Override
@@ -101,10 +61,74 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 	@Override
 	public void afterGameStart() {
 		LookupFuelFurnaceBlast.instance.addFuelEntry(Items.OLIVINE.id, 150);
+		LookupFuelFurnaceBlast.instance.addFuelEntry(Blocks.BLOCK_OLIVINE.id(), 1200);
 	}
 
 	@Override
 	public void afterItemInit() {
 
+	}
+
+
+
+	public void setZombiepigArmorBags() {
+		ZOMBIEPIG_ARMOR_BAGS.put(HumanArmorShape.HEAD, (new ArmorBag<>(HumanArmorShape.HEAD))
+			.addEntry(null, 400, 1.0F)
+			.addEntry(Items.ARMOR_HELMET_CHAINMAIL, 50, 1.0F)
+			.addEntry(Items.ARMOR_HELMET_GOLD, 30, 1.0F)
+			.addEntry(Items.ARMOR_HELMET_DIAMOND, 10, 1.0F)
+			.addEntry(Items.ARMOR_HELMET_STEEL, 5, 1.0F));
+
+		ZOMBIEPIG_ARMOR_BAGS.put(HumanArmorShape.CHEST, (new ArmorBag<>(HumanArmorShape.CHEST))
+			.addEntry(null, 400, 1.0F)
+			.addEntry(Items.ARMOR_CHESTPLATE_CHAINMAIL, 50, 1.0F)
+			.addEntry(Items.ARMOR_CHESTPLATE_GOLD, 30, 1.0F)
+			.addEntry(Items.ARMOR_CHESTPLATE_DIAMOND, 10, 1.0F)
+			.addEntry(Items.ARMOR_CHESTPLATE_STEEL, 5, 1.0F));
+
+		ZOMBIEPIG_ARMOR_BAGS.put(HumanArmorShape.LEGS, (new ArmorBag<>(HumanArmorShape.LEGS))
+			.addEntry(null, 400, 1.0F)
+			.addEntry(Items.ARMOR_LEGGINGS_CHAINMAIL, 50, 1.0F)
+			.addEntry(Items.ARMOR_LEGGINGS_GOLD, 30, 1.0F)
+			.addEntry(Items.ARMOR_LEGGINGS_DIAMOND, 10, 1.0F)
+			.addEntry(Items.ARMOR_LEGGINGS_STEEL, 5, 1.0F));
+
+		ZOMBIEPIG_ARMOR_BAGS.put(HumanArmorShape.BOOTS, (new ArmorBag<>(HumanArmorShape.BOOTS))
+			.addEntry(null, 400, 1.0F)
+			.addEntry(Items.ARMOR_BOOTS_CHAINMAIL, 50, 1.0F)
+			.addEntry(Items.ARMOR_BOOTS_GOLD, 30, 1.0F)
+			.addEntry(Items.ARMOR_BOOTS_DIAMOND, 10, 1.0F)
+			.addEntry(Items.ARMOR_BOOTS_STEEL, 5, 1.0F));
+	}
+
+	public void fixBlockTags() {
+		Blocks.BRICK_DIAMOND.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT);
+		Blocks.SLAB_BRICK_DIAMOND.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+		Blocks.STAIRS_BRICK_DIAMOND.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+		Blocks.BRICK_QUARTZ.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT);
+		Blocks.SLAB_BRICK_QUARTZ.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+		Blocks.STAIRS_BRICK_QUARTZ.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+		Blocks.BRICK_OLIVINE.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT);
+		Blocks.SLAB_BRICK_OLIVINE.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+		Blocks.STAIRS_BRICK_OLIVINE.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+
+
+		Blocks.COBBLE_BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
+		Blocks.BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
+
+		Blocks.RUBYGLASS_SPROUT.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
+
+		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
+
+		Blocks.BONE_PILE.withTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.SHEARS_DO_SILK_TOUCH, BlockTags.MINEABLE_BY_PICKAXE);
+		Blocks.SOULCATCHER.withTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.SHEARS_DO_SILK_TOUCH, BlockTags.PLANTABLE_IN_JAR, BlockTags.MINEABLE_BY_SHOVEL);
+
+		Blocks.NETHERRACK.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.INFINITE_BURN, BlockTags.CAVES_CUT_THROUGH, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK);
+
+		Blocks.GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
+		Blocks.COBBLE_GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
 	}
 }
