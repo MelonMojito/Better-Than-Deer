@@ -7,7 +7,6 @@ import betterthandeer.btd.world.ParticleAcidBoiling;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.guidebook.mobs.MobInfoRegistry;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
-import net.minecraft.client.render.block.model.BlockModelStairs;
 import net.minecraft.client.render.block.model.generic.BlockModelCrystalBud;
 import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
 import net.minecraft.client.render.block.model.generic.BlockModelGenericSlab;
@@ -62,46 +61,46 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 		dispatches.put(Blocks.COBBLE_BASALT, new BlockModelGeneric<>(
 			Blocks.COBBLE_BASALT,
 			loadDataModel("btd:block/cobbled_basalt")));
-		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>)Blocks.COBBLE_BASALT.asItem()));
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.COBBLE_BASALT.asItem()));
 
 		dispatches.put(Blocks.STAIRS_COBBLE_BASALT, new BlockModelGenericStairs<>(
 			Blocks.STAIRS_COBBLE_BASALT,
 			loadDataModel("btd:block/stairs/cobbled_basalt")));
-		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>)Blocks.STAIRS_COBBLE_BASALT.asItem()));
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.STAIRS_COBBLE_BASALT.asItem()));
 
 		dispatches.put(Blocks.SLAB_COBBLE_BASALT, new BlockModelGenericSlab<>(
 			Blocks.SLAB_COBBLE_BASALT,
 			loadDataModel("btd:block/slab/cobbled_basalt/lower"),
 			loadDataModel("btd:block/slab/cobbled_basalt/upper"),
 			loadDataModel("btd:block/slab/cobbled_basalt/full")));
-		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>)Blocks.SLAB_COBBLE_BASALT.asItem()));
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.SLAB_COBBLE_BASALT.asItem()));
 
 		dispatches.put(Blocks.ORE_NETHERCOAL_BASALT, new BlockModelGeneric<>(
 			Blocks.ORE_NETHERCOAL_BASALT,
 			loadDataModel("btd:block/ore/nethercoal/basalt")));
-		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>)Blocks.ORE_NETHERCOAL_BASALT.asItem()).setFullBright());
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.ORE_NETHERCOAL_BASALT.asItem()).setFullBright());
 
 
 		dispatches.put(Blocks.RUBYGLASS_NODE, new BlockModelGeneric<>(
 			Blocks.RUBYGLASS_NODE,
 			loadDataModel("btd:block/node")));
-		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>)Blocks.RUBYGLASS_NODE.asItem()));
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.RUBYGLASS_NODE.asItem()));
 
 		dispatches.put(Blocks.BLOCK_RUBYGLASS, new BlockModelGeneric<>(
 			Blocks.BLOCK_RUBYGLASS,
 			loadDataModel("btd:block/block_rubyglass")));
-		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>)Blocks.BLOCK_RUBYGLASS.asItem()));
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.BLOCK_RUBYGLASS.asItem()));
 
 		dispatches.put(Blocks.COBBLE_NETHERRACK_CRYSTALLINE, new BlockModelGeneric<>(
 			Blocks.COBBLE_NETHERRACK_CRYSTALLINE,
 			loadDataModel("btd:block/crystalline")));
-		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>)Blocks.COBBLE_NETHERRACK_CRYSTALLINE.asItem()));
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.COBBLE_NETHERRACK_CRYSTALLINE.asItem()));
 
 		dispatches.put(Blocks.RUBYGLASS_SPROUT, new BlockModelCrystalBud<>(
 			Blocks.RUBYGLASS_SPROUT,
 			loadDataModel("btd:block/sprout"))
 			.render3D(false));
-		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>)Blocks.RUBYGLASS_SPROUT.asItem()).setFullBright());
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.RUBYGLASS_SPROUT.asItem()).setFullBright());
 
 		itemModelDispatcher.addDispatch(new ItemModelStandard(Items.RUBYGLASS_CRYSTAL, "minecraft").setFullBright());
 	}

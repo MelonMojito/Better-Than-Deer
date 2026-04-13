@@ -1,19 +1,19 @@
-package betterthandeer.btd.mixin;
+package betterthandeer.btd.mixin.entity;
 
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import net.minecraft.core.entity.SpawnListEntry;
 import net.minecraft.core.world.biome.Biome;
-import net.minecraft.core.world.biome.nether.BiomeVolcanoIslands;
+import net.minecraft.core.world.biome.nether.BiomeNether;
 import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(BiomeVolcanoIslands.class)
-public abstract class VolcanoMobSpawningMixin extends Biome {
+@Mixin(BiomeNether.class)
+public abstract class NetherMobSpawningMixin extends Biome {
 
-	protected VolcanoMobSpawningMixin(@NonNull String key) {
+	protected NetherMobSpawningMixin(@NonNull String key) {
 		super(key);
 	}
 

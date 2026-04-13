@@ -24,7 +24,7 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 	private final int minY;
 	private final int maxY;
 
-	public NewTerrainGeneratorNether(@NonNull World world) {
+	public 	NewTerrainGeneratorNether(@NonNull World world) {
 		super(world);
 		this.densityGenerator = new DensityGeneratorNether(world);
 		this.fluidLookup.put(Biomes.NETHER_VOLCANIC_ISLANDS, Blocks.FLUID_LAVA_STILL.id());
@@ -57,7 +57,7 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 		WorldType type = this.world.getWorldType();
 		int quarterHeight = this.maxY / 4;
 		if (y < quarterHeight) {
-			return 0;
+			return Blocks.SOULSCHIST.id();
 		} else if (y >= this.maxY - this.rand.nextInt(10)) {
 			return Blocks.BEDROCK.id();
 		} else if (y <= quarterHeight + this.rand.nextInt(10)) {

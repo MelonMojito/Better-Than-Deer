@@ -97,6 +97,9 @@ public class MobGargoyle extends MobFlying implements Enemy {
 
 		if (super.hurt(attacker, i, type)) {
 			if (this.passenger != attacker && this.vehicle != attacker && attacker != this) {
+				if (this.isHanging) {
+					this.isHanging = false;
+				}
 				this.target = attacker;
 			}
 			return true;

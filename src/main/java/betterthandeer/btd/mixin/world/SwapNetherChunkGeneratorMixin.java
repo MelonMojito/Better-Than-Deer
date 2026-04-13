@@ -1,4 +1,4 @@
-package betterthandeer.btd.mixin;
+package betterthandeer.btd.mixin.world;
 
 import betterthandeer.btd.world.NewChunkGeneratorNether;
 import net.minecraft.core.world.World;

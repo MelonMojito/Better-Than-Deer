@@ -1,4 +1,4 @@
-package betterthandeer.btd.mixin;
+package betterthandeer.btd.mixin.world;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.GameSettings;

@@ -1,6 +1,5 @@
 package betterthandeer.btd.world;
 
-import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.biome.Biome;

@@ -6,31 +6,30 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "AcidArmorMeltMixin",
-    "BetterAshMixin",
-    "BetterBonepileMixin",
-    "BetterRubyglassSproutMixin",
-    "BetterSoulcatcherMixin",
-    "BiomeProviderNetherMixin",
-    "CrystalMobSpawningMixin",
-    "DeerSoundsMixin",
-    "EntityInAcidMixin",
-    "GhastDropsMixin",
     "MixinTag",
-    "MobInAcidMixin",
-    "NetherMobSpawningMixin",
-    "SulfurMobSpawningMixin",
-    "SwapNetherChunkGeneratorMixin",
-    "UpdateNetherBiomesMixin",
-    "VolcanoMobSpawningMixin",
-    "WorldFeatureFireMixin",
-    "ZombiePigSwordMixin"
+    "block.BetterAshMixin",
+    "block.BetterBonepileMixin",
+    "block.BetterRubyglassSproutMixin",
+    "block.BetterSoulcatcherMixin",
+    "entity.AcidArmorMeltMixin",
+    "entity.CrystalMobSpawningMixin",
+    "entity.DeerSoundsMixin",
+    "entity.EntityInAcidMixin",
+    "entity.GhastDropsMixin",
+    "entity.MobInAcidMixin",
+    "entity.NetherMobSpawningMixin",
+    "entity.SulfurMobSpawningMixin",
+    "entity.UpdateNetherBiomesMixin",
+    "entity.VolcanoMobSpawningMixin",
+    "entity.ZombiePigSwordMixin",
+    "world.BiomeProviderNetherMixin",
+    "world.SwapNetherChunkGeneratorMixin",
+    "world.WorldFeatureFireMixin"
   ],
   "client": [
-    "AcidFogMixin",
     "MixinDispatcher",
-    "NetherParticlesMixin",
-    "OldWorldColorMixin",
-    "TextureManagerMixin"
+    "world.AcidFogMixin",
+    "world.NetherParticlesMixin",
+    "world.OldWorldColorMixin"
   ]
 }

@@ -1,13 +1,11 @@
 package betterthandeer.btd.world;
 
 import betterthandeer.btd.block.BTDBlocks;
-import net.minecraft.core.block.BlockLogicFallingBlock;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
 import net.minecraft.core.block.BlockLogicOreRubyglass;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.biome.Biome;
-import net.minecraft.core.world.biome.BiomeTags;
 import net.minecraft.core.world.biome.Biomes;
 import net.minecraft.core.world.generate.chunk.ChunkDecorationBuilder;
 import net.minecraft.core.world.generate.chunk.PlacementMethod;
@@ -18,7 +16,6 @@ import net.minecraft.core.world.noise.FractalNoise2D;
 import net.minecraft.core.world.noise.ImprovedPerlinNoise;
 import net.minecraft.core.world.noise.WorleyNoise;
 import net.minecraft.core.world.pos.TilePos;
-import net.minecraft.core.world.type.tag.WorldTypeTags;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Random;

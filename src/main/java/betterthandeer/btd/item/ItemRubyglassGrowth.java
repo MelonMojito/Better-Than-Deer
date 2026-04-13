@@ -11,15 +11,15 @@ import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.pos.TilePosc;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class ItemRubyglassGrowth extends Item {
 
-	protected final @NotNull Block<?> bottomBlock;
-	protected final @NotNull Block<?> topBlock;
+	protected final @NonNull Block<?> bottomBlock;
+	protected final @NonNull Block<?> topBlock;
 
-	public ItemRubyglassGrowth(@NotNull String translationKey, @NotNull String namespaceId, int id, @NotNull Block<?> bottomBlock, @NotNull Block<?> topBlock) {
+	public ItemRubyglassGrowth(@NonNull String translationKey, @NonNull String namespaceId, int id, @NonNull Block<?> bottomBlock, @NonNull Block<?> topBlock) {
 		super(translationKey, namespaceId, id);
 		this.maxStackSize = 64;
 		this.bottomBlock = bottomBlock;
@@ -27,7 +27,7 @@ public class ItemRubyglassGrowth extends Item {
 	}
 
 	@Override
-	public boolean onUseOnBlock(@NotNull ItemStack selfStack, @NotNull World world, @Nullable Player player, @NotNull TilePosc blockPos, @NotNull Side side, double xHit, double yHit) {
+	public boolean onUseOnBlock(@NonNull ItemStack selfStack, @NonNull World world, @Nullable Player player, @NonNull TilePosc blockPos, @NonNull Side side, double xHit, double yHit) {
 		if (player == null) {
 			return false;
 		}

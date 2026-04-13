@@ -1,4 +1,4 @@
-package betterthandeer.btd.mixin;
+package betterthandeer.btd.mixin.world;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

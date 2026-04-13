@@ -15,8 +15,8 @@ import net.minecraft.core.world.noise.WorleyNoise;
 import net.minecraft.core.world.noise.operator.Normalize2D;
 import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.type.WorldType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Random;
 
@@ -29,7 +29,7 @@ public class RubyglassFloeLargeFeature extends LargeFeature {
 	public RubyglassFloeLargeFeature() {
 	}
 
-	protected void doGeneration(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, int baseChunkX, int baseChunkZ, @NotNull ChunkGeneratorResult result) {
+	protected void doGeneration(@NonNull World world, @NonNull Random random, int chunkX, int chunkZ, int baseChunkX, int baseChunkZ, @NonNull ChunkGeneratorResult result) {
 		if (this.chunkNoise == null || this.gapNoise == null || this.scaleNoise == null || this.lastWorld != world) {
 			this.chunkNoise = new WorleyNoise(new Random(world.getRandomSeed()));
 			this.gapNoise = new FractalNoise2D(ImprovedPerlinNoise.genOctaves(world.getRandomSeed(), 4));
@@ -65,9 +65,9 @@ public class RubyglassFloeLargeFeature extends LargeFeature {
 
 	}
 
-	private void trySetBlock(@NotNull ChunkGeneratorResult result, int x, int y, int z, int id) {
+	private void trySetBlock(@NonNull ChunkGeneratorResult result, int x, int y, int z, int id) {
 		int current = result.getBlock(x, y, z);
-		if (current == BTDBlocks.ICE_RUBYGLASS.id() || current == 0) {
+		if (current == BTDBlocks.ICE_RUBYGLASS.id() || current == Blocks.AIR.id()) {
 			result.setBlock(x, y, z, id);
 		}
 

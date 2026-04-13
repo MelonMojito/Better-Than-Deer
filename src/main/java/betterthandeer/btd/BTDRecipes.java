@@ -1,6 +1,5 @@
 package betterthandeer.btd;
 
-import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Blocks;
@@ -61,7 +60,6 @@ public class BTDRecipes implements RecipeEntrypoint {
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_stone_to_slate");
 
 
-
 		RecipeBuilder.BlastFurnace(MOD_ID)
 			.setInput(0, Blocks.COBBLE_STONE)
 			.setInput(1, Blocks.COBBLE_STONE)
@@ -117,10 +115,8 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.create("cobble_gloomstone_to_gloomstone", new ItemStack(Blocks.GLOOMSTONE, 1));
 
 
-
-
-
 		RecipeBuilder.ModifyTrommel("minecraft", "brimsand").deleteRecipe();
+		RecipeBuilder.ModifyTrommel("minecraft", "soul_sand").addEntry(new WeightedRandomLootObject(BTDItems.AMMO_ROCK.getDefaultStack(), 1, 2), 15.0);
 
 		RecipeBuilder.Trommel(MOD_ID)
 			.setInput(Blocks.BRIMSAND)

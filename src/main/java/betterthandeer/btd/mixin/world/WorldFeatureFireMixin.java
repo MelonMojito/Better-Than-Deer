@@ -1,4 +1,4 @@
-package betterthandeer.btd.mixin;
+package betterthandeer.btd.mixin.world;
 
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.tag.BlockTags;

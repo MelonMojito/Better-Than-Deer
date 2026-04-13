@@ -13,7 +13,6 @@ import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.util.BlockInitEntrypoint;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
-import static net.minecraft.core.block.Blocks.register;
 
 public class BTDBlocks implements BlockInitEntrypoint {
 
@@ -57,7 +56,6 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setLightOpacity(6)
 			.setVisualUpdateOnMetadata()
 			.setDisableStats()
-			.setLuminance(7)
 			.setTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU)
 			.build("fluid.acid.flowing", 3001, block -> new BlockLogicFluidFlowing(block, ACID, new FluidAcid(), FLUID_ACID_STILL));
 
@@ -67,7 +65,6 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setLightOpacity(6)
 			.setVisualUpdateOnMetadata()
 			.setDisableStats()
-			.setLuminance(7)
 			.setStatParent(() -> FLUID_ACID_FLOWING)
 			.setTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU)
 			.build("fluid.acid.still", 3002, block -> new BlockLogicFluidStill(block, ACID, new FluidAcid(), FLUID_ACID_FLOWING));

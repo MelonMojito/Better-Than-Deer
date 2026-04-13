@@ -1,4 +1,4 @@
-package betterthandeer.btd.mixin;
+package betterthandeer.btd.mixin.entity;
 
 import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.entity.Entity;

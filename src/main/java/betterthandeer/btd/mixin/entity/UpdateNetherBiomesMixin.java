@@ -1,4 +1,4 @@
-package betterthandeer.btd.mixin;
+package betterthandeer.btd.mixin.entity;
 
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.world.biome.Biomes;
