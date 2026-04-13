@@ -18,6 +18,7 @@
     "entity.GhastDropsMixin",
     "entity.MobInAcidMixin",
     "entity.NetherMobSpawningMixin",
+    "entity.PlayerDeathMessagesMixin",
     "entity.SulfurMobSpawningMixin",
     "entity.UpdateNetherBiomesMixin",
     "entity.VolcanoMobSpawningMixin",

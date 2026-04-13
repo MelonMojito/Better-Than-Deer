@@ -17,14 +17,12 @@ import org.jspecify.annotations.Nullable;
 
 public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 	private final DensityGenerator densityGenerator;
-	private final int lastX = Integer.MIN_VALUE;
-	private final int lastZ = Integer.MIN_VALUE;
 	private @Nullable Biome lastBiome = null;
 	private final Object2IntMap<Biome> fluidLookup = new Object2IntArrayMap<>();
 	private final int minY;
 	private final int maxY;
 
-	public 	NewTerrainGeneratorNether(@NonNull World world) {
+	public NewTerrainGeneratorNether(@NonNull World world) {
 		super(world);
 		this.densityGenerator = new DensityGeneratorNether(world);
 		this.fluidLookup.put(Biomes.NETHER_VOLCANIC_ISLANDS, Blocks.FLUID_LAVA_STILL.id());
@@ -56,9 +54,10 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 
 		WorldType type = this.world.getWorldType();
 		int quarterHeight = this.maxY / 4;
-		if (y < quarterHeight) {
-			return Blocks.SOULSCHIST.id();
-		} else if (y >= this.maxY - this.rand.nextInt(10)) {
+//		if (y < quarterHeight) {
+//			return Blocks.SOULSCHIST.id(); Warrens Stuff
+//		} else
+			if (y >= this.maxY - this.rand.nextInt(10)) {
 			return Blocks.BEDROCK.id();
 		} else if (y <= quarterHeight + this.rand.nextInt(10)) {
 			return Blocks.BEDROCK.id();

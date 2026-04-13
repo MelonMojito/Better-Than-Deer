@@ -49,7 +49,7 @@ dependencies {
 	runtimeOnly(libs.clientJar)
 	implementation(libs.loader)
 	implementation(files("libs/halplibe-6.0.0.jar"))
-	include(files("libs/halplibe-6.0.0.jar"))
+//	include(files("libs/halplibe-6.0.0.jar"))
 	implementation("turniplabs:modmenu-bta:5.0.0+nightly.2026.04.03")
 	implementation(libs.legacyLwjgl)
 

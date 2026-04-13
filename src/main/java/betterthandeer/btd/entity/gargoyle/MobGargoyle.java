@@ -43,12 +43,12 @@ public class MobGargoyle extends MobFlying implements Enemy {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 2;
+		return 1;
 	}
 
 	@Override
 	public int getMaxHealth() {
-		return 16;
+		return 20;
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class MobGargoyle extends MobFlying implements Enemy {
 		if (!isHanging) {
 			this.flapTimer++;
 			if (this.flapTimer >= 4 && this.isAlive()) {
-				world.playSoundAtEntity(null, this, "btd:mob.gargoyleflap", 0.25F, (random.nextFloat() / 2) + 1.5F);
+				world.playSoundAtEntity(null, this, "btd:mob.gargoyleflap", 0.15F, (random.nextFloat() / 2) + 1.5F);
 				this.flapTimer = 0;
 			}
 		} else {
@@ -110,10 +110,15 @@ public class MobGargoyle extends MobFlying implements Enemy {
 
 	@Override
 	protected void updateAI() {
-		Player player = world.getClosestPlayerToEntity(this, 32.0);
+		Player player;
+		if (isHanging) {
+			player = world.getClosestPlayerToEntity(this, 16.0);
+		} else {
+			player = world.getClosestPlayerToEntity(this, 32.0);
+		}
 
 		if (isHanging) {
-			if (player != null && player.getGamemode().hasHostileMobs()) {
+			if (player != null && player.getGamemode().hasHostileMobs() && this.canEntityBeSeen(player) && !player.isSneaking()) {
 				isHanging = false;
 				target = player;
 			}
@@ -126,12 +131,12 @@ public class MobGargoyle extends MobFlying implements Enemy {
 			return;
 		}
 
-		if (target != null && (!target.isAlive() || this.distanceTo(target) > 16.0)) {
+		if (target != null && (!target.isAlive() || this.distanceTo(target) > 32.0)) {
 			target = null;
 		}
 
 
-		if ((target == null || !target.isAlive() || !(target instanceof Player)) && player != null && player.getGamemode().hasHostileMobs()) {
+		if ((target == null || !target.isAlive() || !(target instanceof Player)) && player != null && player.getGamemode().hasHostileMobs() && this.canEntityBeSeen(player)) {
 			target = player;
 		}
 

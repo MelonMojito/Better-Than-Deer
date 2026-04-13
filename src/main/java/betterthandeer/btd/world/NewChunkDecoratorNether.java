@@ -304,11 +304,11 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(1)));
 
-		this.register("btd:decoration/nether/default/patch_boulder_oldworld", new ChunkDecorationBuilder(new WorldFeatureNetherPatchBelow(BTDBlocks.EMBER.id()))
+		this.register("btd:decoration/nether/default/patch_ember_oldworld", new ChunkDecorationBuilder(new WorldFeatureNetherPatchBelow(BTDBlocks.EMBER.id()))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_OLD_WORLD})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
-				.TriesPerChunk(16)));
+				.TriesPerChunk(32)));
 
 		this.register("btd:decoration/nether/default/patch_soul_catcher", (new ChunkDecorationBuilder(new WorldFeatureNetherPatch(Blocks.SOULCATCHER.id())))
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)

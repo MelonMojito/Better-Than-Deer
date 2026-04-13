@@ -10,7 +10,16 @@ import org.jspecify.annotations.NonNull;
 
 public class NewChunkGeneratorNether extends ChunkGeneratorPerlin {
 	public NewChunkGeneratorNether(@NonNull World world) {
-		super(world, new NewChunkDecoratorNether(world), new NewTerrainGeneratorNether(world), new NewSurfaceGeneratorNether(world),
-			new LargeFeature[]{new CavesLargeFeature(64, 256), new CavesLargeFeature(0, 64), new LavaFloeLargeFeature(), new RubyglassFloeLargeFeature(), new ShelfLargeFeature()});
+		super(world,
+			new NewChunkDecoratorNether(world),
+			new NewTerrainGeneratorNether(world),
+			new NewSurfaceGeneratorNether(world),
+
+			new LargeFeature[]{
+				new CavesLargeFeature(64, 256),
+//				new CavesLargeFeature(0, 64), Warrens Stuff
+				new LavaFloeLargeFeature(),
+				new RubyglassFloeLargeFeature(),
+				new ShelfLargeFeature()});
 	}
 }
