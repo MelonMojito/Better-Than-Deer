@@ -29,12 +29,12 @@ public class FluidAcid implements Fluid {
 		boolean isBottom = world.isBlockOpaqueCube(tilePos.down(queryPos));
 		if (rand.nextInt(64) == 0) {
 			world.playSoundEffect(null, SoundCategory.WORLD_SOUNDS, (float) tilePos.x() + 0.5F, (float) tilePos.y() + 0.5F, (float) tilePos.z() + 0.5F,
-				"random.fizz", rand.nextFloat() * 0.25F - 0.75F, rand.nextFloat() + 0.5F);
+				"random.fizz", rand.nextFloat() * 0.125F, rand.nextFloat() + 0.5F);
 		}
 
 		if (rand.nextInt(64) == 0) {
 			world.playSoundEffect(null, SoundCategory.WORLD_SOUNDS, (float) tilePos.x() + 0.5F, (float) tilePos.y() + 0.5F, (float) tilePos.z() + 0.5F,
-				"btd:acid.bubble", rand.nextFloat() * 0.25F + 0.5F, rand.nextFloat() - 1.0F);
+				"btd:acid.bubble", rand.nextFloat() * 0.25F + 0.25F, rand.nextFloat() - 1.0F);
 		}
 
 		if ((isBottom || rand.nextInt(16) == 0) && data == 0 && rand.nextInt(2) == 0) {

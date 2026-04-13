@@ -43,12 +43,12 @@ public class MobGargoyle extends MobFlying implements Enemy {
 
 	@Override
 	public int getMaxSpawnedInChunk() {
-		return 2;
+		return 1;
 	}
 
 	@Override
 	public int getMaxHealth() {
-		return 16;
+		return 20;
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class MobGargoyle extends MobFlying implements Enemy {
 		if (!isHanging) {
 			this.flapTimer++;
 			if (this.flapTimer >= 4 && this.isAlive()) {
-				world.playSoundAtEntity(null, this, "btd:mob.gargoyleflap", 0.25F, (random.nextFloat() / 2) + 1.5F);
+				world.playSoundAtEntity(null, this, "btd:mob.gargoyleflap", 0.15F, (random.nextFloat() / 2) + 1.5F);
 				this.flapTimer = 0;
 			}
 		} else {
@@ -76,8 +76,8 @@ public class MobGargoyle extends MobFlying implements Enemy {
 		super.tick();
 		if (!isHanging && random.nextInt(12) == 0) {
 			this.yd += 0.018;
-			this.xd += 0.018;
-			this.zd += 0.018;
+			this.xd += (2 * random.nextDouble() - 1) / 16.0;
+			this.zd += (2 * random.nextDouble() - 1) / 16.0;
 		}
 
 		if (!this.world.isClientSide && !this.world.getDifficulty().canHostileMobsSpawn()) {
@@ -97,6 +97,9 @@ public class MobGargoyle extends MobFlying implements Enemy {
 
 		if (super.hurt(attacker, i, type)) {
 			if (this.passenger != attacker && this.vehicle != attacker && attacker != this) {
+				if (this.isHanging) {
+					this.isHanging = false;
+				}
 				this.target = attacker;
 			}
 			return true;
@@ -107,10 +110,15 @@ public class MobGargoyle extends MobFlying implements Enemy {
 
 	@Override
 	protected void updateAI() {
-		Player player = world.getClosestPlayerToEntity(this, 32.0);
+		Player player;
+		if (isHanging) {
+			player = world.getClosestPlayerToEntity(this, 16.0);
+		} else {
+			player = world.getClosestPlayerToEntity(this, 32.0);
+		}
 
 		if (isHanging) {
-			if (player != null && player.getGamemode().hasHostileMobs()) {
+			if (player != null && player.getGamemode().hasHostileMobs() && this.canEntityBeSeen(player) && !player.isSneaking()) {
 				isHanging = false;
 				target = player;
 			}
@@ -123,13 +131,12 @@ public class MobGargoyle extends MobFlying implements Enemy {
 			return;
 		}
 
-		if (target != null) {
-			if (!target.isAlive() || this.distanceTo(target) > 16.0) {
-				target = null;
-			}
+		if (target != null && (!target.isAlive() || this.distanceTo(target) > 32.0)) {
+			target = null;
 		}
 
-		if ((target == null || !target.isAlive() || !(target instanceof Player)) && player != null && player.getGamemode().hasHostileMobs()) {
+
+		if ((target == null || !target.isAlive() || !(target instanceof Player)) && player != null && player.getGamemode().hasHostileMobs() && this.canEntityBeSeen(player)) {
 			target = player;
 		}
 
@@ -155,10 +162,11 @@ public class MobGargoyle extends MobFlying implements Enemy {
 
 		if (dist < 1.5 || dist > 25.0) {
 			double upwardBias = random.nextFloat() * 2.2;
+			double range = 8.0 + random.nextDouble() * 12.0;
 
-			waypointX = x + (random.nextFloat() * 4);
+			waypointX = x + (random.nextDouble() * 2.0 - 1.0) * range;
 			waypointY = y + upwardBias;
-			waypointZ = z + (random.nextFloat() * 4);
+			waypointZ = z + (random.nextDouble() * 2.0 - 1.0) * range;
 		}
 
 		if (courseChangeCooldown-- <= 0) {
@@ -171,9 +179,9 @@ public class MobGargoyle extends MobFlying implements Enemy {
 				yd += dy / dist * speed;
 				zd += dz / dist * speed;
 			} else {
-				waypointX = x;
+				waypointX = x + (random.nextDouble() * 4.0 - 2.0);
 				waypointY = y + 2.0 + random.nextFloat() * 3.0;
-				waypointZ = z;
+				waypointZ = z + (random.nextDouble() * 4.0 - 2.0);
 			}
 		}
 

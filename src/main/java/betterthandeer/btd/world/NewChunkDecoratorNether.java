@@ -1,13 +1,11 @@
 package betterthandeer.btd.world;
 
 import betterthandeer.btd.block.BTDBlocks;
-import net.minecraft.core.block.BlockLogicFallingBlock;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
 import net.minecraft.core.block.BlockLogicOreRubyglass;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.biome.Biome;
-import net.minecraft.core.world.biome.BiomeTags;
 import net.minecraft.core.world.biome.Biomes;
 import net.minecraft.core.world.generate.chunk.ChunkDecorationBuilder;
 import net.minecraft.core.world.generate.chunk.PlacementMethod;
@@ -18,7 +16,6 @@ import net.minecraft.core.world.noise.FractalNoise2D;
 import net.minecraft.core.world.noise.ImprovedPerlinNoise;
 import net.minecraft.core.world.noise.WorleyNoise;
 import net.minecraft.core.world.pos.TilePos;
-import net.minecraft.core.world.type.tag.WorldTypeTags;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Random;
@@ -196,7 +193,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.MinY)
 			.withPlacementMethod(new PlacementMethod
-				.TriesPerChunk(2)));
+				.TriesPerChunk(3)));
 
 		this.register("btd:decoration/nether/default/sulfur_pool_floor_vent", new ChunkDecorationBuilder(new WorldFeatureFloorVent())
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})
@@ -307,11 +304,11 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(1)));
 
-		this.register("btd:decoration/nether/default/patch_boulder_oldworld", new ChunkDecorationBuilder(new WorldFeatureNetherPatchBelow(BTDBlocks.EMBER.id()))
+		this.register("btd:decoration/nether/default/patch_ember_oldworld", new ChunkDecorationBuilder(new WorldFeatureNetherPatchBelow(BTDBlocks.EMBER.id()))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_OLD_WORLD})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
-				.TriesPerChunk(16)));
+				.TriesPerChunk(32)));
 
 		this.register("btd:decoration/nether/default/patch_soul_catcher", (new ChunkDecorationBuilder(new WorldFeatureNetherPatch(Blocks.SOULCATCHER.id())))
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)

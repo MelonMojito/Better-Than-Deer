@@ -18,9 +18,9 @@ public class WorldFeatureRubyglassGrowthPatch extends WorldFeature {
 	@Override
 	public boolean place(World world, Random random, int x, int y, int z) {
 		for (int i1 = 0; i1 < 20; ++i1) {
-			int x1 = x + random.nextInt(4) - random.nextInt(4);
-			int y1 = y + random.nextInt(4) - random.nextInt(4);
-			int z1 = z + random.nextInt(4) - random.nextInt(4);
+			int x1 = x + random.nextInt(4) - random.nextInt(3);
+			int y1 = y + random.nextInt(4) - random.nextInt(3);
+			int z1 = z + random.nextInt(4) - random.nextInt(3);
 
 			if (world.isAirBlock(x1, y1, z1)) {
 				TilePos bottomPos = new TilePos(x1, y1, z1);

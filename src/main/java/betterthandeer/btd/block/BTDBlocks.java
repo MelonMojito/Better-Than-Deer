@@ -7,13 +7,10 @@ import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.block.tag.BlockTags;
-import net.minecraft.core.data.tag.Tag;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.util.BlockInitEntrypoint;
-
-import java.util.function.Supplier;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
 
@@ -27,10 +24,6 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static Block<?> SULFUR;
 
 	public static Block<?> EMBER;
-
-	public static Block<?> RUBYGLASS_SPROUT;
-	public static Block<?> BLOCK_RUBYGLASS;
-	public static Block<?> COBBLE_NETHERRACK_CRYSTALLINE;
 
 	public static Block<?> OVERLAY_ROCKS;
 
@@ -92,33 +85,6 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.build("ember", 3006, block -> new BlockLogicEmber(block, Materials.STONE));
 
 
-		RUBYGLASS_SPROUT = new BlockBuilder(MOD_ID)
-			.setBlockSound(BlockSounds.GLASS)
-			.setVisualUpdateOnMetadata()
-			.setLuminance(6)
-			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
-			.setOverrideColor(MaterialColor.rubyglass)
-			.build("rubyglass.sprout", 3007, BlockLogicRubyglassSprout::new);
-
-		BLOCK_RUBYGLASS = new BlockBuilder(MOD_ID)
-			.setBlockSound(BlockSounds.GLASS)
-			.setHardness(3.0F)
-			.setUseInternalLight()
-			.setLuminance(7)
-			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
-			.setOverrideColor(MaterialColor.rubyglass)
-			.build("block.rubyglass", 3008, block -> new BlockLogic(block, Materials.STONE));
-
-		COBBLE_NETHERRACK_CRYSTALLINE = new BlockBuilder(MOD_ID)
-			.setBlockSound(BlockSounds.STONE)
-			.setHardness(0.4F)
-			.setUseInternalLight()
-			.setLuminance(7)
-			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.INFINITE_BURN, BlockTags.GROWS_RUBYGLASS, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.CAVES_CUT_THROUGH, BlockTags.NETHER_MOBS_SPAWN)
-			.setOverrideColor(MaterialColor.rubyglass)
-			.build("cobble.netherrack.crystalline", 3009, block -> new BlockLogic(block, Materials.NETHERRACK));
-
-
 		OVERLAY_ROCKS = new BlockBuilder(MOD_ID)
 			.setBlockSound(BlockSounds.STONE)
 			.setHardness(0.0F)
@@ -130,10 +96,10 @@ public class BTDBlocks implements BlockInitEntrypoint {
 
 		ICE_RUBYGLASS = new BlockBuilder(MOD_ID)
 			.setBlockSound(BlockSounds.GLASS)
-			.setHardness(3.0F)
+			.setHardness(1.5F)
 			.setLightOpacity(3)
 			.setLuminance(10)
-			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.SKATEABLE)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.SKATEABLE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.CAVES_CUT_THROUGH)
 			.setOverrideColor(MaterialColor.rubyglass)
 			.build("ice.rubyglass", 3011, BlockLogicIceRubyglass::new);
 

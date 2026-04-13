@@ -1,6 +1,5 @@
 package betterthandeer.btd;
 
-import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Blocks;
@@ -17,14 +16,10 @@ public class BTDRecipes implements RecipeEntrypoint {
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("matcher");
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("motion_sensor");
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("pebbles_to_cobblestone");
-		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("block_rubyglass");
 
-		RecipeBuilder.Shaped(MOD_ID, "RRR", "RRR", "RRR")
-			.addInput('R', Items.RUBYGLASS_CRYSTAL)
-			.create("block_rubyglass", new ItemStack(BTDBlocks.BLOCK_RUBYGLASS, 1));
 
 		RecipeBuilder.Shapeless(MOD_ID)
-			.addInput(BTDBlocks.BLOCK_RUBYGLASS)
+			.addInput(Blocks.BLOCK_RUBYGLASS)
 			.create("block_of_rubyglass_to_rubyglass", new ItemStack(Items.RUBYGLASS_CRYSTAL, 9));
 
 		RecipeBuilder.Shapeless(MOD_ID)
@@ -63,7 +58,6 @@ public class BTDRecipes implements RecipeEntrypoint {
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_limestone_to_marble");
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_netherrack_to_magma");
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_stone_to_slate");
-
 
 
 		RecipeBuilder.BlastFurnace(MOD_ID)
@@ -121,10 +115,8 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.create("cobble_gloomstone_to_gloomstone", new ItemStack(Blocks.GLOOMSTONE, 1));
 
 
-
-
-
 		RecipeBuilder.ModifyTrommel("minecraft", "brimsand").deleteRecipe();
+		RecipeBuilder.ModifyTrommel("minecraft", "soul_sand").addEntry(new WeightedRandomLootObject(BTDItems.AMMO_ROCK.getDefaultStack(), 1, 2), 15.0);
 
 		RecipeBuilder.Trommel(MOD_ID)
 			.setInput(Blocks.BRIMSAND)

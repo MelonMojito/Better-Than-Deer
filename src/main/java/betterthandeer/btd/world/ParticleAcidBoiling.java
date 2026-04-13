@@ -65,7 +65,7 @@ public class ParticleAcidBoiling extends Particle {
 
 		if (this.lifetime == 6) {
 			this.tex = this.popping;
-			this.world.spawnParticle("smoke", this.x, this.y, this.z, 0.0F, 0.0F, 0.0F, 1, false);
+			this.world.spawnParticle("arrowtrail", this.x, this.y, this.z, 0.0F, 0.0F, 0.0F, 1, false);
 		} else if (this.lifetime <= 0) {
 			this.remove();
 		}

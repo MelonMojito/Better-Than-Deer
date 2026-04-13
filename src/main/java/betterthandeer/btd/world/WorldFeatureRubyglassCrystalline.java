@@ -95,7 +95,7 @@ public class WorldFeatureRubyglassCrystalline implements WorldFeatureInterface {
 		float rx = 0.0F;
 		float ry = 0.0F;
 		Block<?> column = Blocks.RUBYGLASS_COLUMN;
-		Block<?> bed = BTDBlocks.COBBLE_NETHERRACK_CRYSTALLINE;
+		Block<?> bed = Blocks.COBBLE_NETHERRACK_CRYSTALLINE;
 		Block<?> node = Blocks.RUBYGLASS_NODE;
 		TilePos ti = new TilePos(tilePos);
 		ti.y = this.isCeiling ? ti.y + base / 2 : ti.y - base / 2;
