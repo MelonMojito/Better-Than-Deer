@@ -158,7 +158,7 @@ public class NewSurfaceGeneratorNether extends SurfaceGeneratorNether {
 							}
 						} else if (biome == Biomes.NETHER_CRYSTAL_PLAINS || biome == Biomes.NETHER_CRYSTAL_FOREST) {
 							if (rand.nextInt(8) == 0) {
-								stoneBlockId = BTDBlocks.COBBLE_NETHERRACK_CRYSTALLINE.id();
+								stoneBlockId = Blocks.COBBLE_NETHERRACK_CRYSTALLINE.id();
 							} else {
 								stoneBlockId = Blocks.COBBLE_NETHERRACK.id();
 							}

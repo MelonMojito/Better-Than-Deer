@@ -196,7 +196,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.MinY)
 			.withPlacementMethod(new PlacementMethod
-				.TriesPerChunk(2)));
+				.TriesPerChunk(3)));
 
 		this.register("btd:decoration/nether/default/sulfur_pool_floor_vent", new ChunkDecorationBuilder(new WorldFeatureFloorVent())
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})

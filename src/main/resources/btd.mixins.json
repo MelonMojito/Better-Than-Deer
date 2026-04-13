@@ -16,6 +16,7 @@
     "DeerSoundsMixin",
     "EntityInAcidMixin",
     "GhastDropsMixin",
+    "MixinTag",
     "MobInAcidMixin",
     "NetherMobSpawningMixin",
     "SulfurMobSpawningMixin",
@@ -23,11 +24,11 @@
     "UpdateNetherBiomesMixin",
     "VolcanoMobSpawningMixin",
     "WorldFeatureFireMixin",
-    "WorldFeatureRubyglassSproutPatchMixin",
     "ZombiePigSwordMixin"
   ],
   "client": [
     "AcidFogMixin",
+    "MixinDispatcher",
     "NetherParticlesMixin",
     "OldWorldColorMixin",
     "TextureManagerMixin"

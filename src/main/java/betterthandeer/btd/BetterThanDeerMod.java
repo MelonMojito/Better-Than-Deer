@@ -5,6 +5,7 @@ import betterthandeer.btd.entity.BTDEntities;
 import betterthandeer.btd.entity.NetEntryRock;
 import betterthandeer.btd.item.BTDItems;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.tag.BlockTags;
@@ -70,7 +71,6 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 	}
 
 
-
 	public void setZombiepigArmorBags() {
 		ZOMBIEPIG_ARMOR_BAGS.put(HumanArmorShape.HEAD, (new ArmorBag<>(HumanArmorShape.HEAD))
 			.addEntry(null, 400, 1.0F)
@@ -115,19 +115,18 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		Blocks.STAIRS_BRICK_OLIVINE.withTags(BlockTags.MINEABLE_BY_PICKAXE);
 
 
-
 		Blocks.COBBLE_BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
 		Blocks.BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
 
-		Blocks.RUBYGLASS_SPROUT.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
-		Blocks.BLOCK_RUBYGLASS.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
-		Blocks.COBBLE_NETHERRACK_CRYSTALLINE.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
+		Blocks.COBBLE_NETHERRACK_CRYSTALLINE.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.INFINITE_BURN, BlockTags.GROWS_RUBYGLASS, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.CAVES_CUT_THROUGH, BlockTags.NETHER_MOBS_SPAWN);
 		Blocks.FLOWSTONE.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
 
-		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
+		((ITagDuck<Block<?>>) BlockTags.GROWS_FLOWERS).btd$untag(Blocks.COBBLE_NETHERRACK_CRYSTALLINE);
+		((ITagDuck<Block<?>>) BlockTags.PLACE_OVERWRITES).btd$untag(Blocks.BONE_PILE);
+		((ITagDuck<Block<?>>) BlockTags.PLANTABLE_IN_JAR).btd$untag(Blocks.BONE_PILE);
+		((ITagDuck<Block<?>>) BlockTags.PLACE_OVERWRITES).btd$untag(Blocks.SOULCATCHER);
 
-		Blocks.BONE_PILE.withTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.SHEARS_DO_SILK_TOUCH, BlockTags.MINEABLE_BY_PICKAXE);
-		Blocks.SOULCATCHER.withTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.SHEARS_DO_SILK_TOUCH, BlockTags.PLANTABLE_IN_JAR, BlockTags.MINEABLE_BY_SHOVEL);
+		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
 
 		Blocks.NETHERRACK.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.INFINITE_BURN, BlockTags.CAVES_CUT_THROUGH, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK);
 

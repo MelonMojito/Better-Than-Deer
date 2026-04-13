@@ -39,7 +39,7 @@ public abstract class NetherParticlesMixin {
 
 		if (localBiome == Biomes.NETHER_SULFUR_POOLS) {
 
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 16; i++) {
 				double rx = player.x - 12 + world.rand.nextDouble() * 24;
 				double ry = player.y - 6 + world.rand.nextDouble() * 12;
 				double rz = player.z - 12 + world.rand.nextDouble() * 24;

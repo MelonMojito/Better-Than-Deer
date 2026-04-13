@@ -36,33 +36,33 @@ public abstract class BiomeProviderNetherMixin {
 		return original / BIOME_STRETCH_FACTOR;
 	}
 
-	@Inject(method = "lookupBiome", at = @At("HEAD"), cancellable = true)
-	public void lookupBiome(double temperature, double humidity, double altitude, double variety, CallbackInfoReturnable<Biome> cir) {
-		if (temperature >= 0.95) {
-			cir.setReturnValue(Biomes.NETHER_VOLCANIC_ISLANDS);
-		}
-		else if (temperature >= 0.75) {
-			cir.setReturnValue(Biomes.NETHER_CRAG);
-		}
-		else if (temperature >= 0.70) {
-			cir.setReturnValue(Biomes.NETHER_SHELF);
-		}
-		else if (temperature >= 0.55) {
-			cir.setReturnValue(Biomes.NETHER_SULFUR_POOLS);
-		}
-		else if (temperature >= 0.50) {
-			cir.setReturnValue(Biomes.NETHER_SHELF);
-		}
-		else if (temperature >= 0.25) {
-			cir.setReturnValue(humidity < 0.2 ? Biomes.NETHER_CRYSTAL_PLAINS : Biomes.NETHER_CRYSTAL_FOREST);
-		}
-		else if (temperature >= 0.20) {
-			cir.setReturnValue(Biomes.NETHER_SHELF);
-		}
-		else {
-			cir.setReturnValue(Biomes.NETHER_OLD_WORLD);
-		}
-
-		cir.cancel();
-	}
+//	@Inject(method = "lookupBiome", at = @At("HEAD"), cancellable = true)
+//	public void lookupBiome(double temperature, double humidity, double altitude, double variety, CallbackInfoReturnable<Biome> cir) {
+//		if (temperature >= 0.95) {
+//			cir.setReturnValue(Biomes.NETHER_VOLCANIC_ISLANDS);
+//		}
+//		else if (temperature >= 0.85) {
+//			cir.setReturnValue(Biomes.NETHER_CRAG);
+//		}
+//		else if (temperature >= 0.80) {
+//			cir.setReturnValue(Biomes.NETHER_SHELF);
+//		}
+//		else if (temperature >= 0.70) {
+//			cir.setReturnValue(Biomes.NETHER_SULFUR_POOLS);
+//		}
+//		else if (temperature >= 0.65) {
+//			cir.setReturnValue(Biomes.NETHER_SHELF);
+//		}
+//		else if (temperature >= 0.25) {
+//			cir.setReturnValue(humidity < 0.2 ? Biomes.NETHER_CRYSTAL_PLAINS : Biomes.NETHER_CRYSTAL_FOREST);
+//		}
+//		else if (temperature >= 0.20) {
+//			cir.setReturnValue(Biomes.NETHER_SHELF);
+//		}
+//		else {
+//			cir.setReturnValue(Biomes.NETHER_OLD_WORLD);
+//		}
+//
+//		cir.cancel();
+//	}
 }

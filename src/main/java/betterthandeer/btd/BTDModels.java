@@ -35,10 +35,6 @@ public class BTDModels implements ModelEntrypoint {
 
 		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.EMBER, loadDataModel("btd:block/ember")));
 
-		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_SPROUT, loadDataModel("btd:block/sprout")).render3D(false));
-		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.BLOCK_RUBYGLASS, loadDataModel("btd:block/block_rubyglass")));
-		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.COBBLE_NETHERRACK_CRYSTALLINE, loadDataModel("btd:block/crystalline")));
-
 		dispatcher.addDispatch(new BlockModelGenericRocks<>(BTDBlocks.OVERLAY_ROCKS));
 
 		dispatcher.addDispatch((new BlockModelGeneric<>(BTDBlocks.ICE_RUBYGLASS, loadDataModel("btd:block/ice_rubyglass"))).forceCullSelf(true));
@@ -56,7 +52,6 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.RUBYGLASS_GROWTH, "btd").setFullBright());
 
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
-		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.RUBYGLASS_SPROUT.asItem())).setFullBright());
 	}
 
 	@Override

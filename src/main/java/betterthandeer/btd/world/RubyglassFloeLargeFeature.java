@@ -52,7 +52,7 @@ public class RubyglassFloeLargeFeature extends LargeFeature {
 					double lineWidth = this.gapNoise.getValue((double) (baseChunkX * 16 + x) / lineScale, (double) (baseChunkZ * 16 + z) / lineScale) / (double) 2.0F + (double) 0.5F;
 					if (MathHelper.unsignedMod(worleyResult.index, 15.0F) != (double) 0.0F && !(worleyResult.distance > 0.9 + lineWidth * 0.05)) {
 						for (int y = oceanY - 3; y < oceanY; ++y) {
-							this.trySetBlock(result, x, y, z, BTDBlocks.COBBLE_NETHERRACK_CRYSTALLINE.id());
+							this.trySetBlock(result, x, y, z, Blocks.COBBLE_NETHERRACK_CRYSTALLINE.id());
 						}
 
 						for (int y = oceanY; y < oceanY + 1; ++y) {
