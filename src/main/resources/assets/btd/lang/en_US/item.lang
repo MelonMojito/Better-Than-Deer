@@ -13,6 +13,9 @@ item.ammo.rock.desc=A chunk of rubble found buried in the nether.
 item.rubyglass.growth.name=Rubyglass Growth
 item.rubyglass.growth.desc=A large bud of rubyglass, branching out in multiple directions.
 
+item.ammo.arrow.flaming.name=Flaming Arrow
+item.ammo.arrow.flaming.desc=A sulfur coated projectile that burns any foe.
+
 
 
 

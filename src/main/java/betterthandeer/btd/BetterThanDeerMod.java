@@ -2,6 +2,7 @@ package betterthandeer.btd;
 
 import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.entity.BTDEntities;
+import betterthandeer.btd.entity.NetEntryArrowFlaming;
 import betterthandeer.btd.entity.NetEntryRock;
 import betterthandeer.btd.item.BTDItems;
 import net.fabricmc.api.ModInitializer;
@@ -57,6 +58,7 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		BTDItems.init();
 
 		NetEntityHandler.registerNetworkEntry(new NetEntryRock(), 150);
+		NetEntityHandler.registerNetworkEntry(new NetEntryArrowFlaming(), 151);
 	}
 
 	@Override
@@ -102,37 +104,24 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 	}
 
 	public void fixBlockTags() {
-		Blocks.BRICK_DIAMOND.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT);
-		Blocks.SLAB_BRICK_DIAMOND.withTags(BlockTags.MINEABLE_BY_PICKAXE);
-		Blocks.STAIRS_BRICK_DIAMOND.withTags(BlockTags.MINEABLE_BY_PICKAXE);
 
-		Blocks.BRICK_QUARTZ.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT);
-		Blocks.SLAB_BRICK_QUARTZ.withTags(BlockTags.MINEABLE_BY_PICKAXE);
-		Blocks.STAIRS_BRICK_QUARTZ.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+		Blocks.COBBLE_BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH);
+		Blocks.BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN);
 
-		Blocks.BRICK_OLIVINE.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT);
-		Blocks.SLAB_BRICK_OLIVINE.withTags(BlockTags.MINEABLE_BY_PICKAXE);
-		Blocks.STAIRS_BRICK_OLIVINE.withTags(BlockTags.MINEABLE_BY_PICKAXE);
-
-
-		Blocks.COBBLE_BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
-		Blocks.BASALT.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
-
-		Blocks.COBBLE_NETHERRACK_CRYSTALLINE.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.INFINITE_BURN, BlockTags.GROWS_RUBYGLASS, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.CAVES_CUT_THROUGH, BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.COBBLE_NETHERRACK_CRYSTALLINE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.CAVES_CUT_THROUGH, BlockTags.NETHER_MOBS_SPAWN);
 		Blocks.FLOWSTONE.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
 
-		((ITagDuck<Block<?>>) BlockTags.GROWS_FLOWERS).btd$untag(Blocks.COBBLE_NETHERRACK_CRYSTALLINE);
 		((ITagDuck<Block<?>>) BlockTags.PLACE_OVERWRITES).btd$untag(Blocks.BONE_PILE);
 		((ITagDuck<Block<?>>) BlockTags.PLANTABLE_IN_JAR).btd$untag(Blocks.BONE_PILE);
 		((ITagDuck<Block<?>>) BlockTags.PLACE_OVERWRITES).btd$untag(Blocks.SOULCATCHER);
 
 		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
+		Blocks.BLOCK_ASH.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN);
 
 		Blocks.SOULSCHIST.withTags(BlockTags.CAVES_CUT_THROUGH, BlockTags.CAVE_GEN_REPLACES_SURFACE);
 
-		Blocks.NETHERRACK.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.INFINITE_BURN, BlockTags.CAVES_CUT_THROUGH, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK);
+		Blocks.COBBLE_GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH);
 
-		Blocks.GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
-		Blocks.COBBLE_GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.CAVES_CUT_THROUGH);
+		Blocks.SLATE.withTags(BlockTags.CAVES_CUT_THROUGH, BlockTags.CAVE_GEN_REPLACES_SURFACE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK);
 	}
 }

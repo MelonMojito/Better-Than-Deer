@@ -1,8 +1,10 @@
 package betterthandeer.btd;
 
 import betterthandeer.btd.block.BTDBlocks;
-import betterthandeer.btd.block.BlockModelFluidAcid;
+import betterthandeer.btd.block.BlockModelGenericIceRubyGlass;
 import betterthandeer.btd.block.BlockModelGenericRocks;
+import betterthandeer.btd.entity.EntityRendererArrowFlaming;
+import betterthandeer.btd.entity.ProjectileArrowFlaming;
 import betterthandeer.btd.entity.ProjectileRock;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import betterthandeer.btd.entity.gargoyle.MobRendererGargoyle;
@@ -11,6 +13,7 @@ import net.minecraft.client.render.EntityRendererDispatcher;
 import net.minecraft.client.render.TileEntityRenderDispatcher;
 import net.minecraft.client.render.block.color.BlockColorDispatcher;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
+import net.minecraft.client.render.block.model.BlockModelFluid;
 import net.minecraft.client.render.block.model.generic.BlockModelCrystalBud;
 import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
 import net.minecraft.client.render.entity.EntityRendererSprite;
@@ -27,8 +30,8 @@ public class BTDModels implements ModelEntrypoint {
 	public void initBlockModels(BlockModelDispatcher dispatcher) {
 		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.BOULDER, loadDataModel("btd:block/boulder")).render3D(false));
 
-		dispatcher.addDispatch(new BlockModelFluidAcid<>(BTDBlocks.FLUID_ACID_FLOWING).onRenderLayer(1));
-		dispatcher.addDispatch(new BlockModelFluidAcid<>(BTDBlocks.FLUID_ACID_STILL).onRenderLayer(1));
+		dispatcher.addDispatch(new BlockModelFluid<>(BTDBlocks.FLUID_ACID_FLOWING, "btd:block/acid_still", "btd:block/acid_flowing").onRenderLayer(1));
+		dispatcher.addDispatch(new BlockModelFluid<>(BTDBlocks.FLUID_ACID_STILL, "btd:block/acid_still", "btd:block/acid_flowing").onRenderLayer(1));
 
 		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.SULFUR, loadDataModel("btd:block/sulfur")));
 
@@ -36,7 +39,7 @@ public class BTDModels implements ModelEntrypoint {
 
 		dispatcher.addDispatch(new BlockModelGenericRocks<>(BTDBlocks.OVERLAY_ROCKS));
 
-		dispatcher.addDispatch((new BlockModelGeneric<>(BTDBlocks.ICE_RUBYGLASS, loadDataModel("btd:block/ice_rubyglass"))).forceCullSelf(true));
+		dispatcher.addDispatch((new BlockModelGenericIceRubyGlass<>(BTDBlocks.ICE_RUBYGLASS, loadDataModel("btd:block/ice_rubyglass/0"))).forceCullSelf(true));
 
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_BOTTOM, loadDataModel("btd:block/growth_bottom")).render3D(false));
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_TOP, loadDataModel("btd:block/growth_top")).render3D(false));
@@ -50,6 +53,10 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.AMMO_ROCK, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.RUBYGLASS_GROWTH, "btd").setFullBright());
 
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.SULFUR, "btd"));
+
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.AMMO_ARROW_FLAMING, "btd").setFullBright());
+
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
 	}
 
@@ -57,7 +64,9 @@ public class BTDModels implements ModelEntrypoint {
 	public void initEntityModels(EntityRendererDispatcher entityRendererDispatcher) {
 		entityRendererDispatcher.assignRenderer(MobGargoyle.class, new MobRendererGargoyle(0.5F));
 
+
 		entityRendererDispatcher.assignRenderer(ProjectileRock.class, new EntityRendererSprite<>(BTDItems.AMMO_ROCK));
+		entityRendererDispatcher.assignRenderer(ProjectileArrowFlaming.class, new EntityRendererArrowFlaming());
 	}
 
 	@Override

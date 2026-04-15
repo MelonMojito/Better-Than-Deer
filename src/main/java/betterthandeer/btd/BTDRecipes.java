@@ -1,5 +1,6 @@
 package betterthandeer.btd;
 
+import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Blocks;
@@ -51,6 +52,15 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.addInput('E', BTDItems.EYE_GARGOYLE)
 			.addInput('R', Items.DUST_REDSTONE)
 			.create("matcher", new ItemStack(Blocks.MATCHER, 1));
+
+		RecipeBuilder.Shaped(MOD_ID, " S ", "SAS", " S ")
+			.addInput('S', BTDItems.SULFUR)
+			.addInput('A', Items.AMMO_ARROW)
+			.create("flaming_arrow", new ItemStack(BTDItems.AMMO_ARROW_FLAMING, 4));
+
+		RecipeBuilder.Shaped(MOD_ID, "SS", "SS")
+			.addInput('S', BTDItems.SULFUR)
+			.create("sulfur_block", new ItemStack(BTDBlocks.SULFUR, 1));
 
 
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_basalt_to_olivine");

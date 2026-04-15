@@ -23,7 +23,7 @@ public class NetEntryRock implements IVehicleEntry<ProjectileRock>, ITrackedEntr
 		return 64;
 	}
 
-	public int getPacketDelay() {
+	public int getMovementPacketDelay() {
 		return 10;
 	}
 

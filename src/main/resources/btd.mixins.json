@@ -6,11 +6,15 @@
     "defaultRequire": 1
   },
   "mixins": [
+    "ItemBowMixin",
     "MixinTag",
     "block.BetterAshMixin",
     "block.BetterBonepileMixin",
+    "block.BetterLayerAshMixin",
     "block.BetterRubyglassSproutMixin",
     "block.BetterSoulcatcherMixin",
+    "block.ButterflyParticlesMixin",
+    "block.SortCreativeInventoryMixin",
     "entity.AcidArmorMeltMixin",
     "entity.CrystalMobSpawningMixin",
     "entity.DeerSoundsMixin",
@@ -29,6 +33,7 @@
   ],
   "client": [
     "MixinDispatcher",
+    "block.AddDynamicTexturesMixin",
     "world.AcidFogMixin",
     "world.NetherParticlesMixin",
     "world.OldWorldColorMixin"

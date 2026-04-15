@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/layer/height2",
+  "textures": {
+    "top": "btd:block/block_ash",
+    "bottom": "btd:block/block_ash",
+    "side": "btd:block/block_ash"
+  }
+}

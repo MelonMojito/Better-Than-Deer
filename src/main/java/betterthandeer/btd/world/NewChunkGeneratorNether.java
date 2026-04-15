@@ -17,7 +17,6 @@ public class NewChunkGeneratorNether extends ChunkGeneratorPerlin {
 
 			new LargeFeature[]{
 				new CavesLargeFeature(64, 256),
-//				new CavesLargeFeature(0, 64), Warrens Stuff
 				new LavaFloeLargeFeature(),
 				new RubyglassFloeLargeFeature(),
 				new ShelfLargeFeature()});
