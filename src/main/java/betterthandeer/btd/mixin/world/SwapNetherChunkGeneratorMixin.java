@@ -7,7 +7,7 @@ import net.minecraft.core.world.type.nether.WorldTypeNether;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = WorldTypeNether.class, remap = false)
+@Mixin(WorldTypeNether.class)
 public abstract class SwapNetherChunkGeneratorMixin {
 
 	/**

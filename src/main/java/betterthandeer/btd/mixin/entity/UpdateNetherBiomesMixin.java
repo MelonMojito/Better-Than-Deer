@@ -18,11 +18,5 @@ public abstract class UpdateNetherBiomesMixin {
 			.withFillerBlock(Blocks.COBBLE_BASALT)
 			.build());
 
-		Biomes.NETHER_OLD_WORLD.withSurfaceProperties(new SurfaceProperties.Builder()
-			.withTopBlock(Blocks.BLOCK_ASH)
-			.withFillerBlock(Blocks.SLATE)
-			.build());
-
-
 	}
 }

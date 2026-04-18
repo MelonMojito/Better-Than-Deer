@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.util.Map;
 
-@Mixin(value = Dispatcher.class, remap = false)
+@Mixin(Dispatcher.class)
 public interface MixinDispatcher {
 
 	@Accessor("dispatches")

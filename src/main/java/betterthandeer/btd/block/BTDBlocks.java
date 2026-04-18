@@ -1,7 +1,10 @@
 package betterthandeer.btd.block;
 
 import betterthandeer.btd.item.BTDItems;
-import net.minecraft.core.block.*;
+import net.minecraft.core.block.Block;
+import net.minecraft.core.block.BlockLogicFluid;
+import net.minecraft.core.block.BlockLogicFluidFlowing;
+import net.minecraft.core.block.BlockLogicFluidStill;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
@@ -73,7 +76,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setHardness(1.0f)
 			.setOverrideColor(MaterialColor.paintedYellow)
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH)
-			.build("sulfur", 3005, block -> new BlockLogic(block, Materials.STONE));
+			.build("sulfur", 3005, block -> new BlockLogicSulfur(block, Materials.STONE));
 
 
 		EMBER = new BlockBuilder(MOD_ID)

@@ -32,10 +32,10 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 		this.fluidLookup.put(Biomes.NETHER_CRAG, Blocks.FLUID_LAVA_STILL.id());
 		this.fluidLookup.put(Biomes.NETHER_SHELF, Blocks.COBBLE_NETHERRACK.id());
 
-		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_FOREST, BTDBlocks.ICE_RUBYGLASS.id());
-		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_PLAINS, BTDBlocks.ICE_RUBYGLASS.id());
+		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_FOREST, Blocks.FLUID_WATER_STILL.id());
+		this.fluidLookup.put(Biomes.NETHER_CRYSTAL_PLAINS, Blocks.FLUID_WATER_STILL.id());
 
-		this.fluidLookup.put(Biomes.NETHER_OLD_WORLD, Blocks.FLUID_WATER_STILL.id());
+		this.fluidLookup.put(Biomes.NETHER_OLD_WORLD, Blocks.OBSIDIAN.id());
 
 		this.minY = world.getWorldType().getMinY(world);
 		this.maxY = world.getWorldType().getMaxY(world);
@@ -54,17 +54,28 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 
 		WorldType type = this.world.getWorldType();
 		int quarterHeight = this.maxY / 4;
-//		if (y < quarterHeight) {
-//			return Blocks.SOULSCHIST.id(); Warrens Stuff
-//		} else
-			if (y >= this.maxY - this.rand.nextInt(10)) {
+		if (y < quarterHeight) {
+			return Blocks.BEDROCK.id();
+		} else if (y >= this.maxY - this.rand.nextInt(10)) {
 			return Blocks.BEDROCK.id();
 		} else if (y <= quarterHeight + this.rand.nextInt(10)) {
 			return Blocks.BEDROCK.id();
-		} else if (density > (double) 0.0F) {
+		} else if (density > 0.0) {
 			return type.getFillerBlockId();
 		} else {
-			return y < type.getOceanY() ? this.fluidLookup.getOrDefault(this.lastBiome, 0) : 0;
+			int oceanY = type.getOceanY();
+
+			if (y < oceanY) {
+				int fluidId = this.fluidLookup.getOrDefault(this.lastBiome, 0);
+
+				if (fluidId == Blocks.FLUID_WATER_STILL.id() && y == oceanY - 1) {
+					return BTDBlocks.ICE_RUBYGLASS.id();
+				}
+
+				return fluidId;
+			}
+
+			return 0;
 		}
 	}
 

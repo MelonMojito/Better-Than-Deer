@@ -17,6 +17,10 @@ public class BTDItems {
 
 	public static Item RUBYGLASS_GROWTH;
 
+	public static Item SULFUR;
+
+	public static Item AMMO_ARROW_FLAMING;
+
 	private static boolean hasInit = false;
 
 	public static void init() {
@@ -36,5 +40,9 @@ public class BTDItems {
 		AMMO_ROCK = new ItemRock("ammo.rock", "btd:item/ammo_rock", 20003);
 
 		RUBYGLASS_GROWTH = new ItemRubyglassGrowth("rubyglass.growth", "btd:item/rubyglass_growth", 20004, BTDBlocks.RUBYGLASS_GROWTH_BOTTOM, BTDBlocks.RUBYGLASS_GROWTH_TOP);
+
+		SULFUR = new Item("sulfur", "btd:item/sulfur", 20005);
+
+		AMMO_ARROW_FLAMING = new Item("ammo.arrow.flaming", "btd:item/ammo_arrow_flaming", 20006);
 	}
 }

@@ -29,12 +29,11 @@ public abstract class MobInAcidMixin extends Entity {
 
 	@Inject(method = "getDeathMessage", at = @At("HEAD"), cancellable = true)
 	private void onGetDeathMessage(Entity entityKilledBy, CallbackInfoReturnable<String> cir) {
-		if (this.world.isMaterialInBB(this.bb, BTDBlocks.ACID)) {
+		if (this.isInAcid()) {
 			String name = Entity.getNameFromEntity(this, true);
 			cir.setReturnValue(String.format("%s%s melted in acid.", name, TextFormatting.RED));
 		}
 	}
-
 
 	@Unique
 	public boolean isInAcid() {
@@ -43,17 +42,15 @@ public abstract class MobInAcidMixin extends Entity {
 
 	@Inject(method = "updateAI", at = @At("TAIL"))
 	private void updateAI(CallbackInfo ci) {
-		boolean inAcid = this.isInAcid();
-		if (inAcid) {
+		if (this.isInAcid()) {
 			this.isJumping = this.random.nextFloat() < 0.8F;
 		}
 	}
 
 	@Inject(method = "onLivingUpdate", at = @At("TAIL"))
 	private void onLivingUpdate(CallbackInfo ci) {
-		boolean inAcid = this.isInAcid();
 		if (this.isJumping) {
-			if (inAcid) {
+			if (this.isInAcid()) {
 				this.yd += 0.04;
 			} else if (this.onGround) {
 				this.jump();
@@ -63,6 +60,6 @@ public abstract class MobInAcidMixin extends Entity {
 
 	@Redirect(method = "moveEntityWithHeading", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/entity/Mob;isInLava()Z"))
 	private boolean redirectIsInLava(Mob mob) {
-		return mob.isInLava() ||  isInAcid();
+		return mob.isInLava() || this.isInAcid();
 	}
 }

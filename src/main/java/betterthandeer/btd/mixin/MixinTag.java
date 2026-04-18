@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.Set;
 
-@Mixin(value = Tag.class, remap = false)
+@Mixin(Tag.class)
 public abstract class MixinTag<E> implements ITagDuck<E> {
 
 	@Shadow

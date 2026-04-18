@@ -5,6 +5,7 @@ import net.minecraft.core.block.BlockLogicTransparent;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.block.material.Materials;
+import net.minecraft.core.entity.Entity;
 import net.minecraft.core.enums.EnumDropCause;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.util.helper.Direction;
@@ -30,6 +31,25 @@ public class BlockLogicIceRubyglass extends BlockLogicTransparent {
 			case PICK_BLOCK, SILK_TOUCH -> new ItemStack[]{new ItemStack(this)};
 			default -> null;
 		};
+	}
+
+	@Override
+	public void onEntityCollision(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Entity entity) {
+		if (world.isClientSide) return;
+
+		int data = world.getBlockData(tilePos);
+		int nextData = data + 1;
+
+		if (nextData >= 3) {
+			world.setBlockType(tilePos, Blocks.AIR);
+		} else {
+			world.setBlockDataNotify(tilePos, nextData);
+		}
+	}
+
+	@Override
+	public void onEntityWalkedOn(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Entity entity) {
+		this.onEntityCollision(world, tilePos, entity);
 	}
 
 	@Override

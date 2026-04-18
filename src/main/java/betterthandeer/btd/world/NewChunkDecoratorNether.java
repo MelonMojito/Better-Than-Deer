@@ -1,12 +1,12 @@
 package betterthandeer.btd.world;
 
 import betterthandeer.btd.block.BTDBlocks;
-import net.minecraft.core.block.BlockLogicOreNetherCoal;
-import net.minecraft.core.block.BlockLogicOreRubyglass;
-import net.minecraft.core.block.Blocks;
+import net.minecraft.core.block.*;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.biome.Biome;
+import net.minecraft.core.world.biome.BiomeTags;
 import net.minecraft.core.world.biome.Biomes;
+import net.minecraft.core.world.chunk.Chunk;
 import net.minecraft.core.world.generate.chunk.ChunkDecorationBuilder;
 import net.minecraft.core.world.generate.chunk.PlacementMethod;
 import net.minecraft.core.world.generate.chunk.PositionSelectors;
@@ -67,42 +67,47 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 		this.register("btd:decoration/nether/default/rubyglass_crystal_floor_2", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystalline(false, 15, 25)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
-			.withPlacementMethod(new PlacementMethod.TriesPerChunk(4)));
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(4)));
 
 		this.register("btd:decoration/nether/default/rubyglass_node", (new ChunkDecorationBuilder(new WorldFeatureOre(BlockLogicOreRubyglass.variantMap, 5)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniform)
-			.withPlacementMethod(new PlacementMethod.TriesPerChunk(10)));
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(10)));
 
 		this.register("btd:decoration/nether/default/rubyglass_sprout_patch", (new ChunkDecorationBuilder(new WorldFeatureRubyglassSproutPatch()))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
-			.withPlacementMethod(new PlacementMethod.TriesPerChunk(20)));
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(20)));
 
 		this.register("btd:decoration/nether/default/rubyglass_growth_patch", (new ChunkDecorationBuilder(new WorldFeatureRubyglassGrowthPatch()))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
-			.withPlacementMethod(new PlacementMethod.TriesPerChunk(20)));
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(20)));
 
 
 		// Water Features
 		this.register("btd:decoration/nether/default/nether_water_spring", (new ChunkDecorationBuilder(new WorldFeatureNewNetherSpring(Blocks.FLUID_WATER_FLOWING.id())))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS})
 			.withPositionSelector(PositionSelectors.HeightRangeBiasedTop)
-			.withPlacementMethod(new PlacementMethod.TriesPerChunk(30)));
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(16)));
 
 		// Lava Features
 		this.register("btd:decoration/nether/default/nether_lava_spring", (new ChunkDecorationBuilder(new WorldFeatureNewNetherSpring(Blocks.FLUID_LAVA_FLOWING.id())))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_CRAG, Biomes.NETHER_SHELF})
-			.withPositionSelector(PositionSelectors.HeightRangeBiasedTop)
+			.withPositionSelector(PositionSelectors.HeightRangeUniform)
 			.withPlacementMethod(new PlacementMethod
-				.TriesPerChunk(30)));
+				.TriesPerChunk(16)));
 
 		this.register("btd:decoration/nether/default/nether_lava_spring_2", (new ChunkDecorationBuilder(new WorldFeatureNewNetherSpring(Blocks.FLUID_LAVA_FLOWING.id())))
-			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})
-			.withPositionSelector(PositionSelectors.HeightRangeBiasedTop)
+			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
+			.withPositionSelector(PositionSelectors.HeightRangeUniform)
 			.withPlacementMethod(new PlacementMethod
-				.TriesPerChunk(20)));
+				.TriesPerChunk(16)));
 
 		this.register("btd:decoration/nether/default/lava_lake", (new ChunkDecorationBuilder(new WorldFeatureLake(Blocks.FLUID_LAVA_STILL.id())))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_CRAG, Biomes.NETHER_CRYSTAL_PLAINS, Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_SHELF, Biomes.NETHER_SULFUR_POOLS})
@@ -113,7 +118,15 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 		this.register("btd:decoration/nether/default/lava_pool_terrace", (new ChunkDecorationBuilder(new WorldFeatureTerrace(Blocks.FLUID_LAVA_STILL, Blocks.COBBLE_BASALT, 4, 4)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
 			.withPositionSelector(PositionSelectors.MinY)
-			.withPlacementMethod(new PlacementMethod.ChanceToPlace(3)));
+			.withPlacementMethod(new PlacementMethod
+				.ChanceToPlace(3)));
+
+
+		this.register("btd:decoration/nether/default/nether_acid_spring", (new ChunkDecorationBuilder(new WorldFeatureNewNetherSpring(BTDBlocks.FLUID_ACID_FLOWING.id())))
+			.withBiomeMask(new Biome[]{Biomes.NETHER_SULFUR_POOLS})
+			.withPositionSelector(PositionSelectors.HeightRangeUniform)
+			.withPlacementMethod(new PlacementMethod
+				.TriesPerChunk(16)));
 
 
 		// Pillar Features
@@ -232,7 +245,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 				.TriesPerChunk(2)));
 
 
-		// Nethercoal Features
+		// Ore Features
 
 		this.register("btd:decoration/nether/default/nether_coal_ore", (new ChunkDecorationBuilder(new WorldFeatureOre(BlockLogicOreNetherCoal.variantMap, 12)))
 			.withPositionSelector(PositionSelectors.HeightRangeUniform)
@@ -315,6 +328,45 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(2)));
 
+
+		this.register("btd:decoration/nether/default/rocks", (world, chunk, worldX, worldZ, minY, maxY, rangeY, rand) -> {
+			for(int i = 0; i < 16; ++i) {
+				int xx = worldX + rand.nextInt(16) + 8;
+				int yy = 64 + rand.nextInt(128);
+				int zz = worldZ + rand.nextInt(16) + 8;
+				(new WorldFeatureRocks(BTDBlocks.OVERLAY_ROCKS, 16, true)).place(world, rand, xx, yy, zz);
+			}
+
+		});
+
+	}
+
+	@Override
+	public void postDecorate(@NonNull World world, @NonNull Chunk chunk) {
+		TilePos queryPose = new TilePos();
+		int worldX = chunk.pos.x() * 16;
+		int worldZ = chunk.pos.z() * 16;
+		int startY = world.getWorldType().getMaxY(world);
+
+		for (int dx = worldX; dx < worldX + 16; ++dx) {
+			for (int dz = worldZ; dz < worldZ + 16; ++dz) {
+				for (int dy = startY; dy > 0; --dy) {
+					queryPose.set(dx, dy, dz);
+
+					if (world.isAirBlock(queryPose)) {
+						Block<?> blockBelow = world.getBlock(dx, dy - 1, dz);
+
+						if (blockBelow != Blocks.OBSIDIAN && blockBelow != BTDBlocks.EMBER && blockBelow.getMaterial().blocksMotion()) {
+
+							Biome localBiome = world.getBlockBiome(queryPose);
+							if (localBiome.hasTag(BiomeTags.HAS_SURFACE_ASH)) {
+								world.setBlockType(queryPose, Blocks.LAYER_ASH);
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 
