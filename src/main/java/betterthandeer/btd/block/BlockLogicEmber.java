@@ -19,18 +19,23 @@ public class BlockLogicEmber extends BlockLogic {
 
 	@Override
 	public void onEntityCollision(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Entity entity) {
-		world.setBlockType(tilePos, Blocks.AIR);
-		world.createExplosion(null, tilePos.x(), tilePos.y(), tilePos.z(), 3.0F, true, false);
-		entity.hurt(null, 8, DamageType.BLAST);
-		entity.maxFireTicks = 100;
-		entity.remainingFireTicks = 100;
-		entity.fling(1.0f, 1.0f, 1.0f, 0.0f);
-
+		this.ignite(world, tilePos, entity);
 	}
 
 	@Override
 	public void onEntityWalkedOn(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Entity entity) {
-		this.onEntityCollision(world, tilePos, entity);
+		this.ignite(world, tilePos, entity);
+	}
+
+	public void ignite(@NonNull World world, @NonNull TilePosc tilePos, Entity entity) {
+		if (entity != null) {
+			entity.hurt(null, 8, DamageType.BLAST);
+			entity.remainingFireTicks = 100;
+			entity.fling(1.0f, 1.0f, 1.0f, 0.0f);
+		}
+
+		world.setBlockType(tilePos, Blocks.AIR);
+		world.createExplosion(null, tilePos.x(), tilePos.y(), tilePos.z(), 3.0F, true, false);
 	}
 
 	@Override

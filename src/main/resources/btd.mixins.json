@@ -8,6 +8,7 @@
   "mixins": [
     "ItemBowMixin",
     "MixinTag",
+    "ProjectileCannonballMixin",
     "block.BetterAshMixin",
     "block.BetterBonepileMixin",
     "block.BetterLayerAshMixin",
