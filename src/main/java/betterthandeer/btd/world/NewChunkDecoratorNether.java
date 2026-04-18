@@ -328,6 +328,17 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(2)));
 
+
+		this.register("btd:decoration/nether/default/rocks", (world, chunk, worldX, worldZ, minY, maxY, rangeY, rand) -> {
+			for(int i = 0; i < 16; ++i) {
+				int xx = worldX + rand.nextInt(16) + 8;
+				int yy = 64 + rand.nextInt(128);
+				int zz = worldZ + rand.nextInt(16) + 8;
+				(new WorldFeatureRocks(BTDBlocks.OVERLAY_ROCKS, 16, true)).place(world, rand, xx, yy, zz);
+			}
+
+		});
+
 	}
 
 	@Override
