@@ -48,6 +48,14 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.SLATE.id(), Blocks.ORE_NETHERCOAL_GLOOMSTONE.id());
 	}
 
+	//TODO mixin conduit stuff
+	//Block - initialization
+	//World - get total world time
+	//World - initialize conduit handler
+	//TilePos - add Side
+	//BlockLogicWireRedstone - conduit interaction
+	//WireHandler - conduit interaction and redstone wire fixes
+
 	@Override
 	public void beforeGameStart() {
 		NAMESPACES.register(MOD_ID, MOD_ID);
