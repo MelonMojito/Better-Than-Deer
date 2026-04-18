@@ -35,6 +35,11 @@ tile.btd.rubyglass.growth.top.desc=You really shouldn't have this.
 tile.btd.rubyglass.growth.bottom.name=Bottom Rubyglass Growth
 tile.btd.rubyglass.growth.bottom.desc=Please tell me how you got this.
 
+tile.btd.slab.slate.carved.name=Polished Slate Slab
+tile.btd.slab.slate.carved.desc= slab of polished slate.
+tile.btd.slate.carved.name=Carved Slate
+tile.btd.slate.carved.desc=Polished Stone with lines hewn through the middle.
+
 
 
 

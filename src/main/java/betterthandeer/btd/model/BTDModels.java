@@ -16,6 +16,7 @@ import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.block.model.BlockModelFluid;
 import net.minecraft.client.render.block.model.generic.BlockModelCrystalBud;
 import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
+import net.minecraft.client.render.block.model.generic.BlockModelGenericSlab;
 import net.minecraft.client.render.entity.EntityRendererSprite;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
@@ -45,6 +46,15 @@ public class BTDModels implements ModelEntrypoint {
 
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_BOTTOM, loadDataModel("btd:block/growth_bottom")).render3D(false));
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_TOP, loadDataModel("btd:block/growth_top")).render3D(false));
+
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.SLATE_CARVED,
+			loadDataModel("btd:block/carved_slate")));
+		dispatcher.addDispatch(new BlockModelGenericSlab<>(BTDBlocks.SLAB_SLATE_POLISHED,
+			loadDataModel("btd:block/slab/polished_slate/lower"),
+			loadDataModel("btd:block/slab/polished_slate/upper"),
+			loadDataModel("btd:block/slab/polished_slate/full")));
+
 
 		dispatcher.addDispatch(new BlockModelChainLarge<>(BTDBlocks.CHAIN_LARGE));
 
