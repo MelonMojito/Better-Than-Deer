@@ -35,6 +35,8 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static Block<?> SLATE_CARVED;
 	public static Block<?> SLAB_SLATE_POLISHED;
 
+	public static Block<?> LOG_SCORCHED;
+
 	private static boolean hasInit = false;
 
 	public static void init() {
@@ -125,7 +127,6 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.build("rubyglass.growth.top", 3014, block -> new BlockLogicRubyglassGrowth(block, true));
 
 
-
 		SLATE_CARVED = new BlockBuilder(MOD_ID)
 			.setBlockSound(BlockSounds.STONE)
 			.setHardness(1.0F)
@@ -141,6 +142,14 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
 			.build("slab.slate.carved", 3021, block -> new BlockLogicSlab(block, SLATE_CARVED));
 
+
+		LOG_SCORCHED = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.WOOD)
+			.setHardness(1.5F)
+			.setVisualUpdateOnMetadata()
+			.setFlammability(0, 0)
+			.setTags(BlockTags.FENCES_CONNECT, BlockTags.MINEABLE_BY_AXE)
+			.build("log.scorched", 3025, BlockLogicLog::new);
 
 
 	}

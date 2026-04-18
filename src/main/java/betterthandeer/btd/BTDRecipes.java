@@ -4,6 +4,7 @@ import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Blocks;
+import net.minecraft.core.data.registry.Registries;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import turniplabs.halplibe.helper.RecipeBuilder;
@@ -18,6 +19,9 @@ public class BTDRecipes implements RecipeEntrypoint {
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("motion_sensor");
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("pebbles_to_cobblestone");
 
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(BTDBlocks.LOG_SCORCHED)
+			.create("scorched_log_to_black_wooden_planks", new ItemStack(Blocks.PLANKS_OAK_PAINTED, 4, 15));
 
 		RecipeBuilder.Shapeless(MOD_ID)
 			.addInput(Blocks.BLOCK_RUBYGLASS)
@@ -72,6 +76,13 @@ public class BTDRecipes implements RecipeEntrypoint {
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_limestone_to_marble");
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_netherrack_to_magma");
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_stone_to_slate");
+		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("log_to_petrified_pillar");
+
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(0, "minecraft:logs")
+			.setInput(1, Blocks.BLOCK_ASH)
+			.create("log_to_scorched_log", new ItemStack(BTDBlocks.LOG_SCORCHED, 1));
 
 
 		RecipeBuilder.BlastFurnace(MOD_ID)
@@ -149,5 +160,7 @@ public class BTDRecipes implements RecipeEntrypoint {
 	public void initNamespaces() {
 		RecipeBuilder.initNameSpace(MOD_ID);
 		RecipeBuilder.getRecipeNamespace(MOD_ID);
+
+		Registries.ITEM_GROUPS.getItem("minecraft:logs").add(BTDBlocks.LOG_SCORCHED.getDefaultStack());
 	}
 }

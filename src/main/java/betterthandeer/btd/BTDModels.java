@@ -16,6 +16,7 @@ import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.block.model.BlockModelFluid;
 import net.minecraft.client.render.block.model.generic.BlockModelCrystalBud;
 import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
+import net.minecraft.client.render.block.model.generic.BlockModelGenericAxis;
 import net.minecraft.client.render.block.model.generic.BlockModelGenericSlab;
 import net.minecraft.client.render.entity.EntityRendererSprite;
 import net.minecraft.client.render.item.model.ItemModelBlock;
@@ -52,6 +53,10 @@ public class BTDModels implements ModelEntrypoint {
 			loadDataModel("btd:block/slab/polished_slate/lower"),
 			loadDataModel("btd:block/slab/polished_slate/upper"),
 			loadDataModel("btd:block/slab/polished_slate/full")));
+
+
+		dispatcher.addDispatch(new BlockModelGenericAxis<>(BTDBlocks.LOG_SCORCHED,
+			loadDataModel("btd:block/log/scorched")));
 
 	}
 

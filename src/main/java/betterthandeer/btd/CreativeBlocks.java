@@ -262,7 +262,7 @@ public final class CreativeBlocks {
 		add(list, Blocks.LOG_EUCALYPTUS);
 		add(list, Blocks.LOG_THORN);
 		add(list, Blocks.LOG_PALM);
-		add(list, Blocks.LOG_PETRIFIED);
+		add(list, BTDBlocks.LOG_SCORCHED);
 
 
 		//LEAVES

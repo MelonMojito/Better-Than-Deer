@@ -40,6 +40,9 @@ tile.btd.slab.slate.carved.desc= slab of polished slate.
 tile.btd.slate.carved.name=Carved Slate
 tile.btd.slate.carved.desc=Polished Stone with lines hewn through the middle.
 
+tile.btd.log.scorched.name=Scorched Log
+tile.btd.log.scorched.desc=A pillar of carbon, encased in ash.
+
 
 
 
