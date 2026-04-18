@@ -27,6 +27,10 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.addInput(Blocks.BLOCK_SUGARCANE)
 			.create("block_of_sugarcane_to_sugarcane", new ItemStack(Items.SUGARCANE, 9));
 
+		RecipeBuilder.Shaped(MOD_ID, "SSS")
+			.addInput('S', Blocks.SLATE_POLISHED)
+			.create("polished_slate_slab", new ItemStack(BTDBlocks.SLAB_SLATE_POLISHED, 6));
+
 		RecipeBuilder.Shaped(MOD_ID, "PP", "PP")
 			.addInput('P', BTDItems.AMMO_ROCK)
 			.create("rocks_to_netherrack", new ItemStack(Blocks.COBBLE_NETHERRACK, 2));
