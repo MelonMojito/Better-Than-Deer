@@ -1,10 +1,7 @@
 package betterthandeer.btd.block;
 
 import betterthandeer.btd.item.BTDItems;
-import net.minecraft.core.block.Block;
-import net.minecraft.core.block.BlockLogicFluid;
-import net.minecraft.core.block.BlockLogicFluidFlowing;
-import net.minecraft.core.block.BlockLogicFluidStill;
+import net.minecraft.core.block.*;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
@@ -27,6 +24,8 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static Block<?> SULFUR;
 
 	public static Block<?> EMBER;
+
+	public static Block<?> CHAIN_LARGE;
 
 	public static Block<?> OVERLAY_ROCKS;
 
@@ -124,6 +123,13 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setStatParent(() -> BTDItems.RUBYGLASS_GROWTH)
 			.build("rubyglass.growth.top", 3014, block -> new BlockLogicRubyglassGrowth(block, true));
 
+
+		CHAIN_LARGE = new BlockBuilder(MOD_ID)
+			.setTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.MINEABLE_BY_PICKAXE)
+			.setTicking(true)
+			.setUseInternalLight()
+			.setLuminance(10)
+			.build("chain.large", 3015, block -> new BlockLogic(block, Materials.METAL));
 
 	}
 

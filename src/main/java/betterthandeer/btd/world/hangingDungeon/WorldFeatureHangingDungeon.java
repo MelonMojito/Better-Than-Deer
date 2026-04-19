@@ -121,7 +121,7 @@ public class WorldFeatureHangingDungeon {
 		static {
 			hangingDungeonBase.addEntry(Blocks.BRICK_GLOOMSTONE,  1  );
 			hangingDungeonBase.addEntry(Blocks.GLOOMSTONE_CARVED, .75);
-			hangingDungeonBase.addEntry(Blocks.GLOOMSTONE, .10);
+			hangingDungeonBase.addEntry(Blocks.GLOOMSTONE_POLISHED, .10);
 		}
 
 		private final static WeightedRandomBag<Block<?>> hangingDungeonRope = new WeightedRandomBag<>();

@@ -43,6 +43,9 @@ public class BTDModels implements ModelEntrypoint {
 
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_BOTTOM, loadDataModel("btd:block/growth_bottom")).render3D(false));
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_TOP, loadDataModel("btd:block/growth_top")).render3D(false));
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.CHAIN_LARGE, loadDataModel("btd:block/chain_large")));
+
 	}
 
 	@Override
