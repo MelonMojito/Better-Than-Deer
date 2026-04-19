@@ -16,6 +16,22 @@ item.rubyglass.growth.desc=A large bud of rubyglass, branching out in multiple d
 item.ammo.arrow.flaming.name=Flaming Arrow
 item.ammo.arrow.flaming.desc=A sulfur coated projectile that burns any foe.
 
+
+
+item.statue.slate.name=Slate Statue
+item.statue.slate.desc=A decorative slate statue for you to hang your armor.
+
+item.statue.permafrost.name=Permafrost Statue
+item.statue.permafrost.desc=A decorative permafrost statue for you to hang your armor.
+
+item.statue.netherrack.name=Netherrack Statue
+item.statue.netherrack.desc=A decorative netherrack statue for you to hang your armor.
+
+item.statue.gloomstone.name=Gloomstone Statue
+item.statue.gloomstone.desc=A decorative gloomstone statue for you to hang your armor.
+
+
+
 item.chain.large.name=Large chain
 item.chain.large.desc=Used to chain large things.
 

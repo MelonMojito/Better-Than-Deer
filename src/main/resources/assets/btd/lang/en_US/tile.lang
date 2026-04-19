@@ -41,7 +41,25 @@ tile.btd.slate.carved.name=Carved Slate
 tile.btd.slate.carved.desc=Polished Stone with lines hewn through the middle.
 
 
+tile.btd.statue.slate.lower.name=Slate Statue (Lower)
+tile.btd.statue.slate.lower.desc=
+tile.btd.statue.slate.upper.name=Slate Statue (Upper)
+tile.btd.statue.slate.upper.desc=
 
+tile.btd.statue.permafrost.lower.name=Permafrost Statue (Lower)
+tile.btd.statue.permafrost.lower.desc=
+tile.btd.statue.permafrost.upper.name=Permafrost Statue (Upper)
+tile.btd.statue.permafrost.upper.desc=
+
+tile.btd.statue.netherrack.lower.name=Netherrack Statue (Lower)
+tile.btd.statue.netherrack.lower.desc=
+tile.btd.statue.netherrack.upper.name=Netherrack Statue (Upper)
+tile.btd.statue.netherrack.upper.desc=
+
+tile.btd.statue.gloomstone.lower.name=Gloomstone Statue (Lower)
+tile.btd.statue.gloomstone.lower.desc=
+tile.btd.statue.gloomstone.upper.name=Gloomstone Statue (Upper)
+tile.btd.statue.gloomstone.upper.desc=
 
 
 
