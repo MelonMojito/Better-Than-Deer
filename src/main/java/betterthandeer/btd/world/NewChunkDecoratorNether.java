@@ -371,7 +371,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			(new ChunkDecorationBuilder(new WorldFeatureHangingDungeon.Netherrack()))
 				.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 				.withPlacementMethod(new PlacementMethod.ChanceToPlace(20))
-				.withBiomeMask(new Biome[] {Biomes.NETHER_SULFUR_POOLS, Biomes.NETHER_SHELF})
+				.withBiomeMask(new Biome[] {Biomes.NETHER_SULFUR_POOLS, Biomes.NETHER_SHELF, Biomes.NETHER_VOLCANIC_ISLANDS})
 		);
 	}
 
