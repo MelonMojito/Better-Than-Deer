@@ -289,7 +289,11 @@ public final class CreativeItems {
 		out.add(new ItemStack(Items.STATUE_BASALT));
 		out.add(new ItemStack(Items.STATUE_LIMESTONE));
 		out.add(new ItemStack(Items.STATUE_GRANITE));
+		out.add(new ItemStack(BTDItems.STATUE_PERMAFROST));
 		out.add(new ItemStack(Items.STATUE_MARBLE));
+		out.add(new ItemStack(BTDItems.STATUE_SLATE));
+		out.add(new ItemStack(BTDItems.STATUE_NETHERRACK));
+		out.add(new ItemStack(BTDItems.STATUE_GLOOMSTONE));
 		out.add(new ItemStack(Items.STATUE_PIGMAN));
 
 		out.add(new ItemStack(BTDItems.RUBYGLASS_GROWTH));
