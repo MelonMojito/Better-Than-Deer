@@ -8,6 +8,7 @@ import net.minecraft.core.data.registry.Registries;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import turniplabs.halplibe.helper.RecipeBuilder;
+import turniplabs.halplibe.helper.recipeBuilders.RecipeBuilderShaped;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
@@ -23,13 +24,12 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.addInput(BTDBlocks.LOG_SCORCHED)
 			.create("scorched_log_to_black_wooden_planks", new ItemStack(Blocks.PLANKS_OAK_PAINTED, 4, 15));
 
-		RecipeBuilder.Shapeless(MOD_ID)
-			.addInput(Blocks.BLOCK_RUBYGLASS)
-			.create("block_of_rubyglass_to_rubyglass", new ItemStack(Items.RUBYGLASS_CRYSTAL, 9));
+		RecipeBuilderShaped templateStatue = new RecipeBuilderShaped(MOD_ID, "B", "B", "S");
+		templateStatue.addInput('B', Blocks.SLATE).addInput('S', BTDBlocks.SLAB_SLATE_POLISHED).create("statue_slate", new ItemStack(BTDItems.STATUE_SLATE, 1));
+		templateStatue.addInput('B', Blocks.PERMAFROST).addInput('S', Blocks.SLAB_PERMAFROST_POLISHED).create("statue_permafrost", new ItemStack(BTDItems.STATUE_PERMAFROST, 1));
+		templateStatue.addInput('B', Blocks.NETHERRACK).addInput('S', Blocks.SLAB_NETHERRACK_POLISHED).create("statue_netherrack", new ItemStack(BTDItems.STATUE_NETHERRACK, 1));
+		templateStatue.addInput('B', Blocks.GLOOMSTONE).addInput('S', Blocks.SLAB_GLOOMSTONE_POLISHED).create("statue_gloomstone", new ItemStack(BTDItems.STATUE_GLOOMSTONE, 1));
 
-		RecipeBuilder.Shapeless(MOD_ID)
-			.addInput(Blocks.BLOCK_SUGARCANE)
-			.create("block_of_sugarcane_to_sugarcane", new ItemStack(Items.SUGARCANE, 9));
 
 		RecipeBuilder.Shaped(MOD_ID, "SSS")
 			.addInput('S', Blocks.SLATE_POLISHED)
