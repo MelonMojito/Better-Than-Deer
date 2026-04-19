@@ -1,6 +1,7 @@
 package betterthandeer.btd.world;
 
 import betterthandeer.btd.block.BTDBlocks;
+import net.minecraft.core.WeightedRandomBag;
 import net.minecraft.core.block.*;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.biome.Biome;
@@ -339,6 +340,31 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 		});
 
+		// Dungeon Features
+		final var hangingDungeonBase = new WeightedRandomBag<Block<?>>();
+
+		hangingDungeonBase.addEntry(Blocks.BRICK_BASALT,  1  );
+		hangingDungeonBase.addEntry(Blocks.BASALT_CARVED, .75);
+		hangingDungeonBase.addEntry(Blocks.BASALT_POLISHED, .10);
+
+		final var hangingDungeonRope = new WeightedRandomBag<Block<?>>();
+
+		hangingDungeonRope.addEntry(Blocks.ROPE, 1);
+
+		this.register(
+			"btd:decoration/nether/default/handing_dungeon",
+			(new ChunkDecorationBuilder(new WorldFeatureHangingDungeon(
+				7,
+				32,
+				10,
+				5,
+				hangingDungeonBase, hangingDungeonRope,
+				WorldFeatureHangingDungeon.lootNormal
+			)))
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+			.withPlacementMethod(new PlacementMethod.ChanceToPlace(10))
+
+		);
 	}
 
 	@Override
