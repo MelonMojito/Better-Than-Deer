@@ -17,6 +17,7 @@
     "block.BurnLogMixin",
     "block.ButterflyParticlesMixin",
     "block.SortCreativeInventoryMixin",
+    "block.StatueScrapeSoundMixin",
     "entity.AcidArmorMeltMixin",
     "entity.CrystalMobSpawningMixin",
     "entity.DeerSoundsMixin",
