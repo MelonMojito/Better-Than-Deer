@@ -1,22 +1,15 @@
-package betterthandeer.btd.world;
+package betterthandeer.btd.world.hangingDungeon;
 
 import betterthandeer.btd.BTDHelpers;
-import betterthandeer.btd.entity.BTDEntities;
-import betterthandeer.btd.entity.gargoyle.MobGargoyle;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.WeightedRandomBag;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.entity.TileEntityChest;
 import net.minecraft.core.block.entity.TileEntityMobSpawner;
-import net.minecraft.core.item.Item;
-import net.minecraft.core.item.ItemStack;
-import net.minecraft.core.item.Items;
 import net.minecraft.core.util.helper.DyeColor;
 import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.world.World;
-import net.minecraft.core.world.generate.feature.WorldFeatureDungeon;
 import net.minecraft.core.world.generate.feature.WorldFeatureInterface;
 import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.pos.TilePosc;
@@ -28,29 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class WorldFeatureHangingDungeon implements WorldFeatureInterface {
-	public static final WeightedRandomBag<WeightedRandomLootObject> lootNormal = new WeightedRandomBag<>();
-
-	static {
-		lootNormal.addEntry(new WeightedRandomLootObject(Items.INGOT_STEEL_CRUDE.getDefaultStack(), 1, 6), 50.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Items.FOOD_APPLE_GOLD.getDefaultStack()), 3.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Items.DUST_REDSTONE.getDefaultStack(), 6, 24), 100.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Items.DUST_GLOWSTONE.getDefaultStack(), 6, 24), 100.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Items.NETHERCOAL.getDefaultStack(), 3, 9), 100.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Blocks.TNT.getDefaultStack(), 4, 12), 50.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Blocks.RAIL.getDefaultStack(), 12, 32), 50.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Blocks.RAIL_POWERED.getDefaultStack(), 9, 16), 50.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Items.INGOT_GOLD.getDefaultStack(), 5, 8), 100.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Items.INGOT_IRON.getDefaultStack(), 5, 10), 100.0F);
-
-		for(int i = 0; i < 9; ++i) {
-			lootNormal.addEntry(new WeightedRandomLootObject(new ItemStack(Item.itemsList[Items.RECORD_13.id + i]), 1), 1.0F);
-		}
-
-		lootNormal.addEntry(new WeightedRandomLootObject(Blocks.PUMICE_DRY.getDefaultStack(), 2, 7), 100.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(Items.BONE.getDefaultStack(), 2, 7), 100.0F);
-		lootNormal.addEntry(new WeightedRandomLootObject(null), 180.0F);
-	}
+public class WorldFeatureHangingDungeonBase implements WorldFeatureInterface {
 
 	public final int maxDrop;
 	public final int minDrop;
@@ -62,7 +33,7 @@ public class WorldFeatureHangingDungeon implements WorldFeatureInterface {
 
 	public final WeightedRandomBag<WeightedRandomLootObject> lootTable;
 
-	public WorldFeatureHangingDungeon(
+	public WorldFeatureHangingDungeonBase(
 		int size,
 		int maxDrop,
 		int minDrop,
@@ -123,11 +94,11 @@ public class WorldFeatureHangingDungeon implements WorldFeatureInterface {
 			return false;
 		}
 
-		if (maxMaxHeight - tilePosc.y() > this.maxDrop * 2) {
+		var minHeight = minMaxHeight - MathHelper.clamp(random.nextInt(minMaxHeight - tilePosc.y()), this.minDrop, this.maxDrop);
+
+		if (maxMaxHeight - minHeight > this.maxDrop * 2) {
 			return false;
 		}
-
-		var minHeight = tilePosc.y() + MathHelper.clamp(random.nextInt(minMaxHeight - tilePosc.y()), this.minDrop, this.maxDrop);
 
 		for (TilePos corner : corners) {
 			for (int y = minHeight; y < corner.y(); y++) {
@@ -159,7 +130,7 @@ public class WorldFeatureHangingDungeon implements WorldFeatureInterface {
 
 		final var positions = new ArrayList<TilePos>();
 		positions.add(new TilePos(half, 0, 0));
-		positions.add(new TilePos(- half, 0, 0));
+		positions.add(new TilePos(-half, 0, 0));
 		positions.add(new TilePos(0, 0, half));
 		positions.add(new TilePos(0, 0, -half));
 
@@ -190,7 +161,6 @@ public class WorldFeatureHangingDungeon implements WorldFeatureInterface {
 			);
 
 			this.place(world, random, block);
-			Minecraft.getMinecraft().thePlayer.moveTo(block.x, block.y, block.z, 0, 0);
 		}
 
 		return true;
