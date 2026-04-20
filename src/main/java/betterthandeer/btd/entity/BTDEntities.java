@@ -1,6 +1,8 @@
 package betterthandeer.btd.entity;
 
+import betterthandeer.btd.entity.arrow.flaming.ProjectileArrowFlaming;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
+import betterthandeer.btd.entity.rock.ProjectileRock;
 import net.minecraft.core.entity.EntityDispatcher;
 import net.minecraft.core.util.collection.NamespaceID;
 

@@ -1,6 +1,6 @@
 package betterthandeer.btd.mixin.world;
 
-import betterthandeer.btd.world.NewChunkGeneratorNether;
+import betterthandeer.btd.world.chunk.generator.NewChunkGeneratorNether;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.generate.chunk.ChunkGenerator;
 import net.minecraft.core.world.type.nether.WorldTypeNether;

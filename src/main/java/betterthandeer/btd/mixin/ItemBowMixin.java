@@ -1,6 +1,6 @@
 package betterthandeer.btd.mixin;
 
-import betterthandeer.btd.entity.ProjectileArrowFlaming;
+import betterthandeer.btd.entity.arrow.flaming.ProjectileArrowFlaming;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.entity.projectile.ProjectileArrow;

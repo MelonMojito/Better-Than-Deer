@@ -1,7 +1,7 @@
 package betterthandeer.btd.mixin.block;
 
-import betterthandeer.btd.CreativeBlocks;
-import betterthandeer.btd.CreativeItems;
+import betterthandeer.btd.block.CreativeBlocks;
+import betterthandeer.btd.item.CreativeItems;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.menu.MenuInventoryCreative;
 import org.spongepowered.asm.mixin.Mixin;

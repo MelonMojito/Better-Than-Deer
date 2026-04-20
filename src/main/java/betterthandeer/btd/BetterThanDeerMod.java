@@ -2,10 +2,10 @@ package betterthandeer.btd;
 
 import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.entity.BTDEntities;
-import betterthandeer.btd.entity.NetEntryArrowFlaming;
-import betterthandeer.btd.entity.NetEntryRock;
+import betterthandeer.btd.entity.arrow.flaming.NetEntryArrowFlaming;
+import betterthandeer.btd.entity.rock.NetEntryRock;
 import betterthandeer.btd.item.BTDItems;
-import betterthandeer.btd.world.hangingDungeon.WorldFeatureHangingDungeon;
+import betterthandeer.btd.world.chunk.feature.dungeon.hanging.WorldFeatureHangingDungeon;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
@@ -131,5 +131,25 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		Blocks.COBBLE_GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH);
 
 		Blocks.SLATE.withTags(BlockTags.CAVES_CUT_THROUGH, BlockTags.CAVE_GEN_REPLACES_SURFACE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK);
+
+
+
+
+		Blocks.BRICK_BASALT.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.BASALT_POLISHED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.BASALT_CARVED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+
+		Blocks.BRICK_NETHERRACK.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.NETHERRACK_POLISHED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.NETHERRACK_CARVED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+
+		Blocks.BRICK_SLATE.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.SLATE_POLISHED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		BTDBlocks.SLATE_CARVED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+
+		Blocks.BRICK_GLOOMSTONE.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.GLOOMSTONE_POLISHED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.GLOOMSTONE_CARVED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+
 	}
 }
