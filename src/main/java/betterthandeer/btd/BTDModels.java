@@ -64,8 +64,8 @@ public class BTDModels implements ModelEntrypoint {
 
 		dispatcher.addDispatch(new BlockModelChainLarge<>(BTDBlocks.CHAIN_LARGE));
 
-		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_LOWER)).setAllTextures("minecraft:block/slate"));
-		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_UPPER)).setAllTextures("minecraft:block/slate"));
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_LOWER)).setAllTextures("minecraft:block/slate_top"));
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_UPPER)).setAllTextures("minecraft:block/slate_top"));
 
 		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_PERMAFROST_LOWER)).setAllTextures("minecraft:block/permafrost"));
 		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_PERMAFROST_UPPER)).setAllTextures("minecraft:block/permafrost"));

@@ -1,68 +1,68 @@
-tile.btd.boulder.name=Magma Boulder
-tile.btd.boulder.desc=Glowing hot rock that burns on contact.
+tile.boulder.name=Magma Boulder
+tile.boulder.desc=Glowing hot rock that burns on contact.
 
-tile.btd.sulfur.name=Block of Sulfur
-tile.btd.sulfur.desc=Clump of burning yellow stone. Smells like rotten eggs.
+tile.sulfur.name=Block of Sulfur
+tile.sulfur.desc=Clump of burning yellow stone. Smells like rotten eggs.
 
-tile.btd.fluid.acid.flowing.name=Flowing Acid
-tile.btd.fluid.acid.flowing.desc=Acid that flows when placed.
-tile.btd.fluid.acid.still.name=Still Acid
-tile.btd.fluid.acid.still.desc=Acid that does not flow when placed.
+tile.fluid.acid.flowing.name=Flowing Acid
+tile.fluid.acid.flowing.desc=Acid that flows when placed.
+tile.fluid.acid.still.name=Still Acid
+tile.fluid.acid.still.desc=Acid that does not flow when placed.
 
-tile.btd.overlay.rocks.name=Rocks
-tile.btd.overlay.rocks.desc=A cluster of rocks.
+tile.overlay.rocks.name=Rocks
+tile.overlay.rocks.desc=A cluster of rocks.
 
-tile.btd.ember.name=Ember
-tile.btd.ember.desc=Volatile stone that explodes on contact. Remnant of a forgotten world.
-
-
-
-tile.btd.rubyglass.sprout.name=Rubyglass Sprout
-tile.btd.rubyglass.sprout.desc=A small bud of rubyglass, branching out in many directions.
-
-tile.btd.block.rubyglass.name=Block of Rubyglass
-tile.btd.block.rubyglass.desc=A solid glass-like crystal gleaming with energy
-
-tile.btd.cobble.netherrack.crystalline.name=Crystalline Cobbled Netherrack
-tile.btd.cobble.netherrack.crystalline.desc=Cobbled Netherrack, covered in a web of rubyglass.
-
-tile.btd.ice.rubyglass.name=Crystallized Rubyglass
-tile.btd.ice.rubyglass.desc=Slippery sheets of rubyglass thinned by water.
-
-tile.btd.rubyglass.growth.top.name=Top Rubyglass Growth
-tile.btd.rubyglass.growth.top.desc=You really shouldn't have this.
-
-tile.btd.rubyglass.growth.bottom.name=Bottom Rubyglass Growth
-tile.btd.rubyglass.growth.bottom.desc=Please tell me how you got this.
-
-tile.btd.slab.slate.carved.name=Polished Slate Slab
-tile.btd.slab.slate.carved.desc= slab of polished slate.
-tile.btd.slate.carved.name=Carved Slate
-tile.btd.slate.carved.desc=Polished Stone with lines hewn through the middle.
-
-tile.btd.log.scorched.name=Scorched Log
-tile.btd.log.scorched.desc=A pillar of carbon, encased in ash.
+tile.ember.name=Ember
+tile.ember.desc=Volatile stone that explodes on contact. Remnant of a forgotten world.
 
 
-tile.btd.statue.slate.lower.name=Slate Statue (Lower)
-tile.btd.statue.slate.lower.desc=
-tile.btd.statue.slate.upper.name=Slate Statue (Upper)
-tile.btd.statue.slate.upper.desc=
 
-tile.btd.statue.permafrost.lower.name=Permafrost Statue (Lower)
-tile.btd.statue.permafrost.lower.desc=
-tile.btd.statue.permafrost.upper.name=Permafrost Statue (Upper)
-tile.btd.statue.permafrost.upper.desc=
+tile.rubyglass.sprout.name=Rubyglass Sprout
+tile.rubyglass.sprout.desc=A small bud of rubyglass, branching out in many directions.
 
-tile.btd.statue.netherrack.lower.name=Netherrack Statue (Lower)
-tile.btd.statue.netherrack.lower.desc=
-tile.btd.statue.netherrack.upper.name=Netherrack Statue (Upper)
-tile.btd.statue.netherrack.upper.desc=
+tile.block.rubyglass.name=Block of Rubyglass
+tile.block.rubyglass.desc=A solid glass-like crystal gleaming with energy
 
-tile.btd.statue.gloomstone.lower.name=Gloomstone Statue (Lower)
-tile.btd.statue.gloomstone.lower.desc=
-tile.btd.statue.gloomstone.upper.name=Gloomstone Statue (Upper)
-tile.btd.statue.gloomstone.upper.desc=
+tile.cobble.netherrack.crystalline.name=Crystalline Cobbled Netherrack
+tile.cobble.netherrack.crystalline.desc=Cobbled Netherrack, covered in a web of rubyglass.
+
+tile.ice.rubyglass.name=Crystallized Rubyglass
+tile.ice.rubyglass.desc=Slippery sheets of rubyglass thinned by water.
+
+tile.rubyglass.growth.top.name=Top Rubyglass Growth
+tile.rubyglass.growth.top.desc=You really shouldn't have this.
+
+tile.rubyglass.growth.bottom.name=Bottom Rubyglass Growth
+tile.rubyglass.growth.bottom.desc=Please tell me how you got this.
+
+tile.slab.slate.carved.name=Polished Slate Slab
+tile.slab.slate.carved.desc= slab of polished slate.
+tile.slate.carved.name=Carved Slate
+tile.slate.carved.desc=Polished Stone with lines hewn through the middle.
+
+tile.log.scorched.name=Scorched Log
+tile.log.scorched.desc=A pillar of carbon, encased in ash.
+
+
+tile.statue.slate.lower.name=Slate Statue (Lower)
+tile.statue.slate.lower.desc=
+tile.statue.slate.upper.name=Slate Statue (Upper)
+tile.statue.slate.upper.desc=
+
+tile.statue.permafrost.lower.name=Permafrost Statue (Lower)
+tile.statue.permafrost.lower.desc=
+tile.statue.permafrost.upper.name=Permafrost Statue (Upper)
+tile.statue.permafrost.upper.desc=
+
+tile.statue.netherrack.lower.name=Netherrack Statue (Lower)
+tile.statue.netherrack.lower.desc=
+tile.statue.netherrack.upper.name=Netherrack Statue (Upper)
+tile.statue.netherrack.upper.desc=
+
+tile.statue.gloomstone.lower.name=Gloomstone Statue (Lower)
+tile.statue.gloomstone.lower.desc=
+tile.statue.gloomstone.upper.name=Gloomstone Statue (Upper)
+tile.statue.gloomstone.upper.desc=
 
 
 
