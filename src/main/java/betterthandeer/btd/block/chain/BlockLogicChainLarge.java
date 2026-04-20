@@ -18,8 +18,8 @@ import net.minecraft.core.world.World;
 import net.minecraft.core.world.WorldSource;
 import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.pos.TilePosc;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.joml.primitives.AABBd;
 import org.joml.primitives.AABBdc;
 
@@ -38,7 +38,7 @@ public class BlockLogicChainLarge extends BlockLogic {
 	public static final int PLACEMENT_NORTH_SOUTH = 0b01;
 	public static final int PLACEMENT_WEST_EAST = 0b10;
 
-	public BlockLogicChainLarge(@NotNull Block<?> block) {
+	public BlockLogicChainLarge(@NonNull Block<?> block) {
 		super(block, Materials.METAL);
 	}
 
@@ -53,7 +53,7 @@ public class BlockLogicChainLarge extends BlockLogic {
 	}
 
 	@Override
-	public boolean isClimbable(@NotNull World world, @NotNull TilePosc tilePos) {
+	public boolean isClimbable(@NonNull World world, @NonNull TilePosc tilePos) {
 		return true;
 	}
 
@@ -98,12 +98,12 @@ public class BlockLogicChainLarge extends BlockLogic {
 	}
 
 	@Override
-	public void onNeighborChanged(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Block<?> block) {
+	public void onNeighborChanged(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Block<?> block) {
 		updateData(world, tilePos);
 	}
 
 	@Override
-	public void onPlacedOnSide(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Side side, double xHit, double yHit) {
+	public void onPlacedOnSide(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Side side, double xHit, double yHit) {
 		var dir = side.getDirection();
 
 		if (dir == Direction.WEST || dir == Direction.EAST) {
@@ -122,7 +122,7 @@ public class BlockLogicChainLarge extends BlockLogic {
 	}
 
 	@Override
-	public void onPlacedByWorld(@NotNull World world, @NotNull TilePosc tilePos) {
+	public void onPlacedByWorld(@NonNull World world, @NonNull TilePosc tilePos) {
 		updateData(world, tilePos);
 	}
 
@@ -143,12 +143,12 @@ public class BlockLogicChainLarge extends BlockLogic {
 	}
 
 	@Override
-	public @Nullable AABBdc getCollisionAABB(@NotNull WorldSource source, @NotNull TilePosc tilePos) {
+	public @Nullable AABBdc getCollisionAABB(@NonNull WorldSource source, @NonNull TilePosc tilePos) {
 		return null;
 	}
 
 	@Override
-	public @NotNull AABBdc getBoundsFromState(@NotNull WorldSource source, @NotNull TilePosc tilePos) {
+	public @NonNull AABBdc getBoundsFromState(@NonNull WorldSource source, @NonNull TilePosc tilePos) {
 		if (shouldDisplayLinking(source.getBlockData(tilePos))) {
 			return super.getBoundsFromState(source, tilePos);
 		}
@@ -170,27 +170,27 @@ public class BlockLogicChainLarge extends BlockLogic {
 		return new AABBd(0.2, 0.2, 0.2, 0.8, 0.8, 0.8);
 	}
 
-	public void onEntityCollision(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Entity entity) {
+	public void onEntityCollision(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Entity entity) {
 		entity.xd *= 0.4;
 		entity.zd *= 0.4;
 	}
 
 	@Override
-	public @NotNull Item asItem() {
+	public @NonNull Item asItem() {
 		return BTDItems.CHAIN_LARGE;
 	}
 
 	@Override
-	public @NotNull ItemStack getDefaultStack() {
+	public @NonNull ItemStack getDefaultStack() {
 		return new ItemStack(BTDItems.CHAIN_LARGE);
 	}
 
 	@Override
-	public @NotNull ItemStack @Nullable [] getBreakResult(@NotNull World world, @NotNull EnumDropCause dropCause, int data, @Nullable TileEntity tileEntity) {
+	public @NonNull ItemStack @Nullable [] getBreakResult(@NonNull World world, @NonNull EnumDropCause dropCause, int data, @Nullable TileEntity tileEntity) {
 		return new ItemStack[]{this.getDefaultStack()};
 	}
 
-	public boolean onInteracted(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Player player, @Nullable Side side, double xHit, double yHit) {
+	public boolean onInteracted(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Player player, @Nullable Side side, double xHit, double yHit) {
 		ItemStack heldItem = player.getHeldItem();
 
 		if (heldItem == null) {
@@ -205,7 +205,7 @@ public class BlockLogicChainLarge extends BlockLogic {
 		return false;
 	}
 
-	public void pickupChain(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Player player) {
+	public void pickupChain(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Player player) {
 		if (!world.isClientSide && world.getBlockType(tilePos) == this.block) {
 			TilePos queryPos = new TilePos(tilePos);
 			int highestRope = tilePos.y();
@@ -252,11 +252,11 @@ public class BlockLogicChainLarge extends BlockLogic {
 	}
 
 	public boolean placeChain(
-			@NotNull ItemStack selfStack,
-			@NotNull World world,
+			@NonNull ItemStack selfStack,
+			@NonNull World world,
 			@Nullable Player player,
-			@NotNull TilePosc blockPos,
-			@NotNull Side side
+			@NonNull TilePosc blockPos,
+			@NonNull Side side
 		) {
 
 		TilePos bp = new TilePos(blockPos);

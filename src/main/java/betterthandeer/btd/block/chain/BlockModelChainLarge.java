@@ -9,8 +9,8 @@ import net.minecraft.core.block.BlockLogic;
 import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.world.WorldSource;
 import net.minecraft.core.world.pos.TilePosc;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 import org.useless.dragonfly.models.block.StaticBlockModel;
 
@@ -30,7 +30,7 @@ public class BlockModelChainLarge<T extends BlockLogic> extends BlockModelGeneri
 	}
 
 	@Override
-	public boolean renderAttached(@NotNull TessellatorGeneral tessellator, @NotNull WorldSource worldSource, @NotNull TilePosc tilePos, boolean cullFaces, @Nullable IconCoordinate overrideTexture) {
+	public boolean renderAttached(@NonNull TessellatorGeneral tessellator, @NonNull WorldSource worldSource, @NonNull TilePosc tilePos, boolean cullFaces, @Nullable IconCoordinate overrideTexture) {
 		int metadata = worldSource.getBlockData(tilePos);
 
 		for (Direction dir : Direction.directions) {

@@ -5,7 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.render.dynamictexture.DynamicTexture;
 import net.minecraft.client.render.texture.stitcher.IconCoordinate;
 import net.minecraft.core.util.helper.MathHelper;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 @Environment(EnvType.CLIENT)
 public class DynamicTextureAcidStill extends DynamicTexture {
@@ -14,7 +14,7 @@ public class DynamicTextureAcidStill extends DynamicTexture {
 	private float[] arr3;
 	private float[] arr4;
 
-	public DynamicTextureAcidStill(@NotNull IconCoordinate targetTexture) {
+	public DynamicTextureAcidStill(@NonNull IconCoordinate targetTexture) {
 		super(targetTexture);
 	}
 

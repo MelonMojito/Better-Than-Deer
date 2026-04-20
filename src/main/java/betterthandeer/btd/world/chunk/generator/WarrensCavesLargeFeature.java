@@ -6,7 +6,7 @@ import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.generate.LargeFeature;
 import net.minecraft.core.world.generate.chunk.ChunkGeneratorResult;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Random;
 
@@ -24,11 +24,11 @@ public class WarrensCavesLargeFeature extends LargeFeature {
 		this.maxY = maxY;
 	}
 
-	protected void generateHubRoom(@NotNull World world, @NotNull Random random, long seed, int baseChunkX, int baseChunkZ, ChunkGeneratorResult result, double blockX, double blockY, double blockZ) {
+	protected void generateHubRoom(@NonNull World world, @NonNull Random random, long seed, int baseChunkX, int baseChunkZ, ChunkGeneratorResult result, double blockX, double blockY, double blockZ) {
 		this.generateCave(world, random, seed, baseChunkX, baseChunkZ, result, blockX, blockY, blockZ, 1.0F + random.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5F);
 	}
 
-	protected void generateCave(@NotNull World world, @NotNull Random random, long seed, int baseChunkX, int baseChunkZ, ChunkGeneratorResult result, double blockX, double blockY, double blockZ, float initialRadius, float yRot, float xRot, int startPos, int endPos, double heightMod) {
+	protected void generateCave(@NonNull World world, @NonNull Random random, long seed, int baseChunkX, int baseChunkZ, ChunkGeneratorResult result, double blockX, double blockY, double blockZ, float initialRadius, float yRot, float xRot, int startPos, int endPos, double heightMod) {
 		double chunkMiddleX = baseChunkX * 16 + 8;
 		double chunkMiddleZ = baseChunkZ * 16 + 8;
 		float rotHorOffset = 0.0F;
@@ -174,7 +174,7 @@ public class WarrensCavesLargeFeature extends LargeFeature {
 
 	}
 
-	protected void doGeneration(@NotNull World world, @NotNull Random random, int chunkX, int chunkZ, int baseChunkX, int baseChunkZ, @NotNull ChunkGeneratorResult result) {
+	protected void doGeneration(@NonNull World world, @NonNull Random random, int chunkX, int chunkZ, int baseChunkX, int baseChunkZ, @NonNull ChunkGeneratorResult result) {
 		int cavesToGenerate = random.nextInt(random.nextInt(random.nextInt(100) + 1) + 1);
 		if (random.nextInt(15) != 0) {
 			cavesToGenerate = 0;

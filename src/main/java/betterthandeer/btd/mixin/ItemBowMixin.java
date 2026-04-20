@@ -13,19 +13,19 @@ import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.util.collection.NamespaceID;
 import net.minecraft.core.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(ItemBow.class)
 public abstract class ItemBowMixin extends Item {
-	protected ItemBowMixin(@NotNull NamespaceID namespaceId, @NotNull String translationKey, int id) {
+	protected ItemBowMixin(@NonNull NamespaceID namespaceId, @NonNull String translationKey, int id) {
 		super(namespaceId, translationKey, id);
 	}
 
 
 	@Override
-	public @Nullable ItemStack onUse(@NotNull ItemStack selfStack, @NotNull World world, @NotNull Player player) {
+	public @Nullable ItemStack onUse(@NonNull ItemStack selfStack, @NonNull World world, @NonNull Player player) {
 		ItemStack quiverSlot = player.getItemInArmorSlot(HumanArmorShape.CHEST);
 		if (quiverSlot != null && quiverSlot.itemID == Items.ARMOR_QUIVER.id && quiverSlot.getMetadata() < quiverSlot.getMaxDamage()) {
 			quiverSlot.damageItem(1, player);

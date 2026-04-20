@@ -9,14 +9,14 @@ import net.minecraft.core.net.entity.ITrackedEntry;
 import net.minecraft.core.net.entity.IVehicleEntry;
 import net.minecraft.core.net.packet.PacketAddEntity;
 import net.minecraft.core.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 public class NetEntryArrowFlaming implements IVehicleEntry<ProjectileArrowFlaming>, ITrackedEntry<ProjectileArrowFlaming> {
 	public NetEntryArrowFlaming() {
 	}
 
-	public @NotNull Class<ProjectileArrowFlaming> getAppliedClass() {
+	public @NonNull Class<ProjectileArrowFlaming> getAppliedClass() {
 		return ProjectileArrowFlaming.class;
 	}
 

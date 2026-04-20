@@ -6,14 +6,14 @@ import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.renderer.GLRenderer;
 import net.minecraft.client.render.tessellator.TessellatorGeneral;
 import net.minecraft.core.util.helper.MathHelper;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 @Environment(EnvType.CLIENT)
 public class EntityRendererArrowFlaming extends EntityRenderer<ProjectileArrowFlaming> {
 	public EntityRendererArrowFlaming() {
 	}
 
-	public void render(@NotNull TessellatorGeneral tessellator, @NotNull ProjectileArrowFlaming arrow, double x, double y, double z, float yaw, float partialTick) {
+	public void render(@NonNull TessellatorGeneral tessellator, @NonNull ProjectileArrowFlaming arrow, double x, double y, double z, float yaw, float partialTick) {
 		int prime = 900;
 		if ((float) arrow.ticksInGround + partialTick > (float) prime) {
 			int pastPrime = arrow.ticksInGround - prime;

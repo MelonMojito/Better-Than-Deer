@@ -4,7 +4,7 @@ import net.minecraft.core.entity.projectile.Projectile;
 import net.minecraft.core.entity.projectile.ProjectileCannonball;
 import net.minecraft.core.util.phys.HitResult;
 import net.minecraft.core.world.World;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 
@@ -15,7 +15,7 @@ public abstract class ProjectileCannonballMixin extends Projectile {
 	}
 
 	@Override
-	public void onHit(@NotNull HitResult hitResult) {
+	public void onHit(@NonNull HitResult hitResult) {
 		this.world.createExplosion(this.owner, this.x, this.y + (double) (this.bbHeight / 2.0F), this.z, 1.5F, false, true);
 		this.remove();
 	}

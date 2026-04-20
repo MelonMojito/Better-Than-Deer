@@ -6,25 +6,25 @@ import net.minecraft.core.world.World;
 import net.minecraft.core.world.generate.feature.MethodParametersAnnotation;
 import net.minecraft.core.world.generate.feature.WorldFeature;
 import net.minecraft.core.world.pos.TilePos;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Random;
 
 public class WorldFeatureRocks extends WorldFeature {
-	private final @NotNull Block<?> block;
+	private final @NonNull Block<?> block;
 	private final int count;
 	private final boolean varyStackSize;
 
 	@MethodParametersAnnotation(
 		names = {"blockId", "count", "varyStackSize"}
 	)
-	public WorldFeatureRocks(@NotNull Block<?> block, int count, boolean varyStackSize) {
+	public WorldFeatureRocks(@NonNull Block<?> block, int count, boolean varyStackSize) {
 		this.block = block;
 		this.count = count;
 		this.varyStackSize = varyStackSize;
 	}
 
-	public boolean place(@NotNull World world, @NotNull Random random, int x, int y, int z) {
+	public boolean place(@NonNull World world, @NonNull Random random, int x, int y, int z) {
 		TilePos p = new TilePos();
 		TilePos queryPos = new TilePos();
 
@@ -45,7 +45,7 @@ public class WorldFeatureRocks extends WorldFeature {
 		return true;
 	}
 
-	private static int getStackSize(@NotNull Random random) {
+	private static int getStackSize(@NonNull Random random) {
 		int odds = random.nextInt(18);
 		if (odds < 8) {
 			return 0;
