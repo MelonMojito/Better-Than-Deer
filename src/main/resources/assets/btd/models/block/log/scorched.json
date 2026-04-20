@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "btd:block/log/scorched_top",
+		"side": "btd:block/log/scorched_side"
+	}
+}

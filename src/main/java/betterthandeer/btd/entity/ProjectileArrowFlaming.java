@@ -1,7 +1,12 @@
 package betterthandeer.btd.entity;
 
+import betterthandeer.btd.block.BTDBlocks;
+import betterthandeer.btd.block.BlockLogicEmber;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import betterthandeer.btd.item.BTDItems;
+import net.minecraft.core.block.Block;
+import net.minecraft.core.block.BlockLogicIce;
+import net.minecraft.core.block.BlockLogicTNT;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.entity.Mob;
 import net.minecraft.core.entity.monster.MobCreeper;
@@ -79,27 +84,44 @@ public class ProjectileArrowFlaming extends ProjectileArrow {
 					this.world.playSoundAtEntity(null, this, "random.drr", 1.0F, 1.2F / (this.random.nextFloat() * 0.2F + 0.9F));
 				}
 			}
+			this.remove();
+		} else if (hitResult instanceof HitResult.Tile hitTile && !this.world.isClientSide) {
+			int x = hitTile.tilePos.x();
+			int y = hitTile.tilePos.y();
+			int z = hitTile.tilePos.z();
+			Block<?> hitBlock = world.getBlockType(hitTile.tilePos);
+
+			x += hitTile.side.getOffsetX();
+			y += hitTile.side.getOffsetY();
+			z += hitTile.side.getOffsetZ();
+
+			if (world.isAirBlock(x, y, z)) {
+				world.setBlockWithNotify(x, y, z, Blocks.FIRE.id());
+			}
+
+			if (hitBlock == Blocks.BRAZIER_INACTIVE) {
+				world.setBlockType(hitTile.tilePos, Blocks.BRAZIER_ACTIVE);
+			}
+
+			if (hitBlock == Blocks.TNT) {
+				world.getBlockLogic(hitTile.tilePos, BlockLogicTNT.class).ignite(world, hitTile.tilePos, true);
+			}
+
+			if (hitBlock == BTDBlocks.EMBER) {
+				world.getBlockLogic(hitTile.tilePos, BlockLogicEmber.class).ignite(world, hitTile.tilePos, null);
+			}
+			if (hitBlock == Blocks.ICE) {
+				world.setBlockTypeNotify(hitTile.tilePos, Blocks.FLUID_WATER_STILL);
+			}
 		}
+
 		this.remove();
 
 		super.onHit(hitResult);
-
 	}
 
 	@Override
 	protected void inGroundAction() {
-		if (!this.world.isClientSide) {
-			if (this.tilePos != null) {
-				int fireX = tilePos.x;
-				int fireY = tilePos.y + 1;
-				int fireZ = tilePos.z;
-
-				if (world.isAirBlock(fireX, fireY, fireZ)) {
-					world.setBlockWithNotify(fireX, fireY, fireZ, Blocks.FIRE.id());
-				}
-			}
-		}
-
 		world.spawnParticle("explode", this.x, this.y, this.z, this.xd * 0.05, this.yd * 0.05 - 0.1, this.zd * 0.05, 0, false);
 		world.spawnParticle("explode", this.x, this.y, this.z, this.xd * 0.05, this.yd * 0.05 - 0.1, this.zd * 0.05, 0, false);
 		world.spawnParticle("ventsmoke", this.x, this.y, this.z, this.xd * 0.05, this.yd * 0.05 - 0.1, this.zd * 0.05, 0, false);

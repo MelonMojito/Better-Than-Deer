@@ -13,14 +13,18 @@ import net.minecraft.client.render.EntityRendererDispatcher;
 import net.minecraft.client.render.TileEntityRenderDispatcher;
 import net.minecraft.client.render.block.color.BlockColorDispatcher;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
+import net.minecraft.client.render.block.model.BlockModelEmpty;
 import net.minecraft.client.render.block.model.BlockModelFluid;
 import net.minecraft.client.render.block.model.generic.BlockModelCrystalBud;
 import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
+import net.minecraft.client.render.block.model.generic.BlockModelGenericAxis;
+import net.minecraft.client.render.block.model.generic.BlockModelGenericSlab;
 import net.minecraft.client.render.entity.EntityRendererSprite;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
 import net.minecraft.client.render.texture.stitcher.TextureRegistry;
+import net.minecraft.client.render.tileentity.TileEntityRendererStatue;
 import net.minecraft.core.item.block.ItemBlock;
 import net.minecraft.core.util.collection.NamespaceID;
 import turniplabs.halplibe.util.ModelEntrypoint;
@@ -46,7 +50,37 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_BOTTOM, loadDataModel("btd:block/growth_bottom")).render3D(false));
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_TOP, loadDataModel("btd:block/growth_top")).render3D(false));
 
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.SLATE_CARVED,
+			loadDataModel("btd:block/carved_slate")));
+		dispatcher.addDispatch(new BlockModelGenericSlab<>(BTDBlocks.SLAB_SLATE_POLISHED,
+			loadDataModel("btd:block/slab/polished_slate/lower"),
+			loadDataModel("btd:block/slab/polished_slate/upper"),
+			loadDataModel("btd:block/slab/polished_slate/full")));
+
+
+		dispatcher.addDispatch(new BlockModelGenericAxis<>(BTDBlocks.LOG_SCORCHED,
+			loadDataModel("btd:block/log/scorched")));
+
+
 		dispatcher.addDispatch(new BlockModelChainLarge<>(BTDBlocks.CHAIN_LARGE));
+		
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_LOWER)).setAllTextures("minecraft:block/slate"));
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_UPPER)).setAllTextures("minecraft:block/slate"));
+
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_PERMAFROST_LOWER)).setAllTextures("minecraft:block/permafrost"));
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_PERMAFROST_UPPER)).setAllTextures("minecraft:block/permafrost"));
+
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_NETHERRACK_LOWER)).setAllTextures("minecraft:block/netherrack"));
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_NETHERRACK_UPPER)).setAllTextures("minecraft:block/netherrack"));
+
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_GLOOMSTONE_LOWER)).setAllTextures("minecraft:block/gloomstone"));
+		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_GLOOMSTONE_UPPER)).setAllTextures("minecraft:block/gloomstone"));
+
+		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_SLATE_LOWER, "/assets/btd/textures/entity/statue/slate.png");
+		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_PERMAFROST_LOWER, "/assets/btd/textures/entity/statue/permafrost.png");
+		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_NETHERRACK_LOWER, "/assets/btd/textures/entity/statue/netherrack.png");
+		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GLOOMSTONE_LOWER, "/assets/btd/textures/entity/statue/gloomstone.png");
 
 	}
 
@@ -65,6 +99,11 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
 
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.CHAIN_LARGE, "btd"));
+		
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_SLATE, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_PERMAFROST, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_NETHERRACK, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GLOOMSTONE, "btd"));
 	}
 
 	@Override

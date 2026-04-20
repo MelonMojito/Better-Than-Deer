@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "minecraft:block/polished_slate_top",
+		"side": "minecraft:block/carved_slate"
+	}
+}
