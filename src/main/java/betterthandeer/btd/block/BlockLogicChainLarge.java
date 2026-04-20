@@ -1,9 +1,17 @@
 package betterthandeer.btd.block;
 
+import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogic;
+import net.minecraft.core.block.Blocks;
+import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.entity.Entity;
+import net.minecraft.core.entity.player.Player;
+import net.minecraft.core.enums.EnumBlockSoundEffectType;
+import net.minecraft.core.enums.EnumDropCause;
+import net.minecraft.core.item.Item;
+import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
@@ -14,6 +22,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.primitives.AABBd;
 import org.joml.primitives.AABBdc;
+
+import java.util.Optional;
 
 public class BlockLogicChainLarge extends BlockLogic {
 
@@ -163,5 +173,134 @@ public class BlockLogicChainLarge extends BlockLogic {
 	public void onEntityCollision(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Entity entity) {
 		entity.xd *= 0.4;
 		entity.zd *= 0.4;
+	}
+
+	@Override
+	public @NotNull Item asItem() {
+		return BTDItems.CHAIN_LARGE;
+	}
+
+	@Override
+	public @NotNull ItemStack getDefaultStack() {
+		return new ItemStack(BTDItems.CHAIN_LARGE);
+	}
+
+	@Override
+	public @NotNull ItemStack @Nullable [] getBreakResult(@NotNull World world, @NotNull EnumDropCause dropCause, int data, @Nullable TileEntity tileEntity) {
+		return new ItemStack[]{this.getDefaultStack()};
+	}
+
+	public boolean onInteracted(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Player player, @Nullable Side side, double xHit, double yHit) {
+		ItemStack heldItem = player.getHeldItem();
+
+		if (heldItem == null) {
+			this.pickupChain(world, tilePos, player);
+			return true;
+		}
+
+		else if (heldItem.getItem().equals(BTDItems.CHAIN_LARGE)) {
+			return this.placeChain(heldItem, world, player, tilePos, Optional.ofNullable(side).orElse(Side.TOP));
+		}
+
+		return false;
+	}
+
+	public void pickupChain(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Player player) {
+		if (!world.isClientSide && world.getBlockType(tilePos) == this.block) {
+			TilePos queryPos = new TilePos(tilePos);
+			int highestRope = tilePos.y();
+
+			while(queryPos.y > 0) {
+				--queryPos.y;
+				Block<?> block = world.getBlockType(queryPos);
+				if (block != this.block) {
+					++queryPos.y;
+					break;
+				}
+			}
+
+			int lowestRope = queryPos.y;
+			int freeSpace = 0;
+
+			for(int i = 0; i < player.inventory.mainInventory.length; ++i) {
+				ItemStack stack = player.inventory.mainInventory[i];
+				if (stack == null) {
+					freeSpace += BTDItems.CHAIN_LARGE.getItemStackLimit((ItemStack)null);
+				} else if (stack.getItem().equals(BTDItems.CHAIN_LARGE)) {
+					freeSpace += BTDItems.CHAIN_LARGE.getItemStackLimit((ItemStack)null) - stack.stackSize;
+				}
+			}
+
+			freeSpace = Math.min(freeSpace, 1);
+			int ropesCollected = 0;
+
+			for(queryPos.y = lowestRope; queryPos.y <= highestRope && ropesCollected < freeSpace; ++queryPos.y) {
+				world.setBlockTypeNotify(queryPos, Blocks.AIR);
+				++ropesCollected;
+			}
+
+			if (player.getGamemode().hasBlockConsumption()) {
+				ItemStack stack = new ItemStack(BTDItems.CHAIN_LARGE, ropesCollected);
+				player.inventory.insertItem(stack, true);
+				if (stack.stackSize > 0) {
+					player.dropPlayerItem(stack);
+				}
+			}
+
+			world.playBlockSoundEffect(player, (double)tilePos.x() + (double)0.5F, (double)highestRope + (double)0.5F, (double)tilePos.z() + (double)0.5F, this.block, EnumBlockSoundEffectType.PLACE);
+		}
+	}
+
+	public boolean placeChain(
+			@NotNull ItemStack selfStack,
+			@NotNull World world,
+			@Nullable Player player,
+			@NotNull TilePosc blockPos,
+			@NotNull Side side
+		) {
+
+		TilePos bp = new TilePos(blockPos);
+
+		if (player != null && !player.isSneaking()) {
+			TilePos tempPos = new TilePos(bp);
+
+			while(tempPos.y > 0) {
+				--tempPos.y;
+
+				if (world.canBlockIdBePlacedAt(this.block.id(), tempPos, false, side)) {
+					bp.y = tempPos.y;
+					break;
+				}
+
+				if (world.getBlockType(tempPos) != this.block) {
+					if (side != Side.TOP) {
+						return false;
+					}
+
+					++tempPos.y;
+					break;
+				}
+			}
+
+			bp.set(tempPos);
+		}
+
+		if (!world.canPlaceInsideBlock(bp)) {
+			bp = bp.add(side.getDirection(), new TilePos());
+		}
+
+		if (bp.y >= 0 && bp.y < world.getHeightBlocks()) {
+			if (world.canBlockIdBePlacedAt(this.block.id(), bp, false, side) && selfStack.consumeItem(player)) {
+
+				world.setBlockType(bp, this.block);
+				world.playBlockSoundEffect(player, (float)bp.x + 0.5F, (float)bp.y + 0.5F, (float)bp.z + 0.5F, this.block, EnumBlockSoundEffectType.PLACE);
+
+				return true;
+			}
+
+			else return false;
+		}
+
+		else return false;
 	}
 }

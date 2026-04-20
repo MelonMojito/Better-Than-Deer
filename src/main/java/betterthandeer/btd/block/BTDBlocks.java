@@ -7,6 +7,7 @@ import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.block.tag.BlockTags;
+import net.minecraft.core.data.tag.Tag;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.helper.BlockBuilder;
@@ -127,6 +128,10 @@ public class BTDBlocks implements BlockInitEntrypoint {
 		CHAIN_LARGE = new BlockBuilder(MOD_ID)
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
 			.setVisualUpdateOnMetadata()
+			.setBlockSound(BlockSounds.METAL)
+			.setHardness(5.0F)
+			.setResistance(10.0F)
+			.setOverrideColor(MaterialColor.iron)
 			.build("chain.large", 3015, block -> new BlockLogicChainLarge(block));
 
 	}
