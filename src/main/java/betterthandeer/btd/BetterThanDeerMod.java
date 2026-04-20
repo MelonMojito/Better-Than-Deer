@@ -5,6 +5,7 @@ import betterthandeer.btd.entity.BTDEntities;
 import betterthandeer.btd.entity.NetEntryArrowFlaming;
 import betterthandeer.btd.entity.NetEntryRock;
 import betterthandeer.btd.item.BTDItems;
+import betterthandeer.btd.world.hangingDungeon.WorldFeatureHangingDungeon;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
@@ -16,6 +17,7 @@ import net.minecraft.core.entity.monster.ArmorBags;
 import net.minecraft.core.entity.monster.MobZombiePig;
 import net.minecraft.core.enums.HumanArmorShape;
 import net.minecraft.core.item.Items;
+import net.minecraft.core.net.command.util.CommandHelper;
 import net.minecraft.core.net.entity.NetEntityHandler;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
@@ -60,6 +62,11 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 
 		NetEntityHandler.registerNetworkEntry(new NetEntryRock(), 150);
 		NetEntityHandler.registerNetworkEntry(new NetEntryArrowFlaming(), 151);
+
+		CommandHelper.registerWorldFeatureClass(WorldFeatureHangingDungeon.Gloomstone.class, "HangingDungeonGloomstone");
+		CommandHelper.registerWorldFeatureClass(WorldFeatureHangingDungeon.Basalt.class, "HangingDungeonBasalt");
+		CommandHelper.registerWorldFeatureClass(WorldFeatureHangingDungeon.Netherrack.class, "HangingDungeonNetherrack");
+		CommandHelper.registerWorldFeatureClass(WorldFeatureHangingDungeon.Slate.class, "HangingDungeonSlate");
 	}
 
 	@Override

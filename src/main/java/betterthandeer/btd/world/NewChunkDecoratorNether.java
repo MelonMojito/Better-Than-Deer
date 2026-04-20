@@ -1,6 +1,8 @@
 package betterthandeer.btd.world;
 
 import betterthandeer.btd.block.BTDBlocks;
+import betterthandeer.btd.world.hangingDungeon.WorldFeatureHangingDungeon;
+import net.minecraft.core.WeightedRandomBag;
 import net.minecraft.core.block.*;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.biome.Biome;
@@ -258,7 +260,6 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(20)));
 
-
 		// Glowstone Features
 
 		this.register("btd:decoration/nether/default/glowstone_1", (new ChunkDecorationBuilder(new WorldFeatureGlowstone()))
@@ -339,6 +340,39 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 		});
 
+		// Dungeon Features
+
+		this.register(
+			"btd:decoration/nether/default/handing_dungeon_basalt",
+			(new ChunkDecorationBuilder(new WorldFeatureHangingDungeon.Basalt()))
+			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+			.withPlacementMethod(new PlacementMethod.ChanceToPlace(10))
+			.withBiomeMask(new Biome[] {Biomes.NETHER_CRYSTAL_FOREST, Biomes.NETHER_CRYSTAL_PLAINS, Biomes.NETHER_CRAG})
+		);
+
+		this.register(
+			"btd:decoration/nether/default/handing_dungeon_gloomstone",
+			(new ChunkDecorationBuilder(new WorldFeatureHangingDungeon.Gloomstone()))
+				.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+				.withPlacementMethod(new PlacementMethod.ChanceToPlace(10))
+				.withBiomeMask(new Biome[] {Biomes.NETHER_OLD_WORLD, Biomes.NETHER_OLD_WORLD_DESERT})
+		);
+
+		this.register(
+			"btd:decoration/nether/default/handing_dungeon_slate",
+			(new ChunkDecorationBuilder(new WorldFeatureHangingDungeon.Slate()))
+				.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+				.withPlacementMethod(new PlacementMethod.ChanceToPlace(20))
+				.withBiomeMask(new Biome[] {Biomes.NETHER_SHELF, Biomes.NETHER_SULFUR_POOLS})
+		);
+
+		this.register(
+			"btd:decoration/nether/default/handing_dungeon_netherrack",
+			(new ChunkDecorationBuilder(new WorldFeatureHangingDungeon.Netherrack()))
+				.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+				.withPlacementMethod(new PlacementMethod.ChanceToPlace(20))
+				.withBiomeMask(new Biome[] {Biomes.NETHER_SULFUR_POOLS, Biomes.NETHER_SHELF, Biomes.NETHER_VOLCANIC_ISLANDS})
+		);
 	}
 
 	@Override
