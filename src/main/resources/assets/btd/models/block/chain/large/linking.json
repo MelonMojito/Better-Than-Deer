@@ -1,0 +1,24 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "btd:block/chain_large_alt",
+		"chain_large_linking": "btd:block/chain_large_center"
+	},
+	"elements": [
+		{
+			"name": "linking",
+			"from": [2, 2, 2],
+			"to": [14, 14, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 2, 2]},
+			"faces": {
+				"north": {"uv": [2, 2, 14, 14], "texture": "#chain_large_linking"},
+				"east": {"uv": [2, 2, 14, 14], "texture": "#chain_large_linking"},
+				"south": {"uv": [2, 2, 14, 14], "texture": "#chain_large_linking"},
+				"west": {"uv": [2, 2, 14, 14], "texture": "#chain_large_linking"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#chain_large_linking"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#chain_large_linking"}
+			}
+		}
+	]
+}
