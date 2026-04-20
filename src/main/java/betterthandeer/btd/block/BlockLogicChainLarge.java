@@ -225,9 +225,9 @@ public class BlockLogicChainLarge extends BlockLogic {
 			for(int i = 0; i < player.inventory.mainInventory.length; ++i) {
 				ItemStack stack = player.inventory.mainInventory[i];
 				if (stack == null) {
-					freeSpace += BTDItems.CHAIN_LARGE.getItemStackLimit((ItemStack)null);
+					freeSpace += BTDItems.CHAIN_LARGE.getItemStackLimit(null);
 				} else if (stack.getItem().equals(BTDItems.CHAIN_LARGE)) {
-					freeSpace += BTDItems.CHAIN_LARGE.getItemStackLimit((ItemStack)null) - stack.stackSize;
+					freeSpace += BTDItems.CHAIN_LARGE.getItemStackLimit(null) - stack.stackSize;
 				}
 			}
 
