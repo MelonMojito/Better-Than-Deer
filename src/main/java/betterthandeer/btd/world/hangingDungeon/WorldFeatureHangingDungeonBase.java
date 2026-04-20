@@ -1,6 +1,7 @@
 package betterthandeer.btd.world.hangingDungeon;
 
 import betterthandeer.btd.BTDHelpers;
+import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.WeightedRandomBag;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Block;
@@ -15,6 +16,7 @@ import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.pos.TilePosc;
 
 import org.joml.Vector2d;
+import org.joml.Vector3i;
 import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;
@@ -116,6 +118,15 @@ public class WorldFeatureHangingDungeonBase implements WorldFeatureInterface {
 				var variant = base.getRandom(random);
 
 				world.setBlockTypeData(block, variant, 0);
+
+				if (
+					   x == corners[0].x()
+					|| x == corners[3].x()
+					|| z == corners[0].z()
+					|| z == corners[3].z()
+				) {
+					world.setBlockTypeData(block.add(new Vector3i(0, 4, 0)), BTDBlocks.CHAIN_LARGE, 0);
+				}
 			}
 		}
 

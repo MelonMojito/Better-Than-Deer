@@ -125,11 +125,9 @@ public class BTDBlocks implements BlockInitEntrypoint {
 
 
 		CHAIN_LARGE = new BlockBuilder(MOD_ID)
-			.setTags(BlockTags.BROKEN_BY_FLUIDS, BlockTags.MINEABLE_BY_PICKAXE)
-			.setTicking(true)
-			.setUseInternalLight()
-			.setLuminance(10)
-			.build("chain.large", 3015, block -> new BlockLogic(block, Materials.METAL));
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
+			.setVisualUpdateOnMetadata()
+			.build("chain.large", 3015, block -> new BlockLogicChainLarge(block));
 
 	}
 

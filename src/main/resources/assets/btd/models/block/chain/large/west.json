@@ -1,0 +1,46 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "btd:block/chain_large_alt",
+		"chain_large_alt": "btd:block/chain_large_alt",
+		"chain_large": "btd:block/chain_large"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 8],
+			"to": [8, 16, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 4]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 8], "rotation": 90, "texture": "#chain_large"},
+				"east": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large_alt"},
+				"south": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large"},
+				"west": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large_alt"},
+				"up": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large_alt"},
+				"down": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large_alt"}
+			}
+		},
+		{
+			"from": [0, 8, 0],
+			"to": [8, 8, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 8, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large"},
+				"east": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large"},
+				"south": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large"},
+				"west": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large"},
+				"up": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large_alt"},
+				"down": {"uv": [0, 0, 16, 8], "rotation": 270, "texture": "#chain_large_alt"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "west",
+			"origin": [0, 0, 0],
+			"scope": 0,
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

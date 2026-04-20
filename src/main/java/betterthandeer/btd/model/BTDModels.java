@@ -1,4 +1,4 @@
-package betterthandeer.btd;
+package betterthandeer.btd.model;
 
 import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.block.BlockModelGenericIceRubyGlass;
@@ -20,7 +20,9 @@ import net.minecraft.client.render.entity.EntityRendererSprite;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
+import net.minecraft.client.render.texture.stitcher.TextureRegistry;
 import net.minecraft.core.item.block.ItemBlock;
+import net.minecraft.core.util.collection.NamespaceID;
 import turniplabs.halplibe.util.ModelEntrypoint;
 
 import static net.minecraft.client.render.block.model.BlockModelDispatcher.loadDataModel;
@@ -44,7 +46,7 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_BOTTOM, loadDataModel("btd:block/growth_bottom")).render3D(false));
 		dispatcher.addDispatch(new BlockModelCrystalBud<>(BTDBlocks.RUBYGLASS_GROWTH_TOP, loadDataModel("btd:block/growth_top")).render3D(false));
 
-		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.CHAIN_LARGE, loadDataModel("btd:block/chain_large")));
+		dispatcher.addDispatch(new BlockModelChainLarge<>(BTDBlocks.CHAIN_LARGE));
 
 	}
 
@@ -61,6 +63,8 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.AMMO_ARROW_FLAMING, "btd").setFullBright());
 
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
+
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.CHAIN_LARGE, "btd"));
 	}
 
 	@Override

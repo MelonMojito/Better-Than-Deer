@@ -3,7 +3,9 @@ package betterthandeer.btd.item;
 import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemBucket;
+import net.minecraft.core.item.ItemPlaceable;
 import net.minecraft.core.item.Items;
+import net.minecraft.core.item.block.ItemBlock;
 
 public class BTDItems {
 
@@ -20,6 +22,8 @@ public class BTDItems {
 	public static Item SULFUR;
 
 	public static Item AMMO_ARROW_FLAMING;
+
+	public static Item CHAIN_LARGE;
 
 	private static boolean hasInit = false;
 
@@ -44,5 +48,7 @@ public class BTDItems {
 		SULFUR = new Item("sulfur", "btd:item/sulfur", 20005);
 
 		AMMO_ARROW_FLAMING = new Item("ammo.arrow.flaming", "btd:item/ammo_arrow_flaming", 20006);
+
+		CHAIN_LARGE = new ItemPlaceable("chain.large", "btd:item/chain_large", 20007, BTDBlocks.CHAIN_LARGE);
 	}
 }

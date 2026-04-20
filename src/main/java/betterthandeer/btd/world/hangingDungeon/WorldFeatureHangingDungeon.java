@@ -1,5 +1,6 @@
 package betterthandeer.btd.world.hangingDungeon;
 
+import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.WeightedRandomBag;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Block;
@@ -53,7 +54,7 @@ public class WorldFeatureHangingDungeon {
 		private final static WeightedRandomBag<Block<?>> hangingDungeonRope = new WeightedRandomBag<>();
 
 		static {
-			hangingDungeonRope.addEntry(Blocks.ROPE, 1);
+			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_LARGE, 1);
 		}
 
 		private static final WorldFeatureInterface dungeon = new WorldFeatureHangingDungeonBase(
@@ -90,7 +91,7 @@ public class WorldFeatureHangingDungeon {
 		private final static WeightedRandomBag<Block<?>> hangingDungeonRope = new WeightedRandomBag<>();
 
 		static {
-			hangingDungeonRope.addEntry(Blocks.ROPE, 1);
+			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_LARGE, 1);
 		}
 
 		private static final WorldFeatureInterface dungeon = new WorldFeatureHangingDungeonBase(
@@ -127,7 +128,7 @@ public class WorldFeatureHangingDungeon {
 		private final static WeightedRandomBag<Block<?>> hangingDungeonRope = new WeightedRandomBag<>();
 
 		static {
-			hangingDungeonRope.addEntry(Blocks.ROPE, 1);
+			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_LARGE, 1);
 		}
 
 		private static final WorldFeatureInterface dungeon = new WorldFeatureHangingDungeonBase(
@@ -164,7 +165,7 @@ public class WorldFeatureHangingDungeon {
 		private final static WeightedRandomBag<Block<?>> hangingDungeonRope = new WeightedRandomBag<>();
 
 		static {
-			hangingDungeonRope.addEntry(Blocks.ROPE, 1);
+			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_LARGE, 1);
 		}
 
 		private static final WorldFeatureInterface dungeon = new WorldFeatureHangingDungeonBase(
