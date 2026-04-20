@@ -25,7 +25,7 @@ public class MobGargoyle extends MobFlying implements Enemy {
 	public double waypointY;
 	public double waypointZ;
 	private int flapTimer;
-	public boolean isHanging = true;
+	public boolean isHanging = false;
 
 	@Nullable
 	private Entity target;
@@ -63,7 +63,7 @@ public class MobGargoyle extends MobFlying implements Enemy {
 
 	@Override
 	public void tick() {
-		if (!isHanging) {
+		if (!isHanging && speed > 0.001) {
 			this.flapTimer++;
 			if (this.flapTimer >= 4 && this.isAlive()) {
 				world.playSoundAtEntity(null, this, "btd:mob.gargoyleflap", 0.15F, (random.nextFloat() / 2) + 1.5F);
