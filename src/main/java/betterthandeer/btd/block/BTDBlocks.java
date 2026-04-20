@@ -8,6 +8,7 @@ import net.minecraft.core.block.material.MaterialLiquid;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.data.tag.Tag;
+import net.minecraft.core.item.Items;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.helper.BlockBuilder;
@@ -39,6 +40,14 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static Block<?> SLAB_SLATE_POLISHED;
 
 	public static Block<?> LOG_SCORCHED;
+	public static @NonNull Block<BlockLogicStatue> STATUE_SLATE_LOWER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_SLATE_UPPER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_PERMAFROST_LOWER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_PERMAFROST_UPPER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_NETHERRACK_LOWER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_NETHERRACK_UPPER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_GLOOMSTONE_LOWER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_GLOOMSTONE_UPPER;
 
 	private static boolean hasInit = false;
 
@@ -163,6 +172,59 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setResistance(10.0F)
 			.setOverrideColor(MaterialColor.iron)
 			.build("chain.large", 3015, block -> new BlockLogicChainLarge(block));
+
+		STATUE_SLATE_LOWER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_SLATE)
+			.build("statue.slate.lower", 3050, block -> new BlockLogicStatue(block, Materials.SLATE, true, () -> BTDItems.STATUE_SLATE));
+
+		STATUE_SLATE_UPPER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_SLATE)
+			.build("statue.slate.upper", 3051, block -> new BlockLogicStatue(block, Materials.SLATE, false, () -> BTDItems.STATUE_SLATE));
+
+		STATUE_PERMAFROST_LOWER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_PERMAFROST)
+			.build("statue.permafrost.lower", 3052, block -> new BlockLogicStatue(block, Materials.PERMAFROST, true, () -> BTDItems.STATUE_PERMAFROST));
+		STATUE_PERMAFROST_UPPER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_PERMAFROST)
+			.build("statue.permafrost.upper", 3053, block -> new BlockLogicStatue(block, Materials.PERMAFROST, false, () -> BTDItems.STATUE_PERMAFROST));
+
+		STATUE_NETHERRACK_LOWER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_NETHERRACK)
+			.build("statue.netherrack.lower", 3054, block -> new BlockLogicStatue(block, Materials.NETHERRACK, true, () -> BTDItems.STATUE_NETHERRACK));
+		STATUE_NETHERRACK_UPPER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_NETHERRACK)
+			.build("statue.netherrack.upper", 3055, block -> new BlockLogicStatue(block, Materials.NETHERRACK, false, () -> BTDItems.STATUE_NETHERRACK));
+
+		STATUE_GLOOMSTONE_LOWER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_GLOOMSTONE)
+			.build("statue.gloomstone.lower", 3056, block -> new BlockLogicStatue(block, Materials.GLOOMSTONE, true, () -> BTDItems.STATUE_GLOOMSTONE));
+		STATUE_GLOOMSTONE_UPPER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_GLOOMSTONE)
+			.build("statue.gloomstone.upper", 3057, block -> new BlockLogicStatue(block, Materials.GLOOMSTONE, false, () -> BTDItems.STATUE_GLOOMSTONE));
 
 	}
 
