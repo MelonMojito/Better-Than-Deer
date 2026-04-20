@@ -8,6 +8,12 @@
       "block/bubble4.ogg"
     ]
   },
+  "scrape": {
+    "subtitle": "subtitles.scrape",
+    "sounds": [
+      "block/scrape.ogg"
+    ]
+  },
   "mob.gargoyle": {
     "subtitle": "subtitles.mob.gargoyle",
     "sounds": [

@@ -35,6 +35,11 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static Block<?> RUBYGLASS_GROWTH_BOTTOM;
 	public static Block<?> RUBYGLASS_GROWTH_TOP;
 
+	public static Block<?> SLATE_CARVED;
+	public static Block<?> SLAB_SLATE_POLISHED;
+
+	public static Block<?> LOG_SCORCHED;
+
 	private static boolean hasInit = false;
 
 	public static void init() {
@@ -123,6 +128,31 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setOverrideColor(MaterialColor.rubyglass)
 			.setStatParent(() -> BTDItems.RUBYGLASS_GROWTH)
 			.build("rubyglass.growth.top", 3014, block -> new BlockLogicRubyglassGrowth(block, true));
+
+
+		SLATE_CARVED = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.0F)
+			.setResistance(10.0F)
+			.setDisableStats()
+			.setTags(BlockTags.NOT_IN_CREATIVE_MENU, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT)
+			.build("slate.carved", 3020, block -> new BlockLogic(block, Materials.SLATE));
+
+		SLAB_SLATE_POLISHED = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setVisualUpdateOnMetadata()
+			.setUseInternalLight()
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
+			.build("slab.slate.carved", 3021, block -> new BlockLogicSlab(block, SLATE_CARVED));
+
+
+		LOG_SCORCHED = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.WOOD)
+			.setHardness(1.5F)
+			.setVisualUpdateOnMetadata()
+			.setFlammability(0, 0)
+			.setTags(BlockTags.FENCES_CONNECT, BlockTags.MINEABLE_BY_AXE)
+			.build("log.scorched", 3025, BlockLogicLog::new);
 
 
 		CHAIN_LARGE = new BlockBuilder(MOD_ID)
