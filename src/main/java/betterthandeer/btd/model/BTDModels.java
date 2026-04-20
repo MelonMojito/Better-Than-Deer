@@ -24,6 +24,7 @@ import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
 import net.minecraft.client.render.tileentity.TileEntityRendererStatue;
 import net.minecraft.client.render.texture.stitcher.TextureRegistry;
+import net.minecraft.client.render.tileentity.TileEntityRendererStatue;
 import net.minecraft.core.item.block.ItemBlock;
 import net.minecraft.core.util.collection.NamespaceID;
 import turniplabs.halplibe.util.ModelEntrypoint;
@@ -76,7 +77,6 @@ public class BTDModels implements ModelEntrypoint {
 
 
 		dispatcher.addDispatch(new BlockModelChainLarge<>(BTDBlocks.CHAIN_LARGE));
-
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemBucket;
 import net.minecraft.core.item.ItemStatue;
 import net.minecraft.core.item.ItemPlaceable;
+import net.minecraft.core.item.ItemStatue;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.item.block.ItemBlock;
 
