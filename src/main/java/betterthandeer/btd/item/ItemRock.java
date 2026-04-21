@@ -1,7 +1,7 @@
 package betterthandeer.btd.item;
 
 import betterthandeer.btd.block.BTDBlocks;
-import betterthandeer.btd.entity.ProjectileRock;
+import betterthandeer.btd.entity.rock.ProjectileRock;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.entity.TileEntityActivator;

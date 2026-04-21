@@ -12,19 +12,19 @@ import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.pos.TilePosc;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Random;
 
 public class BlockLogicSulfur extends BlockLogic {
 
-	public BlockLogicSulfur(@NotNull Block<?> block, @NotNull Material material) {
+	public BlockLogicSulfur(@NonNull Block<?> block, @NonNull Material material) {
 		super(block, material);
 	}
 
 	@Override
-	public ItemStack[] getBreakResult(@NotNull World world, @NotNull EnumDropCause dropCause, int data, @Nullable TileEntity tileEntity) {
+	public ItemStack[] getBreakResult(@NonNull World world, @NonNull EnumDropCause dropCause, int data, @Nullable TileEntity tileEntity) {
 		return switch (dropCause) {
 			case PICK_BLOCK, SILK_TOUCH -> new ItemStack[]{new ItemStack(this)};
 			default -> new ItemStack[]{new ItemStack(BTDItems.SULFUR, 1 + world.rand.nextInt(3))};
@@ -32,16 +32,16 @@ public class BlockLogicSulfur extends BlockLogic {
 	}
 
 	@Override
-	public void onNeighborChanged(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Block<?> block) {
+	public void onNeighborChanged(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Block<?> block) {
 		world.scheduleBlockUpdate(tilePos, this.block, this.tickDelay() + world.rand.nextInt(5) - world.rand.nextInt(5));
 	}
 
 	@Override
-	public void onPlacedByWorld(@NotNull World world, @NotNull TilePosc tilePos) {
+	public void onPlacedByWorld(@NonNull World world, @NonNull TilePosc tilePos) {
 		world.scheduleBlockUpdate(tilePos, this.block, this.tickDelay() + world.rand.nextInt(5) - world.rand.nextInt(5));
 	}
 
-	public boolean canMelt(@NotNull World world, @NotNull TilePosc tilePos) {
+	public boolean canMelt(@NonNull World world, @NonNull TilePosc tilePos) {
 		boolean canMelt = false;
 		TilePos queryPos = new TilePos();
 
@@ -59,7 +59,7 @@ public class BlockLogicSulfur extends BlockLogic {
 	}
 
 	@Override
-	public void updateTick(@NotNull World world, @NotNull TilePosc tilePos, @NotNull Random rand, boolean isRandomTick) {
+	public void updateTick(@NonNull World world, @NonNull TilePosc tilePos, @NonNull Random rand, boolean isRandomTick) {
 		if (this.canMelt(world, tilePos)) {
 			world.setBlockTypeNotify(tilePos, BTDBlocks.FLUID_ACID_FLOWING);
 		}

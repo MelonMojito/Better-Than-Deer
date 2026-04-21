@@ -7,7 +7,6 @@
   },
   "mixins": [
     "ItemBowMixin",
-    "MixinTag",
     "ProjectileCannonballMixin",
     "block.BetterAshMixin",
     "block.BetterBonepileMixin",
@@ -30,9 +29,9 @@
     "entity.UpdateNetherBiomesMixin",
     "entity.VolcanoMobSpawningMixin",
     "entity.ZombiePigSwordMixin",
-    "world.BiomeProviderNetherMixin",
     "world.SwapNetherChunkGeneratorMixin",
-    "world.WorldFeatureFireMixin"
+    "world.WorldFeatureFireMixin",
+    "world.YLevelChunkDecorationBuilderMixin"
   ],
   "client": [
     "MixinDispatcher",
