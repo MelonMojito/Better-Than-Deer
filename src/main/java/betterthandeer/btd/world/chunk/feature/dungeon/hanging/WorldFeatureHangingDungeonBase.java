@@ -2,7 +2,7 @@ package betterthandeer.btd.world.chunk.feature.dungeon.hanging;
 
 import betterthandeer.btd.BTDHelpers;
 import betterthandeer.btd.block.BTDBlocks;
-import betterthandeer.btd.block.BlockLogicChainLarge;
+import betterthandeer.btd.block.chain.BlockLogicChainLarge;
 import net.minecraft.core.WeightedRandomBag;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Block;
