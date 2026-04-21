@@ -1,7 +1,7 @@
 tile.btd.boulder.name=Magma Boulder
 tile.btd.boulder.desc=Glowing hot rock that burns on contact.
 
-tile.btd.sulfur.name=Sulfur
+tile.btd.sulfur.name=Block of Sulfur
 tile.btd.sulfur.desc=Clump of burning yellow stone. Smells like rotten eggs.
 
 tile.btd.fluid.acid.flowing.name=Flowing Acid
@@ -35,8 +35,34 @@ tile.btd.rubyglass.growth.top.desc=You really shouldn't have this.
 tile.btd.rubyglass.growth.bottom.name=Bottom Rubyglass Growth
 tile.btd.rubyglass.growth.bottom.desc=Please tell me how you got this.
 
+tile.btd.slab.slate.carved.name=Polished Slate Slab
+tile.btd.slab.slate.carved.desc= slab of polished slate.
+tile.btd.slate.carved.name=Carved Slate
+tile.btd.slate.carved.desc=Polished Stone with lines hewn through the middle.
+
+tile.btd.log.scorched.name=Scorched Log
+tile.btd.log.scorched.desc=A pillar of carbon, encased in ash.
 
 
+tile.btd.statue.slate.lower.name=Slate Statue (Lower)
+tile.btd.statue.slate.lower.desc=
+tile.btd.statue.slate.upper.name=Slate Statue (Upper)
+tile.btd.statue.slate.upper.desc=
+
+tile.btd.statue.permafrost.lower.name=Permafrost Statue (Lower)
+tile.btd.statue.permafrost.lower.desc=
+tile.btd.statue.permafrost.upper.name=Permafrost Statue (Upper)
+tile.btd.statue.permafrost.upper.desc=
+
+tile.btd.statue.netherrack.lower.name=Netherrack Statue (Lower)
+tile.btd.statue.netherrack.lower.desc=
+tile.btd.statue.netherrack.upper.name=Netherrack Statue (Upper)
+tile.btd.statue.netherrack.upper.desc=
+
+tile.btd.statue.gloomstone.lower.name=Gloomstone Statue (Lower)
+tile.btd.statue.gloomstone.lower.desc=
+tile.btd.statue.gloomstone.upper.name=Gloomstone Statue (Upper)
+tile.btd.statue.gloomstone.upper.desc=
 
 
 

@@ -1,11 +1,14 @@
 package betterthandeer.btd;
 
+import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Blocks;
+import net.minecraft.core.data.registry.Registries;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import turniplabs.halplibe.helper.RecipeBuilder;
+import turniplabs.halplibe.helper.recipeBuilders.RecipeBuilderShaped;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
@@ -17,14 +20,20 @@ public class BTDRecipes implements RecipeEntrypoint {
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("motion_sensor");
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("pebbles_to_cobblestone");
 
-
 		RecipeBuilder.Shapeless(MOD_ID)
-			.addInput(Blocks.BLOCK_RUBYGLASS)
-			.create("block_of_rubyglass_to_rubyglass", new ItemStack(Items.RUBYGLASS_CRYSTAL, 9));
+			.addInput(BTDBlocks.LOG_SCORCHED)
+			.create("scorched_log_to_black_wooden_planks", new ItemStack(Blocks.PLANKS_OAK_PAINTED, 4, 15));
 
-		RecipeBuilder.Shapeless(MOD_ID)
-			.addInput(Blocks.BLOCK_SUGARCANE)
-			.create("block_of_sugarcane_to_sugarcane", new ItemStack(Items.SUGARCANE, 9));
+		RecipeBuilderShaped templateStatue = new RecipeBuilderShaped(MOD_ID, "B", "B", "S");
+		templateStatue.addInput('B', Blocks.SLATE).addInput('S', BTDBlocks.SLAB_SLATE_POLISHED).create("statue_slate", new ItemStack(BTDItems.STATUE_SLATE, 1));
+		templateStatue.addInput('B', Blocks.PERMAFROST).addInput('S', Blocks.SLAB_PERMAFROST_POLISHED).create("statue_permafrost", new ItemStack(BTDItems.STATUE_PERMAFROST, 1));
+		templateStatue.addInput('B', Blocks.NETHERRACK).addInput('S', Blocks.SLAB_NETHERRACK_POLISHED).create("statue_netherrack", new ItemStack(BTDItems.STATUE_NETHERRACK, 1));
+		templateStatue.addInput('B', Blocks.GLOOMSTONE).addInput('S', Blocks.SLAB_GLOOMSTONE_POLISHED).create("statue_gloomstone", new ItemStack(BTDItems.STATUE_GLOOMSTONE, 1));
+
+
+		RecipeBuilder.Shaped(MOD_ID, "SSS")
+			.addInput('S', Blocks.SLATE_POLISHED)
+			.create("polished_slate_slab", new ItemStack(BTDBlocks.SLAB_SLATE_POLISHED, 6));
 
 		RecipeBuilder.Shaped(MOD_ID, "PP", "PP")
 			.addInput('P', BTDItems.AMMO_ROCK)
@@ -52,12 +61,28 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.addInput('R', Items.DUST_REDSTONE)
 			.create("matcher", new ItemStack(Blocks.MATCHER, 1));
 
+		RecipeBuilder.Shaped(MOD_ID, " S ", "SAS", " S ")
+			.addInput('S', BTDItems.SULFUR)
+			.addInput('A', Items.AMMO_ARROW)
+			.create("flaming_arrow", new ItemStack(BTDItems.AMMO_ARROW_FLAMING, 4));
+
+		RecipeBuilder.Shaped(MOD_ID, "SS", "SS")
+			.addInput('S', BTDItems.SULFUR)
+			.create("sulfur_block", new ItemStack(BTDBlocks.SULFUR, 1));
+
 
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_basalt_to_olivine");
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_granite_to_quartz");
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_limestone_to_marble");
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_netherrack_to_magma");
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_stone_to_slate");
+		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("log_to_petrified_pillar");
+
+
+		RecipeBuilder.BlastFurnace(MOD_ID)
+			.setInput(0, "minecraft:logs")
+			.setInput(1, Blocks.BLOCK_ASH)
+			.create("log_to_scorched_log", new ItemStack(BTDBlocks.LOG_SCORCHED, 1));
 
 
 		RecipeBuilder.BlastFurnace(MOD_ID)
@@ -135,5 +160,7 @@ public class BTDRecipes implements RecipeEntrypoint {
 	public void initNamespaces() {
 		RecipeBuilder.initNameSpace(MOD_ID);
 		RecipeBuilder.getRecipeNamespace(MOD_ID);
+
+		Registries.ITEM_GROUPS.getItem("minecraft:logs").add(BTDBlocks.LOG_SCORCHED.getDefaultStack());
 	}
 }

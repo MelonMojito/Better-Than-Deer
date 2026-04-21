@@ -13,6 +13,7 @@ import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -21,6 +22,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Environment(EnvType.CLIENT)
 @Mixin(FogManager.class)
 public abstract class AcidFogMixin {
+
+	@Unique
+	private float oldWorldFogTransition = 0.0f;
 
 	@Shadow
 	public float fogRed;
@@ -50,9 +54,18 @@ public abstract class AcidFogMixin {
 		World world = this.mc.currentWorld;
 		TilePos cameraTile = this.mc.activeCamera.getTilePos();
 
+		float fogTransitionSpeed = 0.0005f;
 		if (world.getBlockBiome(cameraTile) == Biomes.NETHER_OLD_WORLD) {
-			dest.fogStart = farPlaneDistance * 0.15F;
-			dest.fogEnd   = farPlaneDistance * 0.45F;
+			oldWorldFogTransition += fogTransitionSpeed;
+		} else {
+			oldWorldFogTransition -= fogTransitionSpeed;
+		}
+
+		oldWorldFogTransition = Math.max(0.0f, Math.min(1.0f, oldWorldFogTransition));
+
+		if (oldWorldFogTransition > 0.0f) {
+			dest.fogStart = dest.fogStart + (farPlaneDistance * 0.15F - dest.fogStart) * oldWorldFogTransition;
+			dest.fogEnd = dest.fogEnd + (farPlaneDistance * 0.45F - dest.fogEnd) * oldWorldFogTransition;
 		}
 
 		if (CameraUtil.isUnderLiquid(this.mc.activeCamera, world, BTDBlocks.ACID, partialTick)) {

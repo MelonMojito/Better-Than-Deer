@@ -27,7 +27,6 @@ public class BlockModelFluidAcid<T extends BlockLogicFluid> extends BlockModelFl
 	public final Random random = new Random();
 	public final IconCoordinate flowing;
 	public final IconCoordinate still;
-	public final IconCoordinate bubbles;
 	private final @NonNull Vector3d br = new Vector3d();
 	private final @NonNull Vector3d bl = new Vector3d();
 	private final @NonNull Vector3d tr = new Vector3d();
@@ -39,7 +38,6 @@ public class BlockModelFluidAcid<T extends BlockLogicFluid> extends BlockModelFl
 		super(block, "btd:block/acid_still", "btd:block/acid_flowing");
 		this.still = TextureRegistry.getTexture("btd:block/acid_still");
 		this.flowing = TextureRegistry.getTexture("btd:block/acid_flowing");
-		this.bubbles = TextureRegistry.getTexture("btd:block/acid_overlay_boiling");
 		if (block.getLogic() instanceof BlockLogicFluidFlowing) {
 			this.setAllTextures(this.flowing);
 			this.setTex(this.still, Side.TOP);
@@ -106,35 +104,7 @@ public class BlockModelFluidAcid<T extends BlockLogicFluid> extends BlockModelFl
 					tessellator.addVertexWithUV(x + 1, (float) y + hes, z + 1, tex.getIconUMax(), tex.getIconVMin());
 					tessellator.addVertexWithUV(x + 1, (float) y + he, z, tex.getIconUMin(), tex.getIconVMin());
 
-
-					tessellator.setColorOpaque3i(210, 210, 210);
-
 					this.random.setSeed(this.getPositionalSeed(tilePos));
-					switch (this.random.nextInt(4)) {
-						case 1:
-							tessellator.addVertexWithUV(x, (float) y + h, z, this.bubbles.getIconUMin(), this.bubbles.getIconVMin());
-							tessellator.addVertexWithUV(x, (float) y + hs, z + 1, this.bubbles.getIconUMin(), this.bubbles.getIconVMax());
-							tessellator.addVertexWithUV(x + 1, (float) y + hes, z + 1, this.bubbles.getIconUMax(), this.bubbles.getIconVMax());
-							tessellator.addVertexWithUV(x + 1, (float) y + he, z, this.bubbles.getIconUMax(), this.bubbles.getIconVMin());
-							break;
-						case 2:
-							tessellator.addVertexWithUV(x, (float) y + h, z, this.bubbles.getIconUMax(), this.bubbles.getIconVMin());
-							tessellator.addVertexWithUV(x, (float) y + hs, z + 1, this.bubbles.getIconUMin(), this.bubbles.getIconVMin());
-							tessellator.addVertexWithUV(x + 1, (float) y + hes, z + 1, this.bubbles.getIconUMin(), this.bubbles.getIconVMax());
-							tessellator.addVertexWithUV(x + 1, (float) y + he, z, this.bubbles.getIconUMax(), this.bubbles.getIconVMax());
-							break;
-						case 3:
-							tessellator.addVertexWithUV(x, (float) y + h, z, this.bubbles.getIconUMax(), this.bubbles.getIconVMax());
-							tessellator.addVertexWithUV(x, (float) y + hs, z + 1, this.bubbles.getIconUMax(), this.bubbles.getIconVMin());
-							tessellator.addVertexWithUV(x + 1, (float) y + hes, z + 1, this.bubbles.getIconUMin(), this.bubbles.getIconVMin());
-							tessellator.addVertexWithUV(x + 1, (float) y + he, z, this.bubbles.getIconUMin(), this.bubbles.getIconVMax());
-						default:
-							tessellator.addVertexWithUV(x, (float) y + h, z, this.bubbles.getIconUMin(), this.bubbles.getIconVMax());
-							tessellator.addVertexWithUV(x, (float) y + hs, z + 1, this.bubbles.getIconUMax(), this.bubbles.getIconVMax());
-							tessellator.addVertexWithUV(x + 1, (float) y + hes, z + 1, this.bubbles.getIconUMax(), this.bubbles.getIconVMin());
-							tessellator.addVertexWithUV(x + 1, (float) y + he, z, this.bubbles.getIconUMin(), this.bubbles.getIconVMin());
-							break;
-					}
 
 					tessellator.setColor1i(color);
 				}

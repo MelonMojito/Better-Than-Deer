@@ -16,10 +16,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class AcidArmorMeltMixin extends Entity {
 
 	@Shadow
-	protected int lastDamage;
-
-	@Shadow
 	public int hurtTime;
+
+	@Unique
+	private int acidSoundCooldown = 0;
 
 	protected AcidArmorMeltMixin(World world) {
 		super(world);
@@ -33,12 +33,20 @@ public abstract class AcidArmorMeltMixin extends Entity {
 	@Inject(method = "onLivingUpdate", at = @At("TAIL"))
 	private void acidArmorDamage(CallbackInfo ci) {
 		if (this.world.isClientSide) return;
+		if (this.noPhysics) return;
 
 		if (this instanceof IArmorWearing && this.isInAcid()) {
 			((IArmorWearing<?>) this).damageArmor(2);
-			if (this.hurtTime == 0) {
-				world.playSoundAtEntity(null, this, "random.fizz", 0.1f, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+			if (acidSoundCooldown > 0) {
+				acidSoundCooldown--;
 			}
+
+			if (this.hurtTime == 0 && acidSoundCooldown == 0) {
+				world.playSoundAtEntity(null, this, "random.fizz", 0.1f, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+				acidSoundCooldown = 25;
+			}
+		} else {
+			acidSoundCooldown = 0;
 		}
 	}
 }

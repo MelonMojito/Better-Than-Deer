@@ -38,8 +38,7 @@ public abstract class EntityInAcidMixin {
 
 	@Unique
 	public void acidHurt() {
-		this.hurt(null, 1, DamageType.FIRE);
-
+		this.hurt(null, 1, DamageType.GENERIC);
 	}
 
 	@Unique

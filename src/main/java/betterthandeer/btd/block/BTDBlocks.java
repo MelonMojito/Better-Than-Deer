@@ -7,6 +7,8 @@ import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.block.tag.BlockTags;
+import net.minecraft.core.data.tag.Tag;
+import net.minecraft.core.item.Items;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.helper.BlockBuilder;
@@ -25,12 +27,27 @@ public class BTDBlocks implements BlockInitEntrypoint {
 
 	public static Block<?> EMBER;
 
+	public static Block<?> CHAIN_LARGE;
+
 	public static Block<?> OVERLAY_ROCKS;
 
 	public static Block<?> ICE_RUBYGLASS;
 
 	public static Block<?> RUBYGLASS_GROWTH_BOTTOM;
 	public static Block<?> RUBYGLASS_GROWTH_TOP;
+
+	public static Block<?> SLATE_CARVED;
+	public static Block<?> SLAB_SLATE_POLISHED;
+
+	public static Block<?> LOG_SCORCHED;
+	public static @NonNull Block<BlockLogicStatue> STATUE_SLATE_LOWER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_SLATE_UPPER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_PERMAFROST_LOWER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_PERMAFROST_UPPER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_NETHERRACK_LOWER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_NETHERRACK_UPPER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_GLOOMSTONE_LOWER;
+	public static @NonNull Block<BlockLogicStatue> STATUE_GLOOMSTONE_UPPER;
 
 	private static boolean hasInit = false;
 
@@ -73,7 +90,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setHardness(1.0f)
 			.setOverrideColor(MaterialColor.paintedYellow)
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH)
-			.build("sulfur", 3005, block -> new BlockLogic(block, Materials.STONE));
+			.build("sulfur", 3005, block -> new BlockLogicSulfur(block, Materials.STONE));
 
 
 		EMBER = new BlockBuilder(MOD_ID)
@@ -121,6 +138,93 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setStatParent(() -> BTDItems.RUBYGLASS_GROWTH)
 			.build("rubyglass.growth.top", 3014, block -> new BlockLogicRubyglassGrowth(block, true));
 
+
+		SLATE_CARVED = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.0F)
+			.setResistance(10.0F)
+			.setDisableStats()
+			.setTags(BlockTags.NOT_IN_CREATIVE_MENU, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT)
+			.build("slate.carved", 3020, block -> new BlockLogic(block, Materials.SLATE));
+
+		SLAB_SLATE_POLISHED = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setVisualUpdateOnMetadata()
+			.setUseInternalLight()
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
+			.build("slab.slate.carved", 3021, block -> new BlockLogicSlab(block, SLATE_CARVED));
+
+
+		LOG_SCORCHED = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.WOOD)
+			.setHardness(1.5F)
+			.setVisualUpdateOnMetadata()
+			.setFlammability(0, 0)
+			.setTags(BlockTags.FENCES_CONNECT, BlockTags.MINEABLE_BY_AXE)
+			.build("log.scorched", 3025, BlockLogicLog::new);
+
+
+		CHAIN_LARGE = new BlockBuilder(MOD_ID)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE)
+			.setVisualUpdateOnMetadata()
+			.setBlockSound(BlockSounds.METAL)
+			.setHardness(5.0F)
+			.setResistance(10.0F)
+			.setOverrideColor(MaterialColor.iron)
+			.build("chain.large", 3015, block -> new BlockLogicChainLarge(block));
+
+		STATUE_SLATE_LOWER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_SLATE)
+			.build("statue.slate.lower", 3050, block -> new BlockLogicStatue(block, Materials.SLATE, true, () -> BTDItems.STATUE_SLATE));
+
+		STATUE_SLATE_UPPER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_SLATE)
+			.build("statue.slate.upper", 3051, block -> new BlockLogicStatue(block, Materials.SLATE, false, () -> BTDItems.STATUE_SLATE));
+
+		STATUE_PERMAFROST_LOWER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_PERMAFROST)
+			.build("statue.permafrost.lower", 3052, block -> new BlockLogicStatue(block, Materials.PERMAFROST, true, () -> BTDItems.STATUE_PERMAFROST));
+		STATUE_PERMAFROST_UPPER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_PERMAFROST)
+			.build("statue.permafrost.upper", 3053, block -> new BlockLogicStatue(block, Materials.PERMAFROST, false, () -> BTDItems.STATUE_PERMAFROST));
+
+		STATUE_NETHERRACK_LOWER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_NETHERRACK)
+			.build("statue.netherrack.lower", 3054, block -> new BlockLogicStatue(block, Materials.NETHERRACK, true, () -> BTDItems.STATUE_NETHERRACK));
+		STATUE_NETHERRACK_UPPER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_NETHERRACK)
+			.build("statue.netherrack.upper", 3055, block -> new BlockLogicStatue(block, Materials.NETHERRACK, false, () -> BTDItems.STATUE_NETHERRACK));
+
+		STATUE_GLOOMSTONE_LOWER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_GLOOMSTONE)
+			.build("statue.gloomstone.lower", 3056, block -> new BlockLogicStatue(block, Materials.GLOOMSTONE, true, () -> BTDItems.STATUE_GLOOMSTONE));
+		STATUE_GLOOMSTONE_UPPER = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(1.5F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
+			.setStatParent(() -> BTDItems.STATUE_GLOOMSTONE)
+			.build("statue.gloomstone.upper", 3057, block -> new BlockLogicStatue(block, Materials.GLOOMSTONE, false, () -> BTDItems.STATUE_GLOOMSTONE));
 
 	}
 

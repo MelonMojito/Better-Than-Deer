@@ -18,7 +18,7 @@ public class FluidAcid implements Fluid {
 	}
 
 	public int tickDelay() {
-		return 16;
+		return 17;
 	}
 
 	@Override

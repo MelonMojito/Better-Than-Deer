@@ -143,39 +143,31 @@ public class NewSurfaceGeneratorNether extends SurfaceGeneratorNether {
 						continue;
 					}
 
+					if (currentLayerDepth > 0) {
+						result.setBlock(x, y, z, fillerBlock);
+						currentLayerDepth--;
+					}
+
+					if (currentLayerDepth == 0 && biome == Biomes.NETHER_OLD_WORLD && fillerBlock == Blocks.BLOCK_ASH.id()) {
+						currentLayerDepth = rand.nextInt(8) + 2;
+						fillerBlock = (short) Blocks.SLATE.id();
+					}
+
+
 					if (this.generateStoneVariants && currentLayerDepth <= 0) {
 						int stoneBlockId = worldFillBlock;
-
 
 						if (biome == Biomes.NETHER_VOLCANIC_ISLANDS || biome == Biomes.NETHER_SULFUR_POOLS) {
 							stoneBlockId = Blocks.BRIMSAND.id();
 						} else if (biome == Biomes.NETHER_CRAG || biome == Biomes.NETHER_SHELF) {
-							if (rand.nextInt(2) == 0) {
-								stoneBlockId = Blocks.NETHERRACK.id();
-							} else {
-								stoneBlockId = Blocks.COBBLE_NETHERRACK.id();
-							}
+							stoneBlockId = (rand.nextInt(2) == 0) ? Blocks.NETHERRACK.id() : Blocks.COBBLE_NETHERRACK.id();
 						} else if (biome == Biomes.NETHER_CRYSTAL_PLAINS || biome == Biomes.NETHER_CRYSTAL_FOREST) {
-							if (rand.nextInt(8) == 0) {
-								stoneBlockId = Blocks.COBBLE_NETHERRACK_CRYSTALLINE.id();
-							} else {
-								stoneBlockId = Blocks.COBBLE_NETHERRACK.id();
-							}
-						} else if (biome == Biomes.NETHER_OLD_WORLD) {
+							stoneBlockId = (rand.nextInt(8) == 0) ? Blocks.COBBLE_NETHERRACK_CRYSTALLINE.id() : Blocks.COBBLE_NETHERRACK.id();
+						} else if (biome == Biomes.NETHER_OLD_WORLD || biome == Biomes.NETHER_OLD_WORLD_DESERT) {
 							stoneBlockId = Blocks.COBBLE_GLOOMSTONE.id();
 						}
+
 						result.setBlock(x, y, z, stoneBlockId);
-					}
-
-
-					// fill blocks with filler block until current layer level = -1 or air is encountered
-					if (currentLayerDepth > 0) {
-						currentLayerDepth--;
-						result.setBlock(x, y, z, fillerBlock);
-					}
-
-					if (currentLayerDepth == 0 && biome.hasTag(BiomeTags.HAS_SULFUR_POOLS) && fillerBlock == Blocks.BRIMSAND.id()) {
-						currentLayerDepth = rand.nextInt(4) + 2;
 					}
 				}
 			}

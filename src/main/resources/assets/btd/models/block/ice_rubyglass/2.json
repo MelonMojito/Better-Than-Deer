@@ -2,6 +2,6 @@
   "renderlayer": 1,
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "btd:block/ice_rubyglass"
+    "all": "btd:block/ice_rubyglass/3"
   }
 }

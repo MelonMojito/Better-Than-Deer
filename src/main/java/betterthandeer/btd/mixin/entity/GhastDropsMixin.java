@@ -7,11 +7,19 @@ import net.minecraft.core.entity.monster.MobGhast;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MobGhast.class)
 public class GhastDropsMixin extends MobFlying {
 	public GhastDropsMixin(World world) {
 		super(world);
+	}
+
+	@Inject(method = "tick", at = @At("HEAD"))
+	public void tick(CallbackInfo ci) {
+		this.remainingFireTicks = 0;
 	}
 
 	@Override

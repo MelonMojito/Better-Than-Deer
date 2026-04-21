@@ -7,10 +7,7 @@ import betterthandeer.btd.world.ParticleAcidBoiling;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.guidebook.mobs.MobInfoRegistry;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
-import net.minecraft.client.render.block.model.generic.BlockModelCrystalBud;
-import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
-import net.minecraft.client.render.block.model.generic.BlockModelGenericSlab;
-import net.minecraft.client.render.block.model.generic.BlockModelGenericStairs;
+import net.minecraft.client.render.block.model.generic.*;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
@@ -57,6 +54,17 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 		ItemModelDispatcher itemModelDispatcher = ItemModelDispatcher.getInstance();
 		BlockModelDispatcher blockModelDispatcher = BlockModelDispatcher.getInstance();
 		Map<Object, Object> dispatches = ((MixinDispatcher) (Object) blockModelDispatcher).getDispatches();
+
+		dispatches.put(Blocks.BLOCK_ASH, new BlockModelGeneric<>(
+			Blocks.BLOCK_ASH,
+			loadDataModel("btd:block/block_ash")));
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.BLOCK_ASH.asItem()));
+
+		dispatches.put(Blocks.LAYER_ASH, new BlockModelGenericLayer<>(
+			Blocks.LAYER_ASH, "btd:block/layer/ash"));
+		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.LAYER_ASH.asItem()));
+
+
 
 		dispatches.put(Blocks.COBBLE_BASALT, new BlockModelGeneric<>(
 			Blocks.COBBLE_BASALT,
