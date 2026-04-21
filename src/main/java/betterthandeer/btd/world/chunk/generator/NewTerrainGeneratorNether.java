@@ -66,8 +66,8 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 			int oceanY = type.getOceanY();
 
 			if (y < oceanY) {
-				int fluidId = this.fluidLookup.getOrDefault(this.lastBiome, 0);
-
+				Biome oceanBiome = chunk.getBlockBiome(x, oceanY, z);
+				int fluidId = this.fluidLookup.getOrDefault(oceanBiome, 0);
 				if (fluidId == Blocks.FLUID_WATER_STILL.id() && y == oceanY - 1) {
 					return BTDBlocks.ICE_RUBYGLASS.id();
 				}

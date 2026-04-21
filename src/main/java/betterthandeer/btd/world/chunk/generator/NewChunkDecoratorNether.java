@@ -361,7 +361,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 		for (int dx = worldX; dx < worldX + 16; ++dx) {
 			for (int dz = worldZ; dz < worldZ + 16; ++dz) {
-				for (int dy = startY; dy > 0; --dy) {
+				for (int dy = startY; dy > 64; --dy) {
 					queryPose.set(dx, dy, dz);
 
 					if (world.isAirBlock(queryPose)) {
