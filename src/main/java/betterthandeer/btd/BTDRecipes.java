@@ -5,11 +5,17 @@ import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.data.registry.Registries;
+import net.minecraft.core.data.registry.recipe.RecipeSymbol;
+import net.minecraft.core.data.registry.recipe.entry.RecipeEntryDyeing;
+import net.minecraft.core.data.registry.recipe.entry.RecipeEntryUndyeing;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
+import net.minecraft.core.util.helper.DyeColor;
 import turniplabs.halplibe.helper.RecipeBuilder;
 import turniplabs.halplibe.helper.recipeBuilders.RecipeBuilderShaped;
 import turniplabs.halplibe.util.RecipeEntrypoint;
+
+import java.util.List;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
 
@@ -69,6 +75,22 @@ public class BTDRecipes implements RecipeEntrypoint {
 		RecipeBuilder.Shaped(MOD_ID, "SS", "SS")
 			.addInput('S', BTDItems.SULFUR)
 			.create("sulfur_block", new ItemStack(BTDBlocks.SULFUR, 1));
+
+
+		Registries.RECIPES.addCustomRecipe(
+			"btd:workbench/asphalt_dyeing",
+			new RecipeEntryDyeing(
+				new RecipeSymbol("btd:asphalt"),
+				BTDBlocks.ASPHALT.getDefaultStack(), false, false
+			)
+		);
+		Registries.RECIPES.addCustomRecipe(
+			"btd:workbench/asphalt_undyeing",
+			new RecipeEntryUndyeing(
+				new RecipeSymbol("btd:asphalt"),
+				new ItemStack(BTDBlocks.ASPHALT.asItem(), 1, 15)
+			)
+		);
 
 
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_basalt_to_olivine");
@@ -162,5 +184,12 @@ public class BTDRecipes implements RecipeEntrypoint {
 		RecipeBuilder.getRecipeNamespace(MOD_ID);
 
 		Registries.ITEM_GROUPS.getItem("minecraft:logs").add(BTDBlocks.LOG_SCORCHED.getDefaultStack());
+
+		List<ItemStack> asphalt = Registries.stackListOf(BTDBlocks.ASPHALT);
+		for (DyeColor dyeColor : DyeColor.values()) {
+			asphalt.add(new ItemStack(BTDBlocks.ASPHALT, 1, dyeColor.blockMeta));
+		}
+
+		Registries.ITEM_GROUPS.register("btd:asphalt", asphalt);
 	}
 }

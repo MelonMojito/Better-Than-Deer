@@ -4,6 +4,7 @@ import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.block.chain.BlockModelChainLarge;
 import betterthandeer.btd.block.ice.rubyglass.BlockModelGenericIceRubyGlass;
 import betterthandeer.btd.block.rock.BlockModelGenericRocks;
+import betterthandeer.btd.block.tar.BlockModelGenericAsphalt;
 import betterthandeer.btd.entity.arrow.flaming.EntityRendererArrowFlaming;
 import betterthandeer.btd.entity.arrow.flaming.ProjectileArrowFlaming;
 import betterthandeer.btd.entity.rock.ProjectileRock;
@@ -80,6 +81,12 @@ public class BTDModels implements ModelEntrypoint {
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_PERMAFROST_LOWER, "/assets/btd/textures/entity/statue/permafrost.png");
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_NETHERRACK_LOWER, "/assets/btd/textures/entity/statue/netherrack.png");
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GLOOMSTONE_LOWER, "/assets/btd/textures/entity/statue/gloomstone.png");
+
+		dispatcher.addDispatch(new BlockModelFluid<>(BTDBlocks.FLUID_TAR_FLOWING, "btd:block/tar_still", "btd:block/tar_flowing"));
+		dispatcher.addDispatch(new BlockModelFluid<>(BTDBlocks.FLUID_TAR_STILL, "btd:block/tar_still", "btd:block/tar_flowing"));
+
+		dispatcher.addDispatch(new BlockModelGenericAsphalt<>(BTDBlocks.ASPHALT, loadDataModel("btd:block/asphalt/black")));
+
 
 	}
 
