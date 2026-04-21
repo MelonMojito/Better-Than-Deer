@@ -1,7 +1,7 @@
 package betterthandeer.btd.mixin.block;
 
-import betterthandeer.btd.block.DynamicTextureAcidFlowing;
-import betterthandeer.btd.block.DynamicTextureAcidStill;
+import betterthandeer.btd.block.acid.DynamicTextureAcidFlowing;
+import betterthandeer.btd.block.acid.DynamicTextureAcidStill;
 import net.minecraft.client.render.TextureManager;
 import net.minecraft.client.render.dynamictexture.DynamicTexture;
 import net.minecraft.client.render.texture.stitcher.TextureRegistry;

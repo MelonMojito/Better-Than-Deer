@@ -2,12 +2,11 @@ package betterthandeer.btd;
 
 import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.entity.BTDEntities;
-import betterthandeer.btd.entity.NetEntryArrowFlaming;
-import betterthandeer.btd.entity.NetEntryRock;
+import betterthandeer.btd.entity.arrow.flaming.NetEntryArrowFlaming;
+import betterthandeer.btd.entity.rock.NetEntryRock;
 import betterthandeer.btd.item.BTDItems;
-import betterthandeer.btd.world.hangingDungeon.WorldFeatureHangingDungeon;
+import betterthandeer.btd.world.chunk.feature.dungeon.hanging.WorldFeatureHangingDungeon;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogicOreNetherCoal;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.tag.BlockTags;
@@ -27,6 +26,7 @@ import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.ItemInitEntrypoint;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static net.minecraft.core.data.registry.Registries.NAMESPACES;
@@ -73,6 +73,7 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 	public void afterGameStart() {
 		LookupFuelFurnaceBlast.instance.addFuelEntry(Items.OLIVINE.id, 150);
 		LookupFuelFurnaceBlast.instance.addFuelEntry(Blocks.BLOCK_OLIVINE.id(), 1200);
+		Items.BED.setMaxStackSize(64);
 	}
 
 	@Override
@@ -119,9 +120,8 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		Blocks.COBBLE_NETHERRACK_CRYSTALLINE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.CAVES_CUT_THROUGH, BlockTags.NETHER_MOBS_SPAWN);
 		Blocks.FLOWSTONE.withTags(BlockTags.NOT_IN_CREATIVE_MENU);
 
-		((ITagDuck<Block<?>>) BlockTags.PLACE_OVERWRITES).btd$untag(Blocks.BONE_PILE);
-		((ITagDuck<Block<?>>) BlockTags.PLANTABLE_IN_JAR).btd$untag(Blocks.BONE_PILE);
-		((ITagDuck<Block<?>>) BlockTags.PLACE_OVERWRITES).btd$untag(Blocks.SOULCATCHER);
+		BlockTags.PLACE_OVERWRITES.removeAll(List.of(Blocks.BONE_PILE, Blocks.SOULCATCHER));
+		BlockTags.PLANTABLE_IN_JAR.removeAll(List.of(Blocks.BONE_PILE));
 
 		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
 		Blocks.BLOCK_ASH.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN);
@@ -131,5 +131,25 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		Blocks.COBBLE_GLOOMSTONE.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH);
 
 		Blocks.SLATE.withTags(BlockTags.CAVES_CUT_THROUGH, BlockTags.CAVE_GEN_REPLACES_SURFACE, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK);
+
+
+
+
+		Blocks.BRICK_BASALT.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.BASALT_POLISHED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.BASALT_CARVED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+
+		Blocks.BRICK_NETHERRACK.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.NETHERRACK_POLISHED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.NETHERRACK_CARVED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+
+		Blocks.BRICK_SLATE.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.SLATE_POLISHED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		BTDBlocks.SLATE_CARVED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+
+		Blocks.BRICK_GLOOMSTONE.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.GLOOMSTONE_POLISHED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+		Blocks.GLOOMSTONE_CARVED.withTags(BlockTags.NETHER_MOBS_SPAWN);
+
 	}
 }

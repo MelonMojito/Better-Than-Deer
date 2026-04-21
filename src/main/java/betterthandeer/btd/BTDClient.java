@@ -3,7 +3,7 @@ package betterthandeer.btd;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.mixin.MixinDispatcher;
-import betterthandeer.btd.world.ParticleAcidBoiling;
+import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.guidebook.mobs.MobInfoRegistry;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;

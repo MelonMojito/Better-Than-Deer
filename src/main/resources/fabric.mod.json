@@ -34,7 +34,7 @@
 			"betterthandeer.btd.BTDRecipes"
 		],
 		"initModels": [
-			"betterthandeer.btd.model.BTDModels"
+          "betterthandeer.btd.BTDModels"
 		],
 		"afterItemInit": [
 			"betterthandeer.btd.BetterThanDeerMod"
