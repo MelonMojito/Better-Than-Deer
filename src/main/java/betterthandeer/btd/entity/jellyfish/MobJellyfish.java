@@ -34,7 +34,7 @@ public class MobJellyfish extends MobMonster {
 	public MobJellyfish(World world) {
 		super(world);
 		this.setTextureIdentifier("btd", "jellyfish");
-		this.setSize(1.0F, 1.0F);
+		this.setSize(1.0F, 2.0F);
 		this.tentacleSpeed = 1.0F / (this.random.nextFloat() + 1.0F) * 0.2F;
 		this.mobDrops.add(new WeightedRandomLootObject(Items.RUBYGLASS_CRYSTAL.getDefaultStack(), 1, 3));
 		this.fireImmune = true;
