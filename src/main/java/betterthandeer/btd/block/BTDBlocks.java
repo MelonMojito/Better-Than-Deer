@@ -1,5 +1,6 @@
 package betterthandeer.btd.block;
 
+import betterthandeer.btd.block.acid.BlockLogicSulfur;
 import betterthandeer.btd.block.acid.FluidAcid;
 import betterthandeer.btd.block.chain.BlockLogicChainLarge;
 import betterthandeer.btd.block.ice.rubyglass.BlockLogicIceRubyglass;
@@ -62,7 +63,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static @NonNull Material TAR = (new MaterialLiquid(MaterialColor.paintedBlack)).setConductivity(0).destroyOnPush();
 
 	public static Block<?> ASPHALT;
-  
+
 	public static Block<?> BRIMSTONE;
 	public static Block<?> SLAB_BRIMSTONE;
 	public static Block<?> STAIRS_BRIMSTONE;
@@ -108,8 +109,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setStatParent(() -> FLUID_ACID_FLOWING)
 			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
 
-		SULFUR = register("sulfur", blockKey("sulfur"), blockID++,
-			block -> new BlockLogicSulfur(block, Materials.STONE))
+		SULFUR = register("sulfur", blockKey("sulfur"), blockID++, BlockLogicSulfur::new)
 			.withHardness(1.0f)
 			.withOverrideColor(MaterialColor.paintedYellow)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH);
@@ -234,7 +234,6 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
 
 
-
 		FLUID_TAR_FLOWING = (Block<BlockLogicFluid>) (Object) register("fluid.tar.flowing", blockKey("fluid_tar_flowing"), blockID++, block -> new BlockLogicFluidFlowing(block, TAR, new FluidTar(), FLUID_TAR_STILL))
 			.withHardness(100.0F)
 			.withLightBlock(6)
@@ -256,7 +255,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withBlastResistance(10.0F)
 			.setBlockItem(block -> new ItemBlockPainted<>(block, false))
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
-    
+
 		BRIMSTONE = register("brimstone", blockKey("brimstone"), blockID++, block -> new BlockLogicBrimstone(block, Materials.STONE))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.8F)
