@@ -10,7 +10,7 @@
 		{
 			"from": [0, 0, 8],
 			"to": [16, 8, 8],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 8]},
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
 				"north": {"uv": [0, 8, 16, 16], "texture": "#chain_large_alt"},
 				"east": {"uv": [2, 0, 2, 8], "texture": "#missing"},
@@ -23,7 +23,7 @@
 		{
 			"from": [8, 0, 0],
 			"to": [8, 8, 16],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
 				"north": {"uv": [2, 0, 2, 8], "texture": "#missing"},
 				"east": {"uv": [0, 8, 16, 16], "texture": "#chain_large"},

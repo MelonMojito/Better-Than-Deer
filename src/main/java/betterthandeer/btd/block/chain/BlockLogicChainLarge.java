@@ -292,7 +292,7 @@ public class BlockLogicChainLarge extends BlockLogic {
 		if (bp.y >= 0 && bp.y < world.getHeightBlocks()) {
 			if (world.canBlockIdBePlacedAt(this.block.id(), bp, false, side) && selfStack.consumeItem(player)) {
 
-				world.setBlockType(bp, this.block);
+				world.setBlockTypeNotify(bp, this.block);
 				world.playBlockSoundEffect(player, (float)bp.x + 0.5F, (float)bp.y + 0.5F, (float)bp.z + 0.5F, this.block, EnumBlockSoundEffectType.PLACE);
 
 				return true;
