@@ -45,6 +45,7 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.BASALT.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.BRIMSAND.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
+		BlockLogicOreNetherCoal.variantMap.put(BTDBlocks.BRIMSTONE.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
 
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.NETHERRACK.id(), Blocks.ORE_NETHERCOAL_NETHERRACK.id());
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.COBBLE_NETHERRACK_CRYSTALLINE.id(), Blocks.ORE_NETHERCOAL_NETHERRACK.id());
