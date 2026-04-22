@@ -383,6 +383,14 @@ public final class CreativeBlocks {
 
 		add(list, Blocks.BRIMSAND);
 
+		add(list, BTDBlocks.BRIMSTONE);
+		add(list, BTDBlocks.STAIRS_BRIMSTONE);
+		add(list, BTDBlocks.SLAB_BRIMSTONE);
+
+		add(list, BTDBlocks.BRICK_BRIMSTONE);
+		add(list, BTDBlocks.STAIRS_BRICK_BRIMSTONE);
+		add(list, BTDBlocks.SLAB_BRICK_BRIMSTONE);
+
 		add(list, BTDBlocks.SULFUR);
 
 		add(list, Blocks.BLOCK_SNOW);

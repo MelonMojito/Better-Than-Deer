@@ -66,7 +66,23 @@ tile.statue.gloomstone.upper.desc=
 
 
 
+tile.brimstone.name=Brimstone
+tile.brimstone.desc=Compacted brimstone.
 
+tile.slab.brimstone.name=Brimstone Slab
+tile.slab.brimstone.desc=A slab of brimstone.
+
+tile.stairs.brimstone.name=Brimstone Stairs
+tile.stairs.brimstone.desc=Brimstone block used for rapid vertical movement.
+
+tile.brick.brimstone.name=Brimstone Bricks
+tile.brick.brimstone.desc=Stacked bricks of brimstone.
+
+tile.slab.brick.brimstone.name=Brimstone Brick Slab
+tile.slab.brick.brimstone.desc=A slab of brimstone bricks.
+
+tile.stairs.brick.brimstone.name=Brimstone Brick Stairs
+tile.stairs.brick.brimstone.desc=Brimstone brick block used for rapid vertical movement.
 
 
 

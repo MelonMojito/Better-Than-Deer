@@ -30,6 +30,29 @@ public class BTDRecipes implements RecipeEntrypoint {
 		templateStatue.addInput('B', Blocks.NETHERRACK).addInput('S', Blocks.SLAB_NETHERRACK_POLISHED).create("statue_netherrack", new ItemStack(BTDItems.STATUE_NETHERRACK, 1));
 		templateStatue.addInput('B', Blocks.GLOOMSTONE).addInput('S', Blocks.SLAB_GLOOMSTONE_POLISHED).create("statue_gloomstone", new ItemStack(BTDItems.STATUE_GLOOMSTONE, 1));
 
+		RecipeBuilder.Shaped(MOD_ID, "SS", "SS")
+			.addInput('S', Blocks.BRIMSAND)
+			.create("brimstone", new ItemStack(BTDBlocks.BRIMSTONE, 2));
+
+		RecipeBuilder.Shaped(MOD_ID, "SSS")
+			.addInput('S', BTDBlocks.BRIMSTONE)
+			.create("brimstone_slab", new ItemStack(BTDBlocks.SLAB_BRIMSTONE, 6));
+
+		RecipeBuilder.Shaped(MOD_ID, "S  ", "SS ", "SSS")
+			.addInput('S', BTDBlocks.BRIMSTONE)
+			.create("brimstone_stairs", new ItemStack(BTDBlocks.STAIRS_BRIMSTONE, 6));
+
+		RecipeBuilder.Shaped(MOD_ID, "SS", "SS")
+			.addInput('S', BTDBlocks.BRIMSTONE)
+			.create("brimstone_bricks", new ItemStack(BTDBlocks.BRICK_BRIMSTONE, 4));
+
+		RecipeBuilder.Shaped(MOD_ID, "SSS")
+			.addInput('S', BTDBlocks.BRICK_BRIMSTONE)
+			.create("brick_brimstone_slab", new ItemStack(BTDBlocks.SLAB_BRICK_BRIMSTONE, 6));
+
+		RecipeBuilder.Shaped(MOD_ID, "S  ", "SS ", "SSS")
+			.addInput('S', BTDBlocks.BRICK_BRIMSTONE)
+			.create("brick_brimstone_stairs", new ItemStack(BTDBlocks.STAIRS_BRICK_BRIMSTONE, 6));
 
 		RecipeBuilder.Shaped(MOD_ID, "SSS")
 			.addInput('S', Blocks.SLATE_POLISHED)

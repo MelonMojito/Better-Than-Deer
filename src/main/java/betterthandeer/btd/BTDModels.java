@@ -6,9 +6,9 @@ import betterthandeer.btd.block.ice.rubyglass.BlockModelGenericIceRubyGlass;
 import betterthandeer.btd.block.rock.BlockModelGenericRocks;
 import betterthandeer.btd.entity.arrow.flaming.EntityRendererArrowFlaming;
 import betterthandeer.btd.entity.arrow.flaming.ProjectileArrowFlaming;
-import betterthandeer.btd.entity.rock.ProjectileRock;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import betterthandeer.btd.entity.gargoyle.MobRendererGargoyle;
+import betterthandeer.btd.entity.rock.ProjectileRock;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.client.render.EntityRendererDispatcher;
 import net.minecraft.client.render.TileEntityRenderDispatcher;
@@ -16,10 +16,7 @@ import net.minecraft.client.render.block.color.BlockColorDispatcher;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.block.model.BlockModelEmpty;
 import net.minecraft.client.render.block.model.BlockModelFluid;
-import net.minecraft.client.render.block.model.generic.BlockModelCrystalBud;
-import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
-import net.minecraft.client.render.block.model.generic.BlockModelGenericAxis;
-import net.minecraft.client.render.block.model.generic.BlockModelGenericSlab;
+import net.minecraft.client.render.block.model.generic.*;
 import net.minecraft.client.render.entity.EntityRendererSprite;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
@@ -80,6 +77,32 @@ public class BTDModels implements ModelEntrypoint {
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_PERMAFROST_LOWER, "/assets/btd/textures/entity/statue/permafrost.png");
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_NETHERRACK_LOWER, "/assets/btd/textures/entity/statue/netherrack.png");
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GLOOMSTONE_LOWER, "/assets/btd/textures/entity/statue/gloomstone.png");
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.BRIMSTONE,
+			loadDataModel("btd:block/brimstone")));
+
+		dispatcher.addDispatch(new BlockModelGenericSlab<>(BTDBlocks.SLAB_BRIMSTONE,
+			loadDataModel("btd:block/slab/brimstone/lower"),
+			loadDataModel("btd:block/slab/brimstone/upper"),
+			loadDataModel("btd:block/slab/brimstone/full")));
+
+
+		dispatcher.addDispatch(new BlockModelGenericStairs<>(BTDBlocks.STAIRS_BRIMSTONE,
+			loadDataModel("btd:block/stairs/brimstone")));
+
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.BRICK_BRIMSTONE,
+			loadDataModel("btd:block/brick_brimstone")));
+
+		dispatcher.addDispatch(new BlockModelGenericSlab<>(BTDBlocks.SLAB_BRICK_BRIMSTONE,
+			loadDataModel("btd:block/slab/brick_brimstone/lower"),
+			loadDataModel("btd:block/slab/brick_brimstone/upper"),
+			loadDataModel("btd:block/slab/brick_brimstone/full")));
+
+
+		dispatcher.addDispatch(new BlockModelGenericStairs<>(BTDBlocks.STAIRS_BRICK_BRIMSTONE,
+			loadDataModel("btd:block/stairs/brick_brimstone")));
+
 
 	}
 
