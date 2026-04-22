@@ -31,6 +31,7 @@
     "entity.ZombiePigSwordMixin",
     "world.SwapNetherChunkGeneratorMixin",
     "world.WorldFeatureFireMixin",
+    "world.WorldFeatureThermalSpireMixin",
     "world.YLevelChunkDecorationBuilderMixin"
   ],
   "client": [

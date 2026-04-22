@@ -102,12 +102,29 @@ tile.asphalt.white.name=White Asphalt
 tile.asphalt.white.desc=Oily asphalt, dyed white.
 
 
-
-
 tile.fluid.tar.flowing.name=Flowing Tar
 tile.fluid.tar.flowing.desc=Tar that flows when placed.
 tile.fluid.tar.still.name=Still Tar
 tile.fluid.tar.still.desc=Tar that does not flow when placed.
+
+tile.brimstone.name=Brimstone
+tile.brimstone.desc=Compacted brimstone.
+
+tile.slab.brimstone.name=Brimstone Slab
+tile.slab.brimstone.desc=A slab of brimstone.
+
+tile.stairs.brimstone.name=Brimstone Stairs
+tile.stairs.brimstone.desc=Brimstone block used for rapid vertical movement.
+
+tile.brick.brimstone.name=Brimstone Bricks
+tile.brick.brimstone.desc=Stacked bricks of brimstone.
+
+tile.slab.brick.brimstone.name=Brimstone Brick Slab
+tile.slab.brick.brimstone.desc=A slab of brimstone bricks.
+
+tile.stairs.brick.brimstone.name=Brimstone Brick Stairs
+tile.stairs.brick.brimstone.desc=Brimstone brick block used for rapid vertical movement.
+
 
 
 

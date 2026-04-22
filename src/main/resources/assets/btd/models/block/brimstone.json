@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "btd:block/brimstone/top",
+    "bottom": "btd:block/brimstone/bottom",
+    "side": "btd:block/brimstone/side"
+  }
+}

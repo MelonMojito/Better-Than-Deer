@@ -120,7 +120,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.ChanceToPlace(4)));
 
-		this.register("btd:decoration/nether/default/lava_pool_terrace", (new ChunkDecorationBuilder(new WorldFeatureTerrace(Blocks.FLUID_LAVA_STILL, Blocks.COBBLE_BASALT, 4, 4)))
+		this.register("btd:decoration/nether/default/lava_pool_terrace", (new ChunkDecorationBuilder(new WorldFeatureTerrace(Blocks.FLUID_LAVA_STILL, BTDBlocks.BRIMSTONE, 4, 4)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
 			.withPositionSelector(PositionSelectors.MinY)
 			.withPlacementMethod(new PlacementMethod
@@ -164,7 +164,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.ChanceToPlace(4)));
 
-		this.register("btd:decoration/nether/default/pillar_cobble_basalt", (new ChunkDecorationBuilder(new WorldFeaturePillar(Blocks.COBBLE_BASALT.id(), true)))
+		this.register("btd:decoration/nether/default/pillar_cobble_basalt", (new ChunkDecorationBuilder(new WorldFeaturePillar(BTDBlocks.BRIMSTONE.id(), true)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector((world, chunk, random, minY, maxY, rangeY) -> {
 				int x = chunk.pos.x() * 16 + random.nextInt(16);
@@ -195,7 +195,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 
 		// Sulfur biome features
 
-		this.register("btd:decoration/nether/default/boulder_magma", new ChunkDecorationBuilder(new WorldFeatureBoulder(Blocks.MAGMA, Blocks.COBBLE_BASALT))
+		this.register("btd:decoration/nether/default/boulder_magma", new ChunkDecorationBuilder(new WorldFeatureBoulder(Blocks.MAGMA, BTDBlocks.BRIMSTONE))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
@@ -213,7 +213,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(3)));
 
-		this.register("btd:decoration/nether/default/sulfur_pool_floor_vent", new ChunkDecorationBuilder(new WorldFeatureFloorVent())
+		this.register("btd:decoration/nether/default/floor_vent", new ChunkDecorationBuilder(new WorldFeatureFloorVent())
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS, Biomes.NETHER_SULFUR_POOLS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
@@ -231,7 +231,7 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			.withPlacementMethod(new PlacementMethod
 				.TriesPerChunk(2)));
 
-		this.register("btd:decoration/nether/default/volcano_roof_spire", new ChunkDecorationBuilder(new WorldFeatureRoofSpire(Blocks.BASALT))
+		this.register("btd:decoration/nether/default/volcano_roof_spire", new ChunkDecorationBuilder(new WorldFeatureRoofSpire(BTDBlocks.BRIMSTONE))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_VOLCANIC_ISLANDS})
 			.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
 			.withPlacementMethod(new PlacementMethod
