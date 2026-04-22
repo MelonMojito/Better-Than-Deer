@@ -18,6 +18,7 @@ import net.minecraft.core.enums.HumanArmorShape;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.net.command.util.CommandHelper;
 import net.minecraft.core.net.entity.NetEntityHandler;
+import net.minecraft.core.sound.BlockSound;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
@@ -124,7 +125,8 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		BlockTags.PLACE_OVERWRITES.removeAll(List.of(Blocks.BONE_PILE, Blocks.SOULCATCHER));
 		BlockTags.PLANTABLE_IN_JAR.removeAll(List.of(Blocks.BONE_PILE));
 
-		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
+		Blocks.BLOCK_ASH.withSound(new BlockSound("btd:step.ash", "btd:step.ash", 1.0F, 1.5F));
+		Blocks.LAYER_ASH.withSound(BlockSounds.SAND);
 		Blocks.BLOCK_ASH.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN);
 
 		Blocks.SOULSCHIST.withTags(BlockTags.CAVES_CUT_THROUGH, BlockTags.CAVE_GEN_REPLACES_SURFACE);
