@@ -113,8 +113,8 @@ public class NewSurfaceGeneratorNether extends SurfaceGeneratorNether {
 								topBlock = (short) biome.getSurfaceProperties().getTopBlock().id();
 								fillerBlock = (short) biome.getSurfaceProperties().getFillerBlock().id();
 								if (generateGravelBeach) {
-									topBlock = (short) Blocks.BRIMSAND.id();
-									fillerBlock = (short) Blocks.BRIMSAND.id();
+									topBlock = (short) Blocks.SOULSAND.id();
+									fillerBlock = (short) Blocks.SOULSAND.id();
 								}
 								if (generateSoulSandBeach) {
 									topBlock = (short) Blocks.SOULSAND.id();

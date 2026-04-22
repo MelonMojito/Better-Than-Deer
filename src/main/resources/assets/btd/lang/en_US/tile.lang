@@ -66,6 +66,47 @@ tile.statue.gloomstone.upper.desc=
 
 
 
+tile.asphalt.name=Asphalt
+tile.asphalt.desc=How did you get this?!
+tile.asphalt.black.name=Black Asphalt
+tile.asphalt.black.desc=Oily asphalt, dyed black.
+tile.asphalt.red.name=Red Asphalt
+tile.asphalt.red.desc=Oily asphalt, dyed red.
+tile.asphalt.green.name=Green Asphalt
+tile.asphalt.green.desc=Oily asphalt, dyed green.
+tile.asphalt.brown.name=Brown Asphalt
+tile.asphalt.brown.desc=Oily asphalt, dyed brown.
+tile.asphalt.blue.name=Blue Asphalt
+tile.asphalt.blue.desc=Oily asphalt, dyed blue.
+tile.asphalt.purple.name=Purple Asphalt
+tile.asphalt.purple.desc=Oily asphalt, dyed purple.
+tile.asphalt.cyan.name=Cyan Asphalt
+tile.asphalt.cyan.desc=Oily asphalt, dyed cyan.
+tile.asphalt.silver.name=Light Gray Asphalt
+tile.asphalt.silver.desc=Oily asphalt, dyed light gray.
+tile.asphalt.gray.name=Gray Asphalt
+tile.asphalt.gray.desc=Oily asphalt, dyed gray.
+tile.asphalt.pink.name=Pink Asphalt
+tile.asphalt.pink.desc=Oily asphalt, dyed pink.
+tile.asphalt.lime.name=Lime Asphalt
+tile.asphalt.lime.desc=Oily asphalt, dyed lime.
+tile.asphalt.yellow.name=Yellow Asphalt
+tile.asphalt.yellow.desc=Oily asphalt, dyed yellow.
+tile.asphalt.lightblue.name=Light Blue Asphalt
+tile.asphalt.lightblue.desc=Oily asphalt, dyed light blue.
+tile.asphalt.magenta.name=Magenta Asphalt
+tile.asphalt.magenta.desc=Oily asphalt, dyed magenta.
+tile.asphalt.orange.name=Orange Asphalt
+tile.asphalt.orange.desc=Oily asphalt, dyed orange.
+tile.asphalt.white.name=White Asphalt
+tile.asphalt.white.desc=Oily asphalt, dyed white.
+
+
+tile.fluid.tar.flowing.name=Flowing Tar
+tile.fluid.tar.flowing.desc=Tar that flows when placed.
+tile.fluid.tar.still.name=Still Tar
+tile.fluid.tar.still.desc=Tar that does not flow when placed.
+
 tile.brimstone.name=Brimstone
 tile.brimstone.desc=Compacted brimstone.
 

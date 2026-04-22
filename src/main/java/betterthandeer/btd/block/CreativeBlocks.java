@@ -38,6 +38,8 @@ public final class CreativeBlocks {
 		//WOOL
 		addPainted(list, Blocks.WOOL, painted(Blocks.WOOL));
 
+		addPainted(list, BTDBlocks.ASPHALT, painted(BTDBlocks.ASPHALT));
+
 		addNaturalTypes(list);
 
 		addOrganicTypes(list);

@@ -4,6 +4,8 @@ import betterthandeer.btd.block.acid.FluidAcid;
 import betterthandeer.btd.block.chain.BlockLogicChainLarge;
 import betterthandeer.btd.block.ice.rubyglass.BlockLogicIceRubyglass;
 import betterthandeer.btd.block.rock.BlockLogicOverlayRocks;
+import betterthandeer.btd.block.tar.BlockLogicAsphalt;
+import betterthandeer.btd.block.tar.FluidTar;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.block.*;
 import net.minecraft.core.block.material.Material;
@@ -11,6 +13,8 @@ import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.block.tag.BlockTags;
+import net.minecraft.core.item.block.ItemBlockPainted;
+import net.minecraft.core.sound.BlockSound;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.util.BlockInitEntrypoint;
@@ -53,6 +57,12 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static @NonNull Block<BlockLogicStatue> STATUE_GLOOMSTONE_LOWER;
 	public static @NonNull Block<BlockLogicStatue> STATUE_GLOOMSTONE_UPPER;
 
+	public static @NonNull Block<BlockLogicFluid> FLUID_TAR_FLOWING;
+	public static @NonNull Block<BlockLogicFluid> FLUID_TAR_STILL;
+	public static @NonNull Material TAR = (new MaterialLiquid(MaterialColor.paintedBlack)).setConductivity(0).destroyOnPush();
+
+	public static Block<?> ASPHALT;
+  
 	public static Block<?> BRIMSTONE;
 	public static Block<?> SLAB_BRIMSTONE;
 	public static Block<?> STAIRS_BRIMSTONE;
@@ -224,6 +234,29 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
 
 
+
+		FLUID_TAR_FLOWING = (Block<BlockLogicFluid>) (Object) register("fluid.tar.flowing", blockKey("fluid_tar_flowing"), blockID++, block -> new BlockLogicFluidFlowing(block, TAR, new FluidTar(), FLUID_TAR_STILL))
+			.withHardness(100.0F)
+			.withLightBlock(6)
+			.withDisabledStats()
+			.withDisabledNeighborNotifyOnMetadataChange()
+			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		FLUID_TAR_STILL = (Block<BlockLogicFluid>) (Object) register("fluid.tar.still", blockKey("fluid_tar_still"), blockID++, block -> new BlockLogicFluidStill(block, TAR, new FluidTar(), FLUID_TAR_FLOWING))
+			.withHardness(100.0F)
+			.withLightBlock(6)
+			.withDisabledStats()
+			.setStatParent(() -> FLUID_TAR_FLOWING)
+			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
+
+
+		ASPHALT = register("asphalt", blockKey("asphalt"), blockID++, BlockLogicAsphalt::new)
+			.withSound(new BlockSound("step.stone", "step.stone", 1.0F, 0.5F))
+			.withHardness(2.0F)
+			.withBlastResistance(10.0F)
+			.setBlockItem(block -> new ItemBlockPainted<>(block, false))
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+    
 		BRIMSTONE = register("brimstone", blockKey("brimstone"), blockID++, block -> new BlockLogicBrimstone(block, Materials.STONE))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.8F)
