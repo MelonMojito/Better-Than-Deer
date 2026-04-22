@@ -23,14 +23,14 @@ public class BlockModelConduitRubyglass extends BlockModelGeneric<BlockLogicCond
 	private final ModelState[] stateMap = new ModelState[BlockLogicConduitRubyglass.STATE_COUNT * 11];
 
 	public BlockModelConduitRubyglass(Block<BlockLogicConduitRubyglass> block) {
-		super(block, createPowerVariant("/assets/btd/models/block/conduit_core.json", "btd:dummy", 0));
+		super(block, createPowerVariant("/assets/btd/models/block/conduit_rubyglass/conduit_core.json", "btd:dummy", 0));
 
 		for (int strength = 0; strength <= 10; strength++) {
 
-			StaticBlockModel modCore = createPowerVariant("/assets/btd/models/block/conduit_core.json", "btd:core_" + strength, strength);
-			StaticBlockModel modCap = createPowerVariant("/assets/btd/models/block/conduit_cap.json", "btd:cap_" + strength, strength);
-			StaticBlockModel modStraight = createPowerVariant("/assets/btd/models/block/conduit_straight.json", "btd:straight_" + strength, strength);
-			StaticBlockModel modCorner = createPowerVariant("/assets/btd/models/block/conduit_corner.json", "btd:corner_" + strength, strength);
+			StaticBlockModel modCore = createPowerVariant("/assets/btd/models/block/conduit_rubyglass/conduit_core.json", "btd:core_" + strength, strength);
+			StaticBlockModel modCap = createPowerVariant("/assets/btd/models/block/conduit_rubyglass/conduit_cap.json", "btd:cap_" + strength, strength);
+			StaticBlockModel modStraight = createPowerVariant("/assets/btd/models/block/conduit_rubyglass/conduit_straight.json", "btd:straight_" + strength, strength);
+			StaticBlockModel modCorner = createPowerVariant("/assets/btd/models/block/conduit_rubyglass/conduit_corner.json", "btd:corner_" + strength, strength);
 
 			int offset = strength * BlockLogicConduitRubyglass.STATE_COUNT;
 
@@ -53,14 +53,14 @@ public class BlockModelConduitRubyglass extends BlockModelGeneric<BlockLogicCond
 			// 10-13: Bottom-Adjacent Corners (Base: DOWN + NORTH)
 			stateMap[offset + 10] = new ModelState(modCorner, 0, 0, 0); // Bottom, North
 			stateMap[offset + 11] = new ModelState(modCorner, 0, 2, 0); // Bottom, South (180y)
-			stateMap[offset + 12] = new ModelState(modCorner, 0, 1, 0); // Bottom, West (Corrected swap)
-			stateMap[offset + 13] = new ModelState(modCorner, 0, 3, 0); // Bottom, East (Corrected swap)
+			stateMap[offset + 12] = new ModelState(modCorner, 0, 1, 0); // Bottom, West
+			stateMap[offset + 13] = new ModelState(modCorner, 0, 3, 0); // Bottom, East
 
 			// 14-17: Top-Adjacent Corners (Base flipped: TOP + SOUTH)
 			stateMap[offset + 14] = new ModelState(modCorner, 2, 2, 0); // Top, North (Flipped base + 180y)
 			stateMap[offset + 15] = new ModelState(modCorner, 2, 0, 0); // Top, South (Flipped base)
-			stateMap[offset + 16] = new ModelState(modCorner, 2, 1, 0); // Top, West (Flipped base + 90y)
-			stateMap[offset + 17] = new ModelState(modCorner, 2, 3, 0); // Top, East (Flipped base + 270y)
+			stateMap[offset + 16] = new ModelState(modCorner, 2, 3, 0); // Top, West (FIXED swap: 270y)
+			stateMap[offset + 17] = new ModelState(modCorner, 2, 1, 0); // Top, East (FIXED swap: 90y)
 
 			// 18-21: Horizontal Side-to-Side Corners (Base: DOWN + NORTH)
 			stateMap[offset + 18] = new ModelState(modCorner, 0, 0, 3); // North, West (Down -> West)
@@ -102,6 +102,7 @@ public class BlockModelConduitRubyglass extends BlockModelGeneric<BlockLogicCond
 	public boolean renderAttached(final @NotNull TessellatorGeneral tessellator, @NotNull final WorldSource worldSource, @NotNull TilePosc tilePos, boolean cullFaces, final @Nullable IconCoordinate overrideTexture) {
 		int data = worldSource.getBlockData(tilePos);
 		ModelState activeState = stateMap[data];
-		return activeState.model.renderAttached(this, tessellator, worldSource, tilePos, activeState.rotX, activeState.rotY, activeState.rotZ, 0, 0, 0, true, cullFaces, overrideTexture);
+		// uvlock is successfully set to false here!
+		return activeState.model.renderAttached(this, tessellator, worldSource, tilePos, activeState.rotX, activeState.rotY, activeState.rotZ, 0, 0, 0, false, cullFaces, overrideTexture);
 	}
 }
