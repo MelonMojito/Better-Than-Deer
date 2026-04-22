@@ -94,6 +94,8 @@ public final class CreativeItems {
 
 		out.add(new ItemStack(Items.AMMO_FIREBALL));
 
+		out.add(new ItemStack(BTDItems.AMMO_LIGHTNINGBALL));
+
 		out.add(new ItemStack(Items.TOOL_COMPASS));
 		out.add(new ItemStack(Items.TOOL_CLOCK));
 		out.add(new ItemStack(Items.TOOL_CALENDAR));
