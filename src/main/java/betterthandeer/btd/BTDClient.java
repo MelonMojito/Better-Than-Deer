@@ -1,9 +1,10 @@
 package betterthandeer.btd;
 
+import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
+import betterthandeer.btd.entity.jellyfish.MobJellyfish;
 import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.mixin.MixinDispatcher;
-import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.guidebook.mobs.MobInfoRegistry;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
@@ -47,6 +48,9 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 
 		MobInfoRegistry.register(MobGargoyle.class, "guidebook.section.mob.gargoyle.name", "guidebook.section.mob.gargoyle.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
 			new MobInfoRegistry.MobDrop(new ItemStack(BTDItems.EYE_GARGOYLE), 1.0F, 0, 2)});
+
+		MobInfoRegistry.register(MobJellyfish.class, "guidebook.section.mob.jellyfish.name", "guidebook.section.mob.jellyfish.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
+			new MobInfoRegistry.MobDrop(new ItemStack(Items.RUBYGLASS_CRYSTAL), 1.0F, 0, 3)});
 	}
 
 

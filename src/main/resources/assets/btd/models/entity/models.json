@@ -1,10 +1,14 @@
 {
   "model_paths": [
-    "/assets/btd/models/entity/gargoyle/gargoyle.geo.json"
+    "/assets/btd/models/entity/gargoyle/gargoyle.geo.json",
+    "/assets/btd/models/entity/jellyfish/jellyfish.geo.json"
   ],
   "renderers": {
     "btd:gargoyle": {
       "main":"geometry.gargoyle"
+    },
+    "btd:jellyfish": {
+      "main":"geometry.jellyfish"
     }
   }
 }

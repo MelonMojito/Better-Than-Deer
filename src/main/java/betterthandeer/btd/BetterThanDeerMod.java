@@ -3,6 +3,7 @@ package betterthandeer.btd;
 import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.entity.BTDEntities;
 import betterthandeer.btd.entity.arrow.flaming.NetEntryArrowFlaming;
+import betterthandeer.btd.entity.jellyfish.NetEntryLightningball;
 import betterthandeer.btd.entity.rock.NetEntryRock;
 import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.world.chunk.feature.dungeon.hanging.WorldFeatureHangingDungeon;
@@ -63,6 +64,7 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 
 		NetEntityHandler.registerNetworkEntry(new NetEntryRock(), 150);
 		NetEntityHandler.registerNetworkEntry(new NetEntryArrowFlaming(), 151);
+		NetEntityHandler.registerNetworkEntry(new NetEntryLightningball(), 151);
 
 		CommandHelper.registerWorldFeatureClass(WorldFeatureHangingDungeon.Gloomstone.class, "HangingDungeonGloomstone");
 		CommandHelper.registerWorldFeatureClass(WorldFeatureHangingDungeon.Basalt.class, "HangingDungeonBasalt");
