@@ -1,4 +1,4 @@
-spackage betterthandeer.btd.mixin.block;
+package betterthandeer.btd.mixin.block;
 
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogicMobSpawner;
