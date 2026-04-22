@@ -1,5 +1,6 @@
 package betterthandeer.btd.block;
 
+import betterthandeer.btd.block.conduit.BlockLogicConduitRubyglass;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.block.*;
 import net.minecraft.core.block.material.Material;
@@ -7,8 +8,6 @@ import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.block.tag.BlockTags;
-import net.minecraft.core.data.tag.Tag;
-import net.minecraft.core.item.Items;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.helper.BlockBuilder;
@@ -31,6 +30,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 
 	public static Block<?> OVERLAY_ROCKS;
 
+	public static Block<?> CONDUIT_RUBYGLASS;
 	public static Block<?> ICE_RUBYGLASS;
 
 	public static Block<?> RUBYGLASS_GROWTH_BOTTOM;
@@ -225,6 +225,16 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU)
 			.setStatParent(() -> BTDItems.STATUE_GLOOMSTONE)
 			.build("statue.gloomstone.upper", 3057, block -> new BlockLogicStatue(block, Materials.GLOOMSTONE, false, () -> BTDItems.STATUE_GLOOMSTONE));
+
+
+		CONDUIT_RUBYGLASS = new BlockBuilder(MOD_ID)
+			.setBlockSound(BlockSounds.STONE)
+			.setHardness(0.3F)
+			.setTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.PREVENT_MOB_SPAWNS)
+			.setOverrideColor(MaterialColor.rubyglass)
+			.setVisualUpdateOnMetadata()
+			.build("rubyglass.conduit", 3058, block -> new BlockLogicConduitRubyglass(block, Materials.STONE))
+		;
 
 	}
 

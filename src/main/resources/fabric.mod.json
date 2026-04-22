@@ -5,7 +5,7 @@
 	"name": "Better Than Deer",
 	"description": "A mod for Better Than Adventure that changes various features in the game to follow a more structured, connected vision for the world and gameplay experience.",
 	"authors": [
-		"LukeisStuff"
+		"MelonBTA Modding"
 	],
 	"contact": {
 		"homepage": "",
@@ -14,6 +14,7 @@
 	"icon": "icon.png",
 	"license": "CC0-1.0",
 	"environment": "*",
+	"accessWidener": "btd.accesswidener",
 	"entrypoints": {
 		"main": [
 			"betterthandeer.btd.BetterThanDeerMod"

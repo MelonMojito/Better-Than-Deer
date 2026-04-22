@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.6",
+  "textures": {
+    "open": "btd:block/rubyglass/conduit/open/0",
+    "straight": "btd:block/rubyglass/conduit/straight/0",
+    "particle": "btd:block/rubyglass/conduit/straight/0"
+  },
+  "elements": [
+    {
+      "name": "straight",
+      "from": [0, 0, 0], "to": [16, 16, 16],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#straight", "cullface": "north"},
+        "east": {"uv": [0, 0, 16, 16], "texture": "#straight", "cullface": "east"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#straight", "cullface": "south"},
+        "west": {"uv": [0, 0, 16, 16], "texture": "#straight", "cullface": "west"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#open", "cullface": "up"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#open", "cullface": "down"}
+      }
+    }
+  ]
+}

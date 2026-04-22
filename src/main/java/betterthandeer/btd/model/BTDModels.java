@@ -3,6 +3,10 @@ package betterthandeer.btd.model;
 import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.block.BlockModelGenericIceRubyGlass;
 import betterthandeer.btd.block.BlockModelGenericRocks;
+import betterthandeer.btd.block.conduit.BlockLogicConduitRubyglass;
+import betterthandeer.btd.block.conduit.BlockModelConduitRubyglass;
+import betterthandeer.btd.block.conduit.TileEntityConduitRubyglass;
+import betterthandeer.btd.block.conduit.TileEntityRendererConduitRubyglass;
 import betterthandeer.btd.entity.EntityRendererArrowFlaming;
 import betterthandeer.btd.entity.ProjectileArrowFlaming;
 import betterthandeer.btd.entity.ProjectileRock;
@@ -23,15 +27,15 @@ import net.minecraft.client.render.entity.EntityRendererSprite;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
-import net.minecraft.client.render.texture.stitcher.TextureRegistry;
 import net.minecraft.client.render.tileentity.TileEntityRendererStatue;
+import net.minecraft.core.block.Block;
 import net.minecraft.core.item.block.ItemBlock;
-import net.minecraft.core.util.collection.NamespaceID;
 import turniplabs.halplibe.util.ModelEntrypoint;
 
 import static net.minecraft.client.render.block.model.BlockModelDispatcher.loadDataModel;
 
 public class BTDModels implements ModelEntrypoint {
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initBlockModels(BlockModelDispatcher dispatcher) {
 		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.BOULDER, loadDataModel("btd:block/boulder")).render3D(false));
@@ -64,7 +68,7 @@ public class BTDModels implements ModelEntrypoint {
 
 
 		dispatcher.addDispatch(new BlockModelChainLarge<>(BTDBlocks.CHAIN_LARGE));
-		
+
 		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_LOWER)).setAllTextures("minecraft:block/slate"));
 		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_UPPER)).setAllTextures("minecraft:block/slate"));
 
@@ -82,6 +86,7 @@ public class BTDModels implements ModelEntrypoint {
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_NETHERRACK_LOWER, "/assets/btd/textures/entity/statue/netherrack.png");
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GLOOMSTONE_LOWER, "/assets/btd/textures/entity/statue/gloomstone.png");
 
+		dispatcher.addDispatch(new BlockModelConduitRubyglass((Block<BlockLogicConduitRubyglass>) BTDBlocks.CONDUIT_RUBYGLASS));
 	}
 
 	@Override
@@ -99,7 +104,7 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
 
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.CHAIN_LARGE, "btd"));
-		
+
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_SLATE, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_PERMAFROST, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_NETHERRACK, "btd"));
@@ -110,14 +115,13 @@ public class BTDModels implements ModelEntrypoint {
 	public void initEntityModels(EntityRendererDispatcher entityRendererDispatcher) {
 		entityRendererDispatcher.assignRenderer(MobGargoyle.class, new MobRendererGargoyle(0.5F));
 
-
 		entityRendererDispatcher.assignRenderer(ProjectileRock.class, new EntityRendererSprite<>(BTDItems.AMMO_ROCK));
 		entityRendererDispatcher.assignRenderer(ProjectileArrowFlaming.class, new EntityRendererArrowFlaming());
 	}
 
 	@Override
 	public void initTileEntityModels(TileEntityRenderDispatcher dispatcher) {
-
+		dispatcher.assignRenderer(TileEntityConduitRubyglass.class, new TileEntityRendererConduitRubyglass());
 	}
 
 	@Override

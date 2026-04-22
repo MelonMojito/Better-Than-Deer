@@ -15,7 +15,8 @@ tile.btd.overlay.rocks.desc=A cluster of rocks.
 tile.btd.ember.name=Ember
 tile.btd.ember.desc=Volatile stone that explodes on contact. Remnant of a forgotten world.
 
-
+tile.btd.rubyglass.conduit.name=Rubyglass Conduit
+tile.btd.rubyglass.conduit.desc=A connectable two-port conduit that can carry a current.
 
 tile.btd.rubyglass.sprout.name=Rubyglass Sprout
 tile.btd.rubyglass.sprout.desc=A small bud of rubyglass, branching out in many directions.

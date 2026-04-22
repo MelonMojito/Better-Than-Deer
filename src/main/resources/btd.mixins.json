@@ -6,9 +6,13 @@
     "defaultRequire": 1
   },
   "mixins": [
+    "BlockLogicWireRedstoneMixin",
     "ItemBowMixin",
     "MixinTag",
     "ProjectileCannonballMixin",
+    "WireConnectionManagerMixin",
+    "WireHandlerMixin",
+    "accessor.DynamicTextureCustomAccessor",
     "block.BetterAshMixin",
     "block.BetterBonepileMixin",
     "block.BetterLayerAshMixin",
@@ -32,6 +36,7 @@
     "entity.ZombiePigSwordMixin",
     "world.BiomeProviderNetherMixin",
     "world.SwapNetherChunkGeneratorMixin",
+    "world.WorldConduitMixin",
     "world.WorldFeatureFireMixin"
   ],
   "client": [

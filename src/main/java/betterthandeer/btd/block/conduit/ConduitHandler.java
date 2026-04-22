@@ -1,5 +1,6 @@
 package betterthandeer.btd.block.conduit;
 
+import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.util.helper.Side;
@@ -37,7 +38,7 @@ public class ConduitHandler {
 		//update the sides this conduit was connected to
 		for (Side side : BlockLogicConduitRubyglass.getOpenSides(oldData)) {
 			TilePos nPos = new TilePos(pos).add(side);
-			if (world.getBlockType(nPos) == Blocks.RUBYGLASS_CONDUIT) {
+			if (world.getBlockType(nPos) == BTDBlocks.CONDUIT_RUBYGLASS) {
 				queueUpdate(nPos);
 			}
 		}
@@ -57,7 +58,7 @@ public class ConduitHandler {
 				TilePos startPos = updateQueue.poll();
 				// Ensure the block is still a conduit before updating the network,
 				// as it could have been broken while sitting in the queue.
-				if (world.getBlockType(startPos) == Blocks.RUBYGLASS_CONDUIT) {
+				if (world.getBlockType(startPos) == BTDBlocks.CONDUIT_RUBYGLASS) {
 					updateNetwork(startPos);
 				}
 			}
@@ -78,7 +79,7 @@ public class ConduitHandler {
 				int data = world.getBlockData(pos);
 				for (Side side : BlockLogicConduitRubyglass.getOpenSides(data)) {
 					TilePos nPos = new TilePos(pos).add(side);
-					if (world.getBlockType(nPos) == Blocks.RUBYGLASS_CONDUIT &&
+					if (world.getBlockType(nPos) == BTDBlocks.CONDUIT_RUBYGLASS &&
 						BlockLogicConduitRubyglass.isSideOpen(world.getBlockData(nPos), side.getOpposite())) {
 						toSearch.add(nPos);
 					}
@@ -97,10 +98,9 @@ public class ConduitHandler {
 				TilePos nTilePos = new TilePos(tilePos).add(side);
 				Block<?> nBlockType = world.getBlockType(nTilePos);
 
-				if (nBlockType != Blocks.RUBYGLASS_CONDUIT) {
+				if (nBlockType != BTDBlocks.CONDUIT_RUBYGLASS) {
 					int external = BlockLogicConduitRubyglass.getAndConvertNeighborSignal(world, tilePos, side);
 
-					//break the recursive loop for redstone dust
 					if (nBlockType == Blocks.WIRE_REDSTONE) {
 						if (external < currentPower) {
 							external = 0;
@@ -170,7 +170,7 @@ public class ConduitHandler {
 		//notify all neighbors after the network is done with its logic/updates
 		for (TilePos nTilePos : blocksToNotify) {
 			Block<?> neighborBlockType = world.getBlockType(nTilePos);
-			neighborBlockType.onNeighborChanged(world, nTilePos, Blocks.RUBYGLASS_CONDUIT);
+			neighborBlockType.onNeighborChanged(world, nTilePos, BTDBlocks.CONDUIT_RUBYGLASS);
 		}
 	}
 }

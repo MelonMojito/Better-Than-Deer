@@ -1,16 +1,17 @@
 package betterthandeer.btd.block.conduit;
 
+import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogic;
 import net.minecraft.core.block.BlockLogicWireRedstone;
 import net.minecraft.core.block.Blocks;
+import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.entity.Mob;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.sound.SoundCategory;
 import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.util.helper.Side;
-import net.minecraft.core.world.LevelListener;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.WorldSource;
 import net.minecraft.core.world.pos.TilePos;
@@ -80,14 +81,14 @@ public class BlockLogicConduitRubyglass extends BlockLogic {
 	@Override
 	public void onNeighborChanged(final @NotNull World world, final @NotNull TilePosc cTilePos, final @NotNull Block<?> block) {
 		if (world.isClientSide) return;
-		world.getConduitHandler().onConduitUpdated(cTilePos);
+		((ConduitWorldAccess) world).getConduitHandler().onConduitUpdated(cTilePos);
 	}
 
 	@Override
 	public void onPlacedByWorld(@NotNull World world, @NotNull TilePosc tilePos) {
 		super.onPlacedByWorld(world, tilePos);
 		if (!world.isClientSide) {
-			world.getConduitHandler().onConduitAdded(tilePos);
+			((ConduitWorldAccess) world).getConduitHandler().onConduitAdded(tilePos);
 		}
 	}
 
@@ -95,7 +96,7 @@ public class BlockLogicConduitRubyglass extends BlockLogic {
 	public void onRemoved(@NotNull World world, @NotNull TilePosc tilePos, int data) {
 		super.onRemoved(world, tilePos, data);
 		if (!world.isClientSide) {
-			world.getConduitHandler().onConduitRemoved(tilePos, data);
+			((ConduitWorldAccess) world).getConduitHandler().onConduitRemoved(tilePos, data);
 		}
 	}
 
@@ -195,7 +196,7 @@ public class BlockLogicConduitRubyglass extends BlockLogic {
 		boolean holdingNothing = player.getHeldItem() == null;
 		boolean holdingConduit = false;
 		if(!holdingNothing){
-			holdingConduit = player.getHeldItem().itemID == Blocks.RUBYGLASS_CONDUIT.getDefaultStack().itemID;
+			holdingConduit = player.getHeldItem().itemID == BTDBlocks.CONDUIT_RUBYGLASS.getDefaultStack().itemID;
 		}
 
 
@@ -219,7 +220,7 @@ public class BlockLogicConduitRubyglass extends BlockLogic {
 				//TODO better custom sounds these are placeholder
 				world.playSoundEffect(null, SoundCategory.WORLD_SOUNDS, cTilePos.x(), cTilePos.y(), cTilePos.z(), "tile.activator.use", 1, 1.2f);
 				world.playSoundEffect(null, SoundCategory.WORLD_SOUNDS, cTilePos.x(), cTilePos.y(), cTilePos.z(), "note.hat", 0.7f, 0.4f);
-				world.playBlockEvent(cTilePos, LevelListener.EVENT_CONDUIT_PARTICLES, packEventConduitData(side, cStrength));
+				//world.playBlockEvent(cTilePos, LevelListener.EVENT_CONDUIT_PARTICLES, packEventConduitData(side, cStrength));
 
 				return true;
 			}
@@ -322,7 +323,7 @@ public class BlockLogicConduitRubyglass extends BlockLogic {
 			return signalConverter(nStrength, false);
 		}
 
-		if (nBlockType == Blocks.RUBYGLASS_CONDUIT) {
+		if (nBlockType == BTDBlocks.CONDUIT_RUBYGLASS) {
 			int nData = world.getBlockData(nTilePos);
 			if (isSideOpen(nData, side.getOpposite())) {
 				int nStrength = nData / STATE_COUNT;
@@ -389,7 +390,7 @@ public class BlockLogicConduitRubyglass extends BlockLogic {
 	}
 
 	public static final int[] REDSTONE_TO_CONDUIT = {0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 8, 9, 10};
-	public static final int[] CONDUIT_TO_REDSTONE = {0, 1, 2, 4, 5, 7, 8, 10, 11, 13, 14};
+	public static final int[] CONDUIT_TO_REDSTONE = {0, 2, 3, 5, 6, 8, 9, 11, 12, 14, 15};
 
 	/**
 	 * Converts signal strengths between redstone and conduit.

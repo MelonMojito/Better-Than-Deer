@@ -15,6 +15,7 @@ group = modGroup.get()
 version = modVersion.get()
 loom {
 	customMinecraftMetadata.set("https://downloads.betterthanadventure.net/bta-client/${libs.versions.btaChannel.get()}/${libs.versions.bta.get()}/manifest.json")
+	accessWidenerPath.set(file("src/main/resources/btd.accesswidener"))
 }
 repositories {
     mavenCentral()
@@ -125,5 +126,6 @@ tasks {
 		filesMatching("**/*.mixins.json") { expand(resourceMap.filterKeys { it == "java" }) }
 	}
 }
+
 // Removes LWJGL2 dependencies
 configurations.configureEach { exclude(group = "org.lwjgl.lwjgl") }

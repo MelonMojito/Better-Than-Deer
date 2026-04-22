@@ -1,6 +1,7 @@
 package betterthandeer.btd;
 
 import betterthandeer.btd.block.BTDBlocks;
+import betterthandeer.btd.block.conduit.TileEntityConduitRubyglass;
 import betterthandeer.btd.entity.BTDEntities;
 import betterthandeer.btd.entity.NetEntryArrowFlaming;
 import betterthandeer.btd.entity.NetEntryRock;
@@ -20,6 +21,7 @@ import net.minecraft.core.item.Items;
 import net.minecraft.core.net.command.util.CommandHelper;
 import net.minecraft.core.net.entity.NetEntityHandler;
 import net.minecraft.core.sound.BlockSounds;
+import net.minecraft.core.util.collection.NamespaceID;
 import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,10 +55,7 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 	}
 
 	//TODO mixin conduit stuff
-	//Block - initialization
 	//World - get total world time
-	//World - initialize conduit handler
-	//TilePos - add Side
 	//BlockLogicWireRedstone - conduit interaction
 	//WireHandler - conduit interaction and redstone wire fixes
 

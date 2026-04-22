@@ -1,5 +1,6 @@
 package betterthandeer.btd.block.conduit;
 
+import betterthandeer.btd.block.BTDBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.renderer.BlendFactor;
 import net.minecraft.client.render.renderer.GLRenderer;
@@ -7,7 +8,6 @@ import net.minecraft.client.render.renderer.Shaders;
 import net.minecraft.client.render.renderer.State;
 import net.minecraft.client.render.tessellator.TessellatorGeneral;
 import net.minecraft.client.render.tileentity.TileEntityRenderer;
-import net.minecraft.core.block.Blocks;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.enums.HumanArmorShape;
 import net.minecraft.core.item.ItemStack;
@@ -20,6 +20,7 @@ public class TileEntityRendererConduitRubyglass extends TileEntityRenderer<TileE
 	private static final long MAGIC_PRIME_Y = 116129781L;
 	private long fastRandomSeed;
 
+	@Override
 	public void doRender(TessellatorGeneral tessellator, TileEntityConduitRubyglass conduitTileEntity, double x, double y, double z, float partialTick) {
 		Player player = Minecraft.getMinecraft().thePlayer;
 
@@ -65,10 +66,21 @@ public class TileEntityRendererConduitRubyglass extends TileEntityRenderer<TileE
 
 		if (conduitTileEntity.worldObj == null) return;
 
-		this.fastRandomSeed = (conduitTileEntity.worldObj.getTotalWorldTime() / 2L)
+
+		long baseDivisor = 90L;
+		long slowdownFactor = 4L;
+		long dynamicDivisor = baseDivisor + ((10 - strength) * slowdownFactor);
+		long timePulsar = System.currentTimeMillis() / dynamicDivisor;
+
+		long rawSeed = timePulsar
 			^ (long) conduitTileEntity.tilePos.x * MAGIC_PRIME_X
 			^ (long) conduitTileEntity.tilePos.y * MAGIC_PRIME_Y
-			^ (long) conduitTileEntity.tilePos.z;
+			^ (long) conduitTileEntity.tilePos.z * 31298717L;
+
+		//uses SplitMix64
+		rawSeed = (rawSeed ^ (rawSeed >>> 30)) * 0xbf58476d1ce4e5b9L;
+		rawSeed = (rawSeed ^ (rawSeed >>> 27)) * 0x94d049bb133111ebL;
+		this.fastRandomSeed = rawSeed ^ (rawSeed >>> 31);
 
 		// calculate relative camera position to the block
 		double cameraX = player.x - conduitTileEntity.tilePos.x;
@@ -102,7 +114,7 @@ public class TileEntityRendererConduitRubyglass extends TileEntityRenderer<TileE
 		if (player == null) return false;
 
 		ItemStack boots = player.inventory.armorItemInSlot(HumanArmorShape.BOOTS);
-		if (boots == null || boots.getItem() != Blocks.BLOCK_RUBYGLASS.asItem())
+		if (boots == null || !boots.getItem().equals(BTDBlocks.ICE_RUBYGLASS.asItem()))
 			return false;
 
 		return !shouldCull(conduitTileEntity, player, partialTick);
@@ -111,8 +123,8 @@ public class TileEntityRendererConduitRubyglass extends TileEntityRenderer<TileE
 	private void setupGL(double x, double y, double z) {
 		GLRenderer.pushFrame();
 		GLRenderer.modelM4f().translate((float) x, (float) y, (float) z);
-		GLRenderer.setShader(Shaders.COLOR);
 		GLRenderer.globalSetLightEnabled(false);
+		GLRenderer.setShader(Shaders.COLOR);
 		GLRenderer.enableState(State.BLEND);
 		GLRenderer.setBlendFunc(BlendFactor.SRC_ALPHA, BlendFactor.ONE_MINUS_SRC_ALPHA);
 		GLRenderer.setDepthMask(false);
@@ -283,7 +295,7 @@ public class TileEntityRendererConduitRubyglass extends TileEntityRenderer<TileE
 		double deltaZ = (conduitTileEntity.tilePos.z + 0.5) - player.z;
 
 		double distanceSquared = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
-		if (distanceSquared > 100) return true;
+		if (distanceSquared > 250) return true;
 
 		Vector3dc lookVector = player.getViewVector(partialTick);
 		if (lookVector == null) return true;

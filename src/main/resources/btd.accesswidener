@@ -1,0 +1,18 @@
+accessWidener v1 official
+
+accessible class net/minecraft/core/current/wire/Node
+accessible class net/minecraft/core/current/wire/WireNode
+accessible class net/minecraft/core/current/wire/WireConnectionManager
+accessible field net/minecraft/core/current/wire/Node state Lnet/minecraft/core/current/util/BlockState;
+accessible field net/minecraft/core/current/wire/Node pos Lnet/minecraft/core/world/pos/TilePos;
+accessible field net/minecraft/core/current/wire/WireNode externalPower I
+accessible field net/minecraft/core/current/wire/WireNode virtualPower I
+accessible field net/minecraft/core/current/wire/WireNode currentPower I
+accessible field net/minecraft/core/current/wire/WireNode removed Z
+accessible field net/minecraft/core/current/wire/WireNode shouldBreak Z
+accessible field net/minecraft/core/current/wire/WireHandler FLOW_IN_TO_FLOW_OUT [I
+accessible method net/minecraft/core/current/wire/WireConnectionManager clear ()V
+accessible method net/minecraft/core/current/wire/WireConnectionManager add (Lnet/minecraft/core/current/wire/WireNode;IZZ)V
+accessible method org/useless/dragonfly/data/block/mojang/BlockModelMojangData$Cache loadFromStream (Ljava/io/InputStream;)Lorg/useless/dragonfly/data/block/mojang/BlockModelMojangData$Builder;
+accessible method org/useless/dragonfly/data/block/mojang/BlockModelMojangData$Builder build (Lnet/minecraft/client/render/texturepack/TexturePackList;Ljava/lang/String;)Lorg/useless/dragonfly/data/block/mojang/BlockModelMojangData;
+
