@@ -1,10 +1,11 @@
 package betterthandeer.btd;
 
+import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.mixin.MixinDispatcher;
-import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.gui.achievements.data.AchievementPages;
 import net.minecraft.client.gui.guidebook.mobs.MobInfoRegistry;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.block.model.generic.*;
@@ -14,19 +15,26 @@ import net.minecraft.client.render.item.model.ItemModelStandard;
 import net.minecraft.client.render.particle.Particle;
 import net.minecraft.client.render.particle.ParticleDispatcher;
 import net.minecraft.client.render.particle.ParticleEntry;
+import net.minecraft.core.achievement.Achievement;
+import net.minecraft.core.achievement.Achievements;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.item.block.ItemBlock;
+import net.minecraft.core.util.collection.NamespaceID;
 import net.minecraft.core.world.World;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.util.ClientStartEntrypoint;
 
 import java.util.Map;
 
+import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
 import static net.minecraft.client.render.block.model.BlockModelDispatcher.loadDataModel;
 
 public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
+	public static Achievement BLAST_FURNACE;
+	public static Achievement OBTAIN_STEEL;
+
 	@Override
 	public void onInitializeClient() {
 		BetterThanDeerMod.LOGGER.info("Better Than Deer Client initialized.");
@@ -43,6 +51,12 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 
 	@Override
 	public void afterClientStart() {
+		BLAST_FURNACE = (new Achievement(NamespaceID.fromPool(MOD_ID, "blast_furnace"), "blastFurnace", Blocks.FURNACE_BLAST_ACTIVE, Achievements.GET_NETHERCOAL)).setType(Achievement.TYPE_SPECIAL).registerAchievement();
+		OBTAIN_STEEL = (new Achievement(NamespaceID.fromPool(MOD_ID, "obtain_steel"), "obtainSteel", Items.INGOT_STEEL, BLAST_FURNACE)).registerAchievement();
+
+		AchievementPages.netherPage.addAchievement(BLAST_FURNACE, 0, 4);
+		AchievementPages.netherPage.addAchievement(OBTAIN_STEEL, -2, 4);
+
 		changeVanillaTextures();
 
 		MobInfoRegistry.register(MobGargoyle.class, "guidebook.section.mob.gargoyle.name", "guidebook.section.mob.gargoyle.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
