@@ -142,6 +142,10 @@ public class MobJellyfish extends MobMonster {
 			world.spawnParticle("jellyfishLightning", this.x, this.y - 1, this.z, 0.0F, 0.0F, 0.0F, 0, 1600.0F, false);
 		}
 
+		if (random.nextInt(15) == 0) {
+			world.playSoundAtEntity(null, this, "btd:mob.jellyfish", 0.2F, 0.5F);
+		}
+
 		world.spawnParticle("reddust", this.x, this.y + 1.0, this.z, 0.0F, -15.0F, 0.0F, 15, false);
 
 		this.xBodyRotO = this.xBodyRot;
