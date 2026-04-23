@@ -30,7 +30,7 @@
 				]
 			},
 			{
-				"name": "tentacle3",
+				"name": "tentacle2",
 				"parent": "body",
 				"pivot": [0, 8, 0],
 				"cubes": [
@@ -39,7 +39,7 @@
 				]
 			},
 			{
-				"name": "tentacle5",
+				"name": "tentacle3",
 				"parent": "body",
 				"pivot": [0, 8, 0],
 				"rotation": [0, -90, 0],
@@ -49,7 +49,7 @@
 				]
 			},
 			{
-				"name": "tentacle7",
+				"name": "tentacle4",
 				"parent": "body",
 				"pivot": [0, 8, 0],
 				"rotation": [0, -180, 0],

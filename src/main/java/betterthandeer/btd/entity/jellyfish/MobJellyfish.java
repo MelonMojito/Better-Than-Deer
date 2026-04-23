@@ -208,6 +208,7 @@ public class MobJellyfish extends MobMonster {
 
 			this.attackEntity(target, dist);
 		} else {
+			this.target = null;
 			if (this.random.nextInt(50) == 0 || this.tx == 0.0F) {
 				float f = this.random.nextFloat() * (float) Math.PI * 2.0F;
 				this.tx = MathHelper.cos(f) * 0.1F;

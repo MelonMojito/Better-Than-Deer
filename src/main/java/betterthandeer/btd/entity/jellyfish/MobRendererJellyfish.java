@@ -21,26 +21,24 @@ public class MobRendererJellyfish extends MobRenderer<MobJellyfish> {
 		model.resetBones();
 		float limbPitch = this.getLimbPitch(entity, partialTick);
 
-
-		float openAnimationSpeed =  limbPitch;
-		model.getTransform("tentacle1").rotX = openAnimationSpeed;
-		model.getTransform("tentacle2").rotX = openAnimationSpeed;
-		model.getTransform("tentacle3").rotX = openAnimationSpeed;
-		model.getTransform("tentacle4").rotX = openAnimationSpeed;
-		model.getTransform("tentacle5").rotX = openAnimationSpeed;
-		model.getTransform("tentacle6").rotX = openAnimationSpeed;
-		model.getTransform("tentacle7").rotX = openAnimationSpeed;
-		model.getTransform("tentacle8").rotX = openAnimationSpeed;
+		if (entity.getTarget() != null) {
+			float extendedAngle = 0.9F;
+			model.getTransform("tentacle1").rotX = extendedAngle;
+			model.getTransform("tentacle2").rotX = extendedAngle;
+			model.getTransform("tentacle3").rotX = extendedAngle;
+			model.getTransform("tentacle4").rotX = extendedAngle;
+		} else {
+			model.getTransform("tentacle1").rotX = limbPitch;
+			model.getTransform("tentacle2").rotX = limbPitch;
+			model.getTransform("tentacle3").rotX = limbPitch;
+			model.getTransform("tentacle4").rotX = limbPitch;
+		}
 
 		float spinAnimationSpeed = (entity.tickCount + partialTick) * 0.2F;
 		model.getTransform("tentacle1").rotY = spinAnimationSpeed;
 		model.getTransform("tentacle2").rotY = spinAnimationSpeed;
 		model.getTransform("tentacle3").rotY = spinAnimationSpeed;
 		model.getTransform("tentacle4").rotY = spinAnimationSpeed;
-		model.getTransform("tentacle5").rotY = spinAnimationSpeed;
-		model.getTransform("tentacle6").rotY = spinAnimationSpeed;
-		model.getTransform("tentacle7").rotY = spinAnimationSpeed;
-		model.getTransform("tentacle8").rotY = spinAnimationSpeed;
 
 		return model;
 	}
