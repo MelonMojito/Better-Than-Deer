@@ -111,7 +111,7 @@ public record WorldFeatureHangingDungeonBase(
 		final int half = this.size / 2;
 		var center = new TilePos(tilePosc.x() + half, minHeight + 1, tilePosc.z() + half);
 
-		world.setBlockTypeDataNotify(center, Blocks.MOBSPAWNER, 0);
+		world.setBlockTypeDataNotify(center, BTDBlocks.MOBSPAWNER_NETHER, 0);
 		var spawner = (TileEntityMobSpawner) world.getTileEntity(center);
 		if (spawner != null) {
 			spawner.setMobId("btd:gargoyle");
