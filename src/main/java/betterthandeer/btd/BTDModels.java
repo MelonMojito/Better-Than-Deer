@@ -4,6 +4,8 @@ import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.block.chain.BlockModelChainLarge;
 import betterthandeer.btd.block.ice.rubyglass.BlockModelGenericIceRubyGlass;
 import betterthandeer.btd.block.rock.BlockModelGenericRocks;
+import betterthandeer.btd.block.statue.gargoyle.TileEntityRendererStatueGargoyle;
+import betterthandeer.btd.block.statue.gargoyle.TileEntityStatueGargoyle;
 import betterthandeer.btd.block.tar.BlockModelGenericAsphalt;
 import betterthandeer.btd.entity.arrow.flaming.EntityRendererArrowFlaming;
 import betterthandeer.btd.entity.arrow.flaming.ProjectileArrowFlaming;
@@ -113,6 +115,21 @@ public class BTDModels implements ModelEntrypoint {
 			loadDataModel("btd:block/stairs/brick_brimstone")));
 
 
+		dispatcher.addDispatch(new BlockModelEmpty<>(BTDBlocks.STATUE_GARGOYLE_NETHERRACK).setAllTextures("minecraft:block/netherrack"));
+		dispatcher.addDispatch(new BlockModelEmpty<>(BTDBlocks.STATUE_GARGOYLE_GLOOMSTONE).setAllTextures("minecraft:block/gloomstone"));
+		dispatcher.addDispatch(new BlockModelEmpty<>(BTDBlocks.STATUE_GARGOYLE_BASALT).setAllTextures("minecraft:block/basalt"));
+		dispatcher.addDispatch(new BlockModelEmpty<>(BTDBlocks.STATUE_GARGOYLE_SLATE).setAllTextures("minecraft:block/slate_top"));
+
+		TileEntityRendererStatueGargoyle.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GARGOYLE_NETHERRACK, "/assets/btd/textures/entity/statue_gargoyle/netherrack.png");
+		TileEntityRendererStatueGargoyle.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GARGOYLE_GLOOMSTONE, "/assets/btd/textures/entity/statue_gargoyle/gloomstone.png");
+		TileEntityRendererStatueGargoyle.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GARGOYLE_BASALT, "/assets/btd/textures/entity/statue_gargoyle/basalt.png");
+		TileEntityRendererStatueGargoyle.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GARGOYLE_SLATE, "/assets/btd/textures/entity/statue_gargoyle/slate.png");
+
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.MOBSPAWNER_NETHER, loadDataModel("btd:block/mobspawner_nether")));
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.MOBSPAWNER_NETHER_DEACTIVATED, loadDataModel("btd:block/mobspawner_nether_deactivated")));
+
+
 	}
 
 	@Override
@@ -137,6 +154,11 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GLOOMSTONE, "btd"));
 
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.AMMO_LIGHTNINGBALL, "btd").setFullBright());
+
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GARGOYLE_NETHERRACK, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GARGOYLE_GLOOMSTONE, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GARGOYLE_BASALT, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GARGOYLE_SLATE, "btd"));
 	}
 
 	@Override
@@ -152,6 +174,7 @@ public class BTDModels implements ModelEntrypoint {
 
 	@Override
 	public void initTileEntityModels(TileEntityRenderDispatcher dispatcher) {
+		dispatcher.assignRenderer(TileEntityStatueGargoyle.class, new TileEntityRendererStatueGargoyle());
 
 	}
 

@@ -26,7 +26,7 @@ import java.util.Random;
 public record WorldFeatureHangingDungeonBase(
 	int size, int maxDrop, int minDrop, int clumping,
 	WeightedRandomBag<Block<?>> base, WeightedRandomBag<Block<?>> ropes,
-	WeightedRandomBag<WeightedRandomLootObject> lootTable) implements WorldFeatureInterface {
+	WeightedRandomBag<WeightedRandomLootObject> lootTable, Block<?> statueBlock) implements WorldFeatureInterface {
 
 	public WorldFeatureHangingDungeonBase {
 		assert size >= 7;
@@ -116,6 +116,9 @@ public record WorldFeatureHangingDungeonBase(
 		if (spawner != null) {
 			spawner.setMobId("btd:gargoyle");
 		}
+
+		var gargoyle = new TilePos(tilePosc.x() + half, minHeight + 2, tilePosc.z() + half);
+		world.setBlockTypeDataNotify(gargoyle, statueBlock, random.nextInt(16));
 
 		final var positions = new ArrayList<TilePos>();
 		positions.add(new TilePos(half, 0, 0));

@@ -1,6 +1,7 @@
 package betterthandeer.btd;
 
 import betterthandeer.btd.block.BTDBlocks;
+import betterthandeer.btd.block.BTDTileEntities;
 import betterthandeer.btd.entity.BTDEntities;
 import betterthandeer.btd.entity.arrow.flaming.NetEntryArrowFlaming;
 import betterthandeer.btd.entity.jellyfish.NetEntryLightningball;
@@ -61,6 +62,7 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		BTDEntities.init();
 		BTDBlocks.init();
 		BTDItems.init();
+		BTDTileEntities.init();
 
 		NetEntityHandler.registerNetworkEntry(new NetEntryRock(), 150);
 		NetEntityHandler.registerNetworkEntry(new NetEntryArrowFlaming(), 151);

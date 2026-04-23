@@ -64,6 +64,15 @@ tile.statue.gloomstone.lower.desc=
 tile.statue.gloomstone.upper.name=Gloomstone Statue (Upper)
 tile.statue.gloomstone.upper.desc=
 
+tile.statue.gargoyle.netherrack.name=Netherrack Gargoyle
+tile.statue.gargoyle.netherrack.desc=
+tile.statue.gargoyle.gloomstone.name=Gloomstone Gargoyle
+tile.statue.gargoyle.gloomstone.desc=
+tile.statue.gargoyle.basalt.name=Basalt Gargoyle
+tile.statue.gargoyle.basalt.desc=
+tile.statue.gargoyle.slate.name=Slate Gargoyle
+tile.statue.gargoyle.slate.desc=
+
 
 
 tile.asphalt.name=Asphalt
