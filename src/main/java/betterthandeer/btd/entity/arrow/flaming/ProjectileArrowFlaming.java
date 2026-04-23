@@ -3,7 +3,7 @@ package betterthandeer.btd.entity.arrow.flaming;
 import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.block.BlockLogicEmber;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
-import betterthandeer.btd.entity.jellyfish.MobJellyfish;
+import betterthandeer.btd.entity.leecher.MobLeecher;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogicTNT;
@@ -72,7 +72,7 @@ public class ProjectileArrowFlaming extends ProjectileArrow {
 	@Override
 	public void onHit(@NonNull HitResult hitResult) {
 		if (hitResult instanceof HitResult.Entity hitEntity) {
-			if (hitEntity.entity instanceof MobZombiePig || hitEntity.entity instanceof MobGargoyle || hitEntity.entity instanceof MobJellyfish) {
+			if (hitEntity.entity instanceof MobZombiePig || hitEntity.entity instanceof MobGargoyle || hitEntity.entity instanceof MobLeecher) {
 				hitEntity.entity.hurt(this.owner, this.damage, DamageType.COMBAT);
 			} else if (hitEntity.entity.hurt(this.owner, this.damage, DamageType.FIRE)) {
 				if (hitEntity.entity instanceof MobCreeper entityCreeper) {

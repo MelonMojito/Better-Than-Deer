@@ -1,4 +1,4 @@
-package betterthandeer.btd.entity.jellyfish;
+package betterthandeer.btd.entity.leecher;
 
 import com.mojang.nbt.tags.CompoundTag;
 import net.minecraft.core.entity.Entity;
@@ -8,14 +8,14 @@ import net.minecraft.core.net.entity.ITrackedEntry;
 import net.minecraft.core.net.entity.IVehicleEntry;
 import net.minecraft.core.net.packet.PacketAddEntity;
 import net.minecraft.core.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 public class NetEntryLightningball implements IVehicleEntry<ProjectileLightningball>, ITrackedEntry<ProjectileLightningball> {
 	public NetEntryLightningball() {
 	}
 
-	public @NotNull Class<ProjectileLightningball> getAppliedClass() {
+	public @NonNull Class<ProjectileLightningball> getAppliedClass() {
 		return ProjectileLightningball.class;
 	}
 

@@ -9,7 +9,7 @@ import net.minecraft.core.world.biome.provider.BiomeProvider;
 import net.minecraft.core.world.noise.FractalNoise2D;
 import net.minecraft.core.world.noise.FractalNoise3D;
 import net.minecraft.core.world.noise.SimplexNoise;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -31,7 +31,7 @@ public final class NewBiomeProviderNether extends BiomeProvider {
 		init();
 	}
 
-	public NewBiomeProviderNether(@NotNull World world) {
+	public NewBiomeProviderNether(@NonNull World world) {
 		super(world);
 		long seed = world.getRandomSeed();
 		this.temperatureNoise = new FractalNoise3D<>(SimplexNoise.genOctaves(seed * 9871L, 4));

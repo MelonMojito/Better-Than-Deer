@@ -36,6 +36,18 @@ public class BTDRecipes implements RecipeEntrypoint {
 		templateStatue.addInput('B', Blocks.NETHERRACK).addInput('S', Blocks.SLAB_NETHERRACK_POLISHED).create("statue_netherrack", new ItemStack(BTDItems.STATUE_NETHERRACK, 1));
 		templateStatue.addInput('B', Blocks.GLOOMSTONE).addInput('S', Blocks.SLAB_GLOOMSTONE_POLISHED).create("statue_gloomstone", new ItemStack(BTDItems.STATUE_GLOOMSTONE, 1));
 
+
+		RecipeBuilderShaped templateCarvedStone = new RecipeBuilderShaped(MOD_ID, "S", "S");
+		templateCarvedStone.addInput('S', Blocks.STONE_POLISHED).create("carved_stone", new ItemStack(Blocks.STONE_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.BASALT_POLISHED).create("carved_basalt", new ItemStack(Blocks.BASALT_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.LIMESTONE_POLISHED).create("carved_limestone", new ItemStack(Blocks.LIMESTONE_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.GRANITE_POLISHED).create("carved_granite", new ItemStack(Blocks.GRANITE_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.PERMAFROST_POLISHED).create("carved_permafrost", new ItemStack(Blocks.PERMAFROST_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.MARBLE).create("marble_capstone", new ItemStack(Blocks.CAPSTONE_MARBLE, 2));
+		templateCarvedStone.addInput('S', Blocks.SLATE_POLISHED).create("carved_slate", new ItemStack(BTDBlocks.SLATE_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.NETHERRACK_POLISHED).create("carved_netherrack", new ItemStack(Blocks.NETHERRACK_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.GLOOMSTONE_POLISHED).create("carved_gloomstone", new ItemStack(Blocks.GLOOMSTONE_CARVED, 2));
+
 		RecipeBuilder.Shaped(MOD_ID, "SS", "SS")
 			.addInput('S', Blocks.BRIMSAND)
 			.create("brimstone", new ItemStack(BTDBlocks.BRIMSTONE, 2));

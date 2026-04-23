@@ -1,4 +1,4 @@
-package betterthandeer.btd.entity.jellyfish;
+package betterthandeer.btd.entity.leecher;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -7,18 +7,18 @@ import net.minecraft.client.render.renderer.*;
 import net.minecraft.client.render.tessellator.TessellatorGeneral;
 import net.minecraft.core.util.helper.LightIndexHelper;
 import net.minecraft.core.world.World;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Random;
 
 @Environment(EnvType.CLIENT)
-public class ParticleJellyfishLightning extends Particle {
+public class ParticleLeecherLightning extends Particle {
 	private static final Random rand = new Random();
 	private long seed = 0L;
 	public float pitch;
 	public float yaw;
 
-	public ParticleJellyfishLightning(@NotNull World world, double x, double y, double z, float pitch, float yaw) {
+	public ParticleLeecherLightning(@NonNull World world, double x, double y, double z, float pitch, float yaw) {
 		super(world, x, y, z, 0.0F, 0.0F, 0.0F);
 		this.lifetime = 2;
 		this.rCol = 0.5F;
