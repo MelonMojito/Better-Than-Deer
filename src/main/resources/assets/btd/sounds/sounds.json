@@ -40,6 +40,25 @@
       "mob/gargoyle/death.ogg"
     ]
   },
+  "mob.jellyfish": {
+    "subtitle": "subtitles.mob.jellyfish",
+    "sounds": [
+      "mob/jellyfish/idle.ogg"
+    ]
+  },
+  "mob.jellyfishhurt": {
+    "subtitle": "subtitles.mob.jellyfishhurt",
+    "sounds": [
+      "mob/jellyfish/hurt1.ogg",
+      "mob/jellyfish/hurt2.ogg"
+    ]
+  },
+  "mob.jellyfishdeath": {
+    "subtitle": "subtitles.mob.jellyfishdeath",
+    "sounds": [
+      "mob/jellyfish/death.ogg"
+    ]
+  },
   "mob.deer": {
     "subtitle": "subtitles.mob.deer",
     "sounds": [

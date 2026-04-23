@@ -75,13 +75,18 @@ public class MobJellyfish extends MobMonster {
 	}
 
 	@Override
+	public String getLivingSound() {
+		return "btd:mob.jellyfish";
+	}
+
+	@Override
 	protected String getHurtSound() {
-		return null;
+		return "btd:mob.jellyfishhurt";
 	}
 
 	@Override
 	protected String getDeathSound() {
-		return null;
+		return "btd:mob.jellyfishdeath";
 	}
 
 	@Override
