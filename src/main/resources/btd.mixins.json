@@ -14,6 +14,7 @@
     "block.BetterLayerAshMixin",
     "block.BetterRubyglassSproutMixin",
     "block.BetterSoulcatcherMixin",
+    "block.BetterSpawnerMixin",
     "block.BurnLogMixin",
     "block.ButterflyParticlesMixin",
     "block.SortCreativeInventoryMixin",

@@ -31,6 +31,9 @@ item.statue.netherrack.desc=A decorative netherrack statue for you to hang your 
 item.statue.gloomstone.name=Gloomstone Statue
 item.statue.gloomstone.desc=A decorative gloomstone statue for you to hang your armor.
 
+item.ammo.lightningball.name=Lightning Charge
+item.ammo.lightningball.desc=Ammo for a hand cannon. Shoots a homing ball of lightning.
+
 
 
 

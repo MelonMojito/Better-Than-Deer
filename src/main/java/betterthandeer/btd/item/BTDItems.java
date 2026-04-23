@@ -30,6 +30,8 @@ public class BTDItems {
 	public static Item STATUE_NETHERRACK;
 	public static Item STATUE_GLOOMSTONE;
 
+	public static Item AMMO_LIGHTNINGBALL;
+
 	private static boolean hasInit = false;
 
 	public static void init() {
@@ -64,5 +66,7 @@ public class BTDItems {
 		STATUE_PERMAFROST = new ItemStatue("statue.permafrost", itemKey("statue_permafrost"), itemID++, BTDBlocks.STATUE_PERMAFROST_LOWER, BTDBlocks.STATUE_PERMAFROST_UPPER);
 		STATUE_NETHERRACK = new ItemStatue("statue.netherrack", itemKey("statue_netherrack"), itemID++, BTDBlocks.STATUE_NETHERRACK_LOWER, BTDBlocks.STATUE_NETHERRACK_UPPER);
 		STATUE_GLOOMSTONE = new ItemStatue("statue.gloomstone", itemKey("statue_gloomstone"), itemID++, BTDBlocks.STATUE_GLOOMSTONE_LOWER, BTDBlocks.STATUE_GLOOMSTONE_UPPER);
+
+		AMMO_LIGHTNINGBALL = new Item("ammo.lightningball", itemKey("ammo_lightningball"), itemID++);
 	}
 }
