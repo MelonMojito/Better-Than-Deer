@@ -4,6 +4,7 @@ import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.entity.Entity;
+import net.minecraft.core.entity.Mob;
 import net.minecraft.core.entity.monster.MobMonster;
 import net.minecraft.core.enums.LightLayer;
 import net.minecraft.core.item.Items;
@@ -13,7 +14,10 @@ import net.minecraft.core.util.helper.LightIndexHelper;
 import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.pos.TilePos;
+import org.joml.primitives.AABBd;
 import org.jspecify.annotations.NonNull;
+
+import java.util.List;
 
 public class MobJellyfish extends MobMonster {
 	public float xBodyRot = 0.0F;
@@ -88,22 +92,22 @@ public class MobJellyfish extends MobMonster {
 
 	@Override
 	protected void attackEntity(@NonNull Entity entity, float distance) {
-		if (distance < 10.0F) {
-			double d = entity.x - this.x;
-			double d1 = entity.z - this.z;
-			if (this.attackTime == 0) {
-				if (!this.world.isClientSide) {
-					ProjectileLightningball elementLightning = new ProjectileLightningball(this.world, this);
-					elementLightning.setHeading(world.rand.nextDouble(), this.getLookingTilt() + 5.0F, world.rand.nextDouble(), 0.5F, 0.0F);
-					this.world.playSoundAtEntity(null, this, "mob.ghast.fireball", this.getSoundVolume(), (this.random.nextFloat() + this.random.nextFloat()) * 1.2F + 1.0F);
-					elementLightning.moveTo(this.x, this.y - 1, this.z, 0.0F, 0.0F);
-					this.world.entityJoinedWorld(elementLightning);
-				}
-				this.attackTime = 80;
-			}
-			this.yRot = (float) (Math.atan2(d1, d) * (double) 180.0F / Math.PI) - 90.0F;
-			this.hasAttacked = true;
-		}
+//		if (distance < 10.0F) {
+//			double d = entity.x - this.x;
+//			double d1 = entity.z - this.z;
+//			if (this.attackTime == 0) {
+//				if (!this.world.isClientSide) {
+//					ProjectileLightningball elementLightning = new ProjectileLightningball(this.world, this);
+//					elementLightning.setHeading(world.rand.nextDouble(), this.getLookingTilt() + 5.0F, world.rand.nextDouble(), 0.5F, 0.0F);
+//					this.world.playSoundAtEntity(null, this, "mob.ghast.fireball", this.getSoundVolume(), (this.random.nextFloat() + this.random.nextFloat()) * 1.2F + 1.0F);
+//					elementLightning.moveTo(this.x, this.y - 1, this.z, 0.0F, 0.0F);
+//					this.world.entityJoinedWorld(elementLightning);
+//				}
+//				this.attackTime = 80;
+//			}
+//			this.yRot = (float) (Math.atan2(d1, d) * (double) 180.0F / Math.PI) - 90.0F;
+//			this.hasAttacked = true;
+//		}
 	}
 
 	@Override
@@ -114,15 +118,26 @@ public class MobJellyfish extends MobMonster {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 
-		if (random.nextInt(10) == 0) {
-			Direction direction = Direction.getDirectionById(0);
-			TilePos checkPos = new TilePos((int) x, (int) y, (int) z).add(direction);
-			if (world.isAirBlock(checkPos.x, checkPos.y, checkPos.z)) {
-				world.spawnParticle("rubyglassLightning", this.x, this.y - 2.5, this.z, 0.0F, 0.0F, 0.0F, 0, false);
+		if (!this.world.isClientSide) {
+			double pillarHeight = 8.0;
+
+			AABBd pillarHitbox = new AABBd(this.x - 1, this.y - pillarHeight, this.z - 1, this.x + 1, this.y, this.z + 1);
+			List<Mob> targets = this.world.getEntitiesWithinAABB(Mob.class, pillarHitbox);
+
+			for (Mob entity : targets) {
+				if (!(entity instanceof MobJellyfish) && entity.isAlive() && entity.hurt(this, 2, DamageType.COMBAT)) {
+					entity.hurtTime = entity.maxHurtTime = 1;
+				}
 			}
 		}
 
-		world.spawnParticle("reddust", this.x, this.y + 0.5, this.z, 0.0F, 0.0F, 0.0F, 15, false);
+		Direction direction = Direction.getDirectionById(0);
+		TilePos checkPos = new TilePos((int) x, (int) y, (int) z).add(direction);
+		if (world.isAirBlock(checkPos.x, checkPos.y, checkPos.z)) {
+			world.spawnParticle("jellyfishLightning", this.x, this.y - 1, this.z, 0.0F, 0.0F, 0.0F, 0, 1600.0F, false);
+		}
+
+		world.spawnParticle("reddust", this.x, this.y + 1.0, this.z, 0.0F, -15.0F, 0.0F, 15, false);
 
 		this.xBodyRotO = this.xBodyRot;
 		this.zBodyRotO = this.zBodyRot;
