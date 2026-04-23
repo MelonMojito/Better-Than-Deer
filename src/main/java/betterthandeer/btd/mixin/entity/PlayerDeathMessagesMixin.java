@@ -2,6 +2,7 @@ package betterthandeer.btd.mixin.entity;
 
 import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
+import betterthandeer.btd.entity.jellyfish.MobJellyfish;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.Mob;
@@ -41,6 +42,9 @@ public abstract class PlayerDeathMessagesMixin extends Mob {
 		}
 		if (entityKilledBy instanceof MobGargoyle) {
 			cir.setReturnValue(playerName + deathMsgColor + " met the batman.");
+		}
+		if (entityKilledBy instanceof MobJellyfish) {
+			cir.setReturnValue(playerName + deathMsgColor + " doesnt like jellyfish jam.");
 		}
 	}
 }

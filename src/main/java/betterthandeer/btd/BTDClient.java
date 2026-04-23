@@ -1,9 +1,11 @@
 package betterthandeer.btd;
 
+import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
+import betterthandeer.btd.entity.jellyfish.MobJellyfish;
+import betterthandeer.btd.entity.jellyfish.ParticleJellyfishLightning;
 import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.mixin.MixinDispatcher;
-import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.guidebook.mobs.MobInfoRegistry;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
@@ -18,7 +20,9 @@ import net.minecraft.core.block.Blocks;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.item.block.ItemBlock;
+import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.world.World;
+import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.util.ClientStartEntrypoint;
 
@@ -39,6 +43,41 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 				return new ParticleAcidBoiling(world, x, y, z, motionX, motionY, motionZ, true);
 			}
 		});
+
+		ParticleDispatcher.getInstance().addDispatch("jellyfishLightning", new ParticleEntry() {
+			public Particle newParticle(@NotNull World world, double x, double y, double z, double motionX, double motionY, double motionZ, int data) {
+				float pitch = 0.0F;
+				float yaw = switch (Direction.getDirectionById(data)) {
+					case DOWN -> {
+						pitch = 0.0F;
+						yield 0.0F;
+					}
+					case UP -> {
+						pitch = (float) Math.PI;
+						yield 0.0F;
+					}
+					case NORTH -> {
+						pitch = ((float) Math.PI / 2F);
+						yield 0.0F;
+					}
+					case SOUTH -> {
+						pitch = (-(float) Math.PI / 2F);
+						yield 0.0F;
+					}
+					case WEST -> {
+						pitch = ((float) Math.PI / 2F);
+						yield ((float) Math.PI / 2F);
+					}
+					case EAST -> {
+						pitch = ((float) Math.PI / 2F);
+						yield (-(float) Math.PI / 2F);
+					}
+					default -> 0.0F;
+				};
+
+				return new ParticleJellyfishLightning(world, x, y, z, pitch, yaw);
+			}
+		});
 	}
 
 	@Override
@@ -47,6 +86,9 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 
 		MobInfoRegistry.register(MobGargoyle.class, "guidebook.section.mob.gargoyle.name", "guidebook.section.mob.gargoyle.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
 			new MobInfoRegistry.MobDrop(new ItemStack(BTDItems.EYE_GARGOYLE), 1.0F, 0, 2)});
+
+		MobInfoRegistry.register(MobJellyfish.class, "guidebook.section.mob.jellyfish.name", "guidebook.section.mob.jellyfish.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
+			new MobInfoRegistry.MobDrop(new ItemStack(Items.RUBYGLASS_CRYSTAL), 1.0F, 0, 3)});
 	}
 
 
@@ -63,7 +105,6 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 		dispatches.put(Blocks.LAYER_ASH, new BlockModelGenericLayer<>(
 			Blocks.LAYER_ASH, "btd:block/layer/ash"));
 		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.LAYER_ASH.asItem()));
-
 
 
 		dispatches.put(Blocks.COBBLE_BASALT, new BlockModelGeneric<>(
