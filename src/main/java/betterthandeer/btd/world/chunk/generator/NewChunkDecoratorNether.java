@@ -40,6 +40,15 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 	@Override
 	public void registerDecorations() {
 
+		// Dungeon Features
+
+		this.register(
+			"btd:decoration/nether/default/hanging_dungeon_random",
+			(new ChunkDecorationBuilder(new WorldFeatureHangingDungeon.RandomType()))
+				.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
+				.withPlacementMethod(new PlacementMethod.ChanceToPlace(20)));
+
+
 		// Rubyglass Features
 		this.register("btd:decoration/nether/default/rubyglass_crystal_ceiling", (new ChunkDecorationBuilder(new WorldFeatureRubyglassCrystalline(true, 20, 15)))
 			.withBiomeMask(new Biome[]{Biomes.NETHER_CRYSTAL_FOREST})
@@ -342,14 +351,6 @@ public class NewChunkDecoratorNether extends ChunkDecoratorNether {
 			}
 
 		});
-
-		// Dungeon Features
-
-		this.register(
-			"btd:decoration/nether/default/hanging_dungeon_random",
-			(new ChunkDecorationBuilder(new WorldFeatureHangingDungeon.RandomType()))
-				.withPositionSelector(PositionSelectors.HeightRangeUniformFromOcean)
-				.withPlacementMethod(new PlacementMethod.ChanceToPlace(20)));
 	}
 
 	@Override

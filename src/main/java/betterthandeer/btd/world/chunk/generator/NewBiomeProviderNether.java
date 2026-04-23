@@ -149,17 +149,17 @@ public final class NewBiomeProviderNether extends BiomeProvider {
 		brm.clear();
 
 		brm.addRange(Biomes.NETHER_VOLCANIC_ISLANDS, new BiomeRange(
-			0.90, 1.0,
+			0.95, 1.0,
 			0.0, 1.0,
 			0.5, 1.0,
 			0.0, 1.0));
 		brm.addRange(Biomes.NETHER_CRAG, new BiomeRange(
-			0.75, 0.9,
+			0.75, 0.95,
 			0.0, 0.85,
 			0.5, 1.0,
 			0.0, 1.0));
 		brm.addRange(Biomes.NETHER_SULFUR_POOLS, new BiomeRange(
-			0.75, 0.9,
+			0.75, 0.95,
 			0.85, 1.0,
 			0.5, 1.0,
 			0.0, 1.0));
