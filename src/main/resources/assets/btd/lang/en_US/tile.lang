@@ -137,10 +137,12 @@ tile.stairs.brick.brimstone.desc=Brimstone brick block used for rapid vertical m
 
 
 
+tile.mobspawner.nether.name=Nether Mob Spawner
+tile.mobspawner.nether.desc=A cage filled with nightmares.
 
 
-
-
+tile.mobspawner.nether.deactivated.name=Deactivated Nether Mob Spawner
+tile.mobspawner.nether.deactivated.desc=A cage no longer filled with nightmares.
 
 
 

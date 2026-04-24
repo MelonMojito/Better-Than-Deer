@@ -65,6 +65,9 @@ public class TileEntityRendererStatueGargoyle extends TileEntityRenderer<TileEnt
 		model.getTransform("body").rotX = pose.bodyPitch;
 		model.getTransform("body").rotY = pose.bodyYaw;
 		model.getTransform("body").rotZ = pose.bodyRoll;
+
+		model.getTransform("head").posY = pose.headPos;
+		model.getTransform("body").posY = pose.bodyPos;
 		model.render();
 	}
 

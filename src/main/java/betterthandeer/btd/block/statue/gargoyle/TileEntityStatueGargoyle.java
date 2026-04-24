@@ -49,11 +49,13 @@ public class TileEntityStatueGargoyle extends TileEntity {
 	public enum Pose {
 		DEFAULT(0.0F, 0.0F, 0.0F, 0.0F,
 			0.0F, 0.0F, 0.0F,
-			0.0F, 0.0F, 0.0F),
+			0.0F, 0.0F, 0.0F,
+			0, 0),
 
 		UPSIDE_DOWN(0.0F, 0.0F, 0.0F, 0.0F,
 			0.0F, 0.0F, 3.14159F,
-			0.0F, 0.0F, 3.14159F);
+			0.0F, 0.0F, 3.14159F,
+			-10, -10);
 
 		public final float leftArmPitch;
 		public final float rightArmPitch;
@@ -65,10 +67,13 @@ public class TileEntityStatueGargoyle extends TileEntity {
 		public final float bodyPitch;
 		public final float bodyYaw;
 		public final float bodyRoll;
+		public final int headPos;
+		public final int bodyPos;
 
 		Pose(final float leftArmPitch, final float rightArmPitch, final float leftLegPitch, final float rightLegPitch,
 		     final float headPitch, final float headYaw, final float headRoll,
-		     final float bodyPitch, final float bodyYaw, final float bodyRoll) {
+		     final float bodyPitch, final float bodyYaw, final float bodyRoll,
+			 final int headPos, final int bodyPos) {
 			this.leftArmPitch = leftArmPitch;
 			this.rightArmPitch = rightArmPitch;
 			this.leftLegPitch = leftLegPitch;
@@ -79,6 +84,8 @@ public class TileEntityStatueGargoyle extends TileEntity {
 			this.bodyPitch = bodyPitch;
 			this.bodyYaw = bodyYaw;
 			this.bodyRoll = bodyRoll;
+			this.headPos = headPos;
+			this.bodyPos = bodyPos;
 		}
 	}
 }

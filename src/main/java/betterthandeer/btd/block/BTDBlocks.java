@@ -99,7 +99,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static void initializeBlocks() {
 
 		BOULDER = register("boulder", blockKey("boulder"), blockID++, BlockLogicBoulder::new)
-			.withHardness(0.0F)
+			.withHardness(1.0F)
 			.withLightEmission(10)
 			.withLitInteriorSurface(true)
 			.setTicking(true)
@@ -109,13 +109,17 @@ public class BTDBlocks implements BlockInitEntrypoint {
 		FLUID_ACID_FLOWING = (Block<BlockLogicFluid>) (Object) register("fluid.acid.flowing", blockKey("fluid_acid_flowing"), blockID++, block -> new BlockLogicFluidFlowing(block, ACID, new FluidAcid(), FLUID_ACID_STILL))
 			.withHardness(100.0F)
 			.withLightBlock(6)
+			.withLitInteriorSurface(true)
 			.withDisabledStats()
+			.withDisabledNeighborNotifyOnMetadataChange()
 			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
 
 		FLUID_ACID_STILL = (Block<BlockLogicFluid>) (Object) register("fluid.acid.still", blockKey("fluid_acid_still"), blockID++, block -> new BlockLogicFluidStill(block, ACID, new FluidAcid(), FLUID_ACID_FLOWING))
 			.withHardness(100.0F)
 			.withLightBlock(6)
+			.withLitInteriorSurface(true)
 			.withDisabledStats()
+			.withDisabledNeighborNotifyOnMetadataChange()
 			.setStatParent(() -> FLUID_ACID_FLOWING)
 			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
 

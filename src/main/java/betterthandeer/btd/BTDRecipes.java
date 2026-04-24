@@ -24,6 +24,7 @@ public class BTDRecipes implements RecipeEntrypoint {
 	public void onRecipesReady() {
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("matcher");
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("motion_sensor");
+		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("activator");
 		RecipeBuilder.ModifyWorkbench("minecraft").removeRecipe("pebbles_to_cobblestone");
 
 		RecipeBuilder.Shapeless(MOD_ID)
@@ -89,18 +90,26 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.addInput('P', Items.AMMO_PEBBLE)
 			.create("pebbles_to_cobblestone", new ItemStack(Blocks.COBBLE_STONE, 2));
 
-		RecipeBuilder.Shaped(MOD_ID, "MMM", "MEM", "MRM")
+		RecipeBuilder.Shaped(MOD_ID, "MMM", "RDE", "MMM")
 			.addInput('M', Blocks.COBBLE_STONE_MOSSY)
 			.addInput('E', BTDItems.EYE_GARGOYLE)
-			.addInput('R', Items.DUST_REDSTONE)
+			.addInput('R', Items.RUBYGLASS_CRYSTAL)
+			.addInput('D', Items.DUST_REDSTONE)
 			.create("motion_sensor", new ItemStack(Blocks.MOTION_SENSOR_IDLE, 1));
 
-		RecipeBuilder.Shaped(MOD_ID, "NSN", "NEN", "NRN")
+		RecipeBuilder.Shaped(MOD_ID, "NNN", "CQE", "NNN")
 			.addInput('N', Blocks.COBBLE_NETHERRACK)
-			.addInput('S', Blocks.SOULSAND)
+			.addInput('C', Blocks.RUBYGLASS_CONDUIT)
+			.addInput('Q', Items.QUARTZ)
 			.addInput('E', BTDItems.EYE_GARGOYLE)
-			.addInput('R', Items.DUST_REDSTONE)
 			.create("matcher", new ItemStack(Blocks.MATCHER, 1));
+
+		RecipeBuilder.Shaped(MOD_ID, "NNN", "CSA", "NNN")
+			.addInput('N', Blocks.COBBLE_NETHERRACK)
+			.addInput('C', Blocks.RUBYGLASS_CONDUIT)
+			.addInput('S', Blocks.SOULSAND)
+			.addInput('A', Items.NETHERCOAL)
+			.create("activator", new ItemStack(Blocks.ACTIVATOR_COBBLE_NETHERRACK, 1));
 
 		RecipeBuilder.Shaped(MOD_ID, " S ", "SAS", " S ")
 			.addInput('S', BTDItems.SULFUR)
@@ -111,15 +120,13 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.addInput('S', BTDItems.SULFUR)
 			.create("sulfur_block", new ItemStack(BTDBlocks.SULFUR, 1));
 
-		RecipeBuilder.Shaped(MOD_ID, "C","I")
+		RecipeBuilder.Shaped(MOD_ID, "C","C")
 			.addInput('C', Items.CHAINLINK)
-			.addInput('I', Items.INGOT_IRON)
-			.create("sulfur_block", new ItemStack(BTDItems.CHAIN_LARGE, 32));
+			.create("large_chain", new ItemStack(BTDItems.CHAIN_LARGE, 4));
 
-		RecipeBuilder.Shaped(MOD_ID, "C","I")
+		RecipeBuilder.Shaped(MOD_ID, "C","C")
 			.addInput('C', Items.INGOT_STEEL_CRUDE)
-			.addInput('I', Items.INGOT_STEEL)
-			.create("sulfur_block", new ItemStack(BTDItems.CHAIN_STEEL_LARGE, 16));
+			.create("large_steel_chain", new ItemStack(BTDItems.CHAIN_STEEL_LARGE, 4));
 
 		Registries.RECIPES.addCustomRecipe(
 			"btd:workbench/asphalt_dyeing",
