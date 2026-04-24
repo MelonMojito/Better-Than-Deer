@@ -6,9 +6,12 @@ import net.minecraft.client.render.tessellator.TessellatorGeneral;
 import net.minecraft.client.render.texture.stitcher.IconCoordinate;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockLogic;
+import net.minecraft.core.enums.LightLayer;
 import net.minecraft.core.util.helper.Direction;
+import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.WorldSource;
 import net.minecraft.core.world.pos.TilePosc;
+import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
@@ -18,15 +21,15 @@ public class BlockModelChainLarge<T extends BlockLogic> extends BlockModelGeneri
 	protected final StaticBlockModel[] models;
 	protected final StaticBlockModel linkage;
 
-	public BlockModelChainLarge(@NonNull Block<T> block) {
-		super(block, BlockModelDispatcher.loadDataModel("btd:block/chain/large/item"));
+	public BlockModelChainLarge(@NonNull Block<T> block, String texture) {
+		super(block, BlockModelDispatcher.loadDataModel(texture+"/item"));
 
 		this.models = new StaticBlockModel[6];
 		for (Direction direction : Direction.directions) {
-			this.models[direction.getId()] = BlockModelDispatcher.loadDataModel("btd:block/chain/large/" + direction.name().toLowerCase()).asModel();
+			this.models[direction.getId()] = BlockModelDispatcher.loadDataModel(texture + "/" + direction.name().toLowerCase()).asModel();
 		}
 
-		this.linkage = BlockModelDispatcher.loadDataModel("btd:block/chain/large/linking").asModel();
+		this.linkage = BlockModelDispatcher.loadDataModel(texture + "/linking").asModel();
 	}
 
 	@Override
@@ -36,6 +39,7 @@ public class BlockModelChainLarge<T extends BlockLogic> extends BlockModelGeneri
 		for (Direction dir : Direction.directions) {
 			if ( (( metadata >> (7 - dir.getId()) ) & 1) == 0) continue;
 			var model = this.models[dir.getId()];
+
 			model.renderAttached(this, tessellator, worldSource, tilePos, 0, 0, 0, 0.0F, 0.0F, 0.0F, false, cullFaces, overrideTexture);
 		}
 
@@ -44,5 +48,15 @@ public class BlockModelChainLarge<T extends BlockLogic> extends BlockModelGeneri
 		}
 
 		return true;
+	}
+
+	@Override
+	public @NotNull StaticBlockModel getModel(@NotNull WorldSource source, @NotNull TilePosc tilePosc) {
+		return this.linkage;
+	}
+
+	@Override
+	public @org.jetbrains.annotations.Nullable IconCoordinate getParticleTexture(@NotNull Side side, int meta) {
+		return this.linkage.getParticle(side);
 	}
 }

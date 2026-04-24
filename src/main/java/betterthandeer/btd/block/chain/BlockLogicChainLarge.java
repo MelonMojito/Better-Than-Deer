@@ -38,8 +38,11 @@ public class BlockLogicChainLarge extends BlockLogic {
 	public static final int PLACEMENT_NORTH_SOUTH = 0b01;
 	public static final int PLACEMENT_WEST_EAST = 0b10;
 
-	public BlockLogicChainLarge(@NonNull Block<?> block) {
+	protected final Item item;
+
+	public BlockLogicChainLarge(@NonNull Block<?> block, Item item) {
 		super(block, Materials.METAL);
+		this.item = item;
 	}
 
 	@Override
@@ -177,12 +180,12 @@ public class BlockLogicChainLarge extends BlockLogic {
 
 	@Override
 	public @NonNull Item asItem() {
-		return BTDItems.CHAIN_LARGE;
+		return this.item;
 	}
 
 	@Override
 	public @NonNull ItemStack getDefaultStack() {
-		return new ItemStack(BTDItems.CHAIN_LARGE);
+		return new ItemStack(this.item);
 	}
 
 	@Override
@@ -198,7 +201,7 @@ public class BlockLogicChainLarge extends BlockLogic {
 			return true;
 		}
 
-		else if (heldItem.getItem().equals(BTDItems.CHAIN_LARGE)) {
+		else if (heldItem.getItem().equals(this.item)) {
 			return this.placeChain(heldItem, world, player, tilePos, Optional.ofNullable(side).orElse(Side.TOP));
 		}
 
@@ -225,9 +228,9 @@ public class BlockLogicChainLarge extends BlockLogic {
 			for(int i = 0; i < player.inventory.mainInventory.length; ++i) {
 				ItemStack stack = player.inventory.mainInventory[i];
 				if (stack == null) {
-					freeSpace += BTDItems.CHAIN_LARGE.getItemStackLimit(null);
-				} else if (stack.getItem().equals(BTDItems.CHAIN_LARGE)) {
-					freeSpace += BTDItems.CHAIN_LARGE.getItemStackLimit(null) - stack.stackSize;
+					freeSpace += this.item.getItemStackLimit(null);
+				} else if (stack.getItem().equals(this.item)) {
+					freeSpace += this.item.getItemStackLimit(null) - stack.stackSize;
 				}
 			}
 
@@ -240,7 +243,7 @@ public class BlockLogicChainLarge extends BlockLogic {
 			}
 
 			if (player.getGamemode().hasBlockConsumption()) {
-				ItemStack stack = new ItemStack(BTDItems.CHAIN_LARGE, ropesCollected);
+				ItemStack stack = new ItemStack(this.item, ropesCollected);
 				player.inventory.insertItem(stack, true);
 				if (stack.stackSize > 0) {
 					player.dropPlayerItem(stack);

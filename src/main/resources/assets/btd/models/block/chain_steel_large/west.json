@@ -1,0 +1,8 @@
+{
+  "parent": "btd:block/chain_large/west",
+  "textures": {
+    "particle": "btd:block/chain_steel_large",
+    "chain_large_alt": "btd:block/chain_steel_large_alt",
+    "chain_large": "btd:block/chain_steel_large"
+  }
+}

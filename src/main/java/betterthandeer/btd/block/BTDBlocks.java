@@ -32,6 +32,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static Block<?> EMBER;
 
 	public static Block<?> CHAIN_LARGE;
+	public static Block<?> CHAIN_STEEL_LARGE;
 
 	public static Block<?> OVERLAY_ROCKS;
 
@@ -152,7 +153,14 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withHardness(1.5F)
 			.withTags(BlockTags.FENCES_CONNECT, BlockTags.MINEABLE_BY_AXE);
 
-		CHAIN_LARGE = register("chain.large", blockKey("chain_large"), blockID++, BlockLogicChainLarge::new)
+		CHAIN_LARGE = register("chain.large", blockKey("chain_large"), blockID++, block -> new BlockLogicChainLarge(block, BTDItems.CHAIN_LARGE))
+			.withSound(BlockSounds.METAL)
+			.withHardness(5.0F)
+			.withBlastResistance(10.0F)
+			.withOverrideColor(MaterialColor.iron)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+		CHAIN_STEEL_LARGE = register("chain.steel.large", blockKey("chain_steel_large"), blockID++, block -> new BlockLogicChainLarge(block, BTDItems.CHAIN_STEEL_LARGE))
 			.withSound(BlockSounds.METAL)
 			.withHardness(5.0F)
 			.withBlastResistance(10.0F)

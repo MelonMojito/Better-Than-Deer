@@ -1,42 +1,45 @@
 {
 	"format_version": "1.21.6",
 	"credit": "Made with Blockbench",
-	"textures": {
-		"particle": "btd:block/chain_large_alt",
+  "ambientocclusion": false,
+  "textures": {
+		"particle": "btd:block/chain_large",
 		"chain_large_alt": "btd:block/chain_large_alt",
 		"chain_large": "btd:block/chain_large"
 	},
 	"elements": [
 		{
-			"from": [8, 0, 0],
-			"to": [8, 16, 8],
-			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 0]},
-			"faces": {
+			"from": [8, 0, 8],
+			"to": [8, 16, 16],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 8]},
+      "shade": false,
+      "faces": {
 				"north": {"uv": [12, 0, 12, 16], "texture": "#missing"},
-				"east": {"uv": [0, 0, 16, 8], "rotation": 90, "texture": "#chain_large"},
+				"east": {"uv": [0, 8, 16, 16], "rotation": 90, "texture": "#chain_large"},
 				"south": {"uv": [4, 0, 4, 16], "texture": "#missing"},
-				"west": {"uv": [0, 8, 16, 16], "rotation": 90, "texture": "#chain_large"},
+				"west": {"uv": [0, 8, 16, 16], "rotation": 270, "texture": "#chain_large"},
 				"up": {"uv": [4, 0, 4, 8], "texture": "#missing"},
 				"down": {"uv": [4, 8, 4, 16], "texture": "#missing"}
 			}
 		},
 		{
-			"from": [0, 8, 0],
-			"to": [16, 8, 8],
-			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 0]},
-			"faces": {
+			"from": [0, 8, 8],
+			"to": [16, 8, 16],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 8]},
+      "shade": false,
+      "faces": {
 				"north": {"uv": [0, 2, 16, 2], "texture": "#missing"},
 				"east": {"uv": [0, 2, 8, 2], "texture": "#missing"},
 				"south": {"uv": [0, 2, 16, 2], "texture": "#missing"},
 				"west": {"uv": [0, 2, 8, 2], "texture": "#missing"},
-				"up": {"uv": [0, 0, 16, 8], "texture": "#chain_large_alt"},
-				"down": {"uv": [0, 8, 16, 16], "texture": "#chain_large_alt"}
+				"up": {"uv": [0, 8, 16, 16], "texture": "#chain_large_alt"},
+				"down": {"uv": [0, 0, 16, 8], "texture": "#chain_large_alt"}
 			}
 		}
 	],
 	"groups": [
 		{
-			"name": "north",
+			"name": "south",
 			"origin": [4, 0, 0],
 			"scope": 0,
 			"color": 0,

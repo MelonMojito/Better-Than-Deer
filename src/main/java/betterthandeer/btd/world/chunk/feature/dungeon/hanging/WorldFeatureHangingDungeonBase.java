@@ -111,10 +111,10 @@ public record WorldFeatureHangingDungeonBase(
 			var variant3 = ropes.getRandom(random);
 			var variant4 = ropes.getRandom(random);
 
-			world.setBlockTypeData(block,  variant, BlockLogicChainLarge.PLACEMENT_WEST_EAST);
-			world.setBlockTypeData(block2, variant2, BlockLogicChainLarge.PLACEMENT_WEST_EAST);
-			world.setBlockTypeData(block3, variant3, BlockLogicChainLarge.PLACEMENT_NORTH_SOUTH);
-			world.setBlockTypeData(block4, variant4, BlockLogicChainLarge.PLACEMENT_NORTH_SOUTH);
+			world.setBlockTypeDataNotify(block,  variant, BlockLogicChainLarge.PLACEMENT_WEST_EAST);
+			world.setBlockTypeDataNotify(block2, variant2, BlockLogicChainLarge.PLACEMENT_WEST_EAST);
+			world.setBlockTypeDataNotify(block3, variant3, BlockLogicChainLarge.PLACEMENT_NORTH_SOUTH);
+			world.setBlockTypeDataNotify(block4, variant4, BlockLogicChainLarge.PLACEMENT_NORTH_SOUTH);
 		}
 
 		final int half = this.size / 2;

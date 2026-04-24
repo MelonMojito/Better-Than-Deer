@@ -62,7 +62,8 @@ public class BTDModels implements ModelEntrypoint {
 			loadDataModel("btd:block/log/scorched")));
 
 
-		dispatcher.addDispatch(new BlockModelChainLarge<>(BTDBlocks.CHAIN_LARGE));
+		dispatcher.addDispatch(new BlockModelChainLarge<>(BTDBlocks.CHAIN_LARGE, "btd:block/chain_large"));
+		dispatcher.addDispatch(new BlockModelChainLarge<>(BTDBlocks.CHAIN_STEEL_LARGE, "btd:block/chain_steel_large"));
 
 		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_LOWER)).setAllTextures("minecraft:block/slate_top"));
 		dispatcher.addDispatch((new BlockModelEmpty<>(BTDBlocks.STATUE_SLATE_UPPER)).setAllTextures("minecraft:block/slate_top"));
@@ -98,6 +99,7 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch((new ItemModelBlock((ItemBlock<?>) BTDBlocks.BOULDER.asItem())).setFullBright());
 
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.CHAIN_LARGE, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.CHAIN_STEEL_LARGE, "btd"));
 
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_SLATE, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_PERMAFROST, "btd"));

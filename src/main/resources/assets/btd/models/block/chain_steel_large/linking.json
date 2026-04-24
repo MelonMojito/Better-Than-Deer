@@ -1,0 +1,7 @@
+{
+  "parent": "btd:block/chain_large/linking",
+  "textures": {
+    "particle": "btd:block/chain_steel_large_linkage",
+    "chain_large_linking": "btd:block/chain_steel_large_linkage"
+  }
+}
