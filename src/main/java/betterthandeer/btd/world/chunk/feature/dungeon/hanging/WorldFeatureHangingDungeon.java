@@ -9,8 +9,11 @@ import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.world.World;
+import net.minecraft.core.world.generate.feature.WorldFeature;
 import net.minecraft.core.world.generate.feature.WorldFeatureInterface;
+import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.pos.TilePosc;
+import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Random;
@@ -89,7 +92,7 @@ public class WorldFeatureHangingDungeon {
 		}
 
 		@Override
-		public boolean place(@NonNull World world, @NonNull Random random, @NonNull TilePosc tilePosc) {
+		public boolean place(@NotNull World world, @NotNull Random random, @NotNull TilePosc tilePosc) {
 			return dungeon.place(world, random, tilePosc);
 		}
 
@@ -107,7 +110,7 @@ public class WorldFeatureHangingDungeon {
 		private static final WeightedRandomBag<Block<?>> hangingDungeonRope = new WeightedRandomBag<>();
 
 		static {
-			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_LARGE, 1);
+			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_STEEL_LARGE, 1);
 		}
 
 		private static final WorldFeatureInterface dungeon = new WorldFeatureHangingDungeonBase(
@@ -142,7 +145,7 @@ public class WorldFeatureHangingDungeon {
 		private static final WeightedRandomBag<Block<?>> hangingDungeonRope = new WeightedRandomBag<>();
 
 		static {
-			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_LARGE, 1);
+			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_STEEL_LARGE, 1);
 		}
 
 		private static final WorldFeatureInterface dungeon = new WorldFeatureHangingDungeonBase(
@@ -177,7 +180,7 @@ public class WorldFeatureHangingDungeon {
 		private static final WeightedRandomBag<Block<?>> hangingDungeonRope = new WeightedRandomBag<>();
 
 		static {
-			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_LARGE, 1);
+			hangingDungeonRope.addEntry(BTDBlocks.CHAIN_STEEL_LARGE, 1);
 		}
 
 		private static final WorldFeatureInterface dungeon = new WorldFeatureHangingDungeonBase(

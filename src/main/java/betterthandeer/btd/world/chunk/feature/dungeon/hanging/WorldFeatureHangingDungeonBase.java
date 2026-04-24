@@ -2,6 +2,7 @@ package betterthandeer.btd.world.chunk.feature.dungeon.hanging;
 
 import betterthandeer.btd.BTDHelpers;
 import betterthandeer.btd.block.BTDBlocks;
+import betterthandeer.btd.block.chain.BlockLogicChainLarge;
 import net.minecraft.core.WeightedRandomBag;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Block;
@@ -96,16 +97,24 @@ public record WorldFeatureHangingDungeonBase(
 				var variant = base.getRandom(random);
 
 				world.setBlockTypeData(block, variant, 0);
-
-				if (
-					x == corners[0].x()
-						|| x == corners[3].x()
-						|| z == corners[0].z()
-						|| z == corners[3].z()
-				) {
-					world.setBlockTypeData(block.add(new Vector3i(0, 4, 0)), BTDBlocks.CHAIN_LARGE, 0);
-				}
 			}
+		}
+
+		for (int step = 1; step < this.size -1; step++) {
+			var block = new TilePos(corners[0].x() + step, minHeight + 4, corners[0].z());
+			var block2 = new TilePos(corners[2].x() + step, minHeight + 4, corners[2].z());
+			var block3 = new TilePos(corners[0].x(), minHeight + 4, corners[0].z() + step);
+			var block4 = new TilePos(corners[1].x(), minHeight + 4, corners[1].z() + step);
+
+			var variant  = ropes.getRandom(random);
+			var variant2 = ropes.getRandom(random);
+			var variant3 = ropes.getRandom(random);
+			var variant4 = ropes.getRandom(random);
+
+			world.setBlockTypeDataNotify(block,  variant, BlockLogicChainLarge.PLACEMENT_WEST_EAST);
+			world.setBlockTypeDataNotify(block2, variant2, BlockLogicChainLarge.PLACEMENT_WEST_EAST);
+			world.setBlockTypeDataNotify(block3, variant3, BlockLogicChainLarge.PLACEMENT_NORTH_SOUTH);
+			world.setBlockTypeDataNotify(block4, variant4, BlockLogicChainLarge.PLACEMENT_NORTH_SOUTH);
 		}
 
 		final int half = this.size / 2;

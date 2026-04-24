@@ -19,8 +19,11 @@ item.rubyglass.growth.desc=A large bud of rubyglass, branching out in multiple d
 item.ammo.arrow.flaming.name=Flaming Arrow
 item.ammo.arrow.flaming.desc=A sulfur coated projectile that burns any foe.
 
-item.chain.large.name=Large chain
+item.chain.large.name=Large Chain
 item.chain.large.desc=Used to chain large things.
+
+item.chain.steel.large.name=Large Steel Chain
+item.chain.steel.large.desc=Used to chain even larger things.
 
 item.statue.slate.name=Slate Statue
 item.statue.slate.desc=A decorative slate statue for you to hang your armor.

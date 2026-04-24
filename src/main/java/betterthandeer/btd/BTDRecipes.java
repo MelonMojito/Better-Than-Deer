@@ -111,6 +111,15 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.addInput('S', BTDItems.SULFUR)
 			.create("sulfur_block", new ItemStack(BTDBlocks.SULFUR, 1));
 
+		RecipeBuilder.Shaped(MOD_ID, "C","I")
+			.addInput('C', Items.CHAINLINK)
+			.addInput('I', Items.INGOT_IRON)
+			.create("sulfur_block", new ItemStack(BTDItems.CHAIN_LARGE, 32));
+
+		RecipeBuilder.Shaped(MOD_ID, "C","I")
+			.addInput('C', Items.INGOT_STEEL_CRUDE)
+			.addInput('I', Items.INGOT_STEEL)
+			.create("sulfur_block", new ItemStack(BTDItems.CHAIN_STEEL_LARGE, 16));
 
 		Registries.RECIPES.addCustomRecipe(
 			"btd:workbench/asphalt_dyeing",

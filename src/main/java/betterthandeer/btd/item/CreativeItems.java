@@ -117,6 +117,7 @@ public final class CreativeItems {
 
 		out.add(new ItemStack(Items.ROPE));
 		out.add(new ItemStack(BTDItems.CHAIN_LARGE));
+		out.add(new ItemStack(BTDItems.CHAIN_STEEL_LARGE));
 
 		out.add(new ItemStack(Items.LABEL));
 

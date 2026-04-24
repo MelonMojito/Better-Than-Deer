@@ -28,6 +28,7 @@ public class BTDItems {
 	public static Item AMMO_ARROW_FLAMING;
 
 	public static Item CHAIN_LARGE;
+	public static Item CHAIN_STEEL_LARGE;
 
 	public static Item STATUE_SLATE;
 	public static Item STATUE_PERMAFROST;
@@ -70,6 +71,7 @@ public class BTDItems {
 		AMMO_ARROW_FLAMING = new Item("ammo.arrow.flaming", itemKey("ammo_arrow_flaming"), itemID++);
 
 		CHAIN_LARGE = new ItemPlaceable("chain.large", itemKey("chain_large"), itemID++, BTDBlocks.CHAIN_LARGE);
+		CHAIN_STEEL_LARGE = new ItemPlaceable("chain.steel.large", itemKey("chain_steel_large"), itemID++, BTDBlocks.CHAIN_STEEL_LARGE);
 
 		STATUE_SLATE = new ItemStatue("statue.slate", itemKey("statue_slate"), itemID++, BTDBlocks.STATUE_SLATE_LOWER, BTDBlocks.STATUE_SLATE_UPPER);
 		STATUE_PERMAFROST = new ItemStatue("statue.permafrost", itemKey("statue_permafrost"), itemID++, BTDBlocks.STATUE_PERMAFROST_LOWER, BTDBlocks.STATUE_PERMAFROST_UPPER);
