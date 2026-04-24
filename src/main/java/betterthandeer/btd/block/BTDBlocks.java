@@ -5,6 +5,7 @@ import betterthandeer.btd.block.acid.FluidAcid;
 import betterthandeer.btd.block.chain.BlockLogicChainLarge;
 import betterthandeer.btd.block.ice.rubyglass.BlockLogicIceRubyglass;
 import betterthandeer.btd.block.rock.BlockLogicOverlayRocks;
+import betterthandeer.btd.block.statue.gargoyle.BlockLogicStatueGargoyle;
 import betterthandeer.btd.block.tar.BlockLogicAsphalt;
 import betterthandeer.btd.block.tar.FluidTar;
 import betterthandeer.btd.item.BTDItems;
@@ -71,6 +72,14 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static Block<?> BRICK_BRIMSTONE;
 	public static Block<?> SLAB_BRICK_BRIMSTONE;
 	public static Block<?> STAIRS_BRICK_BRIMSTONE;
+
+	public static Block<BlockLogicStatueGargoyle> STATUE_GARGOYLE_NETHERRACK;
+	public static Block<BlockLogicStatueGargoyle> STATUE_GARGOYLE_GLOOMSTONE;
+	public static Block<BlockLogicStatueGargoyle> STATUE_GARGOYLE_BASALT;
+	public static Block<BlockLogicStatueGargoyle> STATUE_GARGOYLE_SLATE;
+
+	public static @NonNull Block<?> MOBSPAWNER_NETHER;
+	public static @NonNull Block<?> MOBSPAWNER_NETHER_DEACTIVATED;
 
 	private static boolean hasInit = false;
 
@@ -298,6 +307,48 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withLitInteriorSurface(true)
 			.withOverrideColor(MaterialColor.paintedBlack)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+
+		STATUE_GARGOYLE_NETHERRACK = (Block<BlockLogicStatueGargoyle>) (Object) register("statue.gargoyle.netherrack", blockKey("statue_gargoyle_netherrack"), blockID++,
+			block -> new BlockLogicStatueGargoyle(block, Materials.NETHERRACK, () -> BTDItems.STATUE_GARGOYLE_NETHERRACK))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.5F)
+			.setStatParent(() -> BTDItems.STATUE_GARGOYLE_NETHERRACK)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		STATUE_GARGOYLE_GLOOMSTONE = (Block<BlockLogicStatueGargoyle>) (Object) register("statue.gargoyle.gloomstone", blockKey("statue_gargoyle_gloomstone"), blockID++,
+			block -> new BlockLogicStatueGargoyle(block, Materials.GLOOMSTONE, () -> BTDItems.STATUE_GARGOYLE_GLOOMSTONE))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.5F)
+			.setStatParent(() -> BTDItems.STATUE_GARGOYLE_GLOOMSTONE)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		STATUE_GARGOYLE_BASALT = (Block<BlockLogicStatueGargoyle>) (Object) register("statue.gargoyle.basalt", blockKey("statue_gargoyle_basalt"), blockID++,
+			block -> new BlockLogicStatueGargoyle(block, Materials.BASALT, () -> BTDItems.STATUE_GARGOYLE_BASALT))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.5F)
+			.setStatParent(() -> BTDItems.STATUE_GARGOYLE_BASALT)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		STATUE_GARGOYLE_SLATE = (Block<BlockLogicStatueGargoyle>) (Object) register("statue.gargoyle.slate", blockKey("statue_gargoyle_slate"), blockID++,
+			block -> new BlockLogicStatueGargoyle(block, Materials.SLATE, () -> BTDItems.STATUE_GARGOYLE_SLATE))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.5F)
+			.setStatParent(() -> BTDItems.STATUE_GARGOYLE_SLATE)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		MOBSPAWNER_NETHER = register("mobspawner.nether", blockKey("mobspawner_nether"), blockID++, BlockLogicMobSpawnerNether::new)
+			.withSound(BlockSounds.METAL)
+			.withHardness(5.0F)
+			.withImmovableFlagSet()
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE)
+			.withOverrideColor(MaterialColor.netherrack);
+		MOBSPAWNER_NETHER_DEACTIVATED = register("mobspawner.nether.deactivated", blockKey("mobspawner_nether_deactivated"), blockID++, BlockLogicMobSpawnerDeactivated::new)
+			.withSound(BlockSounds.METAL)
+			.withHardness(5.0F)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE)
+			.withOverrideColor(MaterialColor.netherrack);
+
 
 
 	}

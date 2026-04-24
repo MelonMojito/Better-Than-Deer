@@ -308,6 +308,11 @@ public final class CreativeItems {
 		out.add(new ItemStack(BTDItems.STATUE_GLOOMSTONE));
 		out.add(new ItemStack(Items.STATUE_PIGMAN));
 
+		out.add(new ItemStack(BTDItems.STATUE_GARGOYLE_BASALT));
+		out.add(new ItemStack(BTDItems.STATUE_GARGOYLE_SLATE));
+		out.add(new ItemStack(BTDItems.STATUE_GARGOYLE_NETHERRACK));
+		out.add(new ItemStack(BTDItems.STATUE_GARGOYLE_GLOOMSTONE));
+
 		out.add(new ItemStack(BTDItems.RUBYGLASS_GROWTH));
 
 		out.add(new ItemStack(Items.SADDLE));

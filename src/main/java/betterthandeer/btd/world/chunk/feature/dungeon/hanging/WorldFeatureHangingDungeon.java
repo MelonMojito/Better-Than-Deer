@@ -81,7 +81,8 @@ public class WorldFeatureHangingDungeon {
 			10,
 			6,
 			hangingDungeonBase, hangingDungeonRope,
-			lootNormal
+			lootNormal,
+			BTDBlocks.STATUE_GARGOYLE_BASALT
 		);
 
 		public Basalt() {
@@ -115,7 +116,8 @@ public class WorldFeatureHangingDungeon {
 			10,
 			6,
 			hangingDungeonBase, hangingDungeonRope,
-			lootNormal
+			lootNormal,
+			BTDBlocks.STATUE_GARGOYLE_SLATE
 		);
 
 		public Slate() {
@@ -149,7 +151,8 @@ public class WorldFeatureHangingDungeon {
 			10,
 			6,
 			hangingDungeonBase, hangingDungeonRope,
-			lootNormal
+			lootNormal,
+			BTDBlocks.STATUE_GARGOYLE_GLOOMSTONE
 		);
 
 		public Gloomstone() {
@@ -183,7 +186,8 @@ public class WorldFeatureHangingDungeon {
 			10,
 			6,
 			hangingDungeonBase, hangingDungeonRope,
-			lootNormal
+			lootNormal,
+			BTDBlocks.STATUE_GARGOYLE_NETHERRACK
 		);
 
 		public Netherrack() {

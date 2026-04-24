@@ -2,6 +2,7 @@
   "model_paths": [
     "/assets/btd/models/entity/gargoyle/gargoyle.geo.json",
     "/assets/btd/models/entity/leecher/leecher.geo.json"
+    "/assets/btd/models/entity/gargoyle_statue.geo.json"
   ],
   "renderers": {
     "btd:gargoyle": {
@@ -9,6 +10,9 @@
     },
     "btd:leecher": {
       "main":"geometry.leecher"
+    },
+    "btd:statue_gargoyle": {
+      "main":"geometry.gargoyle_statue"
     }
   }
 }

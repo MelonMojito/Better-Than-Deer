@@ -33,7 +33,7 @@ public class MobGargoyle extends MobFlying implements Enemy {
 	public MobGargoyle(@Nullable World world) {
 		super(world);
 		this.setTextureIdentifier(MOD_ID, "gargoyle");
-		this.setSize(1.0F, 1.0F);
+		this.setSize(1.0F, 1.5F);
 		this.scoreValue = 200;
 		this.moveSpeed = 0.25F;
 		this.flapTimer = this.random.nextInt(4);
@@ -123,7 +123,7 @@ public class MobGargoyle extends MobFlying implements Enemy {
 				target = player;
 			}
 
-			TilePos posAbove = new TilePos(MathHelper.floor(x), MathHelper.floor(y + 1.1), MathHelper.floor(z));
+			TilePos posAbove = new TilePos(MathHelper.floor(x), MathHelper.floor(y + 1.6), MathHelper.floor(z));
 			if (world.isAirBlock(posAbove)) {
 				isHanging = false;
 			}
@@ -145,7 +145,7 @@ public class MobGargoyle extends MobFlying implements Enemy {
 			attackMovement();
 		} else {
 			if (random.nextInt(5) == 0) {
-				TilePos posAbove = new TilePos(MathHelper.floor(x), MathHelper.floor(y + 1.1), MathHelper.floor(z));
+				TilePos posAbove = new TilePos(MathHelper.floor(x), MathHelper.floor(y + 1.6), MathHelper.floor(z));
 				if (!world.isAirBlock(posAbove)) {
 					isHanging = true;
 				}

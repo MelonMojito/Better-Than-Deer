@@ -19,6 +19,7 @@
     "block.ButterflyParticlesMixin",
     "block.SortCreativeInventoryMixin",
     "block.StatueScrapeSoundMixin",
+    "block.TileEntityMobSpawnerMixin",
     "entity.AcidArmorMeltMixin",
     "entity.CrystalMobSpawningMixin",
     "entity.DeerSoundsMixin",
