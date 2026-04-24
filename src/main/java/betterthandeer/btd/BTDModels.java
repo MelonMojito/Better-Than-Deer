@@ -117,7 +117,6 @@ public class BTDModels implements ModelEntrypoint {
 
 	@Override
 	public void initItemModels(ItemModelDispatcher dispatcher) {
-		dispatcher.addDispatch(new ItemModelStandard(BTDItems.BUCKET_ACID, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_GARGOYLE, "btd").setFullBright());
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.LEATHER_GHAST, "btd").setFullBright());
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.AMMO_ROCK, "btd"));

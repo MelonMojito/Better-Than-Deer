@@ -1,7 +1,11 @@
 package betterthandeer.btd.item;
 
 import betterthandeer.btd.block.BTDBlocks;
-import net.minecraft.core.item.*;
+import net.minecraft.core.item.Item;
+import net.minecraft.core.item.ItemBucket;
+import net.minecraft.core.item.ItemPlaceable;
+import net.minecraft.core.item.ItemStatue;
+import net.minecraft.core.util.collection.NamespaceID;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
 
@@ -9,7 +13,7 @@ public class BTDItems {
 
 	private static int itemID = 20000;
 
-	public static Item BUCKET_ACID;
+	public static final NamespaceID STATE_ACID = new NamespaceID("btd", "acid");
 
 	public static Item EYE_GARGOYLE;
 
@@ -46,7 +50,7 @@ public class BTDItems {
 	}
 
 	public static void initializeItems() {
-		BUCKET_ACID = new ItemBucket("bucket.acid", itemKey("bucket_acid"), itemID++, BTDBlocks.FLUID_ACID_FLOWING).setContainerItem(Items.BUCKET);
+		ItemBucket.registerState(STATE_ACID, new ItemBucket.BucketState("acid", BTDBlocks.FLUID_ACID_FLOWING, true));
 
 		EYE_GARGOYLE = new Item("eye.gargoyle", itemKey("eye_gargoyle"), itemID++);
 
