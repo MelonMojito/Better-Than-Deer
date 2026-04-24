@@ -31,6 +31,18 @@ item.statue.netherrack.desc=A decorative netherrack statue for you to hang your 
 item.statue.gloomstone.name=Gloomstone Statue
 item.statue.gloomstone.desc=A decorative gloomstone statue for you to hang your armor.
 
+item.statue.gargoyle.netherrack.name=Netherrack Gargoyle
+item.statue.gargoyle.netherrack.desc=A petrified netherrack gargoyle.
+
+item.statue.gargoyle.gloomstone.name=Gloomstone Gargoyle
+item.statue.gargoyle.gloomstone.desc=A petrified gloomstone gargoyle.
+
+item.statue.gargoyle.basalt.name=Basalt Gargoyle
+item.statue.gargoyle.basalt.desc=A petrified basalt gargoyle.
+
+item.statue.gargoyle.slate.name=Slate Gargoyle
+item.statue.gargoyle.slate.desc=A petrified slate gargoyle.
+
 item.ammo.lightningball.name=Lightning Charge
 item.ammo.lightningball.desc=Ammo for a hand cannon. Shoots a homing ball of lightning.
 

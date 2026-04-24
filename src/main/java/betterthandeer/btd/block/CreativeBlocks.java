@@ -464,6 +464,9 @@ public final class CreativeBlocks {
 		add(list, Blocks.MOBSPAWNER);
 		add(list, Blocks.MOBSPAWNER_DEACTIVATED);
 
+		add(list, BTDBlocks.MOBSPAWNER_NETHER);
+		add(list, BTDBlocks.MOBSPAWNER_NETHER_DEACTIVATED);
+
 		add(list, Blocks.NOTEBLOCK);
 		add(list, Blocks.JUKEBOX);
 
