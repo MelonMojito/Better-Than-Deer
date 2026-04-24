@@ -11,9 +11,9 @@ import betterthandeer.btd.entity.arrow.flaming.EntityRendererArrowFlaming;
 import betterthandeer.btd.entity.arrow.flaming.ProjectileArrowFlaming;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import betterthandeer.btd.entity.gargoyle.MobRendererGargoyle;
-import betterthandeer.btd.entity.jellyfish.MobJellyfish;
-import betterthandeer.btd.entity.jellyfish.MobRendererJellyfish;
-import betterthandeer.btd.entity.jellyfish.ProjectileLightningball;
+import betterthandeer.btd.entity.leecher.MobLeecher;
+import betterthandeer.btd.entity.leecher.MobRendererLeecher;
+import betterthandeer.btd.entity.leecher.ProjectileLightningball;
 import betterthandeer.btd.entity.rock.ProjectileRock;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.client.render.EntityRendererDispatcher;
@@ -134,7 +134,6 @@ public class BTDModels implements ModelEntrypoint {
 
 	@Override
 	public void initItemModels(ItemModelDispatcher dispatcher) {
-		dispatcher.addDispatch(new ItemModelStandard(BTDItems.BUCKET_ACID, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_GARGOYLE, "btd").setFullBright());
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.LEATHER_GHAST, "btd").setFullBright());
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.AMMO_ROCK, "btd"));
@@ -164,7 +163,7 @@ public class BTDModels implements ModelEntrypoint {
 	@Override
 	public void initEntityModels(EntityRendererDispatcher entityRendererDispatcher) {
 		entityRendererDispatcher.assignRenderer(MobGargoyle.class, new MobRendererGargoyle(0.5F));
-		entityRendererDispatcher.assignRenderer(MobJellyfish.class, new MobRendererJellyfish(0.5F));
+		entityRendererDispatcher.assignRenderer(MobLeecher.class, new MobRendererLeecher(0.5F));
 
 		entityRendererDispatcher.assignRenderer(ProjectileRock.class, new EntityRendererSprite<>(BTDItems.AMMO_ROCK));
 		entityRendererDispatcher.assignRenderer(ProjectileArrowFlaming.class, new EntityRendererArrowFlaming());

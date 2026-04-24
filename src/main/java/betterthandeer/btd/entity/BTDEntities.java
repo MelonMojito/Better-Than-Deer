@@ -2,8 +2,8 @@ package betterthandeer.btd.entity;
 
 import betterthandeer.btd.entity.arrow.flaming.ProjectileArrowFlaming;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
-import betterthandeer.btd.entity.jellyfish.MobJellyfish;
-import betterthandeer.btd.entity.jellyfish.ProjectileLightningball;
+import betterthandeer.btd.entity.leecher.MobLeecher;
+import betterthandeer.btd.entity.leecher.ProjectileLightningball;
 import betterthandeer.btd.entity.rock.ProjectileRock;
 import net.minecraft.core.entity.EntityDispatcher;
 import net.minecraft.core.entity.factories.EntityFactory;
@@ -15,7 +15,7 @@ public class BTDEntities {
 	private static boolean hasInit = false;
 
 	public static EntityFactory<MobGargoyle> FACTORY_GARGOYLE;
-	public static EntityFactory<MobJellyfish> FACTORY_JELLYFISH;
+	public static EntityFactory<MobLeecher> FACTORY_LEECHER;
 
 	public static EntityFactory<ProjectileRock> FACTORY_PROJECTILE_ROCK;
 	public static EntityFactory<ProjectileArrowFlaming> FACTORY_PROJECTILE_ARROW_FLAMING;
@@ -38,11 +38,11 @@ public class BTDEntities {
 			"guidebook.section.mob.gargoyle.name"
 		);
 
-		FACTORY_JELLYFISH = dispatcher.addMapping(
-			MobJellyfish.class,
-			NamespaceID.fromPool(MOD_ID, "jellyfish"),
-			MobJellyfish::new,
-			"guidebook.section.mob.jellyfish.name"
+		FACTORY_LEECHER = dispatcher.addMapping(
+			MobLeecher.class,
+			NamespaceID.fromPool(MOD_ID, "leecher"),
+			MobLeecher::new,
+			"guidebook.section.mob.leecher.name"
 		);
 
 		FACTORY_PROJECTILE_ROCK = dispatcher.addMapping(

@@ -6,12 +6,12 @@ subtitles.mob.gargoyledeath=Gargoyle death
 subtitles.mob.gargoyle=Gargoyle squeaks
 subtitles.mob.gargoylehurt=Gargoyle hurt
 
-guidebook.section.mob.jellyfish.name=Jellyfish
-guidebook.section.mob.jellyfish.desc=Jellyfish are alien like creatures that attack with lightning. They float around rubyglass harvesting energy.
+guidebook.section.mob.leecher.name=Leecher
+guidebook.section.mob.leecher.desc=Leechers are alien like creatures that attack with lightning. They float around rubyglass harvesting energy.
 
-subtitles.mob.jellyfishdeath=Jellyfish death
-subtitles.mob.jellyfish=Jellyfish hum
-subtitles.mob.jellyfishhurt=Jellyfish hurt
+subtitles.mob.leecherdeath=Leecher death
+subtitles.mob.leecher=Leecher hum
+subtitles.mob.leecherhurt=Leecher hurt
 
 subtitles.mob.deerdeath=Deer death
 subtitles.mob.deerhurt=Deer hurt

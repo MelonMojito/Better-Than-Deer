@@ -1,4 +1,4 @@
-package betterthandeer.btd.entity.jellyfish;
+package betterthandeer.btd.entity.leecher;
 
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Block;
@@ -19,7 +19,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 
-public class MobJellyfish extends MobMonster {
+public class MobLeecher extends MobMonster {
 	public float xBodyRot = 0.0F;
 	public float xBodyRotO = 0.0F;
 	public float zBodyRot = 0.0F;
@@ -35,9 +35,9 @@ public class MobJellyfish extends MobMonster {
 	private float ty = 0.0F;
 	private float tz = 0.0F;
 
-	public MobJellyfish(World world) {
+	public MobLeecher(World world) {
 		super(world);
-		this.setTextureIdentifier("btd", "jellyfish");
+		this.setTextureIdentifier("btd", "leecher");
 		this.setSize(1.0F, 2.0F);
 		this.tentacleSpeed = 1.0F / (this.random.nextFloat() + 1.0F) * 0.2F;
 		this.mobDrops.add(new WeightedRandomLootObject(Items.RUBYGLASS_CRYSTAL.getDefaultStack(), 1, 3));
@@ -76,17 +76,17 @@ public class MobJellyfish extends MobMonster {
 
 	@Override
 	public String getLivingSound() {
-		return "btd:mob.jellyfish";
+		return "btd:mob.leecher";
 	}
 
 	@Override
 	protected String getHurtSound() {
-		return "btd:mob.jellyfishhurt";
+		return "btd:mob.leecherhurt";
 	}
 
 	@Override
 	protected String getDeathSound() {
-		return "btd:mob.jellyfishdeath";
+		return "btd:mob.leecherdeath";
 	}
 
 	@Override
@@ -130,7 +130,7 @@ public class MobJellyfish extends MobMonster {
 			List<Mob> targets = this.world.getEntitiesWithinAABB(Mob.class, pillarHitbox);
 
 			for (Mob entity : targets) {
-				if (!(entity instanceof MobJellyfish) && entity.isAlive() && entity.hurt(this, 2, DamageType.COMBAT)) {
+				if (!(entity instanceof MobLeecher) && entity.isAlive() && entity.hurt(this, 2, DamageType.COMBAT)) {
 					entity.hurtTime = entity.maxHurtTime = 1;
 				}
 			}
@@ -139,11 +139,11 @@ public class MobJellyfish extends MobMonster {
 		Direction direction = Direction.getDirectionById(0);
 		TilePos checkPos = new TilePos((int) x, (int) y, (int) z).add(direction);
 		if (world.isAirBlock(checkPos.x, checkPos.y, checkPos.z)) {
-			world.spawnParticle("jellyfishLightning", this.x, this.y - 1, this.z, 0.0F, 0.0F, 0.0F, 0, 1600.0F, false);
+			world.spawnParticle("leecherLightning", this.x, this.y - 1, this.z, 0.0F, 0.0F, 0.0F, 0, 1600.0F, false);
 		}
 
 		if (random.nextInt(15) == 0) {
-			world.playSoundAtEntity(null, this, "btd:mob.jellyfish", 0.2F, 0.5F);
+			world.playSoundAtEntity(null, this, "btd:mob.leecher", 0.2F, 0.5F);
 		}
 
 		world.spawnParticle("reddust", this.x, this.y + 1.0, this.z, 0.0F, -15.0F, 0.0F, 15, false);

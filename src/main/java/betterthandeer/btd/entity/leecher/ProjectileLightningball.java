@@ -1,4 +1,4 @@
-package betterthandeer.btd.entity.jellyfish;
+package betterthandeer.btd.entity.leecher;
 
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.Mob;
@@ -7,7 +7,7 @@ import net.minecraft.core.entity.projectile.Projectile;
 import net.minecraft.core.util.helper.DamageType;
 import net.minecraft.core.util.phys.HitResult;
 import net.minecraft.core.world.World;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.joml.primitives.AABBd;
 import org.joml.primitives.AABBdc;
 
@@ -94,9 +94,9 @@ public class ProjectileLightningball extends Projectile {
 	}
 
 	@Override
-	public void onHit(@NotNull HitResult result) {
+	public void onHit(@NonNull HitResult result) {
 		if (this.tickCount > 5 && !this.world.isClientSide && result instanceof HitResult.Entity hitEntity) {
-			if (hitEntity.entity instanceof MobJellyfish) {
+			if (hitEntity.entity instanceof MobLeecher) {
 			} else {
 				hitEntity.entity.hurt(this.owner, this.damage, DamageType.GENERIC);
 				this.remove();

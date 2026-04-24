@@ -4,7 +4,7 @@ import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.block.BTDTileEntities;
 import betterthandeer.btd.entity.BTDEntities;
 import betterthandeer.btd.entity.arrow.flaming.NetEntryArrowFlaming;
-import betterthandeer.btd.entity.jellyfish.NetEntryLightningball;
+import betterthandeer.btd.entity.leecher.NetEntryLightningball;
 import betterthandeer.btd.entity.rock.NetEntryRock;
 import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.world.chunk.feature.dungeon.hanging.WorldFeatureHangingDungeon;

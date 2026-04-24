@@ -45,23 +45,23 @@
       "mob/gargoyle/death.ogg"
     ]
   },
-  "mob.jellyfish": {
-    "subtitle": "subtitles.mob.jellyfish",
+  "mob.leecher": {
+    "subtitle": "subtitles.mob.leecher",
     "sounds": [
-      "mob/jellyfish/idle.ogg"
+      "mob/leecher/idle.ogg"
     ]
   },
-  "mob.jellyfishhurt": {
-    "subtitle": "subtitles.mob.jellyfishhurt",
+  "mob.leecherhurt": {
+    "subtitle": "subtitles.mob.leecherhurt",
     "sounds": [
-      "mob/jellyfish/hurt1.ogg",
-      "mob/jellyfish/hurt2.ogg"
+      "mob/leecher/hurt1.ogg",
+      "mob/leecher/hurt2.ogg"
     ]
   },
-  "mob.jellyfishdeath": {
-    "subtitle": "subtitles.mob.jellyfishdeath",
+  "mob.leecherdeath": {
+    "subtitle": "subtitles.mob.leecherdeath",
     "sounds": [
-      "mob/jellyfish/death.ogg"
+      "mob/leecher/death.ogg"
     ]
   },
   "mob.deer": {

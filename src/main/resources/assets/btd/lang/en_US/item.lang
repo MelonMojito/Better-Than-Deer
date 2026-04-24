@@ -1,8 +1,11 @@
 item.eye.gargoyle.name=Gargoyle Eye
 item.eye.gargoyle.desc=Glowing eyeball of a giant gargoyle, still blinking and watching.
 
-item.bucket.acid.name=Acid Bucket
-item.bucket.acid.desc=A bucket of boiling acid. Stings!
+item.bucket.iron.acid.name=Iron Acid Bucket
+item.bucket.iron.acid.desc=A bucket full of boiling acid. Stings!
+
+item.bucket.steel.acid.name=Steel Acid Bucket
+item.bucket.steel.acid.desc=A large bucket full of boiling acid. Stings!
 
 item.leather.ghast.name=Ghast Leather
 item.leather.ghast.desc=A deflated ghast. Can be used to make balloons.

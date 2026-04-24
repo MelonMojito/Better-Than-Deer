@@ -1,5 +1,7 @@
 package betterthandeer.btd.item;
 
+import net.minecraft.core.item.Item;
+import net.minecraft.core.item.ItemBucket;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.util.helper.DyeColor;
@@ -26,6 +28,20 @@ public final class CreativeItems {
 		DyeColor.GRAY,
 		DyeColor.BLACK
 	};
+
+	private static void addBucketVariants(List<ItemStack> out, Item item) {
+		if (item instanceof ItemBucket itemBucket) {
+			out.add(new ItemStack(item));
+			for (net.minecraft.core.util.collection.NamespaceID stateId : ItemBucket.getRegisteredStateIds()) {
+				if (!ItemBucket.STATE_EMPTY.equals(stateId)) {
+					ItemStack itemStack = new ItemStack(item, 1);
+					ItemBucket.setState(itemStack, stateId);
+					ItemBucket.setCharges(itemStack, itemBucket.maxCharges);
+					out.add(itemStack);
+				}
+			}
+		}
+	}
 
 	public static void populate(List<ItemStack> out) {
 
@@ -74,10 +90,8 @@ public final class CreativeItems {
 		out.add(new ItemStack(Items.TOOL_SHEARS));
 		out.add(new ItemStack(Items.TOOL_SHEARS_STEEL));
 
-		out.add(new ItemStack(Items.BUCKET));
-		out.add(new ItemStack(Items.BUCKET_WATER));
-		out.add(new ItemStack(Items.BUCKET_LAVA));
-		out.add(new ItemStack(BTDItems.BUCKET_ACID));
+		addBucketVariants(out, Items.BUCKET_IRON);
+		addBucketVariants(out, Items.BUCKET_STEEL);
 
 		out.add(new ItemStack(Items.PAINTBRUSH));
 
@@ -184,9 +198,6 @@ public final class CreativeItems {
 
 		out.add(new ItemStack(Items.BOWL));
 		out.add(new ItemStack(Items.FOOD_STEW_MUSHROOM));
-
-		out.add(new ItemStack(Items.BUCKET_MILK));
-		out.add(new ItemStack(Items.BUCKET_ICECREAM));
 
 
 		//ORE

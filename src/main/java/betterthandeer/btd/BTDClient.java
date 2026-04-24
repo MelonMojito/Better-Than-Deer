@@ -2,8 +2,8 @@ package betterthandeer.btd;
 
 import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
-import betterthandeer.btd.entity.jellyfish.MobJellyfish;
-import betterthandeer.btd.entity.jellyfish.ParticleJellyfishLightning;
+import betterthandeer.btd.entity.leecher.MobLeecher;
+import betterthandeer.btd.entity.leecher.ParticleLeecherLightning;
 import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.mixin.MixinDispatcher;
 import net.fabricmc.api.ClientModInitializer;
@@ -26,7 +26,7 @@ import net.minecraft.core.item.block.ItemBlock;
 import net.minecraft.core.util.collection.NamespaceID;
 import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.world.World;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.util.ClientStartEntrypoint;
 
@@ -52,8 +52,8 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 			}
 		});
 
-		ParticleDispatcher.getInstance().addDispatch("jellyfishLightning", new ParticleEntry() {
-			public Particle newParticle(@NotNull World world, double x, double y, double z, double motionX, double motionY, double motionZ, int data) {
+		ParticleDispatcher.getInstance().addDispatch("leecherLightning", new ParticleEntry() {
+			public Particle newParticle(@NonNull World world, double x, double y, double z, double motionX, double motionY, double motionZ, int data) {
 				float pitch = 0.0F;
 				float yaw = switch (Direction.getDirectionById(data)) {
 					case DOWN -> {
@@ -83,7 +83,7 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 					default -> 0.0F;
 				};
 
-				return new ParticleJellyfishLightning(world, x, y, z, pitch, yaw);
+				return new ParticleLeecherLightning(world, x, y, z, pitch, yaw);
 			}
 		});
 	}
@@ -101,7 +101,7 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 		MobInfoRegistry.register(MobGargoyle.class, "guidebook.section.mob.gargoyle.name", "guidebook.section.mob.gargoyle.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
 			new MobInfoRegistry.MobDrop(new ItemStack(BTDItems.EYE_GARGOYLE), 1.0F, 0, 2)});
 
-		MobInfoRegistry.register(MobJellyfish.class, "guidebook.section.mob.jellyfish.name", "guidebook.section.mob.jellyfish.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
+		MobInfoRegistry.register(MobLeecher.class, "guidebook.section.mob.leecher.name", "guidebook.section.mob.leecher.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
 			new MobInfoRegistry.MobDrop(new ItemStack(Items.RUBYGLASS_CRYSTAL), 1.0F, 0, 3)});
 	}
 
