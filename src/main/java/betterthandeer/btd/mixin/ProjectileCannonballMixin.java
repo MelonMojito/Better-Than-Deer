@@ -5,7 +5,6 @@ import net.minecraft.core.entity.projectile.ProjectileCannonball;
 import net.minecraft.core.util.phys.HitResult;
 import net.minecraft.core.world.World;
 import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(ProjectileCannonball.class)

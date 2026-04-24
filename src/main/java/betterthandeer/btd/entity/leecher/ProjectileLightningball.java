@@ -7,9 +7,9 @@ import net.minecraft.core.entity.projectile.Projectile;
 import net.minecraft.core.util.helper.DamageType;
 import net.minecraft.core.util.phys.HitResult;
 import net.minecraft.core.world.World;
-import org.jspecify.annotations.NonNull;
 import org.joml.primitives.AABBd;
 import org.joml.primitives.AABBdc;
+import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 

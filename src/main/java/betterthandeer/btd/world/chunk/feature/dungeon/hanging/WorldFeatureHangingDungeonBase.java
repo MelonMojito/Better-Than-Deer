@@ -15,9 +15,7 @@ import net.minecraft.core.world.World;
 import net.minecraft.core.world.generate.feature.WorldFeatureInterface;
 import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.pos.TilePosc;
-
 import org.joml.Vector2d;
-import org.joml.Vector3i;
 import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;
