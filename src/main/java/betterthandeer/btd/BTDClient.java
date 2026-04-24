@@ -1,10 +1,13 @@
 package betterthandeer.btd;
 
+import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
+import betterthandeer.btd.entity.leecher.MobLeecher;
+import betterthandeer.btd.entity.leecher.ParticleLeecherLightning;
 import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.mixin.MixinDispatcher;
-import betterthandeer.btd.block.acid.ParticleAcidBoiling;
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.gui.achievements.data.AchievementPages;
 import net.minecraft.client.gui.guidebook.mobs.MobInfoRegistry;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.block.model.generic.*;
@@ -14,19 +17,28 @@ import net.minecraft.client.render.item.model.ItemModelStandard;
 import net.minecraft.client.render.particle.Particle;
 import net.minecraft.client.render.particle.ParticleDispatcher;
 import net.minecraft.client.render.particle.ParticleEntry;
+import net.minecraft.core.achievement.Achievement;
+import net.minecraft.core.achievement.Achievements;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.item.block.ItemBlock;
+import net.minecraft.core.util.collection.NamespaceID;
+import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.world.World;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.util.ClientStartEntrypoint;
 
 import java.util.Map;
 
+import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
 import static net.minecraft.client.render.block.model.BlockModelDispatcher.loadDataModel;
 
 public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
+	public static Achievement BLAST_FURNACE;
+	public static Achievement OBTAIN_STEEL;
+
 	@Override
 	public void onInitializeClient() {
 		BetterThanDeerMod.LOGGER.info("Better Than Deer Client initialized.");
@@ -39,14 +51,58 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 				return new ParticleAcidBoiling(world, x, y, z, motionX, motionY, motionZ, true);
 			}
 		});
+
+		ParticleDispatcher.getInstance().addDispatch("leecherLightning", new ParticleEntry() {
+			public Particle newParticle(@NonNull World world, double x, double y, double z, double motionX, double motionY, double motionZ, int data) {
+				float pitch = 0.0F;
+				float yaw = switch (Direction.getDirectionById(data)) {
+					case DOWN -> {
+						pitch = 0.0F;
+						yield 0.0F;
+					}
+					case UP -> {
+						pitch = (float) Math.PI;
+						yield 0.0F;
+					}
+					case NORTH -> {
+						pitch = ((float) Math.PI / 2F);
+						yield 0.0F;
+					}
+					case SOUTH -> {
+						pitch = (-(float) Math.PI / 2F);
+						yield 0.0F;
+					}
+					case WEST -> {
+						pitch = ((float) Math.PI / 2F);
+						yield ((float) Math.PI / 2F);
+					}
+					case EAST -> {
+						pitch = ((float) Math.PI / 2F);
+						yield (-(float) Math.PI / 2F);
+					}
+					default -> 0.0F;
+				};
+
+				return new ParticleLeecherLightning(world, x, y, z, pitch, yaw);
+			}
+		});
 	}
 
 	@Override
 	public void afterClientStart() {
+		BLAST_FURNACE = (new Achievement(NamespaceID.fromPool(MOD_ID, "blast_furnace"), "blastFurnace", Blocks.FURNACE_BLAST_ACTIVE, Achievements.GET_NETHERCOAL)).setType(Achievement.TYPE_SPECIAL).registerAchievement();
+		OBTAIN_STEEL = (new Achievement(NamespaceID.fromPool(MOD_ID, "obtain_steel"), "obtainSteel", Items.INGOT_STEEL, BLAST_FURNACE)).registerAchievement();
+
+		AchievementPages.netherPage.addAchievement(BLAST_FURNACE, 0, 4);
+		AchievementPages.netherPage.addAchievement(OBTAIN_STEEL, -2, 4);
+
 		changeVanillaTextures();
 
 		MobInfoRegistry.register(MobGargoyle.class, "guidebook.section.mob.gargoyle.name", "guidebook.section.mob.gargoyle.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
 			new MobInfoRegistry.MobDrop(new ItemStack(BTDItems.EYE_GARGOYLE), 1.0F, 0, 2)});
+
+		MobInfoRegistry.register(MobLeecher.class, "guidebook.section.mob.leecher.name", "guidebook.section.mob.leecher.desc", 16, 200, new MobInfoRegistry.MobDrop[]{
+			new MobInfoRegistry.MobDrop(new ItemStack(Items.RUBYGLASS_CRYSTAL), 1.0F, 0, 3)});
 	}
 
 
@@ -63,7 +119,6 @@ public class BTDClient implements ClientModInitializer, ClientStartEntrypoint {
 		dispatches.put(Blocks.LAYER_ASH, new BlockModelGenericLayer<>(
 			Blocks.LAYER_ASH, "btd:block/layer/ash"));
 		itemModelDispatcher.addDispatch(new ItemModelBlock((ItemBlock<?>) Blocks.LAYER_ASH.asItem()));
-
 
 
 		dispatches.put(Blocks.COBBLE_BASALT, new BlockModelGeneric<>(

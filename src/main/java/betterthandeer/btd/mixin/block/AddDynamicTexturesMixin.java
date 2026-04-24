@@ -2,6 +2,8 @@ package betterthandeer.btd.mixin.block;
 
 import betterthandeer.btd.block.acid.DynamicTextureAcidFlowing;
 import betterthandeer.btd.block.acid.DynamicTextureAcidStill;
+import betterthandeer.btd.block.tar.DynamicTextureTarFlowing;
+import betterthandeer.btd.block.tar.DynamicTextureTarStill;
 import net.minecraft.client.render.TextureManager;
 import net.minecraft.client.render.dynamictexture.DynamicTexture;
 import net.minecraft.client.render.texture.stitcher.TextureRegistry;
@@ -21,5 +23,8 @@ public abstract class AddDynamicTexturesMixin {
 	private void addAcidDynamicTextures(CallbackInfo ci) {
 		this.addDynamicTexture(new DynamicTextureAcidStill(TextureRegistry.getTexture("btd:block/acid_still")));
 		this.addDynamicTexture(new DynamicTextureAcidFlowing(TextureRegistry.getTexture("btd:block/acid_flowing")));
+
+		this.addDynamicTexture(new DynamicTextureTarStill(TextureRegistry.getTexture("btd:block/tar_still")));
+		this.addDynamicTexture(new DynamicTextureTarFlowing(TextureRegistry.getTexture("btd:block/tar_flowing")));
 	}
 }

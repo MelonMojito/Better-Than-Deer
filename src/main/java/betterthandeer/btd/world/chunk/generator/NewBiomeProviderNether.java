@@ -9,7 +9,7 @@ import net.minecraft.core.world.biome.provider.BiomeProvider;
 import net.minecraft.core.world.noise.FractalNoise2D;
 import net.minecraft.core.world.noise.FractalNoise3D;
 import net.minecraft.core.world.noise.SimplexNoise;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -31,7 +31,7 @@ public final class NewBiomeProviderNether extends BiomeProvider {
 		init();
 	}
 
-	public NewBiomeProviderNether(@NotNull World world) {
+	public NewBiomeProviderNether(@NonNull World world) {
 		super(world);
 		long seed = world.getRandomSeed();
 		this.temperatureNoise = new FractalNoise3D<>(SimplexNoise.genOctaves(seed * 9871L, 4));
@@ -149,17 +149,17 @@ public final class NewBiomeProviderNether extends BiomeProvider {
 		brm.clear();
 
 		brm.addRange(Biomes.NETHER_VOLCANIC_ISLANDS, new BiomeRange(
-			0.90, 1.0,
-			0.0, 0.2,
+			0.95, 1.0,
+			0.0, 1.0,
 			0.5, 1.0,
 			0.0, 1.0));
 		brm.addRange(Biomes.NETHER_CRAG, new BiomeRange(
-			0.75, 1.0,
+			0.75, 0.95,
 			0.0, 0.85,
 			0.5, 1.0,
 			0.0, 1.0));
 		brm.addRange(Biomes.NETHER_SULFUR_POOLS, new BiomeRange(
-			0.75, 1.0,
+			0.75, 0.95,
 			0.85, 1.0,
 			0.5, 1.0,
 			0.0, 1.0));

@@ -1,6 +1,7 @@
 package betterthandeer.btd.mixin.entity;
 
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
+import betterthandeer.btd.entity.leecher.MobLeecher;
 import net.minecraft.core.entity.SpawnListEntry;
 import net.minecraft.core.world.biome.Biome;
 import net.minecraft.core.world.biome.nether.BiomeCrystalForest;
@@ -20,5 +21,6 @@ public abstract class CrystalMobSpawningMixin extends Biome {
 	@Inject(method = "<init>(Ljava/lang/String;)V", at = @At("TAIL"))
 	private void onBiomeNetherInit(String key, CallbackInfo ci) {
 		this.spawnableMonsterList.add(new SpawnListEntry(MobGargoyle.class, 10));
+		this.spawnableMonsterList.add(new SpawnListEntry(MobLeecher.class, 10));
 	}
 }

@@ -64,9 +64,75 @@ tile.statue.gloomstone.lower.desc=
 tile.statue.gloomstone.upper.name=Gloomstone Statue (Upper)
 tile.statue.gloomstone.upper.desc=
 
+tile.statue.gargoyle.netherrack.name=Netherrack Gargoyle
+tile.statue.gargoyle.netherrack.desc=
+tile.statue.gargoyle.gloomstone.name=Gloomstone Gargoyle
+tile.statue.gargoyle.gloomstone.desc=
+tile.statue.gargoyle.basalt.name=Basalt Gargoyle
+tile.statue.gargoyle.basalt.desc=
+tile.statue.gargoyle.slate.name=Slate Gargoyle
+tile.statue.gargoyle.slate.desc=
 
 
 
+tile.asphalt.name=Asphalt
+tile.asphalt.desc=How did you get this?!
+tile.asphalt.black.name=Black Asphalt
+tile.asphalt.black.desc=Oily asphalt, dyed black.
+tile.asphalt.red.name=Red Asphalt
+tile.asphalt.red.desc=Oily asphalt, dyed red.
+tile.asphalt.green.name=Green Asphalt
+tile.asphalt.green.desc=Oily asphalt, dyed green.
+tile.asphalt.brown.name=Brown Asphalt
+tile.asphalt.brown.desc=Oily asphalt, dyed brown.
+tile.asphalt.blue.name=Blue Asphalt
+tile.asphalt.blue.desc=Oily asphalt, dyed blue.
+tile.asphalt.purple.name=Purple Asphalt
+tile.asphalt.purple.desc=Oily asphalt, dyed purple.
+tile.asphalt.cyan.name=Cyan Asphalt
+tile.asphalt.cyan.desc=Oily asphalt, dyed cyan.
+tile.asphalt.silver.name=Light Gray Asphalt
+tile.asphalt.silver.desc=Oily asphalt, dyed light gray.
+tile.asphalt.gray.name=Gray Asphalt
+tile.asphalt.gray.desc=Oily asphalt, dyed gray.
+tile.asphalt.pink.name=Pink Asphalt
+tile.asphalt.pink.desc=Oily asphalt, dyed pink.
+tile.asphalt.lime.name=Lime Asphalt
+tile.asphalt.lime.desc=Oily asphalt, dyed lime.
+tile.asphalt.yellow.name=Yellow Asphalt
+tile.asphalt.yellow.desc=Oily asphalt, dyed yellow.
+tile.asphalt.lightblue.name=Light Blue Asphalt
+tile.asphalt.lightblue.desc=Oily asphalt, dyed light blue.
+tile.asphalt.magenta.name=Magenta Asphalt
+tile.asphalt.magenta.desc=Oily asphalt, dyed magenta.
+tile.asphalt.orange.name=Orange Asphalt
+tile.asphalt.orange.desc=Oily asphalt, dyed orange.
+tile.asphalt.white.name=White Asphalt
+tile.asphalt.white.desc=Oily asphalt, dyed white.
+
+
+tile.fluid.tar.flowing.name=Flowing Tar
+tile.fluid.tar.flowing.desc=Tar that flows when placed.
+tile.fluid.tar.still.name=Still Tar
+tile.fluid.tar.still.desc=Tar that does not flow when placed.
+
+tile.brimstone.name=Brimstone
+tile.brimstone.desc=Compacted brimstone.
+
+tile.slab.brimstone.name=Brimstone Slab
+tile.slab.brimstone.desc=A slab of brimstone.
+
+tile.stairs.brimstone.name=Brimstone Stairs
+tile.stairs.brimstone.desc=Brimstone block used for rapid vertical movement.
+
+tile.brick.brimstone.name=Brimstone Bricks
+tile.brick.brimstone.desc=Stacked bricks of brimstone.
+
+tile.slab.brick.brimstone.name=Brimstone Brick Slab
+tile.slab.brick.brimstone.desc=A slab of brimstone bricks.
+
+tile.stairs.brick.brimstone.name=Brimstone Brick Stairs
+tile.stairs.brick.brimstone.desc=Brimstone brick block used for rapid vertical movement.
 
 
 

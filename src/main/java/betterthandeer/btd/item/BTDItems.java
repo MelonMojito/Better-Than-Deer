@@ -1,7 +1,11 @@
 package betterthandeer.btd.item;
 
 import betterthandeer.btd.block.BTDBlocks;
-import net.minecraft.core.item.*;
+import net.minecraft.core.item.Item;
+import net.minecraft.core.item.ItemBucket;
+import net.minecraft.core.item.ItemPlaceable;
+import net.minecraft.core.item.ItemStatue;
+import net.minecraft.core.util.collection.NamespaceID;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
 
@@ -9,7 +13,7 @@ public class BTDItems {
 
 	private static int itemID = 20000;
 
-	public static Item BUCKET_ACID;
+	public static final NamespaceID STATE_ACID = new NamespaceID("btd", "acid");
 
 	public static Item EYE_GARGOYLE;
 
@@ -31,6 +35,13 @@ public class BTDItems {
 	public static Item STATUE_NETHERRACK;
 	public static Item STATUE_GLOOMSTONE;
 
+	public static Item AMMO_LIGHTNINGBALL;
+
+	public static Item STATUE_GARGOYLE_NETHERRACK;
+	public static Item STATUE_GARGOYLE_GLOOMSTONE;
+	public static Item STATUE_GARGOYLE_BASALT;
+	public static Item STATUE_GARGOYLE_SLATE;
+
 	private static boolean hasInit = false;
 
 	public static void init() {
@@ -45,7 +56,7 @@ public class BTDItems {
 	}
 
 	public static void initializeItems() {
-		BUCKET_ACID = new ItemBucket("bucket.acid", itemKey("bucket_acid"), itemID++, BTDBlocks.FLUID_ACID_FLOWING).setContainerItem(Items.BUCKET);
+		ItemBucket.registerState(STATE_ACID, new ItemBucket.BucketState("acid", BTDBlocks.FLUID_ACID_FLOWING, true));
 
 		EYE_GARGOYLE = new Item("eye.gargoyle", itemKey("eye_gargoyle"), itemID++);
 
@@ -66,5 +77,13 @@ public class BTDItems {
 		STATUE_PERMAFROST = new ItemStatue("statue.permafrost", itemKey("statue_permafrost"), itemID++, BTDBlocks.STATUE_PERMAFROST_LOWER, BTDBlocks.STATUE_PERMAFROST_UPPER);
 		STATUE_NETHERRACK = new ItemStatue("statue.netherrack", itemKey("statue_netherrack"), itemID++, BTDBlocks.STATUE_NETHERRACK_LOWER, BTDBlocks.STATUE_NETHERRACK_UPPER);
 		STATUE_GLOOMSTONE = new ItemStatue("statue.gloomstone", itemKey("statue_gloomstone"), itemID++, BTDBlocks.STATUE_GLOOMSTONE_LOWER, BTDBlocks.STATUE_GLOOMSTONE_UPPER);
+
+		AMMO_LIGHTNINGBALL = new Item("ammo.lightningball", itemKey("ammo_lightningball"), itemID++);
+
+		STATUE_GARGOYLE_NETHERRACK = new ItemStatueGargoyle("statue.gargoyle.netherrack", itemKey("statue_gargoyle_netherrack"), itemID++, BTDBlocks.STATUE_GARGOYLE_NETHERRACK);
+		STATUE_GARGOYLE_GLOOMSTONE = new ItemStatueGargoyle("statue.gargoyle.gloomstone", itemKey("statue_gargoyle_gloomstone"), itemID++, BTDBlocks.STATUE_GARGOYLE_GLOOMSTONE);
+		STATUE_GARGOYLE_BASALT = new ItemStatueGargoyle("statue.gargoyle.basalt", itemKey("statue_gargoyle_basalt"), itemID++, BTDBlocks.STATUE_GARGOYLE_BASALT);
+		STATUE_GARGOYLE_SLATE = new ItemStatueGargoyle("statue.gargoyle.slate", itemKey("statue_gargoyle_slate"), itemID++, BTDBlocks.STATUE_GARGOYLE_SLATE);
+
 	}
 }

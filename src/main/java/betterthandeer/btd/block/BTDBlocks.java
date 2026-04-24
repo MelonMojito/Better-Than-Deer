@@ -1,9 +1,13 @@
 package betterthandeer.btd.block;
 
+import betterthandeer.btd.block.acid.BlockLogicSulfur;
 import betterthandeer.btd.block.acid.FluidAcid;
 import betterthandeer.btd.block.chain.BlockLogicChainLarge;
 import betterthandeer.btd.block.ice.rubyglass.BlockLogicIceRubyglass;
 import betterthandeer.btd.block.rock.BlockLogicOverlayRocks;
+import betterthandeer.btd.block.statue.gargoyle.BlockLogicStatueGargoyle;
+import betterthandeer.btd.block.tar.BlockLogicAsphalt;
+import betterthandeer.btd.block.tar.FluidTar;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.block.*;
 import net.minecraft.core.block.material.Material;
@@ -11,6 +15,8 @@ import net.minecraft.core.block.material.MaterialColor;
 import net.minecraft.core.block.material.MaterialLiquid;
 import net.minecraft.core.block.material.Materials;
 import net.minecraft.core.block.tag.BlockTags;
+import net.minecraft.core.item.block.ItemBlockPainted;
+import net.minecraft.core.sound.BlockSound;
 import net.minecraft.core.sound.BlockSounds;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.util.BlockInitEntrypoint;
@@ -54,6 +60,28 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static @NonNull Block<BlockLogicStatue> STATUE_GLOOMSTONE_LOWER;
 	public static @NonNull Block<BlockLogicStatue> STATUE_GLOOMSTONE_UPPER;
 
+	public static @NonNull Block<BlockLogicFluid> FLUID_TAR_FLOWING;
+	public static @NonNull Block<BlockLogicFluid> FLUID_TAR_STILL;
+	public static @NonNull Material TAR = (new MaterialLiquid(MaterialColor.paintedBlack)).setConductivity(0).destroyOnPush();
+
+	public static Block<?> ASPHALT;
+
+	public static Block<?> BRIMSTONE;
+	public static Block<?> SLAB_BRIMSTONE;
+	public static Block<?> STAIRS_BRIMSTONE;
+
+	public static Block<?> BRICK_BRIMSTONE;
+	public static Block<?> SLAB_BRICK_BRIMSTONE;
+	public static Block<?> STAIRS_BRICK_BRIMSTONE;
+
+	public static Block<BlockLogicStatueGargoyle> STATUE_GARGOYLE_NETHERRACK;
+	public static Block<BlockLogicStatueGargoyle> STATUE_GARGOYLE_GLOOMSTONE;
+	public static Block<BlockLogicStatueGargoyle> STATUE_GARGOYLE_BASALT;
+	public static Block<BlockLogicStatueGargoyle> STATUE_GARGOYLE_SLATE;
+
+	public static @NonNull Block<?> MOBSPAWNER_NETHER;
+	public static @NonNull Block<?> MOBSPAWNER_NETHER_DEACTIVATED;
+
 	private static boolean hasInit = false;
 
 	public static void init() {
@@ -91,8 +119,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.setStatParent(() -> FLUID_ACID_FLOWING)
 			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
 
-		SULFUR = register("sulfur", blockKey("sulfur"), blockID++,
-			block -> new BlockLogicSulfur(block, Materials.STONE))
+		SULFUR = register("sulfur", blockKey("sulfur"), blockID++, BlockLogicSulfur::new)
 			.withHardness(1.0f)
 			.withOverrideColor(MaterialColor.paintedYellow)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN, BlockTags.CAVES_CUT_THROUGH);
@@ -167,61 +194,171 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withOverrideColor(MaterialColor.iron)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
 
-		STATUE_SLATE_LOWER = (Block<BlockLogicStatue>)(Object) register("statue.slate.lower", blockKey("statue_slate_lower"), blockID++,
+		STATUE_SLATE_LOWER = (Block<BlockLogicStatue>) (Object) register("statue.slate.lower", blockKey("statue_slate_lower"), blockID++,
 			block -> new BlockLogicStatue(block, Materials.SLATE, true, () -> BTDItems.STATUE_SLATE))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.5F)
 			.setStatParent(() -> BTDItems.STATUE_SLATE)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
 
-		STATUE_SLATE_UPPER = (Block<BlockLogicStatue>)(Object) register("statue.slate.upper", blockKey("statue_slate_upper"), blockID++,
+		STATUE_SLATE_UPPER = (Block<BlockLogicStatue>) (Object) register("statue.slate.upper", blockKey("statue_slate_upper"), blockID++,
 			block -> new BlockLogicStatue(block, Materials.SLATE, false, () -> BTDItems.STATUE_SLATE))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.5F)
 			.setStatParent(() -> BTDItems.STATUE_SLATE)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
 
-		STATUE_PERMAFROST_LOWER = (Block<BlockLogicStatue>)(Object) register("statue.permafrost.lower", blockKey("statue_permafrost_lower"), blockID++,
+		STATUE_PERMAFROST_LOWER = (Block<BlockLogicStatue>) (Object) register("statue.permafrost.lower", blockKey("statue_permafrost_lower"), blockID++,
 			block -> new BlockLogicStatue(block, Materials.PERMAFROST, true, () -> BTDItems.STATUE_PERMAFROST))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.5F)
 			.setStatParent(() -> BTDItems.STATUE_PERMAFROST)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
 
-		STATUE_PERMAFROST_UPPER = (Block<BlockLogicStatue>)(Object) register("statue.permafrost.upper", blockKey("statue_permafrost_upper"), blockID++,
+		STATUE_PERMAFROST_UPPER = (Block<BlockLogicStatue>) (Object) register("statue.permafrost.upper", blockKey("statue_permafrost_upper"), blockID++,
 			block -> new BlockLogicStatue(block, Materials.PERMAFROST, false, () -> BTDItems.STATUE_PERMAFROST))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.5F)
 			.setStatParent(() -> BTDItems.STATUE_PERMAFROST)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
 
-		STATUE_NETHERRACK_LOWER = (Block<BlockLogicStatue>)(Object) register("statue.netherrack.lower", blockKey("statue_netherrack_lower"), blockID++,
+		STATUE_NETHERRACK_LOWER = (Block<BlockLogicStatue>) (Object) register("statue.netherrack.lower", blockKey("statue_netherrack_lower"), blockID++,
 			block -> new BlockLogicStatue(block, Materials.NETHERRACK, true, () -> BTDItems.STATUE_NETHERRACK))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.5F)
 			.setStatParent(() -> BTDItems.STATUE_NETHERRACK)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
 
-		STATUE_NETHERRACK_UPPER = (Block<BlockLogicStatue>)(Object) register("statue.netherrack.upper", blockKey("statue_netherrack_upper"), blockID++,
+		STATUE_NETHERRACK_UPPER = (Block<BlockLogicStatue>) (Object) register("statue.netherrack.upper", blockKey("statue_netherrack_upper"), blockID++,
 			block -> new BlockLogicStatue(block, Materials.NETHERRACK, false, () -> BTDItems.STATUE_NETHERRACK))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.5F)
 			.setStatParent(() -> BTDItems.STATUE_NETHERRACK)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
 
-		STATUE_GLOOMSTONE_LOWER = (Block<BlockLogicStatue>)(Object) register("statue.gloomstone.lower", blockKey("statue_gloomstone_lower"), blockID++,
+		STATUE_GLOOMSTONE_LOWER = (Block<BlockLogicStatue>) (Object) register("statue.gloomstone.lower", blockKey("statue_gloomstone_lower"), blockID++,
 			block -> new BlockLogicStatue(block, Materials.GLOOMSTONE, true, () -> BTDItems.STATUE_GLOOMSTONE))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.5F)
 			.setStatParent(() -> BTDItems.STATUE_GLOOMSTONE)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
 
-		STATUE_GLOOMSTONE_UPPER = (Block<BlockLogicStatue>)(Object) register("statue.gloomstone.upper", blockKey("statue_gloomstone_upper"), blockID++,
+		STATUE_GLOOMSTONE_UPPER = (Block<BlockLogicStatue>) (Object) register("statue.gloomstone.upper", blockKey("statue_gloomstone_upper"), blockID++,
 			block -> new BlockLogicStatue(block, Materials.GLOOMSTONE, false, () -> BTDItems.STATUE_GLOOMSTONE))
 			.withSound(BlockSounds.STONE)
 			.withHardness(1.5F)
 			.setStatParent(() -> BTDItems.STATUE_GLOOMSTONE)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
+
+
+		FLUID_TAR_FLOWING = (Block<BlockLogicFluid>) (Object) register("fluid.tar.flowing", blockKey("fluid_tar_flowing"), blockID++, block -> new BlockLogicFluidFlowing(block, TAR, new FluidTar(), FLUID_TAR_STILL))
+			.withHardness(100.0F)
+			.withLightBlock(6)
+			.withDisabledStats()
+			.withDisabledNeighborNotifyOnMetadataChange()
+			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		FLUID_TAR_STILL = (Block<BlockLogicFluid>) (Object) register("fluid.tar.still", blockKey("fluid_tar_still"), blockID++, block -> new BlockLogicFluidStill(block, TAR, new FluidTar(), FLUID_TAR_FLOWING))
+			.withHardness(100.0F)
+			.withLightBlock(6)
+			.withDisabledStats()
+			.setStatParent(() -> FLUID_TAR_FLOWING)
+			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
+
+
+		ASPHALT = register("asphalt", blockKey("asphalt"), blockID++, BlockLogicAsphalt::new)
+			.withSound(new BlockSound("step.stone", "step.stone", 1.0F, 0.5F))
+			.withHardness(2.0F)
+			.withBlastResistance(10.0F)
+			.setBlockItem(block -> new ItemBlockPainted<>(block, false))
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+		BRIMSTONE = register("brimstone", blockKey("brimstone"), blockID++, block -> new BlockLogicBrimstone(block, Materials.STONE))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.8F)
+			.withOverrideColor(MaterialColor.paintedBlack)
+			.withTags(BlockTags.CAVES_CUT_THROUGH, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK);
+
+		SLAB_BRIMSTONE = register("slab.brimstone", blockKey("slab_brimstone"), blockID++, block -> new BlockLogicSlab(block, BRIMSTONE))
+			.withSound(BlockSounds.STONE)
+			.withDisabledNeighborNotifyOnMetadataChange()
+			.withLitInteriorSurface(true)
+			.withOverrideColor(MaterialColor.paintedBlack)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+
+		STAIRS_BRIMSTONE = register("stairs.brimstone", blockKey("stairs_brimstone"), blockID++, block -> new BlockLogicStairs(block, BRIMSTONE))
+			.withSound(BlockSounds.STONE)
+			.withDisabledNeighborNotifyOnMetadataChange()
+			.withLitInteriorSurface(true)
+			.withOverrideColor(MaterialColor.paintedBlack)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+
+		BRICK_BRIMSTONE = register("brick.brimstone", blockKey("brick_brimstone"), blockID++, block -> new BlockLogicBrimstone(block, Materials.STONE))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.8F)
+			.withOverrideColor(MaterialColor.paintedBlack)
+			.withTags(BlockTags.CAVES_CUT_THROUGH, BlockTags.MINEABLE_BY_PICKAXE, BlockTags.CHAINLINK_FENCES_CONNECT, BlockTags.NETHER_MOBS_SPAWN, BlockTags.NETHER_SURFACE_BLOCK);
+
+		SLAB_BRICK_BRIMSTONE = register("slab.brick.brimstone", blockKey("slab_brick_brimstone"), blockID++, block -> new BlockLogicSlab(block, BRIMSTONE))
+			.withSound(BlockSounds.STONE)
+			.withDisabledNeighborNotifyOnMetadataChange()
+			.withLitInteriorSurface(true)
+			.withOverrideColor(MaterialColor.paintedBlack)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+
+		STAIRS_BRICK_BRIMSTONE = register("stairs.brick.brimstone", blockKey("stairs_brick_brimstone"), blockID++, block -> new BlockLogicStairs(block, BRIMSTONE))
+			.withSound(BlockSounds.STONE)
+			.withDisabledNeighborNotifyOnMetadataChange()
+			.withLitInteriorSurface(true)
+			.withOverrideColor(MaterialColor.paintedBlack)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
+
+
+		STATUE_GARGOYLE_NETHERRACK = (Block<BlockLogicStatueGargoyle>) (Object) register("statue.gargoyle.netherrack", blockKey("statue_gargoyle_netherrack"), blockID++,
+			block -> new BlockLogicStatueGargoyle(block, Materials.NETHERRACK, () -> BTDItems.STATUE_GARGOYLE_NETHERRACK))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.5F)
+			.setStatParent(() -> BTDItems.STATUE_GARGOYLE_NETHERRACK)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		STATUE_GARGOYLE_GLOOMSTONE = (Block<BlockLogicStatueGargoyle>) (Object) register("statue.gargoyle.gloomstone", blockKey("statue_gargoyle_gloomstone"), blockID++,
+			block -> new BlockLogicStatueGargoyle(block, Materials.GLOOMSTONE, () -> BTDItems.STATUE_GARGOYLE_GLOOMSTONE))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.5F)
+			.setStatParent(() -> BTDItems.STATUE_GARGOYLE_GLOOMSTONE)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		STATUE_GARGOYLE_BASALT = (Block<BlockLogicStatueGargoyle>) (Object) register("statue.gargoyle.basalt", blockKey("statue_gargoyle_basalt"), blockID++,
+			block -> new BlockLogicStatueGargoyle(block, Materials.BASALT, () -> BTDItems.STATUE_GARGOYLE_BASALT))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.5F)
+			.setStatParent(() -> BTDItems.STATUE_GARGOYLE_BASALT)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		STATUE_GARGOYLE_SLATE = (Block<BlockLogicStatueGargoyle>) (Object) register("statue.gargoyle.slate", blockKey("statue_gargoyle_slate"), blockID++,
+			block -> new BlockLogicStatueGargoyle(block, Materials.SLATE, () -> BTDItems.STATUE_GARGOYLE_SLATE))
+			.withSound(BlockSounds.STONE)
+			.withHardness(1.5F)
+			.setStatParent(() -> BTDItems.STATUE_GARGOYLE_SLATE)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU);
+
+		MOBSPAWNER_NETHER = register("mobspawner.nether", blockKey("mobspawner_nether"), blockID++, BlockLogicMobSpawnerNether::new)
+			.withSound(BlockSounds.METAL)
+			.withHardness(5.0F)
+			.withImmovableFlagSet()
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE)
+			.withOverrideColor(MaterialColor.netherrack);
+		MOBSPAWNER_NETHER_DEACTIVATED = register("mobspawner.nether.deactivated", blockKey("mobspawner_nether_deactivated"), blockID++, BlockLogicMobSpawnerDeactivated::new)
+			.withSound(BlockSounds.METAL)
+			.withHardness(5.0F)
+			.withTags(BlockTags.MINEABLE_BY_PICKAXE)
+			.withOverrideColor(MaterialColor.netherrack);
+
+
+
 	}
 
 	@Override

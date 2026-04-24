@@ -38,6 +38,8 @@ public final class CreativeBlocks {
 		//WOOL
 		addPainted(list, Blocks.WOOL, painted(Blocks.WOOL));
 
+		addPainted(list, BTDBlocks.ASPHALT, painted(BTDBlocks.ASPHALT));
+
 		addNaturalTypes(list);
 
 		addOrganicTypes(list);
@@ -383,6 +385,14 @@ public final class CreativeBlocks {
 
 		add(list, Blocks.BRIMSAND);
 
+		add(list, BTDBlocks.BRIMSTONE);
+		add(list, BTDBlocks.STAIRS_BRIMSTONE);
+		add(list, BTDBlocks.SLAB_BRIMSTONE);
+
+		add(list, BTDBlocks.BRICK_BRIMSTONE);
+		add(list, BTDBlocks.STAIRS_BRICK_BRIMSTONE);
+		add(list, BTDBlocks.SLAB_BRICK_BRIMSTONE);
+
 		add(list, BTDBlocks.SULFUR);
 
 		add(list, Blocks.BLOCK_SNOW);
@@ -442,7 +452,7 @@ public final class CreativeBlocks {
 		add(list, Blocks.RUBYGLASS_COLUMN);
 		add(list, Blocks.RUBYGLASS_NODE);
 		add(list, Blocks.BLOCK_RUBYGLASS);
-		add(list, Blocks.RUBYGLASS_CIRCUIT);
+		add(list, Blocks.RUBYGLASS_CONDUIT);
 		add(list, Blocks.RUBYGLASS_SPROUT);
 		add(list, BTDBlocks.ICE_RUBYGLASS);
 
@@ -453,6 +463,9 @@ public final class CreativeBlocks {
 
 		add(list, Blocks.MOBSPAWNER);
 		add(list, Blocks.MOBSPAWNER_DEACTIVATED);
+
+		add(list, BTDBlocks.MOBSPAWNER_NETHER);
+		add(list, BTDBlocks.MOBSPAWNER_NETHER_DEACTIVATED);
 
 		add(list, Blocks.NOTEBLOCK);
 		add(list, Blocks.JUKEBOX);

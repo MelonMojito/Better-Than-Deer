@@ -4,11 +4,17 @@ import betterthandeer.btd.block.BTDBlocks;
 import betterthandeer.btd.block.chain.BlockModelChainLarge;
 import betterthandeer.btd.block.ice.rubyglass.BlockModelGenericIceRubyGlass;
 import betterthandeer.btd.block.rock.BlockModelGenericRocks;
+import betterthandeer.btd.block.statue.gargoyle.TileEntityRendererStatueGargoyle;
+import betterthandeer.btd.block.statue.gargoyle.TileEntityStatueGargoyle;
+import betterthandeer.btd.block.tar.BlockModelGenericAsphalt;
 import betterthandeer.btd.entity.arrow.flaming.EntityRendererArrowFlaming;
 import betterthandeer.btd.entity.arrow.flaming.ProjectileArrowFlaming;
-import betterthandeer.btd.entity.rock.ProjectileRock;
 import betterthandeer.btd.entity.gargoyle.MobGargoyle;
 import betterthandeer.btd.entity.gargoyle.MobRendererGargoyle;
+import betterthandeer.btd.entity.leecher.MobLeecher;
+import betterthandeer.btd.entity.leecher.MobRendererLeecher;
+import betterthandeer.btd.entity.leecher.ProjectileLightningball;
+import betterthandeer.btd.entity.rock.ProjectileRock;
 import betterthandeer.btd.item.BTDItems;
 import net.minecraft.client.render.EntityRendererDispatcher;
 import net.minecraft.client.render.TileEntityRenderDispatcher;
@@ -16,10 +22,7 @@ import net.minecraft.client.render.block.color.BlockColorDispatcher;
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.block.model.BlockModelEmpty;
 import net.minecraft.client.render.block.model.BlockModelFluid;
-import net.minecraft.client.render.block.model.generic.BlockModelCrystalBud;
-import net.minecraft.client.render.block.model.generic.BlockModelGeneric;
-import net.minecraft.client.render.block.model.generic.BlockModelGenericAxis;
-import net.minecraft.client.render.block.model.generic.BlockModelGenericSlab;
+import net.minecraft.client.render.block.model.generic.*;
 import net.minecraft.client.render.entity.EntityRendererSprite;
 import net.minecraft.client.render.item.model.ItemModelBlock;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
@@ -82,11 +85,56 @@ public class BTDModels implements ModelEntrypoint {
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_NETHERRACK_LOWER, "/assets/btd/textures/entity/statue/netherrack.png");
 		TileEntityRendererStatue.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GLOOMSTONE_LOWER, "/assets/btd/textures/entity/statue/gloomstone.png");
 
+		dispatcher.addDispatch(new BlockModelFluid<>(BTDBlocks.FLUID_TAR_FLOWING, "btd:block/tar_still", "btd:block/tar_flowing"));
+		dispatcher.addDispatch(new BlockModelFluid<>(BTDBlocks.FLUID_TAR_STILL, "btd:block/tar_still", "btd:block/tar_flowing"));
+
+		dispatcher.addDispatch(new BlockModelGenericAsphalt<>(BTDBlocks.ASPHALT, loadDataModel("btd:block/asphalt/black")));
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.BRIMSTONE,
+			loadDataModel("btd:block/brimstone")));
+
+		dispatcher.addDispatch(new BlockModelGenericSlab<>(BTDBlocks.SLAB_BRIMSTONE,
+			loadDataModel("btd:block/slab/brimstone/lower"),
+			loadDataModel("btd:block/slab/brimstone/upper"),
+			loadDataModel("btd:block/slab/brimstone/full")));
+
+
+		dispatcher.addDispatch(new BlockModelGenericStairs<>(BTDBlocks.STAIRS_BRIMSTONE,
+			loadDataModel("btd:block/stairs/brimstone")));
+
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.BRICK_BRIMSTONE,
+			loadDataModel("btd:block/brick_brimstone")));
+
+		dispatcher.addDispatch(new BlockModelGenericSlab<>(BTDBlocks.SLAB_BRICK_BRIMSTONE,
+			loadDataModel("btd:block/slab/brick_brimstone/lower"),
+			loadDataModel("btd:block/slab/brick_brimstone/upper"),
+			loadDataModel("btd:block/slab/brick_brimstone/full")));
+
+
+		dispatcher.addDispatch(new BlockModelGenericStairs<>(BTDBlocks.STAIRS_BRICK_BRIMSTONE,
+			loadDataModel("btd:block/stairs/brick_brimstone")));
+
+
+		dispatcher.addDispatch(new BlockModelEmpty<>(BTDBlocks.STATUE_GARGOYLE_NETHERRACK).setAllTextures("minecraft:block/netherrack"));
+		dispatcher.addDispatch(new BlockModelEmpty<>(BTDBlocks.STATUE_GARGOYLE_GLOOMSTONE).setAllTextures("minecraft:block/gloomstone"));
+		dispatcher.addDispatch(new BlockModelEmpty<>(BTDBlocks.STATUE_GARGOYLE_BASALT).setAllTextures("minecraft:block/basalt"));
+		dispatcher.addDispatch(new BlockModelEmpty<>(BTDBlocks.STATUE_GARGOYLE_SLATE).setAllTextures("minecraft:block/slate_top"));
+
+		TileEntityRendererStatueGargoyle.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GARGOYLE_NETHERRACK, "/assets/btd/textures/entity/statue_gargoyle/netherrack.png");
+		TileEntityRendererStatueGargoyle.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GARGOYLE_GLOOMSTONE, "/assets/btd/textures/entity/statue_gargoyle/gloomstone.png");
+		TileEntityRendererStatueGargoyle.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GARGOYLE_BASALT, "/assets/btd/textures/entity/statue_gargoyle/basalt.png");
+		TileEntityRendererStatueGargoyle.BLOCK_SKIN_MAP.put(BTDBlocks.STATUE_GARGOYLE_SLATE, "/assets/btd/textures/entity/statue_gargoyle/slate.png");
+
+
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.MOBSPAWNER_NETHER, loadDataModel("btd:block/mobspawner_nether")));
+		dispatcher.addDispatch(new BlockModelGeneric<>(BTDBlocks.MOBSPAWNER_NETHER_DEACTIVATED, loadDataModel("btd:block/mobspawner_nether_deactivated")));
+
+
 	}
 
 	@Override
 	public void initItemModels(ItemModelDispatcher dispatcher) {
-		dispatcher.addDispatch(new ItemModelStandard(BTDItems.BUCKET_ACID, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.EYE_GARGOYLE, "btd").setFullBright());
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.LEATHER_GHAST, "btd").setFullBright());
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.AMMO_ROCK, "btd"));
@@ -105,19 +153,29 @@ public class BTDModels implements ModelEntrypoint {
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_PERMAFROST, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_NETHERRACK, "btd"));
 		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GLOOMSTONE, "btd"));
+
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.AMMO_LIGHTNINGBALL, "btd").setFullBright());
+
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GARGOYLE_NETHERRACK, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GARGOYLE_GLOOMSTONE, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GARGOYLE_BASALT, "btd"));
+		dispatcher.addDispatch(new ItemModelStandard(BTDItems.STATUE_GARGOYLE_SLATE, "btd"));
 	}
 
 	@Override
 	public void initEntityModels(EntityRendererDispatcher entityRendererDispatcher) {
 		entityRendererDispatcher.assignRenderer(MobGargoyle.class, new MobRendererGargoyle(0.5F));
-
+		entityRendererDispatcher.assignRenderer(MobLeecher.class, new MobRendererLeecher(0.5F));
 
 		entityRendererDispatcher.assignRenderer(ProjectileRock.class, new EntityRendererSprite<>(BTDItems.AMMO_ROCK));
 		entityRendererDispatcher.assignRenderer(ProjectileArrowFlaming.class, new EntityRendererArrowFlaming());
+
+		entityRendererDispatcher.assignRenderer(ProjectileLightningball.class, new EntityRendererSprite<>(BTDItems.AMMO_LIGHTNINGBALL).setScale(2.0F).setFullBright());
 	}
 
 	@Override
 	public void initTileEntityModels(TileEntityRenderDispatcher dispatcher) {
+		dispatcher.assignRenderer(TileEntityStatueGargoyle.class, new TileEntityRendererStatueGargoyle());
 
 	}
 

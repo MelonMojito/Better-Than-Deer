@@ -14,6 +14,11 @@
       "block/scrape.ogg"
     ]
   },
+  "step.ash": {
+    "sounds": [
+      "block/ash.ogg"
+    ]
+  },
   "mob.gargoyle": {
     "subtitle": "subtitles.mob.gargoyle",
     "sounds": [
@@ -38,6 +43,25 @@
     "subtitle": "subtitles.mob.gargoyledeath",
     "sounds": [
       "mob/gargoyle/death.ogg"
+    ]
+  },
+  "mob.leecher": {
+    "subtitle": "subtitles.mob.leecher",
+    "sounds": [
+      "mob/leecher/idle.ogg"
+    ]
+  },
+  "mob.leecherhurt": {
+    "subtitle": "subtitles.mob.leecherhurt",
+    "sounds": [
+      "mob/leecher/hurt1.ogg",
+      "mob/leecher/hurt2.ogg"
+    ]
+  },
+  "mob.leecherdeath": {
+    "subtitle": "subtitles.mob.leecherdeath",
+    "sounds": [
+      "mob/leecher/death.ogg"
     ]
   },
   "mob.deer": {

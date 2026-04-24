@@ -1,8 +1,10 @@
 package betterthandeer.btd;
 
 import betterthandeer.btd.block.BTDBlocks;
+import betterthandeer.btd.block.BTDTileEntities;
 import betterthandeer.btd.entity.BTDEntities;
 import betterthandeer.btd.entity.arrow.flaming.NetEntryArrowFlaming;
+import betterthandeer.btd.entity.leecher.NetEntryLightningball;
 import betterthandeer.btd.entity.rock.NetEntryRock;
 import betterthandeer.btd.item.BTDItems;
 import betterthandeer.btd.world.chunk.feature.dungeon.hanging.WorldFeatureHangingDungeon;
@@ -18,7 +20,7 @@ import net.minecraft.core.enums.HumanArmorShape;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.net.command.util.CommandHelper;
 import net.minecraft.core.net.entity.NetEntityHandler;
-import net.minecraft.core.sound.BlockSounds;
+import net.minecraft.core.sound.BlockSound;
 import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +47,7 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.BASALT.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.BRIMSAND.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
+		BlockLogicOreNetherCoal.variantMap.put(BTDBlocks.BRIMSTONE.id(), Blocks.ORE_NETHERCOAL_BASALT.id());
 
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.NETHERRACK.id(), Blocks.ORE_NETHERCOAL_NETHERRACK.id());
 		BlockLogicOreNetherCoal.variantMap.put(Blocks.COBBLE_NETHERRACK_CRYSTALLINE.id(), Blocks.ORE_NETHERCOAL_NETHERRACK.id());
@@ -59,9 +62,11 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		BTDEntities.init();
 		BTDBlocks.init();
 		BTDItems.init();
+		BTDTileEntities.init();
 
 		NetEntityHandler.registerNetworkEntry(new NetEntryRock(), 150);
 		NetEntityHandler.registerNetworkEntry(new NetEntryArrowFlaming(), 151);
+		NetEntityHandler.registerNetworkEntry(new NetEntryLightningball(), 151);
 
 		CommandHelper.registerWorldFeatureClass(WorldFeatureHangingDungeon.Gloomstone.class, "HangingDungeonGloomstone");
 		CommandHelper.registerWorldFeatureClass(WorldFeatureHangingDungeon.Basalt.class, "HangingDungeonBasalt");
@@ -123,7 +128,8 @@ public class BetterThanDeerMod implements ModInitializer, GameStartEntrypoint, I
 		BlockTags.PLACE_OVERWRITES.removeAll(List.of(Blocks.BONE_PILE, Blocks.SOULCATCHER));
 		BlockTags.PLANTABLE_IN_JAR.removeAll(List.of(Blocks.BONE_PILE));
 
-		Blocks.BLOCK_ASH.withSound(BlockSounds.SAND);
+		Blocks.BLOCK_ASH.withSound(new BlockSound("step.sand", "step.sand", 0.25F, 1.5F));
+		Blocks.LAYER_ASH.withSound(new BlockSound("step.sand", "step.sand", 0.25F, 0.5F));
 		Blocks.BLOCK_ASH.withTags(BlockTags.NETHER_SURFACE_BLOCK, BlockTags.NETHER_MOBS_SPAWN);
 
 		Blocks.SOULSCHIST.withTags(BlockTags.CAVES_CUT_THROUGH, BlockTags.CAVE_GEN_REPLACES_SURFACE);

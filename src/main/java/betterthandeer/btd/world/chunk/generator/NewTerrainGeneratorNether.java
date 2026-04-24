@@ -13,11 +13,9 @@ import net.minecraft.core.world.generate.chunk.perlin.nether.DensityGeneratorNet
 import net.minecraft.core.world.generate.chunk.perlin.nether.TerrainGeneratorNether;
 import net.minecraft.core.world.type.WorldType;
 import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 
 public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 	private final DensityGenerator densityGenerator;
-	private @Nullable Biome lastBiome = null;
 	private final Object2IntMap<Biome> fluidLookup = new Object2IntArrayMap<>();
 	private final int minY;
 	private final int maxY;
@@ -43,15 +41,6 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 
 	@Override
 	protected int getBlockAt(@NonNull Chunk chunk, int x, int y, int z, double density) {
-		label31:
-		{
-			if (Integer.MIN_VALUE == x && Integer.MIN_VALUE == z) {
-				break label31;
-			}
-
-			this.lastBiome = chunk.getBlockBiome(x, 0, z);
-		}
-
 		WorldType type = this.world.getWorldType();
 		int quarterHeight = this.maxY / 4;
 		if (y < quarterHeight) {
@@ -68,14 +57,19 @@ public class NewTerrainGeneratorNether extends TerrainGeneratorNether {
 			if (y < oceanY) {
 				Biome oceanBiome = chunk.getBlockBiome(x, oceanY, z);
 				int fluidId = this.fluidLookup.getOrDefault(oceanBiome, 0);
+
 				if (fluidId == Blocks.FLUID_WATER_STILL.id() && y == oceanY - 1) {
 					return BTDBlocks.ICE_RUBYGLASS.id();
+				}
+
+				if (fluidId == Blocks.OBSIDIAN.id() && y == oceanY - 1) {
+					return BTDBlocks.FLUID_TAR_STILL.id();
 				}
 
 				return fluidId;
 			}
 
-			return 0;
+			return Blocks.AIR.id();
 		}
 	}
 

@@ -6,6 +6,12 @@ subtitles.mob.gargoyledeath=Gargoyle death
 subtitles.mob.gargoyle=Gargoyle squeaks
 subtitles.mob.gargoylehurt=Gargoyle hurt
 
+guidebook.section.mob.leecher.name=Leecher
+guidebook.section.mob.leecher.desc=Leechers are alien like creatures that attack with lightning. They float around rubyglass harvesting energy.
+
+subtitles.mob.leecherdeath=Leecher death
+subtitles.mob.leecher=Leecher hum
+subtitles.mob.leecherhurt=Leecher hurt
 
 subtitles.mob.deerdeath=Deer death
 subtitles.mob.deerhurt=Deer hurt
@@ -14,6 +20,13 @@ subtitles.mob.deer=Deer call
 subtitles.acid.bubble=Acid bubbling
 
 subtitles.scrape=Statue scraping
+
+achievement.blastFurnace=Blast Processing
+achievement.blastFurnace.desc=Construct a blast furnace out of eight iron bars and nether coal.
+
+achievement.obtainSteel=What a Steel!
+achievement.obtainSteel.desc=Combine coal and iron to acquire steel, a strong alloy.
+
 
 
 

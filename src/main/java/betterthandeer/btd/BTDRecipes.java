@@ -5,11 +5,17 @@ import betterthandeer.btd.item.BTDItems;
 import net.minecraft.core.WeightedRandomLootObject;
 import net.minecraft.core.block.Blocks;
 import net.minecraft.core.data.registry.Registries;
+import net.minecraft.core.data.registry.recipe.RecipeSymbol;
+import net.minecraft.core.data.registry.recipe.entry.RecipeEntryDyeing;
+import net.minecraft.core.data.registry.recipe.entry.RecipeEntryUndyeing;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
+import net.minecraft.core.util.helper.DyeColor;
 import turniplabs.halplibe.helper.RecipeBuilder;
 import turniplabs.halplibe.helper.recipeBuilders.RecipeBuilderShaped;
 import turniplabs.halplibe.util.RecipeEntrypoint;
+
+import java.util.List;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
 
@@ -30,6 +36,41 @@ public class BTDRecipes implements RecipeEntrypoint {
 		templateStatue.addInput('B', Blocks.NETHERRACK).addInput('S', Blocks.SLAB_NETHERRACK_POLISHED).create("statue_netherrack", new ItemStack(BTDItems.STATUE_NETHERRACK, 1));
 		templateStatue.addInput('B', Blocks.GLOOMSTONE).addInput('S', Blocks.SLAB_GLOOMSTONE_POLISHED).create("statue_gloomstone", new ItemStack(BTDItems.STATUE_GLOOMSTONE, 1));
 
+
+		RecipeBuilderShaped templateCarvedStone = new RecipeBuilderShaped(MOD_ID, "S", "S");
+		templateCarvedStone.addInput('S', Blocks.STONE_POLISHED).create("carved_stone", new ItemStack(Blocks.STONE_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.BASALT_POLISHED).create("carved_basalt", new ItemStack(Blocks.BASALT_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.LIMESTONE_POLISHED).create("carved_limestone", new ItemStack(Blocks.LIMESTONE_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.GRANITE_POLISHED).create("carved_granite", new ItemStack(Blocks.GRANITE_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.PERMAFROST_POLISHED).create("carved_permafrost", new ItemStack(Blocks.PERMAFROST_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.MARBLE).create("marble_capstone", new ItemStack(Blocks.CAPSTONE_MARBLE, 2));
+		templateCarvedStone.addInput('S', Blocks.SLATE_POLISHED).create("carved_slate", new ItemStack(BTDBlocks.SLATE_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.NETHERRACK_POLISHED).create("carved_netherrack", new ItemStack(Blocks.NETHERRACK_CARVED, 2));
+		templateCarvedStone.addInput('S', Blocks.GLOOMSTONE_POLISHED).create("carved_gloomstone", new ItemStack(Blocks.GLOOMSTONE_CARVED, 2));
+
+		RecipeBuilder.Shaped(MOD_ID, "SS", "SS")
+			.addInput('S', Blocks.BRIMSAND)
+			.create("brimstone", new ItemStack(BTDBlocks.BRIMSTONE, 2));
+
+		RecipeBuilder.Shaped(MOD_ID, "SSS")
+			.addInput('S', BTDBlocks.BRIMSTONE)
+			.create("brimstone_slab", new ItemStack(BTDBlocks.SLAB_BRIMSTONE, 6));
+
+		RecipeBuilder.Shaped(MOD_ID, "S  ", "SS ", "SSS")
+			.addInput('S', BTDBlocks.BRIMSTONE)
+			.create("brimstone_stairs", new ItemStack(BTDBlocks.STAIRS_BRIMSTONE, 6));
+
+		RecipeBuilder.Shaped(MOD_ID, "SS", "SS")
+			.addInput('S', BTDBlocks.BRIMSTONE)
+			.create("brimstone_bricks", new ItemStack(BTDBlocks.BRICK_BRIMSTONE, 4));
+
+		RecipeBuilder.Shaped(MOD_ID, "SSS")
+			.addInput('S', BTDBlocks.BRICK_BRIMSTONE)
+			.create("brick_brimstone_slab", new ItemStack(BTDBlocks.SLAB_BRICK_BRIMSTONE, 6));
+
+		RecipeBuilder.Shaped(MOD_ID, "S  ", "SS ", "SSS")
+			.addInput('S', BTDBlocks.BRICK_BRIMSTONE)
+			.create("brick_brimstone_stairs", new ItemStack(BTDBlocks.STAIRS_BRICK_BRIMSTONE, 6));
 
 		RecipeBuilder.Shaped(MOD_ID, "SSS")
 			.addInput('S', Blocks.SLATE_POLISHED)
@@ -79,6 +120,22 @@ public class BTDRecipes implements RecipeEntrypoint {
 			.addInput('C', Items.INGOT_STEEL_CRUDE)
 			.addInput('I', Items.INGOT_STEEL)
 			.create("sulfur_block", new ItemStack(BTDItems.CHAIN_STEEL_LARGE, 16));
+
+		Registries.RECIPES.addCustomRecipe(
+			"btd:workbench/asphalt_dyeing",
+			new RecipeEntryDyeing(
+				new RecipeSymbol("btd:asphalt"),
+				BTDBlocks.ASPHALT.getDefaultStack(), false, false
+			)
+		);
+		Registries.RECIPES.addCustomRecipe(
+			"btd:workbench/asphalt_undyeing",
+			new RecipeEntryUndyeing(
+				new RecipeSymbol("btd:asphalt"),
+				new ItemStack(BTDBlocks.ASPHALT.asItem(), 1, 15)
+			)
+		);
+
 
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_basalt_to_olivine");
 		RecipeBuilder.ModifyBlastFurnace("minecraft").removeRecipe("cobble_granite_to_quartz");
@@ -171,5 +228,12 @@ public class BTDRecipes implements RecipeEntrypoint {
 		RecipeBuilder.getRecipeNamespace(MOD_ID);
 
 		Registries.ITEM_GROUPS.getItem("minecraft:logs").add(BTDBlocks.LOG_SCORCHED.getDefaultStack());
+
+		List<ItemStack> asphalt = Registries.stackListOf(BTDBlocks.ASPHALT);
+		for (DyeColor dyeColor : DyeColor.values()) {
+			asphalt.add(new ItemStack(BTDBlocks.ASPHALT, 1, dyeColor.blockMeta));
+		}
+
+		Registries.ITEM_GROUPS.register("btd:asphalt", asphalt);
 	}
 }

@@ -56,7 +56,7 @@ public class MobRendererGargoyle extends MobRenderer<MobGargoyle> {
 		float headPitch = this.getHeadPitch(entity, partialTick);
 
 		float flap;
-		if (entity.isHanging || entity.speed < 0.001F) {
+		if (entity.isHanging || limbYaw < 0.01F) {
 			flap = 0;
 		} else {
 			float time = this.getLimbPitch(entity, partialTick);
