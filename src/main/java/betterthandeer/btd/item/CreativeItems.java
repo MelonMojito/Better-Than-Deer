@@ -4,6 +4,7 @@ import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemBucket;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.Items;
+import net.minecraft.core.util.collection.NamespaceID;
 import net.minecraft.core.util.helper.DyeColor;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public final class CreativeItems {
 	private static void addBucketVariants(List<ItemStack> out, Item item) {
 		if (item instanceof ItemBucket itemBucket) {
 			out.add(new ItemStack(item));
-			for (net.minecraft.core.util.collection.NamespaceID stateId : ItemBucket.getRegisteredStateIds()) {
+			for (NamespaceID stateId : ItemBucket.getRegisteredStateIds()) {
 				if (!ItemBucket.STATE_EMPTY.equals(stateId)) {
 					ItemStack itemStack = new ItemStack(item, 1);
 					ItemBucket.setState(itemStack, stateId);

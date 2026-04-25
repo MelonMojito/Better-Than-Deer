@@ -99,7 +99,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 	public static void initializeBlocks() {
 
 		BOULDER = register("boulder", blockKey("boulder"), blockID++, BlockLogicBoulder::new)
-			.withHardness(0.0F)
+			.withHardness(1.0F)
 			.withLightEmission(10)
 			.withLitInteriorSurface(true)
 			.setTicking(true)
@@ -109,13 +109,17 @@ public class BTDBlocks implements BlockInitEntrypoint {
 		FLUID_ACID_FLOWING = (Block<BlockLogicFluid>) (Object) register("fluid.acid.flowing", blockKey("fluid_acid_flowing"), blockID++, block -> new BlockLogicFluidFlowing(block, ACID, new FluidAcid(), FLUID_ACID_STILL))
 			.withHardness(100.0F)
 			.withLightBlock(6)
+			.withLitInteriorSurface(true)
 			.withDisabledStats()
+			.withDisabledNeighborNotifyOnMetadataChange()
 			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
 
 		FLUID_ACID_STILL = (Block<BlockLogicFluid>) (Object) register("fluid.acid.still", blockKey("fluid_acid_still"), blockID++, block -> new BlockLogicFluidStill(block, ACID, new FluidAcid(), FLUID_ACID_FLOWING))
 			.withHardness(100.0F)
 			.withLightBlock(6)
+			.withLitInteriorSurface(true)
 			.withDisabledStats()
+			.withDisabledNeighborNotifyOnMetadataChange()
 			.setStatParent(() -> FLUID_ACID_FLOWING)
 			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
 
@@ -180,14 +184,14 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withHardness(1.5F)
 			.withTags(BlockTags.FENCES_CONNECT, BlockTags.MINEABLE_BY_AXE);
 
-		CHAIN_LARGE = register("chain.large", blockKey("chain_large"), blockID++, block -> new BlockLogicChainLarge(block, BTDItems.CHAIN_LARGE))
+		CHAIN_LARGE = register("chain.large", blockKey("chain_large"), blockID++, block -> new BlockLogicChainLarge(block, () -> BTDItems.CHAIN_LARGE))
 			.withSound(BlockSounds.METAL)
 			.withHardness(5.0F)
 			.withBlastResistance(10.0F)
 			.withOverrideColor(MaterialColor.iron)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE);
 
-		CHAIN_STEEL_LARGE = register("chain.steel.large", blockKey("chain_steel_large"), blockID++, block -> new BlockLogicChainLarge(block, BTDItems.CHAIN_STEEL_LARGE))
+		CHAIN_STEEL_LARGE = register("chain.steel.large", blockKey("chain_steel_large"), blockID++, block -> new BlockLogicChainLarge(block, () -> BTDItems.CHAIN_STEEL_LARGE))
 			.withSound(BlockSounds.METAL)
 			.withHardness(5.0F)
 			.withBlastResistance(10.0F)
@@ -356,7 +360,6 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withHardness(5.0F)
 			.withTags(BlockTags.MINEABLE_BY_PICKAXE)
 			.withOverrideColor(MaterialColor.netherrack);
-
 
 
 	}

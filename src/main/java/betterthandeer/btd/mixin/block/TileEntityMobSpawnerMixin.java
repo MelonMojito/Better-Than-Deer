@@ -8,7 +8,7 @@ import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.entity.TileEntityMobSpawner;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.pos.TilePosc;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -26,7 +26,7 @@ public class TileEntityMobSpawnerMixin {
 	}
 
 	@WrapOperation(method = "countNearbySpawners", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/world/World;getBlockType(Lnet/minecraft/core/world/pos/TilePosc;)Lnet/minecraft/core/block/Block;"))
-	private Block<?> wrapTypeCheck(World instance, @NotNull TilePosc tilePos, Operation<Block<?>> original) {
+	private Block<?> wrapTypeCheck(World instance, @NonNull TilePosc tilePos, Operation<Block<?>> original) {
 		Block<?> block = original.call(instance, tilePos);
 
 		if (block == BTDBlocks.MOBSPAWNER_NETHER) {

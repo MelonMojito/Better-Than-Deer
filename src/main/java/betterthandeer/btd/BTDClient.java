@@ -27,7 +27,6 @@ import net.minecraft.core.util.collection.NamespaceID;
 import net.minecraft.core.util.helper.Direction;
 import net.minecraft.core.world.World;
 import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.util.ClientStartEntrypoint;
 
 import java.util.Map;

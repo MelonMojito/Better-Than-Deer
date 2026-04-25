@@ -1,5 +1,6 @@
 package betterthandeer.btd.item;
 
+import betterthandeer.btd.block.statue.gargoyle.TileEntityStatueGargoyle;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.block.entity.TileEntityActivator;
@@ -42,10 +43,14 @@ public class ItemStatueGargoyle extends Item {
 			world.notifyBlocksOfNeighborChange(blockPos, this.statueBlock);
 			world.playBlockSoundEffect(player, (float) blockPos.x() + 0.5F, (float) blockPos.y() + 0.5F, (float) blockPos.z() + 0.5F, this.statueBlock, EnumBlockSoundEffectType.PLACE);
 			this.statueBlock.onPlacedByMob(world, blockPos, side, player, xHit, yHit);
-			if (this.statueBlock.isEntityTile && selfStack.getData().containsKey("tileEntityData")) {
-				TileEntity tileEntity = world.getTileEntity(blockPos);
-				if (tileEntity != null) {
-					tileEntity.readAdditionalData(selfStack.getData().getCompound("tileEntityData"));
+
+			TileEntity tileEntity = world.getTileEntity(blockPos);
+			if (tileEntity instanceof TileEntityStatueGargoyle tileEntityStatueGargoyle) {
+				if (side == Side.BOTTOM) {
+					tileEntityStatueGargoyle.setPose(TileEntityStatueGargoyle.Pose.UPSIDE_DOWN);
+				}
+				if (selfStack.getData().containsKey("tileEntityData")) {
+					tileEntityStatueGargoyle.readAdditionalData(selfStack.getData().getCompound("tileEntityData"));
 				}
 			}
 
