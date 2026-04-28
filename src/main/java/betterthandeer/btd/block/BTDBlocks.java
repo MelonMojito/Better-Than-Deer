@@ -18,6 +18,7 @@ import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.item.block.ItemBlockPainted;
 import net.minecraft.core.sound.BlockSound;
 import net.minecraft.core.sound.BlockSounds;
+import org.jetbrains.annotations.Contract;
 import org.jspecify.annotations.NonNull;
 import turniplabs.halplibe.util.BlockInitEntrypoint;
 
@@ -91,7 +92,8 @@ public class BTDBlocks implements BlockInitEntrypoint {
 		}
 	}
 
-	public static String blockKey(String string) {
+	@Contract(pure = true)
+	public static @NonNull String blockKey(String string) {
 		return MOD_ID + ":block/" + string;
 	}
 
@@ -112,7 +114,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withLitInteriorSurface(true)
 			.withDisabledStats()
 			.withDisabledNeighborNotifyOnMetadataChange()
-			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
+			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU, BTDBlockTags.IS_ACID);
 
 		FLUID_ACID_STILL = (Block<BlockLogicFluid>) (Object) register("fluid.acid.still", blockKey("fluid_acid_still"), blockID++, block -> new BlockLogicFluidStill(block, ACID, new FluidAcid(), FLUID_ACID_FLOWING))
 			.withHardness(100.0F)
@@ -121,7 +123,7 @@ public class BTDBlocks implements BlockInitEntrypoint {
 			.withDisabledStats()
 			.withDisabledNeighborNotifyOnMetadataChange()
 			.setStatParent(() -> FLUID_ACID_FLOWING)
-			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU);
+			.withTags(BlockTags.PLACE_OVERWRITES, BlockTags.NOT_IN_CREATIVE_MENU, BTDBlockTags.IS_ACID);
 
 		SULFUR = register("sulfur", blockKey("sulfur"), blockID++, BlockLogicSulfur::new)
 			.withHardness(1.0f)

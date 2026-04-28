@@ -1,11 +1,15 @@
 package betterthandeer.btd.item;
 
+import betterthandeer.btd.block.BTDBlockTags;
 import betterthandeer.btd.block.BTDBlocks;
+import net.minecraft.core.block.BlockLogicFluid;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemBucket;
 import net.minecraft.core.item.ItemPlaceable;
 import net.minecraft.core.item.ItemStatue;
 import net.minecraft.core.util.collection.NamespaceID;
+import org.jetbrains.annotations.Contract;
+import org.jspecify.annotations.NonNull;
 
 import static betterthandeer.btd.BetterThanDeerMod.MOD_ID;
 
@@ -51,12 +55,13 @@ public class BTDItems {
 		}
 	}
 
-	public static String itemKey(String string) {
+	@Contract(pure = true)
+	public static @NonNull String itemKey(String string) {
 		return MOD_ID + ":item/" + string;
 	}
 
 	public static void initializeItems() {
-		ItemBucket.registerState(STATE_ACID, new ItemBucket.BucketState("acid", BTDBlocks.FLUID_ACID_FLOWING, true));
+		ItemBucket.registerState(STATE_ACID, new ItemBucket.BucketState("acid", BTDBlocks.FLUID_ACID_FLOWING, BTDBlockTags.IS_ACID, "liquid.lavapop", BlockLogicFluid::fizz));
 
 		EYE_GARGOYLE = new Item("eye.gargoyle", itemKey("eye_gargoyle"), itemID++);
 

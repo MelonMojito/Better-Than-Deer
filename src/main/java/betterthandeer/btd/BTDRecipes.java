@@ -99,14 +99,14 @@ public class BTDRecipes implements RecipeEntrypoint {
 
 		RecipeBuilder.Shaped(MOD_ID, "NNN", "CQE", "NNN")
 			.addInput('N', Blocks.COBBLE_NETHERRACK)
-			.addInput('C', Blocks.RUBYGLASS_CONDUIT)
+			.addInput('C', Blocks.CONDUIT)
 			.addInput('Q', Items.QUARTZ)
 			.addInput('E', BTDItems.EYE_GARGOYLE)
 			.create("matcher", new ItemStack(Blocks.MATCHER, 1));
 
 		RecipeBuilder.Shaped(MOD_ID, "NNN", "CSA", "NNN")
 			.addInput('N', Blocks.COBBLE_NETHERRACK)
-			.addInput('C', Blocks.RUBYGLASS_CONDUIT)
+			.addInput('C', Blocks.CONDUIT)
 			.addInput('S', Blocks.SOULSAND)
 			.addInput('A', Items.NETHERCOAL)
 			.create("activator", new ItemStack(Blocks.ACTIVATOR_COBBLE_NETHERRACK, 1));

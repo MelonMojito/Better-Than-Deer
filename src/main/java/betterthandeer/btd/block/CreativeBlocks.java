@@ -452,7 +452,7 @@ public final class CreativeBlocks {
 		add(list, Blocks.RUBYGLASS_COLUMN);
 		add(list, Blocks.RUBYGLASS_NODE);
 		add(list, Blocks.BLOCK_RUBYGLASS);
-		add(list, Blocks.RUBYGLASS_CONDUIT);
+		add(list, Blocks.CONDUIT);
 		add(list, Blocks.RUBYGLASS_SPROUT);
 		add(list, BTDBlocks.ICE_RUBYGLASS);
 

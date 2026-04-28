@@ -58,11 +58,8 @@ public class FluidAcid implements Fluid {
 				world.setBlockTypeNotify(tilePos, BTDBlocks.SULFUR);
 			}
 
-			world.playSoundEffect(null, SoundCategory.WORLD_SOUNDS, (float) tilePos.x() + 0.5F, (float) tilePos.y() + 0.5F, (float) tilePos.z() + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+			BlockLogicFluid.fizz(world, tilePos);
 
-			for (int i = 0; i < 8; ++i) {
-				world.spawnParticle("largesmoke", (double) tilePos.x() + Math.random(), (double) tilePos.y() + 1.2, (double) tilePos.z() + Math.random(), 0.0F, 0.0F, 0.0F, 0, false);
-			}
 			return true;
 		} else {
 			return false;
